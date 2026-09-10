@@ -68,10 +68,17 @@ func _run() -> void:
 	await get_tree().create_timer(0.5).timeout
 	await _snap("all_pieces_off")
 
-	# front head close-up
-	_frame_char(Vector3(0.15, 1.55, 1.4))
-	await get_tree().create_timer(0.4).timeout
-	await _snap("head_closeup")
+	# head close-up from four sides so we can see the face regardless of facing
+	_main.customizer_screen._cfg.pieces["hair"] = false
+	_main.freja.apply_config(_main.customizer_screen._cfg)
+	var head: Vector3 = _main.freja.global_position + Vector3.UP * 1.62
+	var cam: Camera3D = _main.customizer_screen._preview_cam
+	for i in 4:
+		var a := TAU * i / 4.0
+		cam.global_position = head + Vector3(sin(a), 0.05, cos(a)) * 0.55
+		cam.look_at(head, Vector3.UP)
+		await get_tree().create_timer(0.3).timeout
+		await _snap("head_%d" % i)
 
 	print("[capture] done, %d shots in %s" % [_shot, _dir])
 	get_tree().quit()

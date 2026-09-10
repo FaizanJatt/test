@@ -9,7 +9,9 @@ enum Kind { SKIN, HAIR, EYE, CLOTH, METAL, GLASS, TEETH, NAILS }
 
 # glb material name -> { kind, albedo, normal, orm (roughness/metal), alpha }
 const MAT := {
-	"Freja_Body_Nude":  {"kind": Kind.SKIN, "albedo": "Freja_Body_Diffuse", "normal": "Freja_Body_Normal"},
+	# Freja_Nude_Body's body surface uses UDIM UVs (u 0..3) that a single texture
+	# can't cover, so render it as flat skin. Face has its own 0..1 tile.
+	"Freja_Body_Nude":  {"kind": Kind.SKIN, "color": Color(0.83, 0.62, 0.52)},
 	"Freja_Body_OW2":   {"kind": Kind.SKIN, "albedo": "Freja_Body_Diffuse", "normal": "Freja_Body_Normal"},
 	"Freja Face":       {"kind": Kind.SKIN, "albedo": "Freja_Body_Diffuse", "normal": "Freja_Body_Normal"},
 	"Freja_Scarlett_Body": {"kind": Kind.SKIN, "albedo": "Freja_Scarlett_Body_Diffuse", "normal": "Freja_Scarlett_Body_Normal"},
@@ -112,7 +114,8 @@ func build(mat_name: String, skin_tint: Color = Color.WHITE) -> StandardMaterial
 
 	match kind:
 		Kind.SKIN:
-			m.albedo_color = (Color.WHITE if albedo else fb["color"]) * skin_tint
+			var base: Color = Color.WHITE if albedo else spec.get("color", fb["color"])
+			m.albedo_color = base * skin_tint
 			m.subsurf_scatter_enabled = true
 			m.subsurf_scatter_strength = 0.22
 			m.subsurf_scatter_skin_mode = true

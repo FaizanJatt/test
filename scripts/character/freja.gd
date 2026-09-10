@@ -72,12 +72,13 @@ func _assign_materials(mi: MeshInstance3D, skin_tint: Color) -> void:
 		var mname: String = String(src.resource_name) if src != null else String(mi.name)
 		var mat: StandardMaterial3D
 		if is_body and mname.findn("hair") != -1:
-			# the nude body carries brow / lash / hairline surfaces that use hair
-			# materials - render them as an opaque dark scalp instead of alpha cards
+			# the nude body carries 5 per-outfit hairline / scalp-cap surfaces that
+			# use hair materials; the real hair meshes cover the head, so hide them
 			mat = StandardMaterial3D.new()
-			mat.resource_name = mname
-			mat.albedo_color = Color(0.12, 0.09, 0.08)
-			mat.roughness = 0.75
+			mat.resource_name = mname + "_hidden"
+			mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_SCISSOR
+			mat.alpha_scissor_threshold = 1.0
+			mat.albedo_color = Color(0, 0, 0, 0)
 		else:
 			mat = _mat_factory.build(mname, skin_tint)
 		mi.set_surface_override_material(i, mat)
@@ -127,13 +128,6 @@ func _is_garment(mesh_name: String) -> bool:
 func _set_visible(mesh_name: String, v: bool) -> void:
 	if meshes.has(mesh_name):
 		meshes[mesh_name].visible = v
-
-func _apply_body_coverage(outfit_id: int) -> void:
-	# Outfits 1..4 ship their own torso/leg meshes -> keep only head+hands skin of the
-	# nude body via the "Hide*" morphs when present; simplest robust move for a demo
-	# is to keep the nude body but push it slightly inward is overkill, so we just
-	# leave it: garment meshes render on top. Toe/finger nails stay.
-	pass
 
 func _skin_tint_for(cfg: FrejaConfig) -> Color:
 	if cfg.outfit_id != 0:
