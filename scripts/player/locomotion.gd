@@ -44,7 +44,10 @@ const ARM_ADDUCT := deg_to_rad(13.0)         # settle arms in from the exported 
 const ARM_BACK_BIAS := deg_to_rad(9.0)       # rest the hand by the hip, not in front
 const FOREARM_TRIM := deg_to_rad(10.0)       # counter the exported forearm's forward cant
 const CR_ARM_IN := deg_to_rad(6.0)
-const FINGER_CURL := deg_to_rad(22.0)        # relax the exported claw hand
+const FINGER_CURL := deg_to_rad(20.0)        # relax the exported claw hand
+# arm follow-through: each joint lags the one above it, so the hand flows/trails
+const LAG_FOREARM := 0.45                    # radians of phase the forearm trails the shoulder
+const LAG_WRIST := 0.9                       # radians the hand trails the forearm
 const HIP_BOB := 0.022
 const HIP_SWAY := 0.020
 const HIP_ROLL := deg_to_rad(4.0)
@@ -53,24 +56,29 @@ const LEAN_WALK := deg_to_rad(4.0)
 const LEAN_RUN := deg_to_rad(11.0)
 const SPINE_COUNTER := 0.6                   # torso counter-rotates vs hips
 
-# ---- catwalk / runway strut: layered onto a plain walk (fades out for run/crouch) ----
-const CATWALK := 0.9                         # 0 = normal walk, 1 = full runway strut
-const CW_SWAY_GAIN := 2.1                    # lateral hip travel  (x HIP_SWAY)
-const CW_ROLL_GAIN := 2.3                    # frontal hip drop "pop"  (x HIP_ROLL)
-const CW_YAW_GAIN := 1.5                     # pelvis twist  (x HIP_YAW)
-const CW_STRIDE := 0.38                      # longer, slower, more deliberate steps
-const CW_CROSS := 1.15                       # foot lands past the centreline (one-line walk)
-const CW_LIFT := 0.7                         # swing foot lifts higher
-const CW_TOE_POINT := deg_to_rad(20.0)       # pointed toe through the swing
-const CW_ARCH := deg_to_rad(5.5)             # lower-back arch (chest up, seat back)
-const CW_COUNTER := 0.45                     # extra torso counter-rotation  (+ SPINE_COUNTER)
-const CW_SHOULDER_BACK := deg_to_rad(4.0)
-const CW_CHIN_UP := deg_to_rad(3.0)
-const CW_HEAD_LEVEL := 0.7                   # how hard the head counter-rolls to stay over the line
-const CW_ARM_OUT := deg_to_rad(5.0)          # hands clear the swinging hips
-const CW_ELBOW := deg_to_rad(11.0)
-const CW_WRIST := deg_to_rad(10.0)
-const CW_ARM_DAMP := 0.8                     # arm swing amplitude in the strut (1 = full)
+# ---- catwalk : a demure, composed runway strut layered onto a plain walk ----
+const CATWALK := 1.0                         # 0 = normal walk, 1 = full strut
+const CW_SWAY_GAIN := 2.4                    # lateral hip travel  (x HIP_SWAY)
+const CW_ROLL_GAIN := 1.9                    # frontal hip drop "pop"  (x HIP_ROLL) - smooth, not sharp
+const CW_YAW_GAIN := 1.7                     # pelvis twist  (x HIP_YAW)
+const CW_STRIDE := 0.6                       # long, slow, deliberate steps
+const CW_CROSS := 1.2                        # foot lands past the centreline (one-line walk)
+const CW_LIFT := 0.25                        # low, gliding swing foot (no stomp)
+const CW_TOE_POINT := deg_to_rad(30.0)       # pointed toe through the swing
+const CW_BOB_DAMP := 0.35                    # kill most of the vertical bounce
+const CW_ARCH := deg_to_rad(6.0)             # lower-back arch (chest up, seat back)
+const CW_COUNTER := 0.55                     # extra torso counter-rotation  (+ SPINE_COUNTER)
+const CW_SHOULDER_BACK := deg_to_rad(5.0)
+const CW_SHOULDER_DOWN := deg_to_rad(4.0)    # long neck, shoulders settled down
+const CW_CHIN_UP := deg_to_rad(2.5)
+const CW_HEAD_LEVEL := 0.8                   # head counter-rolls to stay over the line
+const CW_ARM_OUT := deg_to_rad(3.0)          # hands just clear the swinging hips
+const CW_ARM_FWD := deg_to_rad(7.0)          # hands carried a touch in front (composed)
+const CW_ELBOW := deg_to_rad(20.0)           # elegant, never-straight elbow
+const CW_WRIST_DROOP := deg_to_rad(12.0)     # relaxed hanging hand
+const CW_WRIST_SWING := deg_to_rad(14.0)     # loose wrist flows with the swing
+const CW_WRIST_ROLL := deg_to_rad(10.0)      # palm turned gently toward the thigh
+const CW_ARM_DAMP := 0.42                    # quiet, restrained swing (quality over size)
 
 # crouch (full = 1.0) - low hips, fairly upright back, head up (game stealth crouch)
 const CR_PELVIS_DROP := 0.26
@@ -115,6 +123,7 @@ var _ground_drop := 0.0
 var _speed := 0.0
 var _stride := SWEEP_WALK
 var _catwalk := 0.0
+var _finger_curl := 1.0
 
 # ------------------------------------------------------------------- setup ----
 func bind(skeleton: Skeleton3D, model: Node3D) -> void:
@@ -288,9 +297,11 @@ func _pose() -> void:
 	var lean: float = lerpf(LEAN_WALK, LEAN_RUN, _run01) * w
 
 	var cw := _catwalk
+	# hand stays softly, elegantly curled - a touch more in the strut, breathing gently
+	_finger_curl = 1.0 + 0.28 * cw + 0.12 * sin(_idle_t * 1.1)
 
 	# ---- pelvis -----------------------------------------------------------
-	var bob := (0.5 * cos(p * 2.0) - 0.5) * HIP_BOB * w * cr_walk    # dips twice / cycle
+	var bob := (0.5 * cos(p * 2.0) - 0.5) * HIP_BOB * w * cr_walk * lerpf(1.0, CW_BOB_DAMP, cw)
 	var sway := sin(p) * HIP_SWAY * (1.0 + CW_SWAY_GAIN * cw) * w * cr_walk
 	var pel_pos := Vector3(
 		sway + sin(_idle_t * IDLE_SWAY_RATE) * 0.006 * idle,
@@ -319,35 +330,45 @@ func _pose() -> void:
 	_apply("neck", AX_Y, -c_yaw * 0.35, AX_X, look * 0.45, AX_Z, head_level * 0.5)
 	_apply("head", AX_Y, -c_yaw * 0.30, AX_X, look * 0.55, AX_Z, head_level * 0.5)
 
-	# ---- arms : swing opposite the same-side leg, settled in from the A-pose.
-	#      in the strut the swing is damped, elbows carry a little bend, the hands
-	#      ride out a touch so the swinging hips don't hit them, wrists stay loose.
+	# ---- arms : opposite the same-side leg, with follow-through so the hand
+	#      trails and flows. The strut keeps the swing small but very fluid:
+	#      shoulder leads -> forearm lags -> hand lags again.
+	var arm_damp: float = lerpf(1.0, CW_ARM_DAMP, cw)
 	for s in ["L", "R"]:
 		var side := 1.0 if s == "L" else -1.0
-		var aph := p + PI
-		var swing := sin(aph) * arm_amp * lerpf(1.0, CW_ARM_DAMP, cw)   # +X = arm back
-		var adduct := -side * (ARM_ADDUCT + CR_ARM_IN * cr) + side * CW_ARM_OUT * cw
-		var fwd := CR_ARM_FWD * cr
+		var aph := p + PI                              # arm opposes the same-side leg
+		var s_sh := sin(aph)                            # shoulder / upper-arm phase
+		var s_fa := sin(aph - LAG_FOREARM)             # forearm trails
+		var s_wr := sin(aph - LAG_FOREARM - LAG_WRIST) # hand trails again
+		var swing := s_sh * arm_amp * arm_damp         # +X = arm back
+		var adduct := -side * (ARM_ADDUCT + CR_ARM_IN * cr) + side * (CW_ARM_OUT * cw)
+		var fwd := CR_ARM_FWD * cr + CW_ARM_FWD * cw
 		var idle_arm := sin(_idle_t * BREATH_RATE + side) * deg_to_rad(0.7) * idle
-		_apply("shoulder." + s, AX_X, swing * 0.10 + breath * deg_to_rad(0.4) * idle,
-			AX_Z, -side * breath * deg_to_rad(0.3) * idle, AX_X, 0.0)
+
+		# shoulder girdle: leads slightly opposite the arm, settles down + back
+		_apply("shoulder." + s, AX_X, -swing * 0.14 + breath * deg_to_rad(0.4) * idle,
+			AX_Z, side * (CW_SHOULDER_DOWN * cw) - side * breath * deg_to_rad(0.3) * idle, AX_X, 0.0)
 		_apply("uarm1." + s, AX_X, swing - fwd + ARM_BACK_BIAS * (1.0 - cr) + CW_SHOULDER_BACK * cw + idle_arm,
 			AX_Z, adduct, AX_X, 0.0)
 		_carry_chain(["uarm2." + s, "uarm3." + s])
-		# elbow: soft constant bend + coupled swing, flexes forward (-X);
-		# FOREARM_TRIM (+X) first straightens out the exported forward cant
-		var elbow: float = FOREARM_TRIM - elbow_base - CR_ELBOW * cr - CW_ELBOW * cw \
-			- maxf(0.0, sin(aph + 0.5)) * arm_amp * 0.6 * lerpf(1.0, CW_ARM_DAMP, cw)
-		_apply("farm1." + s, AX_X, elbow * 0.5, AX_X, 0.0, AX_X, 0.0)
-		_apply("farm2." + s, AX_X, elbow * 0.3, AX_X, 0.0, AX_X, 0.0)
-		_apply("farm3." + s, AX_X, elbow * 0.2, AX_X, 0.0, AX_X, 0.0)
-		_apply("wrist." + s, AX_X, sin(aph + 1.1) * CW_WRIST * cw, AX_X, 0.0, AX_X, 0.0)
+
+		# elbow: an elegant constant bend + a lagged coupled flex (-X flexes forward)
+		var elbow_hold: float = FOREARM_TRIM - elbow_base - CR_ELBOW * cr - CW_ELBOW * cw
+		var elbow_swing := -(0.5 + 0.5 * s_fa) * arm_amp * 0.5 * arm_damp
+		var elbow: float = elbow_hold + elbow_swing
+		_apply("farm1." + s, AX_X, elbow * 0.55, AX_X, 0.0, AX_X, 0.0)
+		_apply("farm2." + s, AX_X, elbow * 0.28, AX_X, 0.0, AX_X, 0.0)
+		_apply("farm3." + s, AX_X, elbow * 0.17, AX_X, 0.0, AX_X, 0.0)
+
+		# wrist / hand: relaxed droop + a loose lagged flow + palm turned inward
+		var wrist_x := -CW_WRIST_DROOP * cw + s_wr * CW_WRIST_SWING * cw
+		_apply("wrist." + s, AX_X, wrist_x, AX_Z, -side * CW_WRIST_ROLL * cw, AX_X, 0.0)
 
 	# ---- legs : 2-bone IK to a world-locked foot target (no skating) ----
 	var swing_lift: float = lerpf(SWING_LIFT_WALK, SWING_LIFT_RUN, _run01) * (1.0 + CW_LIFT * cw) * w
 	for s in ["L", "R"]:
 		var lp := p if s == "L" else p + PI
-		var plan := _foot_plan(lp, _stride * w, swing_lift)   # (fwd, lift)
+		var plan := _foot_plan(lp, _stride * w, swing_lift, cw)   # (fwd, lift)
 		_solve_leg(s, plan.x, plan.y, cr, lp, cw)
 
 	_compute_fk()
@@ -377,14 +398,17 @@ func _apply(nm: String, ax0: Vector3, a0: float, ax1: Vector3, a1: float, ax2: V
 
 ## foot trajectory for one leg: linear world-locked slide back through stance,
 ## smooth arc forward with a lift through swing. returns Vector2(fwd, lift).
-func _foot_plan(lp: float, stride: float, lift_h: float) -> Vector2:
+func _foot_plan(lp: float, stride: float, lift_h: float, cw := 0.0) -> Vector2:
 	var u := fposmod(lp, TAU) / TAU
 	if u < STANCE_FRAC:
 		var f := u / STANCE_FRAC
 		return Vector2(lerpf(stride * 0.5, -stride * 0.5, f), 0.0)
 	var g := (u - STANCE_FRAC) / (1.0 - STANCE_FRAC)
-	var e := g * g * (3.0 - 2.0 * g)
-	return Vector2(lerpf(-stride * 0.5, stride * 0.5, e), sin(g * PI) * lift_h)
+	# smoothstep normally; in the strut, reach forward quickly then settle the
+	# last stretch slowly so the foot is placed with control
+	var e: float = lerpf(g * g * (3.0 - 2.0 * g), 1.0 - pow(1.0 - g, 2.4), cw)
+	var lift: float = pow(sin(g * PI), lerpf(1.0, 1.8, cw)) * lift_h
+	return Vector2(lerpf(-stride * 0.5, stride * 0.5, e), lift)
 
 ## 2-bone IK from the hip socket to a foot target: solve the knee position,
 ## then AIM the thigh and shin bones (exact, accounts for rest cant/roll).
@@ -395,8 +419,11 @@ func _solve_leg(s: String, fwd: float, lift: float, cr: float, lp: float, cw: fl
 	var a := THIGH_LEN
 	var b := SHIN_LEN
 
-	# catwalk: place the foot on (slightly past) the body centre-line -> one-line strut
-	var foot_x: float = lerpf(hip.x, -hip.x * (CW_CROSS - 1.0), cw)
+	# catwalk: plant the foot on (just past) a FIXED centre-line so it doesn't
+	# slide with the hip sway -> the clean one-line runway track
+	var socket_x: float = t1["l_rest"].origin.x
+	var line_x: float = -signf(socket_x) * 0.015 * (CW_CROSS - 1.0) * 8.0
+	var foot_x: float = lerpf(hip.x, line_x, cw)
 	var target := Vector3(foot_x, FOOT_CONTACT_Y + lift, pelvis.origin.z + fwd)
 	var to_t := target - hip
 	var d := to_t.length()
@@ -501,6 +528,6 @@ func _flush() -> void:
 		var rot := gf.basis
 		if f["curl"] > 0.0:
 			var axis: Vector3 = (_cur[f["anchor"]].basis * Vector3.RIGHT).normalized()
-			rot = Basis(axis, f["curl"]) * rot
+			rot = Basis(axis, f["curl"] * _finger_curl) * rot
 		_sk.set_bone_pose_position(f["idx"], gf.origin)
 		_sk.set_bone_pose_rotation(f["idx"], rot.get_rotation_quaternion())

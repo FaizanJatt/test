@@ -52,14 +52,12 @@ func _film(label: String, move: Vector2, sprint: bool, crouch: bool) -> void:
 	_player.set_mobile_move_vector(move)                 # walks along world -Z
 	await get_tree().create_timer(0.5).timeout           # spin the cycle up
 	_cam.current = true
-	for i in 24:
+	for i in 9:
 		var f: Vector3 = _freja.global_position
 		_cam.global_position = Vector3(f.x + 3.0, 0.55, f.z)   # dead side-on, low, tracking
 		_cam.look_at(Vector3(f.x, 0.75, f.z), Vector3.UP)
-		await get_tree().create_timer(0.06).timeout
-		_foot_trace(label)
-		if i % 2 == 0:
-			await _snap("%s_%02d" % [label, i / 2])
+		await get_tree().create_timer(0.12).timeout
+		await _snap("%s_%02d" % [label, i])
 	_player.set_mobile_move_vector(Vector2.ZERO)
 	_player.set_sprint_held(false)
 
@@ -121,39 +119,6 @@ func _snap(label: String) -> void:
 		return
 	img.save_png("%s%02d_%s.png" % [DIR, _shot, label])
 
-var _ft_prevL := Vector3.ZERO
-var _ft_prevR := Vector3.ZERO
-func _foot_trace(label: String) -> void:
-	var sk := _find_skel(_freja)
-	if sk == null:
-		return
-	sk.force_update_all_bone_transforms()
-	var gt := sk.global_transform
-	var lo := gt * sk.get_bone_global_pose(sk.find_bone("DEF-Foot.L")).origin
-	var ro := gt * sk.get_bone_global_pose(sk.find_bone("DEF-Foot.R")).origin
-	# horizontal travel of whichever foot is on the ground since the last frame
-	var msg := "%s pf.y=%.2f L(y%.3f d%.3f) R(y%.3f d%.3f)" % [label, _player.global_position.y,
-		lo.y, Vector2(lo.x - _ft_prevL.x, lo.z - _ft_prevL.z).length() if lo.y < 0.16 and _ft_prevL.y < 0.16 else -1.0,
-		ro.y, Vector2(ro.x - _ft_prevR.x, ro.z - _ft_prevR.z).length() if ro.y < 0.16 and _ft_prevR.y < 0.16 else -1.0]
-	_dbg(msg)
-	_ft_prevL = lo
-	_ft_prevR = ro
-
-func _find_skel(n: Node) -> Skeleton3D:
-	if n is Skeleton3D:
-		return n
-	for c in n.get_children():
-		var r := _find_skel(c)
-		if r:
-			return r
-	return null
-
-func _dbg(s: String) -> void:
-	var f := FileAccess.open("res://.debug/_dbg.txt", FileAccess.READ_WRITE if FileAccess.file_exists("res://.debug/_dbg.txt") else FileAccess.WRITE)
-	if f:
-		f.seek_end()
-		f.store_line(s)
-		f.close()
 
 func _done() -> void:
 	var f := FileAccess.open("res://.debug/_capture_done.txt", FileAccess.WRITE)
