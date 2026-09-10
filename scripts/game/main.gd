@@ -74,55 +74,72 @@ func _build_environment() -> void:
 	we.name = "WorldEnvironment"
 	var env := Environment.new()
 	env.background_mode = Environment.BG_SKY
+
+	# Poly Haven CC0 HDRI panorama sky -> realistic outdoor light + reflections
 	var sky := Sky.new()
-	var sky_mat := ProceduralSkyMaterial.new()
-	sky_mat.sky_top_color = Color(0.38, 0.55, 0.78)
-	sky_mat.sky_horizon_color = Color(0.78, 0.82, 0.82)
-	sky_mat.ground_bottom_color = Color(0.32, 0.34, 0.30)
-	sky_mat.ground_horizon_color = Color(0.72, 0.76, 0.74)
-	sky_mat.sun_angle_max = 12.0
-	sky.sky_material = sky_mat
+	var hdri := load("res://assets/textures/sky/rooitou_park_1k.hdr")
+	if hdri:
+		var pano := PanoramaSkyMaterial.new()
+		pano.panorama = hdri
+		pano.energy_multiplier = 1.0
+		sky.sky_material = pano
+	else:
+		var proc := ProceduralSkyMaterial.new()
+		proc.sky_horizon_color = Color(0.78, 0.82, 0.82)
+		sky.sky_material = proc
+	sky.radiance_size = Sky.RADIANCE_SIZE_128
 	env.sky = sky
+	env.sky_rotation = Vector3(0, deg_to_rad(35), 0)
+
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
-	env.ambient_light_energy = 0.9
+	env.ambient_light_energy = 0.55
+	env.ambient_light_sky_contribution = 1.0
+	env.reflected_light_source = Environment.REFLECTION_SOURCE_SKY
 	env.tonemap_mode = Environment.TONE_MAPPER_ACES
 	env.tonemap_white = 6.0
+	env.tonemap_exposure = 0.9
 	env.ssao_enabled = true
-	env.ssao_radius = 0.5
-	env.ssao_intensity = 1.0
-	env.ssao_power = 2.0
+	env.ssao_radius = 0.6
+	env.ssao_intensity = 1.3
+	env.ssao_power = 1.8
 	env.ssao_detail = 0.4
-	env.ssil_enabled = false
 	env.glow_enabled = true
-	env.glow_intensity = 0.2
-	env.glow_bloom = 0.04
+	env.glow_intensity = 0.12
+	env.glow_bloom = 0.02
+	env.glow_hdr_threshold = 1.6
+
+	# light distance haze so the tree line reads with depth (no volumetrics)
 	env.fog_enabled = true
-	env.fog_light_color = Color(0.79, 0.83, 0.87)
-	env.fog_density = 0.0018
-	env.fog_sky_affect = 0.3
+	env.fog_mode = Environment.FOG_MODE_EXPONENTIAL
+	env.fog_light_color = Color(0.74, 0.8, 0.86)
+	env.fog_sun_scatter = 0.05
+	env.fog_density = 0.0022
+	env.fog_aerial_perspective = 0.35
+	env.fog_sky_affect = 0.0
+
 	env.adjustment_enabled = true
 	env.adjustment_saturation = 1.08
-	env.adjustment_contrast = 1.03
+	env.adjustment_contrast = 1.05
 	we.environment = env
 	add_child(we)
 
 	var sun := DirectionalLight3D.new()
 	sun.name = "Sun"
-	sun.rotation_degrees = Vector3(-58, -132, 0)
-	sun.light_energy = 1.2
-	sun.light_color = Color(1.0, 0.96, 0.89)
+	sun.rotation_degrees = Vector3(-48, -108, 0)
+	sun.light_energy = 1.15
+	sun.light_color = Color(1.0, 0.97, 0.9)
 	sun.shadow_enabled = true
-	sun.shadow_blur = 0.1
-	sun.shadow_normal_bias = 2.5
-	sun.shadow_bias = 0.04
-	sun.light_angular_distance = 0.0
+	sun.shadow_blur = 1.1
+	sun.shadow_normal_bias = 1.5
+	sun.shadow_bias = 0.035
+	sun.light_angular_distance = 0.55
 	sun.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_4_SPLITS
-	sun.directional_shadow_max_distance = 38.0
-	sun.directional_shadow_split_1 = 0.045
-	sun.directional_shadow_split_2 = 0.13
-	sun.directional_shadow_split_3 = 0.35
+	sun.directional_shadow_max_distance = 90.0
+	sun.directional_shadow_split_1 = 0.05
+	sun.directional_shadow_split_2 = 0.14
+	sun.directional_shadow_split_3 = 0.36
 	sun.directional_shadow_blend_splits = true
-	sun.directional_shadow_fade_start = 0.9
+	sun.directional_shadow_fade_start = 0.85
 	add_child(sun)
 
 func _open_customizer() -> void:

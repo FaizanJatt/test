@@ -1,12 +1,12 @@
 extends Node3D
-## Demo map: textured grass ground, a wind-animated grass-blade layer, and
-## scattered Kenney Nature Kit props (trees, rocks, bushes, flowers). Trees get
-## trunk collision; a ring wall keeps the player in the play area.
+## Demo map: a Terrain3D heightmap with a PBR grass/rock auto-blend (Poly Haven
+## CC0), a wind-animated grass-blade layer, and scattered props - all dropped
+## onto the terrain surface. A ring wall keeps the player in the play area.
 
-const MAP_RADIUS := 44.0
-const PROP_FIELD := 40.0
-const GRASS_BLADES := 40000
-const GRASS_FIELD := 31.0
+const MAP_RADIUS := 150.0
+const PROP_FIELD := 130.0
+const GRASS_BLADES := 46000
+const GRASS_FIELD := 46.0
 
 const PROPS := "res://assets/props/"
 const TREE_MODELS := [
@@ -19,68 +19,49 @@ const BUSH_MODELS := ["plant_bush.glb", "plant_bushLarge.glb", "plant_bushDetail
 	"grass_large.glb", "grass_leafsLarge.glb"]
 
 const PropKit := preload("res://scripts/world/prop_kit.gd")
+const TerrainScript := preload("res://scripts/world/terrain.gd")
 
 const TREE_SCALE := 3.2
 const PROP_SCALE := 1.7
 
 var _rng := RandomNumberGenerator.new()
 var _kit := PropKit.new()
+var _terrain: Node3D
+var _cam_hooked := false
 
 func _ready() -> void:
 	_rng.seed = 20260910
-	_build_ground()
+	_terrain = TerrainScript.new()
+	_terrain.name = "Terrain"
+	add_child(_terrain)
+	_terrain.build(null)
+
 	_build_grass()
-	# keep a clear ~7m ring around spawn so the wardrobe preview camera never
+	# keep a clear ~9m ring around spawn so the wardrobe preview camera never
 	# ends up inside foliage
-	_scatter(TREE_MODELS, 40, 11.0, TREE_SCALE, Vector2(0.8, 1.45), true)
-	_scatter(ROCK_MODELS, 24, 8.0, PROP_SCALE, Vector2(0.5, 1.6), false)
-	_scatter(BUSH_MODELS, 64, 7.5, PROP_SCALE, Vector2(0.7, 1.5), false)
-	_scatter(["flower_redA.glb", "flower_yellowA.glb", "flower_purpleA.glb"], 80, 7.0, 1.4, Vector2(0.7, 1.2), false)
-	_scatter(["log.glb", "mushroom_redGroup.glb"], 12, 9.0, 1.3, Vector2(0.7, 1.1), false)
+	_scatter(TREE_MODELS, 90, 13.0, TREE_SCALE, Vector2(0.8, 1.5), true)
+	_scatter(ROCK_MODELS, 44, 9.0, PROP_SCALE, Vector2(0.5, 2.2), false)
+	_scatter(BUSH_MODELS, 130, 8.0, PROP_SCALE, Vector2(0.7, 1.6), false)
+	_scatter(["flower_redA.glb", "flower_yellowA.glb", "flower_purpleA.glb"], 150, 7.0, 1.4, Vector2(0.7, 1.3), false)
+	_scatter(["log.glb", "mushroom_redGroup.glb"], 22, 10.0, 1.3, Vector2(0.7, 1.2), false)
 	_build_boundary()
 
-# ---------------------------------------------------------------------------
-func _build_ground() -> void:
-	var plane := PlaneMesh.new()
-	plane.size = Vector2(MAP_RADIUS * 3.0, MAP_RADIUS * 3.0)
-	plane.subdivide_width = 48
-	plane.subdivide_depth = 48
+func _process(_dt: float) -> void:
+	# Terrain3D needs the active camera for its clipmap LOD; grab it once it exists
+	if not _cam_hooked:
+		var c := get_viewport().get_camera_3d()
+		if c:
+			_terrain.terrain.call("set_camera", c)
+			_cam_hooked = true
 
-	var mat := StandardMaterial3D.new()
-	mat.albedo_texture = _load_tex("grass_diff")
-	mat.normal_enabled = true
-	mat.normal_texture = _load_tex("grass_nor_gl")
-	mat.roughness_texture = _load_tex("grass_rough")
-	mat.uv1_scale = Vector3(26, 26, 26)
-	mat.uv1_triplanar = false
-	mat.albedo_color = Color(0.62, 0.78, 0.5)
-
-	var mi := MeshInstance3D.new()
-	mi.name = "Ground"
-	mi.mesh = plane
-	mi.material_override = mat
-	mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	add_child(mi)
-
-	var body := StaticBody3D.new()
-	body.name = "GroundBody"
-	var col := CollisionShape3D.new()
-	var box := BoxShape3D.new()
-	box.size = Vector3(MAP_RADIUS * 3.2, 1.0, MAP_RADIUS * 3.2)
-	col.shape = box
-	col.position.y = -0.5
-	body.add_child(col)
-	add_child(body)
-
-func _load_tex(base: String) -> Texture2D:
-	var p := "res://assets/textures/ground/" + base + ".jpg"
-	return load(p) if ResourceLoader.exists(p) else null
+func terrain_height(pos: Vector3) -> float:
+	return _terrain.height(pos) if _terrain else 0.0
 
 # ---------------------------------------------------------------------------
 func _blade_mesh() -> ArrayMesh:
 	var st := SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
-	var h := 0.2
+	var h := 0.22
 	var w := 0.016
 	var segs := 4
 	for a in [0.0, 1.0472, 2.0944]:
@@ -106,7 +87,6 @@ func _blade_mesh() -> ArrayMesh:
 	return st.commit()
 
 func _grass_tuft_mesh() -> Mesh:
-	# Prefer the Kenney grass tuft (real 3D geometry); fall back to procedural blades.
 	var path := PROPS + "grass.glb"
 	if ResourceLoader.exists(path):
 		var scn: PackedScene = load(path)
@@ -127,29 +107,30 @@ func _build_grass() -> void:
 
 	var mat := ShaderMaterial.new()
 	mat.shader = load("res://scripts/world/grass.gdshader")
-	mat.set_shader_parameter("sway_height", 0.2)
-	mat.set_shader_parameter("wind_strength", 0.045)
-	mat.set_shader_parameter("tip_color", Vector3(0.46, 0.6, 0.26))
-	mat.set_shader_parameter("root_color", Vector3(0.13, 0.24, 0.08))
+	mat.set_shader_parameter("sway_height", 0.22)
+	mat.set_shader_parameter("wind_strength", 0.05)
+	mat.set_shader_parameter("tip_color", Vector3(0.44, 0.57, 0.24))
+	mat.set_shader_parameter("root_color", Vector3(0.12, 0.22, 0.07))
 
 	for i in GRASS_BLADES:
 		var r := sqrt(_rng.randf()) * GRASS_FIELD
 		var ang := _rng.randf() * TAU
 		var pos := Vector3(cos(ang) * r, 0.0, sin(ang) * r)
+		pos.y = terrain_height(pos)
 		var basis := Basis(Vector3.UP, _rng.randf() * TAU)
-		var sc := _rng.randf_range(0.4, 1.05)
-		basis = basis.scaled(Vector3(sc, sc * _rng.randf_range(0.8, 1.5), sc))
+		var sc := _rng.randf_range(0.45, 1.15)
+		basis = basis.scaled(Vector3(sc, sc * _rng.randf_range(0.8, 1.6), sc))
 		mm.set_instance_transform(i, Transform3D(basis, pos))
-		var g := _rng.randf_range(0.78, 1.16)
-		mm.set_instance_color(i, Color(g * 0.82, g, g * 0.52))
+		var g := _rng.randf_range(0.72, 1.18)
+		mm.set_instance_color(i, Color(g * 0.8, g, g * 0.5))
 
 	var mmi := MultiMeshInstance3D.new()
 	mmi.name = "GrassBlades"
 	mmi.multimesh = mm
 	mmi.material_override = mat
 	mmi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	mmi.custom_aabb = AABB(Vector3(-GRASS_FIELD, 0, -GRASS_FIELD),
-		Vector3(GRASS_FIELD * 2, 1.2, GRASS_FIELD * 2))
+	mmi.custom_aabb = AABB(Vector3(-GRASS_FIELD, -20, -GRASS_FIELD),
+		Vector3(GRASS_FIELD * 2, 40, GRASS_FIELD * 2))
 	add_child(mmi)
 
 # ---------------------------------------------------------------------------
@@ -172,21 +153,23 @@ func _scatter(models: Array, count: int, inner: float, base_scale: float,
 		_kit.fix(inst)
 		var r := _rng.randf_range(inner, PROP_FIELD)
 		var ang := _rng.randf() * TAU
-		inst.position = Vector3(cos(ang) * r, 0.0, sin(ang) * r)
+		var pos := Vector3(cos(ang) * r, 0.0, sin(ang) * r)
+		pos.y = terrain_height(pos) - 0.05
+		inst.position = pos
 		inst.rotation.y = _rng.randf() * TAU
 		var s := base_scale * _rng.randf_range(scale_range.x, scale_range.y)
-		inst.scale = Vector3(s, s * _rng.randf_range(0.9, 1.15), s)
+		inst.scale = Vector3(s, s * _rng.randf_range(0.9, 1.2), s)
 		group.add_child(inst)
 
 		if collide:
 			var sb := StaticBody3D.new()
-			sb.position = inst.position
+			sb.position = pos
 			var cs := CollisionShape3D.new()
 			var cyl := CylinderShape3D.new()
 			cyl.radius = 0.35 * (s / base_scale)
-			cyl.height = 5.0
+			cyl.height = 6.0
 			cs.shape = cyl
-			cs.position.y = 2.5
+			cs.position.y = 3.0
 			sb.add_child(cs)
 			add_child(sb)
 
@@ -194,14 +177,16 @@ func _scatter(models: Array, count: int, inner: float, base_scale: float,
 func _build_boundary() -> void:
 	var body := StaticBody3D.new()
 	body.name = "Boundary"
-	var seg := 26
+	var seg := 40
 	for i in seg:
 		var a := TAU * i / seg
 		var wall := CollisionShape3D.new()
 		var box := BoxShape3D.new()
-		box.size = Vector3(MAP_RADIUS * TAU / seg + 1.0, 8.0, 1.0)
+		box.size = Vector3(MAP_RADIUS * TAU / seg + 1.0, 40.0, 1.0)
 		wall.shape = box
-		wall.position = Vector3(cos(a) * MAP_RADIUS, 4.0, sin(a) * MAP_RADIUS)
+		var p := Vector3(cos(a) * MAP_RADIUS, 0.0, sin(a) * MAP_RADIUS)
+		p.y = terrain_height(p) + 10.0
+		wall.position = p
 		wall.rotation.y = -a
 		body.add_child(wall)
 	add_child(body)

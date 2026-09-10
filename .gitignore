@@ -1,5 +1,9 @@
 # Godot 4
 .godot/
+# ...but keep the GDExtension registry so headless / CI runs load Terrain3D
+!.godot/
+.godot/*
+!.godot/extension_list.cfg
 /android/
 export_presets.cfg.local
 
@@ -17,3 +21,4 @@ _codex_archive/
 
 # debug screenshots
 .debug/
+assets/textures/terrain/src/

@@ -1,0 +1,6 @@
+Poly Haven — CC0
+  aerial_grass_rock   https://polyhaven.com/a/aerial_grass_rock
+  gray_rocks          https://polyhaven.com/a/gray_rocks
+  forrest_ground_01   https://polyhaven.com/a/forrest_ground_01
+ambientCG — CC0
+  Grass004 (used as lawn_grass)   https://ambientcg.com/view?id=Grass004
