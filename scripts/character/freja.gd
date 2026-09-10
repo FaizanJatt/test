@@ -88,7 +88,6 @@ func _assign_materials(mi: MeshInstance3D, skin_tint: Color) -> void:
 # ---------------------------------------------------------------------------
 func apply_config(cfg: FrejaConfig) -> void:
 	_current_config = cfg
-	var outfit: Dictionary = Wardrobe.get_outfit(cfg.outfit_id)
 
 	# 1. hide every garment mesh from every outfit; only the nude skin body + eyes
 	#    stay on. Everything else is turned back on per the active piece list.
@@ -100,9 +99,9 @@ func apply_config(cfg: FrejaConfig) -> void:
 	for mesh_name in Wardrobe.SHARED_ALWAYS:
 		_set_visible(mesh_name, true)
 
-	# 2. active outfit's pieces
+	# 2. active outfit's pieces + shared underwear pieces
 	var piece_state: Dictionary = cfg.pieces
-	for p in outfit["pieces"]:
+	for p in Wardrobe.pieces_for(cfg.outfit_id):
 		var on: bool = piece_state.get(p["id"], p["on"])
 		for mesh_name in p["meshes"]:
 			_set_visible(mesh_name, on)

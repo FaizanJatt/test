@@ -14,6 +14,13 @@ extends RefCounted
 const SHARED_ALWAYS := ["Freja_Eye", "Freja_EyeShadow"]
 const BODY_MESH := "Freja_Nude_Body"
 
+## Underwear layer - works under any outfit (from CloudRig's Accessories group).
+const SHARED_PIECES := [
+	{"id": "sports_bra", "label": "Sports Bra", "on": false, "meshes": ["Freja_SportsBra"]},
+	{"id": "panties", "label": "Panties", "on": false, "meshes": ["Freja_SportsPanties"]},
+	{"id": "stockings", "label": "Stockings", "on": false, "meshes": ["Freja_Stockings"]},
+]
+
 ## helper to build a piece entry
 static func _p(id: String, label: String, on: bool, meshes: Array) -> Dictionary:
 	return {"id": id, "label": label, "on": on, "meshes": meshes}
@@ -130,16 +137,23 @@ static func outfit_ids() -> Array:
 static func get_outfit(outfit_id: int) -> Dictionary:
 	return OUTFITS.get(outfit_id, OUTFITS[0])
 
+## the active outfit's pieces followed by the shared underwear pieces
+static func pieces_for(outfit_id: int) -> Array:
+	return get_outfit(outfit_id)["pieces"] + SHARED_PIECES
+
 static func all_outfit_meshes() -> PackedStringArray:
 	var out := PackedStringArray()
 	for oid in OUTFITS:
 		for p in OUTFITS[oid]["pieces"]:
 			for m in p["meshes"]:
 				out.append(m)
+	for p in SHARED_PIECES:
+		for m in p["meshes"]:
+			out.append(m)
 	return out
 
 static func default_pieces(outfit_id: int) -> Dictionary:
 	var d := {}
-	for p in get_outfit(outfit_id)["pieces"]:
+	for p in pieces_for(outfit_id):
 		d[p["id"]] = p["on"]
 	return d

@@ -20,6 +20,7 @@ var _model_base_y := 0.0
 # local-space rotation axes (verified against the exported skeleton)
 const AX_PITCH := Vector3(1, 0, 0)   # fore/aft swing for legs & arms, bend for knees/elbows
 const AX_ROLL := Vector3(0, 0, 1)    # ad/abduction
+const FINGER_AXIS := Vector3(0, 0, 1)
 
 const BONES := {
 	"thigh_l": "DEF-Thigh_1.L", "thigh_r": "DEF-Thigh_1.R",
@@ -30,10 +31,15 @@ const BONES := {
 	"spine1": "DEF-Spine1", "spine2": "DEF-Spine2", "spine3": "DEF-Spine3",
 	"head": "DEF-Head",
 }
-# finger chains to un-curl the CloudRig "relaxed" rest grip
-const FINGER_PREFIXES := ["DEF-Finger_Index", "DEF-Finger_Middle", "DEF-Finger_Ring",
-	"DEF-Finger_Pinky", "DEF-Finger_Thumb"]
+# the exported rest hand has splayed, slightly-clawed fingers; curl them into a
+# soft relaxed hand. Segments 1/2/3 of each finger (skip the carpals).
+const FINGER_SEGMENTS := ["DEF-Finger_Index1", "DEF-Finger_Index2", "DEF-Finger_Index3",
+	"DEF-Finger_Middle1", "DEF-Finger_Middle2", "DEF-Finger_Middle3",
+	"DEF-Finger_Ring1", "DEF-Finger_Ring2", "DEF-Finger_Ring3",
+	"DEF-Finger_Pinky1", "DEF-Finger_Pinky2", "DEF-Finger_Pinky3"]
+const THUMB_SEGMENTS := ["DEF-Finger_Thumb1", "DEF-Finger_Thumb2", "DEF-Finger_Thumb3"]
 var _fingers: Array[int] = []
+var _thumbs: Array[int] = []
 
 func bind(skeleton: Skeleton3D, model: Node3D) -> void:
 	_sk = skeleton
@@ -48,11 +54,14 @@ func bind(skeleton: Skeleton3D, model: Node3D) -> void:
 		_pose[idx] = _rest[idx]
 	for i in _sk.get_bone_count():
 		var bn := _sk.get_bone_name(i)
-		for p in FINGER_PREFIXES:
-			if bn.begins_with(p):
+		for seg in FINGER_SEGMENTS:
+			if bn == seg + ".L" or bn == seg + ".R":
 				_fingers.append(i)
 				_rest[i] = _sk.get_bone_pose_rotation(i)
-				break
+		for seg in THUMB_SEGMENTS:
+			if bn == seg + ".L" or bn == seg + ".R":
+				_thumbs.append(i)
+				_rest[i] = _sk.get_bone_pose_rotation(i)
 	is_bound = true
 
 func update_state(planar_speed: float, _target: float, crouching: bool, _grounded: bool, delta: float) -> void:
@@ -92,25 +101,27 @@ func _pose_legs() -> void:
 	var thigh_amp := lerpf(0.5, 0.72, _spd) * clampf(walk * 1.6, 0.0, 1.0)
 	var lt := cos(_phase)
 	var rt := cos(_phase + PI)
-	var crouch_sit := 0.9 * _crouch          # thighs up when crouching
-	var add := 0.06 + 0.03 * _spd            # keep feet under the hips
+	# crouch: thighs rotate UP toward the chest (+pitch), knees fold hard,
+	# ankles dorsiflex, knees splay out slightly
+	var crouch_thigh := 1.15 * _crouch
+	var crouch_knee := 2.0 * _crouch
+	var crouch_ankle := 0.7 * _crouch
+	var add := 0.06 + 0.03 * _spd + 0.18 * _crouch
 
-	_apply("thigh_l", Quaternion(AX_PITCH, lt * thigh_amp - crouch_sit) * Quaternion(AX_ROLL, add))
-	_apply("thigh_r", Quaternion(AX_PITCH, rt * thigh_amp - crouch_sit) * Quaternion(AX_ROLL, -add))
+	_apply("thigh_l", Quaternion(AX_PITCH, lt * thigh_amp + crouch_thigh) * Quaternion(AX_ROLL, add))
+	_apply("thigh_r", Quaternion(AX_PITCH, rt * thigh_amp + crouch_thigh) * Quaternion(AX_ROLL, -add))
 
 	# knee: nearly straight at contact (leg forward), bent through the back swing
 	var knee_amp := lerpf(0.9, 1.5, _spd)
-	var lk := 0.12 + knee_amp * walk * clampf(-sin(_phase - 0.6), 0.0, 1.0)
-	var rk := 0.12 + knee_amp * walk * clampf(-sin(_phase + PI - 0.6), 0.0, 1.0)
-	lk += 1.5 * _crouch
-	rk += 1.5 * _crouch
+	var lk := 0.12 + knee_amp * walk * clampf(-sin(_phase - 0.6), 0.0, 1.0) + crouch_knee
+	var rk := 0.12 + knee_amp * walk * clampf(-sin(_phase + PI - 0.6), 0.0, 1.0) + crouch_knee
 	_apply("knee_l", Quaternion(AX_PITCH, -lk))
 	_apply("knee_r", Quaternion(AX_PITCH, -rk))
 
 	# ankle: toe-off push at the back of the swing
 	var ankle := 0.3 * walk
-	_apply("foot_l", Quaternion(AX_PITCH, -sin(_phase - 0.3) * ankle + 0.35 * _crouch))
-	_apply("foot_r", Quaternion(AX_PITCH, -sin(_phase + PI - 0.3) * ankle + 0.35 * _crouch))
+	_apply("foot_l", Quaternion(AX_PITCH, -sin(_phase - 0.3) * ankle - crouch_ankle))
+	_apply("foot_r", Quaternion(AX_PITCH, -sin(_phase + PI - 0.3) * ankle - crouch_ankle))
 
 func _pose_arms() -> void:
 	# opposite phase to the legs, tucked to the body, subtle breathing when idle
@@ -126,7 +137,7 @@ func _pose_arms() -> void:
 	_apply("elbow_r", Quaternion(AX_PITCH, -elbow))
 
 func _pose_spine() -> void:
-	var lean := 0.16 * _spd + 0.4 * _crouch
+	var lean := 0.16 * _spd + 0.5 * _crouch
 	var twist := sin(_phase) * 0.05 * _spd
 	var bob := sin(_phase * 2.0) * 0.03 * _spd
 	_apply("spine1", Quaternion(AX_PITCH, lean * 0.4 + bob) * Quaternion(Vector3(0, 1, 0), twist))
@@ -134,10 +145,15 @@ func _pose_spine() -> void:
 	_apply("spine3", Quaternion(AX_PITCH, lean * 0.25))
 	_apply("head", Quaternion(AX_PITCH, -lean * 0.55))
 
+@export var finger_curl := 0.26   # soft relaxed curl per finger segment
+@export var thumb_curl := 0.18
+
 func _pose_fingers() -> void:
-	# Relax the claw: rotate each finger segment slightly open around its bend axis.
+	var extra := 0.5 * _crouch + 0.25 * _spd
 	for i in _fingers:
-		_pose[i] = _rest[i] * Quaternion(AX_PITCH, 0.42)
+		_pose[i] = _rest[i] * Quaternion(FINGER_AXIS, finger_curl + extra)
+	for i in _thumbs:
+		_pose[i] = _rest[i] * Quaternion(FINGER_AXIS, thumb_curl)
 
 # ---------------------------------------------------------------------------
 func _commit(delta: float) -> void:
@@ -148,7 +164,7 @@ func _commit(delta: float) -> void:
 
 func _move_body(delta: float) -> void:
 	var bob := (0.5 - 0.5 * cos(_phase * 2.0)) * 0.03 * _spd
-	var drop := 0.42 * _crouch
+	var drop := 0.3 * _crouch
 	var y := _model_base_y + bob - drop
 	_model.position.y = lerpf(_model.position.y, y, clampf(12.0 * delta, 0, 1))
 	var roll := sin(_phase) * 0.04 * _spd

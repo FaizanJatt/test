@@ -208,7 +208,12 @@ func _refresh_all() -> void:
 func _refresh_pieces() -> void:
 	for c in _pieces_box.get_children():
 		c.queue_free()
-	for p in Wardrobe.get_outfit(_cfg.outfit_id)["pieces"]:
+	var n_outfit: int = Wardrobe.get_outfit(_cfg.outfit_id)["pieces"].size()
+	var idx := 0
+	for p in Wardrobe.pieces_for(_cfg.outfit_id):
+		if idx == n_outfit:
+			_pieces_box.add_child(_section_label("Underwear (may clip)"))
+		idx += 1
 		var cb := CheckButton.new()
 		cb.text = p["label"]
 		cb.button_pressed = _cfg.pieces.get(p["id"], p["on"])

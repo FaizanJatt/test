@@ -70,15 +70,25 @@ func _run() -> void:
 
 	# head close-up from four sides so we can see the face regardless of facing
 	_main.customizer_screen._cfg.pieces["hair"] = false
+	_main.customizer_screen._cfg.pieces["sports_bra"] = true
+	_main.customizer_screen._cfg.pieces["panties"] = true
 	_main.freja.apply_config(_main.customizer_screen._cfg)
 	var head: Vector3 = _main.freja.global_position + Vector3.UP * 1.62
 	var cam: Camera3D = _main.customizer_screen._preview_cam
-	for i in 4:
-		var a := TAU * i / 4.0
+	for i in 2:
+		var a := PI * i
 		cam.global_position = head + Vector3(sin(a), 0.05, cos(a)) * 0.55
 		cam.look_at(head, Vector3.UP)
 		await get_tree().create_timer(0.3).timeout
 		await _snap("head_%d" % i)
+
+	# hand close-up (arm hangs ~ x 0.28, y 0.95 relative to feet)
+	var hand: Vector3 = _main.freja.global_position + Vector3(-0.32, 0.92, 0.0)
+	for i in 2:
+		cam.global_position = hand + Vector3(-0.35 + 0.7 * i, 0.05, 0.4)
+		cam.look_at(hand, Vector3.UP)
+		await get_tree().create_timer(0.3).timeout
+		await _snap("hand_%d" % i)
 
 	print("[capture] done, %d shots in %s" % [_shot, _dir])
 	get_tree().quit()
