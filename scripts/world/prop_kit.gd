@@ -3,18 +3,20 @@ extends RefCounted
 ## foliage, salmon bark) and metallic=1. This remaps every prop material by name
 ## to a natural palette and fixes the PBR values. Materials are cached and shared.
 
+# muted, slightly desaturated palette so the low-poly trees sit better next to
+# the photoscanned ground / rocks
 const PALETTE := {
-	"leafsGreen":   Color(0.29, 0.45, 0.16),
-	"leafsDark":    Color(0.19, 0.33, 0.12),
-	"grass":        Color(0.34, 0.5, 0.2),
-	"woodBark":     Color(0.33, 0.23, 0.15),
-	"woodBarkDark": Color(0.25, 0.17, 0.11),
-	"woodInner":    Color(0.66, 0.52, 0.36),
-	"dirt":         Color(0.38, 0.28, 0.19),
-	"colorRed":     Color(0.72, 0.19, 0.2),
-	"colorYellow":  Color(0.92, 0.72, 0.22),
-	"colorPurple":  Color(0.5, 0.36, 0.72),
-	"_defaultMat":  Color(0.55, 0.55, 0.55),
+	"leafsGreen":   Color(0.24, 0.34, 0.15),
+	"leafsDark":    Color(0.16, 0.25, 0.11),
+	"grass":        Color(0.28, 0.4, 0.18),
+	"woodBark":     Color(0.28, 0.21, 0.15),
+	"woodBarkDark": Color(0.2, 0.15, 0.11),
+	"woodInner":    Color(0.55, 0.44, 0.31),
+	"dirt":         Color(0.33, 0.25, 0.18),
+	"colorRed":     Color(0.6, 0.2, 0.2),
+	"colorYellow":  Color(0.82, 0.66, 0.24),
+	"colorPurple":  Color(0.44, 0.33, 0.62),
+	"_defaultMat":  Color(0.5, 0.5, 0.5),
 }
 
 var _cache := {}
@@ -23,12 +25,17 @@ func _mat(name: String) -> StandardMaterial3D:
 	if _cache.has(name):
 		return _cache[name]
 	var m := StandardMaterial3D.new()
+	var is_leaf := name.begins_with("leafs") or name == "grass"
 	m.albedo_color = PALETTE.get(name, Color(0.5, 0.5, 0.5))
 	m.metallic = 0.0
-	m.roughness = 0.92
-	m.metallic_specular = 0.35
-	if name.begins_with("leafs") or name == "grass":
+	m.roughness = 0.98 if is_leaf else 0.9
+	m.metallic_specular = 0.2
+	# break the flat-shaded look: a touch of vertex-driven AO + soft leaf translucency
+	if is_leaf:
 		m.cull_mode = BaseMaterial3D.CULL_DISABLED
+		m.backlight_enabled = true
+		m.backlight = Color(0.1, 0.16, 0.06)
+		m.roughness = 1.0
 	_cache[name] = m
 	return m
 

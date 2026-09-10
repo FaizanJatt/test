@@ -36,7 +36,7 @@ const ANKLE_TRIM := deg_to_rad(4.0)         # keep the planted sole flat
 const THIGH_LEN := 0.485                     # measured from the rest skeleton
 const SHIN_LEN := 0.497
 
-const ARM_SWING_WALK := deg_to_rad(21.0)
+const ARM_SWING_WALK := deg_to_rad(26.0)
 const ARM_SWING_RUN := deg_to_rad(34.0)
 const ELBOW_BASE_WALK := deg_to_rad(7.0)     # nearly straight at a walk
 const ELBOW_BASE_RUN := deg_to_rad(20.0)
@@ -70,7 +70,7 @@ const CW_HEAD_LEVEL := 0.7                   # how hard the head counter-rolls t
 const CW_ARM_OUT := deg_to_rad(5.0)          # hands clear the swinging hips
 const CW_ELBOW := deg_to_rad(11.0)
 const CW_WRIST := deg_to_rad(10.0)
-const CW_ARM_DAMP := 0.55                    # arm swing amplitude in the strut
+const CW_ARM_DAMP := 0.8                     # arm swing amplitude in the strut (1 = full)
 
 # crouch (full = 1.0) - low hips, fairly upright back, head up (game stealth crouch)
 const CR_PELVIS_DROP := 0.26
