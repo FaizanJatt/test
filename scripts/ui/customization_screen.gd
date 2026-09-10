@@ -169,11 +169,10 @@ func _close() -> void:
 func _process(delta: float) -> void:
 	if not visible or not is_instance_valid(_player):
 		return
-	_orbit += delta * 0.5
-	var yaw := sin(_orbit) * 1.35             # gentle front 3/4 sweep, never behind
-	var focus: Vector3 = _player.global_position + Vector3.UP * 1.12
-	var dist := 3.15
-	var off := Vector3(sin(yaw) * dist, 0.55, cos(yaw) * dist)
+	_orbit += delta * 0.22                    # slow, continuous full 360 turntable
+	var focus: Vector3 = _player.global_position + Vector3.UP * 1.05
+	var dist := 4.0
+	var off := Vector3(sin(_orbit) * dist, 0.35, cos(_orbit) * dist)
 	var campos: Vector3 = focus + off + Vector3.UP * 0.1
 	_preview_cam.global_position = campos
 	# aim right of the character so it sits in the left ~60% of the screen (panel is on the right)

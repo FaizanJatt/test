@@ -30,11 +30,13 @@ func _ready() -> void:
 	_rng.seed = 20260910
 	_build_ground()
 	_build_grass()
-	_scatter(TREE_MODELS, 40, 9.0, TREE_SCALE, Vector2(0.8, 1.45), true)
-	_scatter(ROCK_MODELS, 26, 5.0, PROP_SCALE, Vector2(0.5, 1.6), false)
-	_scatter(BUSH_MODELS, 70, 3.5, PROP_SCALE, Vector2(0.7, 1.5), false)
-	_scatter(["flower_redA.glb", "flower_yellowA.glb", "flower_purpleA.glb"], 90, 2.0, 1.4, Vector2(0.7, 1.2), false)
-	_scatter(["log.glb", "mushroom_redGroup.glb"], 14, 4.0, 1.3, Vector2(0.7, 1.1), false)
+	# keep a clear ~7m ring around spawn so the wardrobe preview camera never
+	# ends up inside foliage
+	_scatter(TREE_MODELS, 40, 11.0, TREE_SCALE, Vector2(0.8, 1.45), true)
+	_scatter(ROCK_MODELS, 24, 8.0, PROP_SCALE, Vector2(0.5, 1.6), false)
+	_scatter(BUSH_MODELS, 64, 7.5, PROP_SCALE, Vector2(0.7, 1.5), false)
+	_scatter(["flower_redA.glb", "flower_yellowA.glb", "flower_purpleA.glb"], 80, 7.0, 1.4, Vector2(0.7, 1.2), false)
+	_scatter(["log.glb", "mushroom_redGroup.glb"], 12, 9.0, 1.3, Vector2(0.7, 1.1), false)
 	_build_boundary()
 
 # ---------------------------------------------------------------------------

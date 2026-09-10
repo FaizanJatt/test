@@ -48,7 +48,7 @@ func _run() -> void:
 	_main.customizer_screen._on_outfit_selected(2)
 	_main.customizer_screen._tabs.current_tab = 1
 	_main.customizer_screen._cfg.hair_color = Color(0.15, 0.5, 0.9)
-	_main.customizer_screen._cfg.body["Voluptuous"] = 0.7
+	_main.customizer_screen._cfg.body["Voluptuous"] = 0.45
 	_main.freja.apply_config(_main.customizer_screen._cfg)
 	await get_tree().create_timer(0.9).timeout
 	await _snap("appearance")
