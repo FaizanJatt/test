@@ -59,7 +59,7 @@ func update_state(planar_speed: float, _target: float, crouching: bool, _grounde
 	if not is_bound:
 		return
 	var moving := planar_speed > 0.2
-	var norm := clampf(planar_speed / 5.5, 0.0, 1.0)
+	var norm := clampf(planar_speed / 4.2, 0.0, 1.0)
 	_spd = lerpf(_spd, norm if moving else 0.0, clampf(9.0 * delta, 0, 1))
 	_crouch = lerpf(_crouch, 1.0 if crouching else 0.0, clampf(10.0 * delta, 0, 1))
 	_idle_t += delta
@@ -89,7 +89,7 @@ func _apply(key: String, q: Quaternion) -> void:
 func _pose_legs() -> void:
 	var walk := _spd * (1.0 - _crouch * 0.6)
 	# thigh: forward at phase 0, back at phase PI
-	var thigh_amp := lerpf(0.32, 0.6, _spd) * walk
+	var thigh_amp := lerpf(0.5, 0.72, _spd) * clampf(walk * 1.6, 0.0, 1.0)
 	var lt := cos(_phase)
 	var rt := cos(_phase + PI)
 	var crouch_sit := 0.9 * _crouch          # thighs up when crouching

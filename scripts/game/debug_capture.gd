@@ -36,10 +36,14 @@ func _run() -> void:
 	await _snap("char_front")
 
 	_main._open_customizer()
+	# freeze the turntable at a front 3/4 angle so every outfit is shot the same way
+	_main.customizer_screen.set_process(false)
+	_main.customizer_screen._preview_cam.global_position = _main.player.global_position + Vector3(1.7, 1.35, 2.7)
+	_main.customizer_screen._preview_cam.look_at(_main.player.global_position + Vector3(-0.3, 1.0, 0), Vector3.UP)
 	await get_tree().create_timer(0.8).timeout
 	await _snap("customizer")
 
-	for oid in [0, 2, 4]:
+	for oid in [0, 1, 2, 3, 4]:
 		_main.customizer_screen._on_outfit_selected(oid)
 		await get_tree().create_timer(0.9).timeout
 		await _snap("outfit_%d" % oid)
