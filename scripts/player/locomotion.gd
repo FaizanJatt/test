@@ -1,201 +1,221 @@
 extends Node
-## Procedural locomotion for the Freja deform skeleton.
-##
-## The glb was exported "deform bones only", which left the chain-start bones
-## (neck, head, shoulders, upper arms, thighs, finger/toe roots) parented to the
-## armature instead of their real parent. Godot's set_bone_parent needs the
-## parent to come *before* the child in the bone list, which these violate, so we
-## can't re-parent. Instead every frame we FORCE those bones' local pose to
-## "intended-parent global pose * rest offset * our animation" - since their real
-## parent is the skeleton root, local pose == the world pose we want.
+## Locomotion = play CC0 mocap clips (Quaternius Universal Animation Library) on a
+## hidden reference skeleton, then retarget its pose onto the Freja deform
+## skeleton bone-by-bone: D_pose_world = R_i * S_pose, where R_i = D_rest * S_rest^-1
+## is cached per bone, so the two rigs' very different rest poses don't matter.
+## The Freja export flattened several chain-start bones
+## onto the armature root; those are handled as "managed" - we also set their
+## position from the intended parent so the limb stays attached.
 
-var is_bound := false
-var _sk: Skeleton3D
-var _model: Node3D
+const UAL := "res://assets/anims/universal_anim_library.gltf"
 
-var _phase := 0.0
-var _spd := 0.0
-var _crouch := 0.0
-var _idle_t := 0.0
-var _model_base_y := 0.0
-
-const AX_PITCH := Vector3(1, 0, 0)
+# UAL (Rigify DEF names) -> Freja (CloudRig DEF names). Ordered parent-first.
+const MAP := [
+	["DEF-spine.001", "DEF-Spine1", true],
+	["DEF-spine.002", "DEF-Spine2", false],
+	["DEF-spine.003", "DEF-Spine3", false],
+	["DEF-neck", "DEF-Neck", true],
+	["DEF-head", "DEF-Head", true],
+	["DEF-shoulder.L", "DEF-Shoulder.L", true], ["DEF-shoulder.R", "DEF-Shoulder.R", true],
+	["DEF-upper_arm.L", "DEF-UpperArm_1.L", true], ["DEF-upper_arm.R", "DEF-UpperArm_1.R", true],
+	["DEF-forearm.L", "DEF-Forearm_1.L", false], ["DEF-forearm.R", "DEF-Forearm_1.R", false],
+	["DEF-hand.L", "DEF-Wrist.L", false], ["DEF-hand.R", "DEF-Wrist.R", false],
+	["DEF-thigh.L", "DEF-Thigh_1.L", true], ["DEF-thigh.R", "DEF-Thigh_1.R", true],
+	["DEF-shin.L", "DEF-Knee_1.L", false], ["DEF-shin.R", "DEF-Knee_1.R", false],
+	["DEF-foot.L", "DEF-Foot.L", false], ["DEF-foot.R", "DEF-Foot.R", false],
+	["DEF-toe.L", "DEF-Toes.L", false], ["DEF-toe.R", "DEF-Toes.R", false],
+]
+# managed Freja bone -> its intended parent (real parent is the armature root)
+const MANAGED_PARENT := {
+	"DEF-Spine1": "", "DEF-Neck": "DEF-Spine3", "DEF-Head": "DEF-Neck",
+	"DEF-Shoulder.L": "DEF-Spine3", "DEF-Shoulder.R": "DEF-Spine3",
+	"DEF-UpperArm_1.L": "DEF-Shoulder.L", "DEF-UpperArm_1.R": "DEF-Shoulder.R",
+	"DEF-Thigh_1.L": "DEF-Spine1", "DEF-Thigh_1.R": "DEF-Spine1",
+}
 const FINGER_AXIS := Vector3(0, 0, 1)
 
-@export var thigh_swing := 0.4
-@export var arm_tuck := 0.5
-@export var arm_swing_gain := 0.9
-@export var finger_curl := 0.28
-@export var crouch_amount := 1.0   # multiplier for the whole crouch pose
+var is_bound := false
+var _src_skel: Skeleton3D
+var _dst: Skeleton3D
+var _model: Node3D
+var _tree: AnimationTree
+var _pairs := []          # {src:int, dst:int, r:Basis, managed:bool, parent:int, offset:Transform3D}
+var _src_ref := {}        # source bone idx -> global pose Transform3D in the idle stance
+var _fingers: Array[int] = []
+var _finger_rest := {}
+var _src_hips := -1
+var _src_hips_rest_y := 0.0
+var _model_base_y := 0.0
 
-# direct (chained) bones - normal local pose
-var _b := {}
-var _rest := {}
+var _spd := 0.0
+var _crouch := 0.0
+var _cspeed := 0.0
 
-# managed root bones: name -> {idx, parent_idx, offset:Transform3D}
-var _managed := []            # ordered list of dicts
-var _adduct := {}
-
-const CHAINED := {
-	"knee_l": "DEF-Knee_1.L", "knee_r": "DEF-Knee_1.R",
-	"foot_l": "DEF-Foot.L", "foot_r": "DEF-Foot.R",
-	"elbow_l": "DEF-Forearm_1.L", "elbow_r": "DEF-Forearm_1.R",
-	"spine1": "DEF-Spine1", "spine2": "DEF-Spine2", "spine3": "DEF-Spine3",
-	"f2_l": "", "f3_l": "",   # placeholders; finger 2/3 handled by name scan
-}
-
-func bind(skeleton: Skeleton3D, model: Node3D) -> void:
-	_sk = skeleton
+func bind(dst_skel: Skeleton3D, model: Node3D) -> void:
+	_dst = dst_skel
 	_model = model
 	_model_base_y = model.position.y
 
-	for key in CHAINED:
-		if CHAINED[key] == "":
-			continue
-		var idx := _sk.find_bone(CHAINED[key])
-		if idx != -1:
-			_b[key] = idx
-			_rest[idx] = _sk.get_bone_pose_rotation(idx)
+	var scn: PackedScene = load(UAL)
+	var src_root: Node3D = scn.instantiate()
+	src_root.name = "AnimSource"
+	src_root.visible = false
+	add_child(src_root)
+	_src_skel = _find(src_root, "Skeleton3D")
+	var src_ap: AnimationPlayer = _find(src_root, "AnimationPlayer")
 
-	# managed roots, in dependency order (parent must be resolved first)
-	var spec: Array = [
-		["DEF-Neck", "DEF-Spine3", "neck"],
-		["DEF-Head", "DEF-Neck", "head"],
-		["DEF-Shoulder.L", "DEF-Spine3", "static"], ["DEF-Shoulder.R", "DEF-Spine3", "static"],
-		["DEF-UpperArm_1.L", "DEF-Shoulder.L", "arm_l"], ["DEF-UpperArm_1.R", "DEF-Shoulder.R", "arm_r"],
-		["DEF-Thigh_1.L", "DEF-Spine1", "thigh_l"], ["DEF-Thigh_1.R", "DEF-Spine1", "thigh_r"],
-	]
-	for fin in ["Index", "Middle", "Ring", "Pinky", "Thumb"]:
-		for s in [".L", ".R"]:
-			spec.append(["DEF-Finger_%s1%s" % [fin, s], "DEF-Wrist" + s, "finger"])
-	for fin in ["Index", "Middle", "Ring", "Pinky"]:
-		for s in [".L", ".R"]:
-			spec.append(["DEF-Finger_%s_Carpal%s" % [fin, s], "DEF-Wrist" + s, "static"])
-	for i in _sk.get_bone_count():
-		var bn := _sk.get_bone_name(i)
-		if bn.begins_with("DEF-Toe") and not bn.begins_with("DEF-Toes"):
-			spec.append([bn, "DEF-Foot.R" if bn.ends_with(".R") else "DEF-Foot.L", "static"])
+	_build_tree(src_root, src_ap)
+	_sample_reference()
+	_build_pairs()
 
-	for e in spec:
-		var ci := _sk.find_bone(e[0])
-		var pi := _sk.find_bone(e[1])
-		if ci == -1 or pi == -1:
-			continue
-		var off := _sk.get_bone_global_rest(pi).affine_inverse() * _sk.get_bone_global_rest(ci)
-		_managed.append({"idx": ci, "parent": pi, "offset": off, "role": e[2]})
-		if e[2] == "arm_l" or e[2] == "arm_r":
-			var gb := _sk.get_bone_global_rest(ci).basis
-			_adduct[ci] = (gb.inverse() * Vector3(0, 0, 1)).normalized()
+	_src_hips = _src_skel.find_bone("DEF-hips")
+	if _src_hips != -1:
+		_src_hips_rest_y = _src_ref[_src_hips].origin.y
 
-	# finger 2/3 segments (chained under finger 1) - curl them locally
-	for fin in ["Index", "Middle", "Ring", "Pinky", "Thumb"]:
-		for s in [".L", ".R"]:
-			for seg in ["2", "3"]:
-				var idx := _sk.find_bone("DEF-Finger_%s%s%s" % [fin, seg, s])
-				if idx != -1:
-					_b["fseg_%s%s%s" % [fin, seg, s]] = idx
-					_rest[idx] = _sk.get_bone_pose_rotation(idx)
+	# relaxed static finger curl
+	for i in _dst.get_bone_count():
+		var bn := _dst.get_bone_name(i)
+		if bn.begins_with("DEF-Finger_") and not bn.contains("Carpal"):
+			_fingers.append(i)
+			_finger_rest[i] = _dst.get_bone_pose_rotation(i)
 
 	is_bound = true
 
-func update_state(planar_speed: float, _t: float, crouching: bool, _g: bool, delta: float) -> void:
+func _build_tree(src_root: Node, src_ap: AnimationPlayer) -> void:
+	var bt := AnimationNodeBlendTree.new()
+
+	var stand := AnimationNodeBlendSpace1D.new()
+	stand.min_space = 0.0
+	stand.max_space = 1.0
+	stand.add_blend_point(_clip("Idle"), 0.0)
+	stand.add_blend_point(_clip("Walk"), 0.33)
+	stand.add_blend_point(_clip("Jog_Fwd"), 0.66)
+	stand.add_blend_point(_clip("Sprint"), 1.0)
+	bt.add_node("stand", stand)
+
+	var crouch := AnimationNodeBlendSpace1D.new()
+	crouch.min_space = 0.0
+	crouch.max_space = 1.0
+	crouch.add_blend_point(_clip("Crouch_Idle"), 0.0)
+	crouch.add_blend_point(_clip("Crouch_Fwd"), 1.0)
+	bt.add_node("crouch", crouch)
+
+	var mix := AnimationNodeBlend2.new()
+	bt.add_node("mix", mix)
+	bt.connect_node("mix", 0, "stand")
+	bt.connect_node("mix", 1, "crouch")
+	bt.connect_node("output", 0, "mix")
+
+	_tree = AnimationTree.new()
+	_tree.tree_root = bt
+	_tree.callback_mode_process = AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_MANUAL
+	_tree.deterministic = false
+	add_child(_tree)
+	_tree.add_animation_library("", src_ap.get_animation_library(""))
+	_tree.root_node = _tree.get_path_to(src_root)
+	_tree.active = true
+	src_ap.active = false
+
+func _clip(anim_name: String) -> AnimationNodeAnimation:
+	var n := AnimationNodeAnimation.new()
+	n.animation = anim_name
+	n.loop_mode = Animation.LOOP_LINEAR
+	return n
+
+## Drive the tree to a clean standing Idle and snapshot every source bone's
+## global pose. This - not the T-pose skeleton rest - is the retarget reference,
+## because every UAL clip already holds the arms ~90 deg down from that T-rest;
+## measuring deltas from the idle stance keeps Freja's A-pose arms from overshoot.
+func _sample_reference() -> void:
+	_tree.set("parameters/stand/blend_position", 0.0)
+	_tree.set("parameters/crouch/blend_position", 0.0)
+	_tree.set("parameters/mix/blend_amount", 0.0)
+	for _i in 20:
+		_tree.advance(0.05)
+	_src_skel.force_update_all_bone_transforms()
+	for i in _src_skel.get_bone_count():
+		_src_ref[i] = _src_skel.get_bone_global_pose(i)
+
+func _build_pairs() -> void:
+	for e in MAP:
+		var si: int = _src_skel.find_bone(e[0])
+		var di: int = _dst.find_bone(e[1])
+		if si == -1 or di == -1:
+			continue
+		var managed: bool = e[2] and MANAGED_PARENT.has(e[1])
+		var pi := -1
+		var offset := Transform3D.IDENTITY
+		if managed:
+			var pn: String = MANAGED_PARENT[e[1]]
+			pi = _dst.find_bone(pn) if pn != "" else -1
+			var pgr: Transform3D = _dst.get_bone_global_rest(pi) if pi != -1 else Transform3D.IDENTITY
+			offset = pgr.affine_inverse() * _dst.get_bone_global_rest(di)  # bone rest, relative to parent (or world if pi==-1)
+		# R_i maps the source bone's *idle-stance* orientation onto Freja's rest
+		# orientation. Applied as D_pose_world = R_i * S_pose it carries the mocap
+		# motion across both rigs' very different rest rolls (arms ~50 deg, legs
+		# ~7 deg) and any 180 deg facing difference, with no global flip needed.
+		var s_ref_b: Basis = _src_ref[si].basis.orthonormalized()
+		var d_rest_b: Basis = _dst.get_bone_global_rest(di).basis.orthonormalized()
+		_pairs.append({
+			"src": si, "dst": di,
+			"r": d_rest_b * s_ref_b.inverse(),
+			"managed": managed, "parent": pi, "offset": offset,
+		})
+
+func update_state(planar_speed: float, target_speed: float, crouching: bool, _grounded: bool, delta: float) -> void:
 	if not is_bound:
 		return
-	var moving := planar_speed > 0.2
-	var norm := clampf(planar_speed / 4.2, 0.0, 1.0)
-	_spd = lerpf(_spd, norm if moving else 0.0, clampf(9.0 * delta, 0, 1))
-	_crouch = lerpf(_crouch, 1.0 if crouching else 0.0, clampf(10.0 * delta, 0, 1))
-	_idle_t += delta
-
-	var freq := lerpf(1.55, 2.45, _spd)
-	if _crouch > 0.5:
-		freq *= 0.85
+	var moving := planar_speed > 0.25
+	# normalize to the clip blend axis: ~2.4 = walk, ~6.2 = sprint
+	var target := 0.0
 	if moving:
-		_phase = fmod(_phase + delta * freq * TAU, TAU)
-	elif _spd < 0.05:
-		_phase = lerp_angle(_phase, 0.0, clampf(5.0 * delta, 0, 1))
+		target = clampf(inverse_lerp(0.0, 6.5, planar_speed), 0.08, 1.0)
+	_spd = lerpf(_spd, target, clampf(10.0 * delta, 0, 1))
+	_crouch = lerpf(_crouch, 1.0 if crouching else 0.0, clampf(12.0 * delta, 0, 1))
+	_cspeed = lerpf(_cspeed, 1.0 if moving else 0.0, clampf(10.0 * delta, 0, 1))
 
-	_pose_chained()
-	_pose_managed()
-	_move_body(delta)
+	_tree.set("parameters/stand/blend_position", _spd)
+	_tree.set("parameters/crouch/blend_position", _cspeed)
+	_tree.set("parameters/mix/blend_amount", _crouch)
+	_tree.advance(delta)
 
-# ---------------------------------------------------------------------------
-func _pose_chained() -> void:
-	var c := _crouch * crouch_amount
-	var walk := _spd * (1.0 - _crouch * 0.7)
 
-	# spine lean
-	var lean := 0.13 * _spd + 0.3 * c
-	_set_local("spine1", Quaternion(AX_PITCH, lean * 0.4))
-	_set_local("spine2", Quaternion(AX_PITCH, lean * 0.35))
-	_set_local("spine3", Quaternion(AX_PITCH, lean * 0.3))
+	_retarget()
+	_pose_fingers()
 
-	# knees
-	var knee_amp := lerpf(0.8, 1.2, _spd)
-	var lk := 0.08 + knee_amp * walk * clampf(-sin(_phase - 0.6), 0.0, 1.0) + 1.15 * c
-	var rk := 0.08 + knee_amp * walk * clampf(-sin(_phase + PI - 0.6), 0.0, 1.0) + 1.15 * c
-	_set_local("knee_l", Quaternion(AX_PITCH, -lk))
-	_set_local("knee_r", Quaternion(AX_PITCH, -rk))
+	# follow the mocap hip height (crouch drop, walk bob) with the model node
+	if _src_hips != -1:
+		var dy: float = _src_skel.get_bone_global_pose(_src_hips).origin.y - _src_hips_rest_y
+		_model.position.y = lerpf(_model.position.y, _model_base_y + dy, clampf(14.0 * delta, 0, 1))
 
-	# ankles
-	var ankle := 0.22 * walk
-	_set_local("foot_l", Quaternion(AX_PITCH, -sin(_phase - 0.3) * ankle - 0.3 * c))
-	_set_local("foot_r", Quaternion(AX_PITCH, -sin(_phase + PI - 0.3) * ankle - 0.3 * c))
+func _retarget() -> void:
+	for p in _pairs:
+		var src_gp: Basis = _src_skel.get_bone_global_pose(p["src"]).basis.orthonormalized()
+		var target_world: Basis = (p["r"] * src_gp).orthonormalized()
 
-	# elbows
-	var elbow := 0.16 + 0.22 * _spd + 0.3 * c
-	_set_local("elbow_l", Quaternion(AX_PITCH, -elbow))
-	_set_local("elbow_r", Quaternion(AX_PITCH, -elbow))
+		if p["managed"]:
+			var parent_g := Transform3D.IDENTITY
+			if p["parent"] != -1:
+				parent_g = _dst.get_bone_global_pose(p["parent"])
+			_dst.set_bone_pose_position(p["dst"], (parent_g * p["offset"]).origin)
+			# real parent is the armature root -> local rotation == world rotation
+			_dst.set_bone_pose_rotation(p["dst"], target_world.get_rotation_quaternion())
+		else:
+			var par := _dst.get_bone_parent(p["dst"])
+			var par_b: Basis = _dst.get_bone_global_pose(par).basis.orthonormalized() if par != -1 else Basis.IDENTITY
+			var local_b: Basis = (par_b.inverse() * target_world).orthonormalized()
+			_dst.set_bone_pose_rotation(p["dst"], local_b.get_rotation_quaternion())
 
-	# finger 2/3 curl
-	for k in _b:
-		if k.begins_with("fseg_"):
-			_sk.set_bone_pose_rotation(_b[k], _rest[_b[k]] * Quaternion(FINGER_AXIS, finger_curl * 0.9))
+func _pose_fingers() -> void:
+	var curl := 0.28 + 0.3 * _crouch
+	for i in _fingers:
+		_dst.set_bone_pose_rotation(i, _finger_rest[i] * Quaternion(FINGER_AXIS, curl))
 
-func _set_local(key: String, q: Quaternion) -> void:
-	var idx: int = _b.get(key, -1)
-	if idx != -1:
-		_sk.set_bone_pose_rotation(idx, _rest[idx] * q)
-
-# ---------------------------------------------------------------------------
-func _pose_managed() -> void:
-	var c := _crouch * crouch_amount
-	var walk := _spd * (1.0 - _crouch * 0.7)
-	var amp := lerpf(0.7, 1.0, _spd) * thigh_swing * clampf(walk * 1.4, 0.0, 1.0)
-	var arm_swing := lerpf(0.12, 0.4, _spd) * _spd * arm_swing_gain
-	var breathe := sin(_idle_t * 1.6) * 0.02 * (1.0 - _spd)
-	var lean := 0.13 * _spd + 0.3 * c
-
-	for m in _managed:
-		var q := Quaternion.IDENTITY
-		match m["role"]:
-			"head":
-				q = Quaternion(AX_PITCH, -lean * 0.5)
-			"neck":
-				q = Quaternion(AX_PITCH, lean * 0.15)
-			"arm_l":
-				q = Quaternion(_adduct[m["idx"]], -arm_tuck - 0.12 * c) * Quaternion(AX_PITCH, -cos(_phase) * arm_swing + breathe)
-			"arm_r":
-				q = Quaternion(_adduct[m["idx"]], arm_tuck + 0.12 * c) * Quaternion(AX_PITCH, -cos(_phase + PI) * arm_swing + breathe)
-			"thigh_l":
-				q = Quaternion(AX_PITCH, cos(_phase) * amp + 0.7 * c)
-			"thigh_r":
-				q = Quaternion(AX_PITCH, cos(_phase + PI) * amp + 0.7 * c)
-			"finger":
-				q = Quaternion(FINGER_AXIS, finger_curl + 0.35 * c)
-			_:
-				pass
-		var parent_global: Transform3D = _sk.get_bone_global_pose(m["parent"])
-		var target: Transform3D = parent_global * m["offset"] * Transform3D(Basis(q), Vector3.ZERO)
-		# the managed bone's real parent is the skeleton root, so local == world
-		_sk.set_bone_pose_position(m["idx"], target.origin)
-		_sk.set_bone_pose_rotation(m["idx"], target.basis.get_rotation_quaternion())
-		_sk.set_bone_pose_scale(m["idx"], target.basis.get_scale())
-
-func _move_body(delta: float) -> void:
-	var bob := (0.5 - 0.5 * cos(_phase * 2.0)) * 0.03 * _spd
-	var drop := 0.16 * _crouch * crouch_amount
-	var y := _model_base_y + bob - drop
-	_model.position.y = lerpf(_model.position.y, y, clampf(12.0 * delta, 0, 1))
-	var roll := sin(_phase) * 0.035 * _spd
-	_model.rotation.z = lerpf(_model.rotation.z, roll, clampf(10.0 * delta, 0, 1))
+func _find(n: Node, cls: String) -> Node:
+	if n.get_class() == cls:
+		return n
+	for c in n.get_children():
+		var r := _find(c, cls)
+		if r:
+			return r
+	return null
