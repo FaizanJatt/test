@@ -1,0 +1,3 @@
+Billboard impostors baked (Blender) from Poly Haven CC0 photoscans:
+  fir_a / fir_b       <- fir_tree_01     https://polyhaven.com/a/fir_tree_01
+  island_a / island_b <- island_tree_02  https://polyhaven.com/a/island_tree_02

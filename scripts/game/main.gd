@@ -96,17 +96,17 @@ func _build_environment() -> void:
 	env.ambient_light_sky_contribution = 1.0
 	env.reflected_light_source = Environment.REFLECTION_SOURCE_SKY
 	env.tonemap_mode = Environment.TONE_MAPPER_ACES
-	env.tonemap_white = 6.0
-	env.tonemap_exposure = 0.9
+	env.tonemap_white = 8.0
+	env.tonemap_exposure = 0.78
 	env.ssao_enabled = true
 	env.ssao_radius = 0.6
 	env.ssao_intensity = 1.3
 	env.ssao_power = 1.8
 	env.ssao_detail = 0.4
 	env.glow_enabled = true
-	env.glow_intensity = 0.12
-	env.glow_bloom = 0.02
-	env.glow_hdr_threshold = 1.6
+	env.glow_intensity = 0.08
+	env.glow_bloom = 0.0
+	env.glow_hdr_threshold = 2.2
 
 	# light distance haze so the tree line reads with depth (no volumetrics)
 	env.fog_enabled = true
@@ -126,7 +126,7 @@ func _build_environment() -> void:
 	var sun := DirectionalLight3D.new()
 	sun.name = "Sun"
 	sun.rotation_degrees = Vector3(-48, -108, 0)
-	sun.light_energy = 1.15
+	sun.light_energy = 1.0
 	sun.light_color = Color(1.0, 0.97, 0.9)
 	sun.shadow_enabled = true
 	sun.shadow_blur = 1.1

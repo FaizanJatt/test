@@ -11,10 +11,13 @@ const GRASS_FIELD := 46.0
 const PROPS := "res://assets/props/"
 const PH := "res://assets/props/polyhaven/"
 
-# Kenney low-poly trees (kept for the silhouettes; prop_kit tones them down)
-const TREE_MODELS := [
-	"tree_default.glb", "tree_oak.glb", "tree_detailed.glb",
-	"tree_pineRoundA.glb", "tree_pineRoundC.glb", "tree_pineTallA.glb", "tree_thin.glb",
+# billboard-impostor trees baked from Poly Haven photoscans (Blender):
+#   [texture, canopy height (m), trunk collide radius, weight]
+const TREES := [
+	["fir_a", 18.0, 0.28, 3],
+	["fir_b", 17.0, 0.26, 3],
+	["island_a", 5.4, 0.30, 2],
+	["island_b", 5.0, 0.28, 2],
 ]
 # Poly Haven CC0 photoscans (loaded from polyhaven/<slug>/<slug>.gltf)
 const PH_ROCKS := ["boulder_01", "namaqualand_boulder_02", "namaqualand_boulder_04", "namaqualand_rocks_01"]
@@ -24,27 +27,99 @@ const PH_DETAIL := ["fern_02", "grass_medium_01", "grass_medium_02", "moss_01"]
 const PropKit := preload("res://scripts/world/prop_kit.gd")
 const TerrainScript := preload("res://scripts/world/terrain.gd")
 
-const TREE_SCALE := 3.2
 const PROP_SCALE := 1.0
 
 var _rng := RandomNumberGenerator.new()
 var _kit := PropKit.new()
 var _terrain: Node3D
 var _cam_hooked := false
-var _tree_mats := {}   # foliage colour -> shared wind ShaderMaterial
 
-func _tree_mat(col: Color, leaf: bool) -> ShaderMaterial:
-	var key := "%s_%s" % [col, leaf]
-	if _tree_mats.has(key):
-		return _tree_mats[key]
-	var sm := ShaderMaterial.new()
-	sm.shader = load("res://scripts/world/tree_wind.gdshader")
-	sm.set_shader_parameter("albedo", Vector3(col.r, col.g, col.b))
-	sm.set_shader_parameter("sway", 0.07 if leaf else 0.02)
-	sm.set_shader_parameter("stiffness", 2.4 if leaf else 3.4)
-	sm.set_shader_parameter("backlight", Vector3(0.10, 0.16, 0.06) if leaf else Vector3(0.0, 0.0, 0.0))
-	_tree_mats[key] = sm
-	return sm
+## a 3-quad cross billboard: quads at 0/60/120 deg, pivot at the base
+func _cross_mesh(w: float, h: float) -> ArrayMesh:
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	for k in 3:
+		var a := PI * float(k) / 3.0
+		var d := Vector3(cos(a), 0, sin(a)) * (w * 0.5)
+		var verts := [-d + Vector3(0, 0, 0), d + Vector3(0, 0, 0), d + Vector3(0, h, 0), -d + Vector3(0, h, 0)]
+		var uvs := [Vector2(0, 1), Vector2(1, 1), Vector2(1, 0), Vector2(0, 0)]
+		var nrm := Vector3(-sin(a), 0, cos(a))
+		for tri in [[0, 1, 2], [0, 2, 3]]:
+			for i in tri:
+				st.set_uv(uvs[i])
+				st.set_normal(nrm)
+				st.set_color(Color.WHITE)
+				st.add_vertex(verts[i])
+	st.generate_tangents()
+	return st.commit()
+
+func _build_trees() -> void:
+	var by_tex := {}          # texture -> Array of positions
+	var weighted := []
+	for e in TREES:
+		for _w in int(e[3]):
+			weighted.append(e)
+
+	var placed := []
+	for _i in 150:
+		var e: Array = weighted[_rng.randi() % weighted.size()]
+		# clustered mid-ground: biased toward ~35m, thinning out to the edge
+		var r: float = 16.0 + pow(_rng.randf(), 1.7) * (PROP_FIELD - 16.0)
+		var ang := _rng.randf() * TAU
+		var pos := Vector3(cos(ang) * r, 0.0, sin(ang) * r)
+		var ok := true
+		for p in placed:
+			if p.distance_to(pos) < (7.0 if r < 60.0 else 4.0):
+				ok = false; break
+		if not ok:
+			continue
+		placed.append(pos)
+		pos.y = terrain_height(pos) - 0.15
+		by_tex.get_or_add(e[0], []).append({"pos": pos, "h": e[1], "rad": e[2]})
+
+	for tex_name in by_tex:
+		var items: Array = by_tex[tex_name]
+		var tex := load("res://assets/props/trees/%s.webp" % tex_name) as Texture2D
+		if tex == null:
+			continue
+		var aspect := float(tex.get_width()) / float(tex.get_height())
+		var h0: float = items[0]["h"]
+		var mm := MultiMesh.new()
+		mm.transform_format = MultiMesh.TRANSFORM_3D
+		mm.use_colors = true
+		mm.mesh = _cross_mesh(h0 * aspect * 1.12, h0)
+		mm.instance_count = items.size()
+
+		var sm := ShaderMaterial.new()
+		sm.shader = load("res://scripts/world/tree_impostor.gdshader")
+		sm.set_shader_parameter("tex", tex)
+		sm.set_shader_parameter("tree_height", h0)
+		sm.set_shader_parameter("alpha_cut", 0.4)
+
+		for i in items.size():
+			var it: Dictionary = items[i]
+			var s := _rng.randf_range(0.78, 1.24)
+			var b := Basis(Vector3.UP, _rng.randf() * TAU).scaled(Vector3(s, s * _rng.randf_range(0.92, 1.12), s))
+			mm.set_instance_transform(i, Transform3D(b, it["pos"]))
+			mm.set_instance_color(i, Color(_rng.randf_range(0.2, 0.8), _rng.randf(), 0, 1))
+			# trunk collider
+			var sb := StaticBody3D.new()
+			sb.position = it["pos"]
+			var cs := CollisionShape3D.new()
+			var cyl := CylinderShape3D.new()
+			cyl.radius = it["rad"] * s
+			cyl.height = 8.0
+			cs.shape = cyl
+			cs.position.y = 4.0
+			sb.add_child(cs)
+			add_child(sb)
+
+		var mmi := MultiMeshInstance3D.new()
+		mmi.name = "Trees_" + tex_name
+		mmi.multimesh = mm
+		mmi.material_override = sm
+		mmi.custom_aabb = AABB(Vector3(-PROP_FIELD, -5, -PROP_FIELD), Vector3(PROP_FIELD * 2, 60, PROP_FIELD * 2))
+		add_child(mmi)
 
 func _ready() -> void:
 	_rng.seed = 20260910
@@ -56,7 +131,7 @@ func _ready() -> void:
 	_build_grass()
 	# keep a clear ~11m ring around spawn so the wardrobe preview camera never
 	# ends up inside foliage
-	_scatter(TREE_MODELS, 78, 14.0, TREE_SCALE, Vector2(0.7, 1.8), true, PROPS, "glb", true)
+	_build_trees()
 	_scatter(PH_ROCKS, 34, 10.0, 1.0, Vector2(0.5, 2.6), true, PH, "gltf")
 	_scatter(PH_DEADFALL, 20, 11.0, 1.0, Vector2(0.7, 1.5), false, PH, "gltf")
 	_scatter(["flower_redA.glb", "flower_yellowA.glb", "flower_purpleA.glb"], 140, 8.0, 1.4, Vector2(0.7, 1.3), false, PROPS, "glb")
@@ -157,7 +232,7 @@ func _model_path(m: String, base: String, ext: String) -> String:
 	return "%s%s/%s.%s" % [base, m, m, ext] if ext == "gltf" else base + m
 
 func _scatter(models: Array, count: int, inner: float, base_scale: float,
-		scale_range: Vector2, collide: bool, base := PROPS, ext := "glb", wind := false) -> void:
+		scale_range: Vector2, collide: bool, base := PROPS, ext := "glb") -> void:
 	var cache := {}
 	var group := Node3D.new()
 	group.name = "Scatter_" + String(models[0]).get_basename()
@@ -175,8 +250,6 @@ func _scatter(models: Array, count: int, inner: float, base_scale: float,
 		var inst := packed.instantiate()
 		if is_ph:
 			_fix_ph(inst)
-		elif wind:
-			_windify(inst)
 		else:
 			_kit.fix(inst)
 		var r := _rng.randf_range(inner, PROP_FIELD)
@@ -204,19 +277,6 @@ func _scatter(models: Array, count: int, inner: float, base_scale: float,
 			sb.add_child(cs)
 			add_child(sb)
 
-## swap the Kenney tree's flat materials for the wind shader (muted palette,
-## leaf translucency, canopy sway)
-func _windify(root: Node) -> void:
-	for mi in _kit._mesh_instances(root):
-		var mesh: Mesh = mi.mesh
-		if mesh == null:
-			continue
-		for s in mesh.get_surface_count():
-			var src := mesh.surface_get_material(s)
-			var n := String(src.resource_name) if src else "_defaultMat"
-			var leaf := n.begins_with("leafs") or n == "grass"
-			var col: Color = _kit.PALETTE.get(n, Color(0.4, 0.3, 0.2))
-			mi.set_surface_override_material(s, _tree_mat(col, leaf))
 
 ## alpha-scissor foliage, kill the metal the gltf importer sometimes leaves on
 func _fix_ph(root: Node) -> void:
