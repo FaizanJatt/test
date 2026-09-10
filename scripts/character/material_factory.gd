@@ -119,12 +119,16 @@ func build(mat_name: String, skin_tint: Color = Color.WHITE) -> StandardMaterial
 			m.roughness = 0.55
 			m.metallic = 0.0
 		Kind.HAIR:
+			# low threshold so the scalp / hairline surfaces on Freja_Nude_Body
+			# don't get punched full of holes; still trims hair-card silhouettes
 			m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_SCISSOR
-			m.alpha_scissor_threshold = 0.5
+			m.alpha_scissor_threshold = 0.12
 			m.cull_mode = BaseMaterial3D.CULL_DISABLED
 			m.roughness = 0.5
 			m.metallic = 0.0
 			m.specular_mode = BaseMaterial3D.SPECULAR_TOON
+			if albedo == null:
+				m.transparency = BaseMaterial3D.TRANSPARENCY_DISABLED
 		Kind.EYE:
 			m.roughness = 0.08
 			m.clearcoat_enabled = true

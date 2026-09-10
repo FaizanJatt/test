@@ -1,40 +1,40 @@
 extends RefCounted
-## In-game wardrobe for Freja. The "always" mesh set for each outfit mirrors the
-## meshes CloudRig actually shows for that skin by default (see
-## assets/cloudrig_freja_truth_table.json -> skins), so we never stack two torso
-## or two arm meshes on top of each other. Optional pieces the player can toggle
-## are pulled out into "pieces". Heart of Courage is deliberately dressed (its
-## CloudRig default is an undressed NSFW state).
+## In-game wardrobe for Freja.
+##
+## Model: under every outfit there is ONLY the nude skin body (Freja_Nude_Body) +
+## eyes. Everything else - including the outfit's core bodysuit/dress - is a
+## toggleable "piece". Turn every piece off and you are left with bare skin.
+##
+## Each outfit's piece list + defaults mirror what CloudRig shows for that skin
+## (assets/cloudrig_freja_truth_table.json). Heart of Courage is deliberately
+## dressed by default (its CloudRig default is an undressed NSFW state).
 ##
 ## Mesh names match nodes in assets/characters/freja/freja.glb.
 
-const SHARED_ALWAYS := [
-	"Freja_Eye", "Freja_EyeShadow",
-]
-
-## Base skin mesh. Kept visible under every outfit (face / neck / uncovered skin).
+const SHARED_ALWAYS := ["Freja_Eye", "Freja_EyeShadow"]
 const BODY_MESH := "Freja_Nude_Body"
+
+## helper to build a piece entry
+static func _p(id: String, label: String, on: bool, meshes: Array) -> Dictionary:
+	return {"id": id, "label": label, "on": on, "meshes": meshes}
 
 const OUTFITS := {
 	0: {
 		"name": "Combat (OW2)",
 		"has_skin_color": true,
-		"always": ["Freja_OW2_Hair"],
 		"pieces": [
-			{"id": "chest_armor", "label": "Chest Armor", "on": true,
-				"meshes": ["Freja_OW2_Chest_Armor"]},
-			{"id": "hoodie", "label": "Hood", "on": true,
-				"meshes": ["Freja_OW2_Chest_Armor_Hoodie"]},
-			{"id": "fur_collar", "label": "Fur Collar", "on": true,
-				"meshes": ["Freja_OW2_Collar_Fur"]},
+			{"id": "hair", "label": "Hair", "on": true, "meshes": ["Freja_OW2_Hair"]},
+			{"id": "hair_front", "label": "Hair Fringe", "on": true, "meshes": ["Freja_OW2_Hair-Front"]},
+			{"id": "hair_side", "label": "Hair Sides", "on": true, "meshes": ["Freja_OW2_Hair-Side"]},
+			{"id": "hair_straps", "label": "Hair Wraps", "on": true, "meshes": ["Freja_OW2_Hair_Straps"]},
+			{"id": "chest_armor", "label": "Chest Armor", "on": true, "meshes": ["Freja_OW2_Chest_Armor"]},
+			{"id": "hoodie", "label": "Hood", "on": true, "meshes": ["Freja_OW2_Chest_Armor_Hoodie"]},
+			{"id": "fur_collar", "label": "Fur Collar", "on": true, "meshes": ["Freja_OW2_Collar_Fur"]},
 			{"id": "gloves", "label": "Gloves", "on": true, "meshes": ["Freja_OW2_Gloves"]},
 			{"id": "boots", "label": "Boots", "on": true, "meshes": ["Freja_OW2_Boots"]},
 			{"id": "earring", "label": "Earring", "on": true, "meshes": ["Freja_OW2_Earring"]},
 			{"id": "nose_ring", "label": "Nose Ring", "on": true, "meshes": ["Freja_OW2_Nose_Piercing"]},
-			{"id": "hair_front", "label": "Hair Fringe", "on": true, "meshes": ["Freja_OW2_Hair-Front"]},
-			{"id": "hair_side", "label": "Hair Sides", "on": true, "meshes": ["Freja_OW2_Hair-Side"]},
-			{"id": "hair_straps", "label": "Hair Wraps", "on": true, "meshes": ["Freja_OW2_Hair_Straps"]},
-			{"id": "bodysuit", "label": "Bodysuit", "on": false, "meshes": ["Freja_OW2_Bodysuit"]},
+			{"id": "bodysuit", "label": "Bodysuit", "on": true, "meshes": ["Freja_OW2_Bodysuit"]},
 			{"id": "shirt", "label": "Shirt", "on": false, "meshes": ["Freja_OW2_Shirt"]},
 			{"id": "belt", "label": "Belt", "on": false,
 				"meshes": ["Freja_OW2_Belt", "Freja_OW2_Belt_Arrows", "Freja_OW2_Belt_Utility"]},
@@ -45,28 +45,22 @@ const OUTFITS := {
 	1: {
 		"name": "Heart of Courage",
 		"has_skin_color": false,
-		"always": [
-			"Freja_Heart_of_Courage_UpperBody", "Freja_Heart_of_Courage_UpperBody_Breasts",
-			"Freja_Heart_of_Courage_Skirt", "Freja_Heart_of_Courage_Skirt_Bind",
-			"Freja_Heart_of_Courage_Hair", "Freja_Heart_of_Courage_HairTail",
-		],
 		"pieces": [
+			{"id": "hair", "label": "Hair", "on": true,
+				"meshes": ["Freja_Heart_of_Courage_Hair", "Freja_Heart_of_Courage_HairTail"]},
+			{"id": "hair_side", "label": "Hair Sides", "on": true, "meshes": ["Freja_Heart_of_Courage_Hair_Side"]},
+			{"id": "dress", "label": "Dress", "on": true,
+				"meshes": ["Freja_Heart_of_Courage_UpperBody", "Freja_Heart_of_Courage_UpperBody_Breasts",
+					"Freja_Heart_of_Courage_Skirt", "Freja_Heart_of_Courage_Skirt_Bind"]},
 			{"id": "gloves", "label": "Gauntlets", "on": true,
 				"meshes": ["Freja_Heart_of_Courage_Gloves", "Freja_Heart_of_Courage_UpperBody_Wrist"]},
-			{"id": "highheels", "label": "Greaves", "on": true,
-				"meshes": ["Freja_Heart_of_Courage_Highheels"]},
-			{"id": "earring", "label": "Earring", "on": true,
-				"meshes": ["Freja_Heart_of_Courage_Earring"]},
-			{"id": "head_wings", "label": "Head Wings", "on": true,
-				"meshes": ["Freja_Heart_of_Courage_Hair_Misc_Wings"]},
-			{"id": "head_ribbon", "label": "Head Ornaments", "on": true,
+			{"id": "highheels", "label": "Greaves", "on": true, "meshes": ["Freja_Heart_of_Courage_Highheels"]},
+			{"id": "earring", "label": "Earring", "on": true, "meshes": ["Freja_Heart_of_Courage_Earring"]},
+			{"id": "head_wings", "label": "Head Wings", "on": true, "meshes": ["Freja_Heart_of_Courage_Hair_Misc_Wings"]},
+			{"id": "head_ornaments", "label": "Head Ornaments", "on": true,
 				"meshes": ["Freja_Heart_of_Courage_Hair_MiscRibbon", "Freja_Heart_of_Courage_Hair_Misc"]},
-			{"id": "hair_side", "label": "Hair Sides", "on": true,
-				"meshes": ["Freja_Heart_of_Courage_Hair_Side"]},
-			{"id": "neck_ribbon", "label": "Neck Ribbon", "on": true,
-				"meshes": ["Freja_Heart_of_Courage_Ribbon_Neck"]},
-			{"id": "cape", "label": "Cape", "on": false,
-				"meshes": ["Freja_Heart_of_Courage_Cape"]},
+			{"id": "neck_ribbon", "label": "Neck Ribbon", "on": true, "meshes": ["Freja_Heart_of_Courage_Ribbon_Neck"]},
+			{"id": "cape", "label": "Cape", "on": false, "meshes": ["Freja_Heart_of_Courage_Cape"]},
 			{"id": "sash", "label": "Waist Sashes", "on": false,
 				"meshes": ["Freja_Heart_of_Courage_Ribbon_Pelvis", "Freja_Heart_of_Courage_Ribbon_Back"]},
 		],
@@ -74,30 +68,29 @@ const OUTFITS := {
 	2: {
 		"name": "Scarlett",
 		"has_skin_color": false,
-		"always": [
-			"Freja_Scarlett_Chest_Open", "Freja_Scarlett_Chest_Hoodie",
-			"Freja_Scarlett_Outfit_Arms", "Freja_Scarlett_Outfit_Neck_Zipper",
-			"Freja_Scarlett_Hair", "Freja_Scarlett_Hair_Back", "Freja_Scarlett_Hair_Front",
-		],
 		"pieces": [
+			{"id": "hair", "label": "Hair", "on": true,
+				"meshes": ["Freja_Scarlett_Hair", "Freja_Scarlett_Hair_Back", "Freja_Scarlett_Hair_Front"]},
+			{"id": "suit", "label": "Bodysuit", "on": true,
+				"meshes": ["Freja_Scarlett_Chest_Open", "Freja_Scarlett_Outfit_Arms", "Freja_Scarlett_Outfit_Neck_Zipper"]},
+			{"id": "hood", "label": "Hood Collar", "on": true, "meshes": ["Freja_Scarlett_Chest_Hoodie"]},
 			{"id": "gloves", "label": "Gloves", "on": true, "meshes": ["Freja_Scarlett_Gloves"]},
 			{"id": "boots", "label": "Boots", "on": true, "meshes": ["Freja_Scarlett_Boots"]},
 			{"id": "wrist", "label": "Wrist Guard", "on": true, "meshes": ["Freja_Scarlett_Wrist"]},
-			{"id": "straps_upper", "label": "Chest Straps", "on": true,
-				"meshes": ["Freja_Scarlett_Straps_Upper"]},
-			{"id": "thigh_strap", "label": "Thigh Strap", "on": true,
-				"meshes": ["Freja_Scarlett_Thight_Strap"]},
+			{"id": "straps_upper", "label": "Chest Straps", "on": true, "meshes": ["Freja_Scarlett_Straps_Upper"]},
+			{"id": "thigh_strap", "label": "Thigh Strap", "on": true, "meshes": ["Freja_Scarlett_Thight_Strap"]},
 			{"id": "earring", "label": "Earring", "on": true, "meshes": ["Freja_Scarlett_Earring"]},
-			{"id": "hood_up", "label": "Hood Up", "on": false,
-				"meshes": ["Freja_Scarlett_Chest_HoodieOn"]},
+			{"id": "hood_up", "label": "Hood Up", "on": false, "meshes": ["Freja_Scarlett_Chest_HoodieOn"]},
 			{"id": "cape", "label": "Cape", "on": false, "meshes": ["Freja_Scarlett_Cape"]},
 		],
 	},
 	3: {
 		"name": "Streetwear",
 		"has_skin_color": false,
-		"always": ["Freja_Streetwear_Body", "Freja_Streetwear_BodyStrapConnect", "Freja_Streetwear_Hair"],
 		"pieces": [
+			{"id": "hair", "label": "Hair", "on": true, "meshes": ["Freja_Streetwear_Hair"]},
+			{"id": "bodysuit", "label": "Bodysuit", "on": true,
+				"meshes": ["Freja_Streetwear_Body", "Freja_Streetwear_BodyStrapConnect"]},
 			{"id": "sleeves", "label": "Jacket", "on": true,
 				"meshes": ["Freja_Streetwear_Sleeves", "Freja_Streetwear_Sleeves_Glass"]},
 			{"id": "pants", "label": "Pants", "on": true, "meshes": ["Freja_Streetwear_Pants"]},
@@ -113,11 +106,12 @@ const OUTFITS := {
 	4: {
 		"name": "Archangel",
 		"has_skin_color": false,
-		"always": [
-			"Freja_Archangel_UpperBody_Armor", "Freja_Archangel_LegsUpper", "Freja_Archangel_Legs",
-			"Freja_Archangel_ArmsL_Armor", "Freja_Archangel_ArmsR", "Freja_Archangel_Hair",
-		],
 		"pieces": [
+			{"id": "hair", "label": "Hair", "on": true, "meshes": ["Freja_Archangel_Hair"]},
+			{"id": "dress", "label": "Dress", "on": true,
+				"meshes": ["Freja_Archangel_UpperBody_Armor", "Freja_Archangel_LegsUpper", "Freja_Archangel_Legs"]},
+			{"id": "arms", "label": "Arm Armor", "on": true,
+				"meshes": ["Freja_Archangel_ArmsL_Armor", "Freja_Archangel_ArmsR"]},
 			{"id": "helmet", "label": "Helmet", "on": true, "meshes": ["Freja_Archangel_Helmet"]},
 			{"id": "pauldrons", "label": "Pauldrons", "on": true, "meshes": ["Freja_Archangel_Shoulderguard"]},
 			{"id": "wings", "label": "Feather Wings", "on": true, "meshes": ["Freja_Archangel_SideArmor"]},
@@ -136,14 +130,10 @@ static func outfit_ids() -> Array:
 static func get_outfit(outfit_id: int) -> Dictionary:
 	return OUTFITS.get(outfit_id, OUTFITS[0])
 
-## Every mesh name referenced by any outfit (for the "hide everything first" pass).
 static func all_outfit_meshes() -> PackedStringArray:
 	var out := PackedStringArray()
 	for oid in OUTFITS:
-		var o: Dictionary = OUTFITS[oid]
-		for m in o["always"]:
-			out.append(m)
-		for p in o["pieces"]:
+		for p in OUTFITS[oid]["pieces"]:
 			for m in p["meshes"]:
 				out.append(m)
 	return out

@@ -66,10 +66,20 @@ func _assign_materials(mi: MeshInstance3D, skin_tint: Color) -> void:
 	if mesh == null:
 		return
 	var mats: Array = []
+	var is_body := _clean_name(mi.name) == Wardrobe.BODY_MESH
 	for i in mesh.get_surface_count():
 		var src: Material = mesh.surface_get_material(i)
 		var mname: String = String(src.resource_name) if src != null else String(mi.name)
-		var mat := _mat_factory.build(mname, skin_tint)
+		var mat: StandardMaterial3D
+		if is_body and mname.findn("hair") != -1:
+			# the nude body carries brow / lash / hairline surfaces that use hair
+			# materials - render them as an opaque dark scalp instead of alpha cards
+			mat = StandardMaterial3D.new()
+			mat.resource_name = mname
+			mat.albedo_color = Color(0.12, 0.09, 0.08)
+			mat.roughness = 0.75
+		else:
+			mat = _mat_factory.build(mname, skin_tint)
 		mi.set_surface_override_material(i, mat)
 		mats.append(mat)
 	_base_materials[mi] = mats
@@ -79,41 +89,31 @@ func apply_config(cfg: FrejaConfig) -> void:
 	_current_config = cfg
 	var outfit: Dictionary = Wardrobe.get_outfit(cfg.outfit_id)
 
-	# 1. hide every garment mesh, keep shared + base skin
-	for mesh_name in Wardrobe.all_outfit_meshes():
-		if meshes.has(mesh_name):
-			meshes[mesh_name].visible = false
+	# 1. hide every garment mesh from every outfit; only the nude skin body + eyes
+	#    stay on. Everything else is turned back on per the active piece list.
 	for mesh_name in meshes.keys():
-		if mesh_name.begins_with("Freja_") and _is_garment(mesh_name):
+		if _is_garment(mesh_name):
 			meshes[mesh_name].visible = false
 
-	# base skin + shared always visible
 	_set_visible(Wardrobe.BODY_MESH, true)
 	for mesh_name in Wardrobe.SHARED_ALWAYS:
 		_set_visible(mesh_name, true)
 
-	# 2. outfit "always" meshes
-	for mesh_name in outfit["always"]:
-		_set_visible(mesh_name, true)
-
-	# 3. optional pieces
+	# 2. active outfit's pieces
 	var piece_state: Dictionary = cfg.pieces
 	for p in outfit["pieces"]:
 		var on: bool = piece_state.get(p["id"], p["on"])
 		for mesh_name in p["meshes"]:
 			_set_visible(mesh_name, on)
 
-	# 4. hide the bare torso/pelvis of the nude body when a full outfit covers it
-	_apply_body_coverage(cfg.outfit_id)
-
-	# 5. skin tint (outfit 0 skin-colour presets, else neutral)
+	# 3. skin tint
 	_retint_skin(_skin_tint_for(cfg))
 
-	# 6. hair / eye colour overrides
+	# 4. hair / eye colour overrides
 	_tint_meshes_by_material_kind(MaterialFactory.Kind.HAIR, cfg.hair_color)
 	_tint_meshes_by_material_kind(MaterialFactory.Kind.EYE, cfg.eye_color)
 
-	# 7. body shape morphs
+	# 5. body shape morphs
 	_apply_body_shape(cfg.body)
 
 func _is_garment(mesh_name: String) -> bool:

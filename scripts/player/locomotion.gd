@@ -137,7 +137,7 @@ func _pose_spine() -> void:
 func _pose_fingers() -> void:
 	# Relax the claw: rotate each finger segment slightly open around its bend axis.
 	for i in _fingers:
-		_pose[i] = _rest[i] * Quaternion(AX_PITCH, 0.16)
+		_pose[i] = _rest[i] * Quaternion(AX_PITCH, 0.42)
 
 # ---------------------------------------------------------------------------
 func _commit(delta: float) -> void:
