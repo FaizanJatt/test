@@ -22,3 +22,5 @@ _codex_archive/
 # debug screenshots
 .debug/
 assets/textures/terrain/src/
+tools/anim_probe.txt
+tools/skeleton_dump.txt

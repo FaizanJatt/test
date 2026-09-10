@@ -1,7 +1,0 @@
-idle: seg_len 0.391..0.496 (rest .485/.495)  foot_slide 0.000m  pelvisY_step_max 0.0000m  wrist-spine_min 0.306m  knee_gap_min 0.166m
-walk: seg_len 0.378..0.496 (rest .485/.495)  foot_slide 0.000m  pelvisY_step_max 0.0069m  wrist-spine_min 0.344m  knee_gap_min 0.092m
-run: seg_len 0.376..0.496 (rest .485/.495)  foot_slide 0.039m  pelvisY_step_max 0.0116m  wrist-spine_min 0.313m  knee_gap_min 0.152m
-crouch: seg_len 0.376..0.496 (rest .485/.495)  foot_slide 0.000m  pelvisY_step_max 0.0000m  wrist-spine_min 0.322m  knee_gap_min 0.166m
-crouchwalk: seg_len 0.371..0.496 (rest .485/.495)  foot_slide 0.000m  pelvisY_step_max 0.0016m  wrist-spine_min 0.301m  knee_gap_min 0.164m
-
-(strafe is handled by player.gd yaw - locomotion only sees planar speed)
