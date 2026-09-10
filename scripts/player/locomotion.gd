@@ -102,31 +102,29 @@ func _apply(key: String, q: Quaternion) -> void:
 		_pose[idx] = _rest[idx] * q
 
 # ---------------------------------------------------------------------------
+@export var thigh_swing := 0.42   # walk stride amplitude (radians, each way)
+
 func _pose_legs() -> void:
-	var walk := _spd * (1.0 - _crouch * 0.6)
-	# thigh: forward at phase 0, back at phase PI
-	var thigh_amp := lerpf(0.5, 0.72, _spd) * clampf(walk * 1.6, 0.0, 1.0)
+	var walk := _spd * (1.0 - _crouch * 0.7)
+	var amp := lerpf(0.7, 1.0, _spd) * thigh_swing * clampf(walk * 1.4, 0.0, 1.0)
 	var lt := cos(_phase)
 	var rt := cos(_phase + PI)
-	# crouch: thighs rotate UP toward the chest (+pitch), knees fold hard,
-	# ankles dorsiflex, knees splay out slightly
-	var crouch_thigh := 1.15 * _crouch
-	var crouch_knee := 2.0 * _crouch
-	var crouch_ankle := 0.7 * _crouch
-	var add := 0.06 + 0.03 * _spd + 0.18 * _crouch
+	# a modest shooter-style crouch, not a deep squat
+	var crouch_thigh := 0.75 * _crouch
+	var crouch_knee := 1.25 * _crouch
+	var crouch_ankle := 0.35 * _crouch
 
-	_apply("thigh_l", Quaternion(AX_PITCH, lt * thigh_amp + crouch_thigh) * Quaternion(AX_ROLL, add))
-	_apply("thigh_r", Quaternion(AX_PITCH, rt * thigh_amp + crouch_thigh) * Quaternion(AX_ROLL, -add))
+	_apply("thigh_l", Quaternion(AX_PITCH, lt * amp + crouch_thigh))
+	_apply("thigh_r", Quaternion(AX_PITCH, rt * amp + crouch_thigh))
 
-	# knee: nearly straight at contact (leg forward), bent through the back swing
-	var knee_amp := lerpf(0.9, 1.5, _spd)
-	var lk := 0.12 + knee_amp * walk * clampf(-sin(_phase - 0.6), 0.0, 1.0) + crouch_knee
-	var rk := 0.12 + knee_amp * walk * clampf(-sin(_phase + PI - 0.6), 0.0, 1.0) + crouch_knee
+	# knee bends through the back half of the swing (leg passing under / lifting)
+	var knee_amp := lerpf(0.8, 1.2, _spd)
+	var lk := 0.1 + knee_amp * walk * clampf(-sin(_phase - 0.6), 0.0, 1.0) + crouch_knee
+	var rk := 0.1 + knee_amp * walk * clampf(-sin(_phase + PI - 0.6), 0.0, 1.0) + crouch_knee
 	_apply("knee_l", Quaternion(AX_PITCH, -lk))
 	_apply("knee_r", Quaternion(AX_PITCH, -rk))
 
-	# ankle: toe-off push at the back of the swing
-	var ankle := 0.3 * walk
+	var ankle := 0.25 * walk
 	_apply("foot_l", Quaternion(AX_PITCH, -sin(_phase - 0.3) * ankle - crouch_ankle))
 	_apply("foot_r", Quaternion(AX_PITCH, -sin(_phase + PI - 0.3) * ankle - crouch_ankle))
 
@@ -148,7 +146,7 @@ func _pose_arms() -> void:
 	_apply("elbow_r", Quaternion(AX_PITCH, -elbow))
 
 func _pose_spine() -> void:
-	var lean := 0.16 * _spd + 0.5 * _crouch
+	var lean := 0.14 * _spd + 0.32 * _crouch
 	var twist := sin(_phase) * 0.05 * _spd
 	var bob := sin(_phase * 2.0) * 0.03 * _spd
 	_apply("spine1", Quaternion(AX_PITCH, lean * 0.4 + bob) * Quaternion(Vector3(0, 1, 0), twist))
@@ -175,7 +173,7 @@ func _commit(delta: float) -> void:
 
 func _move_body(delta: float) -> void:
 	var bob := (0.5 - 0.5 * cos(_phase * 2.0)) * 0.03 * _spd
-	var drop := 0.3 * _crouch
+	var drop := 0.22 * _crouch
 	var y := _model_base_y + bob - drop
 	_model.position.y = lerpf(_model.position.y, y, clampf(12.0 * delta, 0, 1))
 	var roll := sin(_phase) * 0.04 * _spd

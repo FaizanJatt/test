@@ -55,6 +55,12 @@ func _reconnect_skeleton() -> void:
 	for fin in ["Index", "Middle", "Ring", "Pinky"]:
 		for side in [".L", ".R"]:
 			links.append(["DEF-Finger_%s_Carpal%s" % [fin, side], "DEF-Wrist" + side])
+	# every detached toe segment -> the foot (Foot comes before the toes in the
+	# bone list, which set_bone_parent requires)
+	for i in skeleton.get_bone_count():
+		var bn := skeleton.get_bone_name(i)
+		if bn.begins_with("DEF-Toe") and not bn.begins_with("DEF-Toes"):
+			links.append([bn, "DEF-Foot.R" if bn.ends_with(".R") else "DEF-Foot.L"])
 
 	var world_rest := {}
 	for pair in links:
@@ -64,11 +70,21 @@ func _reconnect_skeleton() -> void:
 	for pair in links:
 		var ci := skeleton.find_bone(pair[0])
 		var pi := skeleton.find_bone(pair[1])
-		if ci == -1 or pi == -1 or skeleton.get_bone_parent(ci) == pi:
+		if ci == -1 or pi == -1 or pi >= ci or skeleton.get_bone_parent(ci) == pi:
+			continue
+		var wr: Transform3D = world_rest[pair[0]]
+		var new_rest: Transform3D = skeleton.get_bone_global_rest(pi).affine_inverse() * wr
+		if not _finite_xform(new_rest):
 			continue
 		skeleton.set_bone_parent(ci, pi)
-		skeleton.set_bone_rest(ci, skeleton.get_bone_global_rest(pi).affine_inverse() * world_rest[pair[0]])
+		skeleton.set_bone_rest(ci, new_rest)
 	skeleton.reset_bone_poses()
+
+static func _finite_xform(t: Transform3D) -> bool:
+	for v in [t.origin, t.basis.x, t.basis.y, t.basis.z]:
+		if not (is_finite(v.x) and is_finite(v.y) and is_finite(v.z)):
+			return false
+	return true
 
 func _find_skeleton(n: Node) -> Skeleton3D:
 	if n is Skeleton3D:
