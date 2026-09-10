@@ -1,0 +1,2318 @@
+{
+  "skins": {
+    "0": {
+      "name": "Default (OW2)",
+      "mesh_prefix": "Freja_OW2_",
+      "property_bone": "Properties_Skins",
+      "skin_color_prop": "Properties_Skins/$skin_color"
+    },
+    "1": {
+      "name": "Heart of Courage",
+      "mesh_prefix": "Freja_Heart_of_Courage_",
+      "property_bone": "Properties_HOC"
+    },
+    "2": {
+      "name": "Scarlett",
+      "mesh_prefix": "Freja_Scarlett_",
+      "property_bone": "Properties_Scarlett"
+    },
+    "3": {
+      "name": "Streetwear",
+      "mesh_prefix": "Freja_Streetwear_",
+      "property_bone": "Properties_Streetwear"
+    },
+    "4": {
+      "name": "Archangel",
+      "mesh_prefix": "Freja_Archangel_",
+      "property_bone": "Properties_Archangel"
+    }
+  },
+  "skin_color_values": [
+    "(OW2)",
+    "Rauðr",
+    "Syren",
+    "Lavendel",
+    "Solsikke"
+  ],
+  "groups": {
+    "body_and_material_detail": [
+      {
+        "id": "Character_Properties/Pubes",
+        "label": "Pubes",
+        "control": "toggle",
+        "default": false
+      },
+      {
+        "id": "Character_Properties/Makeup: Lower Eyelids",
+        "label": "Makeup: Lower Eyelids",
+        "control": "color_rgb",
+        "default": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Makeup: Cheeks",
+        "label": "Makeup: Cheeks",
+        "control": "color_rgb",
+        "default": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Finger Nail Color",
+        "label": "Finger Nail Color",
+        "control": "color_rgb",
+        "default": [
+          1.0,
+          0.6000000238418579,
+          0.6000000238418579
+        ]
+      },
+      {
+        "id": "Character_Properties/Lips Wetness",
+        "label": "Lips Wetness",
+        "control": "float_slider",
+        "default": 0.0,
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Pupil Size",
+        "label": "Pupil Size",
+        "control": "float_slider",
+        "default": 0.0,
+        "range": [
+          -1.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Iris Size",
+        "label": "Iris Size",
+        "control": "float_slider",
+        "default": 0.0,
+        "range": [
+          -0.5,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Eyelid Wetness",
+        "label": "Eyelid Wetness",
+        "control": "float_slider",
+        "default": 0.0,
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Face Wetness",
+        "label": "Face Wetness",
+        "control": "float_slider",
+        "default": 0.0,
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Eye Roughness",
+        "label": "Eye Roughness",
+        "control": "float_slider",
+        "default": 1.0,
+        "range": [
+          0.0,
+          2.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Eye Twinkle Color",
+        "label": "Eye Twinkle Color",
+        "control": "color_rgb",
+        "default": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Fake Hair Reflections",
+        "label": "Fake Hair Reflections",
+        "control": "float_slider",
+        "default": 0.20000000298023224,
+        "range": [
+          0.0,
+          2.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Pussy Color",
+        "label": "Pussy Color",
+        "control": "color_rgb",
+        "default": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Pussy Wetness",
+        "label": "Pussy Wetness",
+        "control": "float_slider",
+        "default": 0.0,
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Anus Wetness",
+        "label": "Anus Wetness",
+        "control": "float_slider",
+        "default": 0.0,
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Anus Color",
+        "label": "Anus Color",
+        "control": "color_rgb",
+        "default": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Body Sun Tan",
+        "label": "Body Sun Tan",
+        "control": "float_slider",
+        "default": 0.0,
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Pubic Skin Color",
+        "label": "Pubic Skin Color",
+        "control": "color_rgb",
+        "default": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Pussy Inside Color",
+        "label": "Pussy Inside Color",
+        "control": "color_rgb",
+        "default": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Eye Emissive Direction",
+        "label": "Eye Emissive Direction",
+        "control": "direction_vec",
+        "default": [
+          0.5,
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "id": "Character_Properties/Fake Hair Light Direction",
+        "label": "Fake Hair Light Direction",
+        "control": "direction_vec",
+        "default": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Eye Twinkle Rotation",
+        "label": "Eye Twinkle Rotation",
+        "control": "direction_vec",
+        "default": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Eye Twinkle Size",
+        "label": "Eye Twinkle Size",
+        "control": "float_slider",
+        "default": 1.0,
+        "range": [
+          0.0,
+          2.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Eye Emissive",
+        "label": "Eye Emissive",
+        "control": "float_slider",
+        "default": 1.0,
+        "range": [
+          0.0,
+          15.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Hair Emissive",
+        "label": "Hair Emissive",
+        "control": "float_slider",
+        "default": 1.5,
+        "range": [
+          0.0,
+          50.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Eye Twinkle Intensity",
+        "label": "Eye Twinkle Intensity",
+        "control": "float_slider",
+        "default": 1.0,
+        "range": [
+          0.0,
+          15.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Nipple Size",
+        "label": "Nipple Size",
+        "control": "float_slider",
+        "default": 0.3499999940395355,
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Nipple Color",
+        "label": "Nipple Color",
+        "control": "color_rgb",
+        "default": [
+          0.753000020980835,
+          0.5649999976158142,
+          0.5460000038146973
+        ]
+      },
+      {
+        "id": "Character_Properties/Nipple_Push_Out",
+        "label": "Push Out",
+        "control": "float_slider",
+        "default": 0.0,
+        "range": [
+          -1.0,
+          2.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Nipple_Pointy",
+        "label": "Pointy",
+        "control": "float_slider",
+        "default": 0.0,
+        "range": [
+          -1.0,
+          2.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Nipple_Outer_Scale",
+        "label": "Outer Scale",
+        "control": "float_slider",
+        "default": 0.0,
+        "range": [
+          -1.0,
+          2.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Nipple_Inner_Scale",
+        "label": "Inner Scale",
+        "control": "float_slider",
+        "default": 0.0,
+        "range": [
+          -1.0,
+          2.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Juno Preload",
+        "label": "Juno Preload",
+        "control": "string",
+        "default": {}
+      },
+      {
+        "id": "Character_Properties/Juno Matfix",
+        "label": "Juno Matfix",
+        "control": "string",
+        "default": {}
+      },
+      {
+        "id": "Character_Properties/Less Hourglass",
+        "label": "Waistline",
+        "control": "float_slider",
+        "default": 0.5649999976158142,
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Pubic Hair Exp",
+        "label": "Pubic Hair Exp",
+        "control": "float_slider",
+        "default": 1.0,
+        "range": [
+          0.0,
+          1.25
+        ],
+        "visible_when": [
+          {
+            "prop": "Pubes",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Character_Properties/Normal Intensity",
+        "label": "Normal Intensity",
+        "control": "float_slider",
+        "default": 1.125,
+        "range": [
+          0.0,
+          1.5
+        ]
+      },
+      {
+        "id": "Character_Properties/Makeup: Upper Eyelids",
+        "label": "Makeup: Upper Eyelids",
+        "control": "color_rgb",
+        "default": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Finger Nail Length",
+        "label": "Finger Nail Length",
+        "control": "float_slider",
+        "default": 0.25,
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Toe Nail Length",
+        "label": "Toe Nail Length",
+        "control": "float_slider",
+        "default": 0.25,
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Tattoo",
+        "label": "Intensity",
+        "control": "float_slider",
+        "default": 1.0,
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Tattoo Emissive",
+        "label": "Emissive",
+        "control": "float_slider",
+        "default": 0.0,
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Tattoo Color",
+        "label": "Color",
+        "control": "color_rgb",
+        "default": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Hair Anisotropic Rotation",
+        "label": "Anisotropic Rotation",
+        "control": "float_slider",
+        "default": 0.0,
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Hair Fake Reflection Angle",
+        "label": "Hair Fake Reflection Angle",
+        "control": "direction_vec",
+        "default": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Hair Anisotropic",
+        "label": "Anisotropic",
+        "control": "float_slider",
+        "default": 1.0,
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Pubes Color",
+        "label": "Pubes Color",
+        "control": "color_rgb",
+        "default": [
+          0.043345000594854355,
+          0.01739400066435337,
+          0.005787000060081482
+        ],
+        "visible_when": [
+          {
+            "prop": "Pubes",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Character_Properties/Toe Nail Color",
+        "label": "Toe Nail Color",
+        "control": "color_rgb",
+        "default": [
+          1.0,
+          0.6000000238418579,
+          0.6000000238418579
+        ]
+      },
+      {
+        "id": "Character_Properties/Body Abs",
+        "label": "Abs",
+        "control": "float_slider",
+        "default": 0.0,
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Skin wetness",
+        "label": "Skin Wetness",
+        "control": "float_slider",
+        "default": 0.25,
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Eye Color",
+        "label": "Color",
+        "control": "color_rgb",
+        "default": [
+          0.6499999761581421,
+          1.0,
+          0.44999998807907104
+        ]
+      },
+      {
+        "id": "Character_Properties/Eye Emissive Color",
+        "label": "Eye Emissive Color",
+        "control": "color_rgb",
+        "default": [
+          0.6499999761581421,
+          1.0,
+          0.44999998807907104
+        ]
+      },
+      {
+        "id": "Character_Properties/Lips Color",
+        "label": "Lips Color",
+        "control": "color_rgb",
+        "default": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Lips Normal Detail",
+        "label": "Lips Normal Detail",
+        "control": "float_slider",
+        "default": 0.15000000596046448,
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Hair Fake Reflection",
+        "label": "Hair Fake Reflection",
+        "control": "float_slider",
+        "default": 0.22499999403953552,
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Emissive Strength",
+        "label": "Global Emissive Strength",
+        "control": "float_slider",
+        "default": 1.0,
+        "range": [
+          0.0,
+          50.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Hair Roughness Add",
+        "label": "Roughness",
+        "control": "float_slider",
+        "default": 0.30000001192092896,
+        "range": [
+          -1.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Hair Metalic",
+        "label": "Metalic",
+        "control": "float_slider",
+        "default": 0.0,
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Character_Properties/Quality",
+        "label": "Quality",
+        "control": "enum",
+        "default": 1,
+        "enum_labels": [
+          "⚠️Performance",
+          "Default",
+          "Medium",
+          "Render"
+        ]
+      }
+    ],
+    "physics": [
+      {
+        "id": "Physics_Properties/Enable Physics",
+        "label": "Physics",
+        "control": "toggle",
+        "default": false,
+        "enum_labels": [
+          "Disabled",
+          "Enabled"
+        ]
+      },
+      {
+        "id": "Physics_Properties/Physics Frame End",
+        "label": "Frame End",
+        "control": "int_slider",
+        "default": 250,
+        "range": [
+          -2147483648,
+          2147483647
+        ],
+        "visible_when": [
+          {
+            "prop": "Enable Physics",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Physics_Properties/Physics Frame Start",
+        "label": "Frame Start",
+        "control": "int_slider",
+        "default": 1,
+        "range": [
+          -2147483647,
+          2147483647
+        ],
+        "visible_when": [
+          {
+            "prop": "Enable Physics",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Physics_Properties/Physics Butt",
+        "label": "Physics Butt",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "Enable Physics",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Physics_Properties/Physics Boobs",
+        "label": "Physics Boobs",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "Enable Physics",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Physics_Properties/Physics Hair",
+        "label": "Physics Hair",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "Enable Physics",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Physics_Properties/Physics Jacket",
+        "label": "Physics Jacket",
+        "control": "toggle",
+        "default": true
+      },
+      {
+        "id": "Physics_Properties/Physics Collision",
+        "label": "Physics Collision",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "Enable Physics",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Physics_Properties/Physics Fix Script",
+        "label": "Physics Fix Script",
+        "control": "string",
+        "default": {}
+      },
+      {
+        "id": "Physics_Properties/Physics Cloth",
+        "label": "Physics Cloth (Cape)",
+        "control": "toggle",
+        "default": false,
+        "visible_when": [
+          {
+            "prop": "Enable Physics",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Physics_Properties/Physics Necklance",
+        "label": "Physics Necklance",
+        "control": "toggle",
+        "default": false,
+        "visible_when": [
+          {
+            "prop": "Enable Physics",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Physics_Properties/Cloth_Misc",
+        "label": "Physics Cloth (Misc, Belts)",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "Enable Physics",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Physics_Properties/Physics Thighs",
+        "label": "Physics Thighs",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "Enable Physics",
+            "equals": true
+          }
+        ]
+      }
+    ],
+    "outfit__default_OW2": [
+      {
+        "id": "Properties_Skins/nsfw_on",
+        "label": "🔺Toggle Lewd 🔺",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/Chest Armor",
+        "label": "Chest Armor",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/Hoodie",
+        "label": "Hoodie",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          },
+          {
+            "prop": "Chest Armor",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/Earring",
+        "label": "Earring",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/Gloves",
+        "label": "Gloves",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/Fur Collar",
+        "label": "Fur Collar",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          },
+          {
+            "prop": "Chest Armor",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/Hair Straps",
+        "label": "Back",
+        "control": "toggle",
+        "default": true
+      },
+      {
+        "id": "Properties_Skins/High Heels",
+        "label": "High Heels",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/Belt Arrows",
+        "label": "Belt Arrows",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          },
+          {
+            "prop": "Belt",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/Nose Piercing",
+        "label": "Nose Piercing",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/Belt Utility",
+        "label": "Belt Utility",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          },
+          {
+            "prop": "Belt",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/Bodysuit Expose Belly",
+        "label": "Tear Belly",
+        "control": "float_slider",
+        "default": 0.0,
+        "range": [
+          0.0,
+          1.0
+        ],
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          },
+          {
+            "prop": "nsfw_on",
+            "equals": true
+          },
+          {
+            "prop": "Bodysuit",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/Hair Side",
+        "label": "Side",
+        "control": "toggle",
+        "default": true
+      },
+      {
+        "id": "Properties_Skins/Hair Front",
+        "label": "Front",
+        "control": "toggle",
+        "default": true
+      },
+      {
+        "id": "Properties_Skins/See-through belly",
+        "label": "See-through outfit",
+        "control": "float_slider",
+        "default": 0.0,
+        "range": [
+          0.0,
+          1.0
+        ],
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          },
+          {
+            "prop": "nsfw_on",
+            "equals": true
+          },
+          {
+            "prop": "Bodysuit",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/Shirt_Lewd",
+        "label": "Shirt",
+        "control": "enum",
+        "default": 0,
+        "enum_labels": [
+          "Closed",
+          "Rolled up",
+          "Exposed",
+          "Tucked away"
+        ],
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          },
+          {
+            "prop": "Shirt",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/Cape Emissive Color",
+        "label": "Color",
+        "control": "color_rgb",
+        "default": [
+          0.0,
+          0.4995670020580292,
+          1.0
+        ],
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          },
+          {
+            "prop": "Chest Armor",
+            "equals": true
+          },
+          {
+            "prop": "Hoodie",
+            "equals": true
+          },
+          {
+            "prop": "Cape",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/Cape Emissive",
+        "label": "Emissive",
+        "control": "float_slider",
+        "default": 1.0,
+        "range": [
+          0.0,
+          2.0
+        ],
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          },
+          {
+            "prop": "Chest Armor",
+            "equals": true
+          },
+          {
+            "prop": "Hoodie",
+            "equals": true
+          },
+          {
+            "prop": "Cape",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/Hair Color Multiplier",
+        "label": "Color",
+        "control": "color_rgb",
+        "default": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "id": "Properties_Skins/Bodysuit_Lewd_Lower",
+        "label": "Tear Lower",
+        "control": "toggle",
+        "default": false,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          },
+          {
+            "prop": "nsfw_on",
+            "equals": true
+          },
+          {
+            "prop": "Bodysuit",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/$skin_color",
+        "label": "Color",
+        "control": "enum",
+        "default": 0,
+        "enum_labels": [
+          "(OW2)",
+          "Rauðr",
+          "Syren",
+          "Lavendel",
+          "Solsikke"
+        ],
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/Bodysuit_Lewd",
+        "label": "Bodysuit Upper",
+        "control": "enum",
+        "default": 0,
+        "enum_labels": [
+          "Closed",
+          "Exposed",
+          "Exposed More"
+        ],
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          },
+          {
+            "prop": "nsfw_on",
+            "equals": true
+          },
+          {
+            "prop": "Bodysuit",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/skin_id",
+        "label": "Skin",
+        "control": "enum",
+        "default": 0,
+        "enum_labels": [
+          "Default (OW2)",
+          "Heart of Courage",
+          "Scarlett",
+          "Streetwear",
+          "Archangel"
+        ]
+      },
+      {
+        "id": "Properties_Skins/Shirt",
+        "label": "Shirt",
+        "control": "toggle",
+        "default": false,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/Bodysuit",
+        "label": "Bodysuit",
+        "control": "toggle",
+        "default": false,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          },
+          {
+            "prop": "nsfw_on",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/Cape",
+        "label": "Cape",
+        "control": "toggle",
+        "default": false,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          },
+          {
+            "prop": "Chest Armor",
+            "equals": true
+          },
+          {
+            "prop": "Hoodie",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/Necklance",
+        "label": "Necklance",
+        "control": "toggle",
+        "default": false,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          }
+        ]
+      },
+      {
+        "id": "Properties_Skins/Belt",
+        "label": "Belt",
+        "control": "toggle",
+        "default": false,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 0
+          }
+        ]
+      }
+    ],
+    "underwear_and_extras": [
+      {
+        "id": "Properties_Accessories/Bra_ID",
+        "label": "Sports Bra",
+        "control": "enum",
+        "default": 0,
+        "enum_labels": [
+          "Off",
+          "On",
+          "Side"
+        ]
+      },
+      {
+        "id": "Properties_Accessories/Panties_ID",
+        "label": "Panties",
+        "control": "enum",
+        "default": 0,
+        "enum_labels": [
+          "Off",
+          "On",
+          "Side"
+        ]
+      },
+      {
+        "id": "Properties_Accessories/Bikini Alt",
+        "label": "Blend",
+        "control": "float_slider",
+        "default": 0.0,
+        "range": [
+          0.0,
+          1.0
+        ],
+        "visible_when": [
+          {
+            "prop": "Panties_ID",
+            "value_in": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Properties_Accessories/Bra Alt",
+        "label": "Blend",
+        "control": "float_slider",
+        "default": 0.0,
+        "range": [
+          0.0,
+          1.0
+        ],
+        "visible_when": [
+          {
+            "prop": "Bra_ID",
+            "value_in": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Properties_Accessories/Bikini AltText",
+        "label": "Text",
+        "control": "float_slider",
+        "default": 0.5,
+        "range": [
+          0.0,
+          1.0
+        ],
+        "visible_when": [
+          {
+            "prop": "Panties_ID",
+            "value_in": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Properties_Accessories/Bra AltText",
+        "label": "Text",
+        "control": "float_slider",
+        "default": 0.5,
+        "range": [
+          0.0,
+          1.0
+        ],
+        "visible_when": [
+          {
+            "prop": "Bra_ID",
+            "value_in": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Properties_Accessories/Bra Color1",
+        "label": "Color1",
+        "control": "color_rgb",
+        "default": [
+          0.017642000690102577,
+          0.009720999747514725,
+          0.0018210000125691295
+        ],
+        "visible_when": [
+          {
+            "prop": "Bra_ID",
+            "value_in": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Properties_Accessories/Bikini Color1",
+        "label": "Color1",
+        "control": "color_rgb",
+        "default": [
+          0.017642000690102577,
+          0.009720999747514725,
+          0.0018210000125691295
+        ],
+        "visible_when": [
+          {
+            "prop": "Panties_ID",
+            "value_in": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Properties_Accessories/Bra Color2",
+        "label": "Color2",
+        "control": "color_rgb",
+        "default": [
+          0.023152999579906464,
+          0.038203999400138855,
+          0.07035999745130539
+        ],
+        "visible_when": [
+          {
+            "prop": "Bra_ID",
+            "value_in": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Properties_Accessories/Bikini Color2",
+        "label": "Color2",
+        "control": "color_rgb",
+        "default": [
+          0.023152999579906464,
+          0.038203999400138855,
+          0.07035999745130539
+        ],
+        "visible_when": [
+          {
+            "prop": "Panties_ID",
+            "value_in": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Properties_Accessories/Stockings",
+        "label": "Stockings",
+        "control": "toggle",
+        "default": false
+      },
+      {
+        "id": "Properties_Accessories/Stocking Camo1",
+        "label": "Pattern1",
+        "control": "float_slider",
+        "default": 0.6499999761581421,
+        "range": [
+          0.0,
+          1.0
+        ],
+        "visible_when": [
+          {
+            "prop": "Stockings",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Accessories/Stocking Camo2",
+        "label": "Pattern2",
+        "control": "float_slider",
+        "default": 0.6499999761581421,
+        "range": [
+          0.0,
+          1.0
+        ],
+        "visible_when": [
+          {
+            "prop": "Stockings",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Accessories/Stockings Color1",
+        "label": "Color1",
+        "control": "color_rgb",
+        "default": [
+          0.08433599770069122,
+          0.036862000823020935,
+          0.023514000698924065
+        ],
+        "visible_when": [
+          {
+            "prop": "Stockings",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Accessories/Stocking Tile2",
+        "label": "Tile2",
+        "control": "float_slider",
+        "default": 13.0,
+        "range": [
+          0.0,
+          25.0
+        ],
+        "visible_when": [
+          {
+            "prop": "Stockings",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Accessories/Stocking Tile1",
+        "label": "Tile1",
+        "control": "float_slider",
+        "default": 11.0,
+        "range": [
+          0.0,
+          25.0
+        ],
+        "visible_when": [
+          {
+            "prop": "Stockings",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Accessories/Stockings Color2",
+        "label": "Color2",
+        "control": "color_rgb",
+        "default": [
+          0.026114000007510185,
+          0.05312899872660637,
+          0.08587799966335297
+        ],
+        "visible_when": [
+          {
+            "prop": "Stockings",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Accessories/Bra Camo",
+        "label": "Camo",
+        "control": "float_slider",
+        "default": 0.15000000596046448,
+        "range": [
+          0.0,
+          1.0
+        ],
+        "visible_when": [
+          {
+            "prop": "Bra_ID",
+            "value_in": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Properties_Accessories/Bikini Camo",
+        "label": "Camo",
+        "control": "float_slider",
+        "default": 0.15000000596046448,
+        "range": [
+          0.0,
+          1.0
+        ],
+        "visible_when": [
+          {
+            "prop": "Panties_ID",
+            "value_in": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    ],
+    "outfit__heart_of_courage": [
+      {
+        "id": "Properties_HOC/Thight Tattoo",
+        "label": "Thight Tattoo",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          }
+        ]
+      },
+      {
+        "id": "Properties_HOC/Highheels",
+        "label": "Highheels",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          }
+        ]
+      },
+      {
+        "id": "Properties_HOC/Gloves",
+        "label": "Gloves",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          }
+        ]
+      },
+      {
+        "id": "Properties_HOC/Earring",
+        "label": "Earring",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          }
+        ]
+      },
+      {
+        "id": "Properties_HOC/Cape",
+        "label": "Cape",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          },
+          {
+            "prop": "nsfw_on",
+            "equals": true
+          },
+          {
+            "prop": "Shirt",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_HOC/Head Accessory",
+        "label": "Hair Accessory",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          }
+        ]
+      },
+      {
+        "id": "Properties_HOC/Head Ribbon",
+        "label": "Head Ribbon",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          }
+        ]
+      },
+      {
+        "id": "Properties_HOC/Wrist Weapon Misc",
+        "label": "Wrist Weapon Misc",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          },
+          {
+            "prop": "Wrist Weapon",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_HOC/Wrist Weapon",
+        "label": "Wrist Weapon",
+        "control": "toggle",
+        "default": false,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          }
+        ]
+      },
+      {
+        "id": "Properties_HOC/Kitten",
+        "label": "Kitten",
+        "control": "toggle",
+        "default": false,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          }
+        ]
+      },
+      {
+        "id": "Properties_HOC/Ribbon Pelvis Front",
+        "label": "Ribbon Pelvis Front",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          }
+        ]
+      },
+      {
+        "id": "Properties_HOC/Neck Ribbon",
+        "label": "Neck Ribbon",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          }
+        ]
+      },
+      {
+        "id": "Properties_HOC/Ribbon Pelvis Back",
+        "label": "Ribbon Pelvis Back",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          }
+        ]
+      },
+      {
+        "id": "Properties_HOC/SkirtOn",
+        "label": "Underwear Texture",
+        "control": "toggle",
+        "default": false,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          },
+          {
+            "prop": "nsfw_on",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_HOC/Skirt_Tear",
+        "label": "Underwear Tear",
+        "control": "toggle",
+        "default": false,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          },
+          {
+            "prop": "nsfw_on",
+            "equals": true
+          },
+          {
+            "prop": "SkirtOn",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_HOC/RecolorHue",
+        "label": "Hue",
+        "control": "float_slider",
+        "default": 0.5,
+        "range": [
+          0.0,
+          1.0
+        ],
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          }
+        ]
+      },
+      {
+        "id": "Properties_HOC/RecolorSat",
+        "label": "Saturation",
+        "control": "float_slider",
+        "default": 1.0,
+        "range": [
+          0.0,
+          2.0
+        ],
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          }
+        ]
+      },
+      {
+        "id": "Properties_HOC/RecolorVal",
+        "label": "Value",
+        "control": "float_slider",
+        "default": 1.0,
+        "range": [
+          0.0,
+          2.0
+        ],
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          }
+        ]
+      },
+      {
+        "id": "Properties_HOC/Skirt",
+        "label": "Skirt",
+        "control": "toggle",
+        "default": false,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          },
+          {
+            "prop": "nsfw_on",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_HOC/Shirt",
+        "label": "Dress",
+        "control": "toggle",
+        "default": false,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          },
+          {
+            "prop": "nsfw_on",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_HOC/Shirt Open",
+        "label": "Shirt Open",
+        "control": "enum",
+        "default": 1,
+        "enum_labels": [
+          "Closed",
+          "Open",
+          "Fully Exposed"
+        ],
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 1
+          },
+          {
+            "prop": "nsfw_on",
+            "equals": true
+          },
+          {
+            "prop": "Shirt",
+            "equals": true
+          }
+        ]
+      }
+    ],
+    "outfit__scarlett": [
+      {
+        "id": "Properties_Scarlett/Earring",
+        "label": "Earring",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 2
+          }
+        ]
+      },
+      {
+        "id": "Properties_Scarlett/Wrist",
+        "label": "Wrist",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 2
+          }
+        ]
+      },
+      {
+        "id": "Properties_Scarlett/Shoes",
+        "label": "Shoes",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 2
+          }
+        ]
+      },
+      {
+        "id": "Properties_Scarlett/Gloves",
+        "label": "Gloves",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 2
+          }
+        ]
+      },
+      {
+        "id": "Properties_Scarlett/Straps_Ammo",
+        "label": "Straps Ammo",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 2
+          }
+        ]
+      },
+      {
+        "id": "Properties_Scarlett/Straps_Upper",
+        "label": "Straps Upper",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 2
+          }
+        ]
+      },
+      {
+        "id": "Properties_Scarlett/Thight_Strap",
+        "label": "Thight Strap",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 2
+          }
+        ]
+      },
+      {
+        "id": "Properties_Scarlett/Cape",
+        "label": "Cape",
+        "control": "toggle",
+        "default": false,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 2
+          },
+          {
+            "prop": "Chest",
+            "value_in": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Properties_Scarlett/ChestForced",
+        "label": "ChestForced",
+        "control": "toggle",
+        "default": true
+      },
+      {
+        "id": "Properties_Scarlett/OutfitTearBreasts",
+        "label": "Breasts tear",
+        "control": "float_slider",
+        "default": 1.0,
+        "range": [
+          0.0,
+          1.0
+        ],
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 2
+          },
+          {
+            "prop": "Outfit",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Scarlett/OutfitTearBottom",
+        "label": "Bottom tear",
+        "control": "float_slider",
+        "default": 1.0,
+        "range": [
+          0.0,
+          1.0
+        ],
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 2
+          },
+          {
+            "prop": "Outfit",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Scarlett/Outfit",
+        "label": "Outfit",
+        "control": "toggle",
+        "default": true,
+        "enum_labels": [
+          "None",
+          "On"
+        ],
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 2
+          }
+        ]
+      },
+      {
+        "id": "Properties_Scarlett/CollarGuard",
+        "label": "Collar Guard",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 2
+          }
+        ]
+      },
+      {
+        "id": "Properties_Scarlett/Hoodie",
+        "label": "Hoodie",
+        "control": "toggle",
+        "default": false,
+        "enum_labels": [
+          "Off",
+          "On"
+        ],
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 2
+          },
+          {
+            "prop": "Chest",
+            "value_in": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Properties_Scarlett/Chest",
+        "label": "Vest",
+        "control": "enum",
+        "default": 2,
+        "enum_labels": [
+          "None",
+          "Full",
+          "Exposed"
+        ],
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 2
+          }
+        ]
+      }
+    ],
+    "outfit__streetwear": [
+      {
+        "id": "Properties_Streetwear/Sleeves",
+        "label": "Sleeves",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 3
+          }
+        ]
+      },
+      {
+        "id": "Properties_Streetwear/Belt",
+        "label": "Belt",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 3
+          }
+        ]
+      },
+      {
+        "id": "Properties_Streetwear/Pants",
+        "label": "Pants",
+        "control": "enum",
+        "default": 0,
+        "enum_labels": [
+          "None",
+          "Full",
+          "Revealed"
+        ],
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 3
+          }
+        ]
+      },
+      {
+        "id": "Properties_Streetwear/Shoes",
+        "label": "Shoes",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 3
+          }
+        ]
+      },
+      {
+        "id": "Properties_Streetwear/Headphones",
+        "label": "Headphones",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 3
+          }
+        ]
+      },
+      {
+        "id": "Properties_Streetwear/Gloves",
+        "label": "Gloves",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 3
+          }
+        ]
+      },
+      {
+        "id": "Properties_Streetwear/Cape",
+        "label": "Cape",
+        "control": "toggle",
+        "default": false,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 3
+          }
+        ]
+      },
+      {
+        "id": "Properties_Streetwear/Shirt",
+        "label": "Shirt",
+        "control": "enum",
+        "default": 2,
+        "enum_labels": [
+          "None",
+          "Full",
+          "Revealed"
+        ],
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 3
+          }
+        ]
+      }
+    ],
+    "outfit__archangel": [
+      {
+        "id": "Properties_Archangel/Panties",
+        "label": "Panties",
+        "control": "toggle",
+        "default": false,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 4
+          }
+        ]
+      },
+      {
+        "id": "Properties_Archangel/Cape",
+        "label": "Cape",
+        "control": "toggle",
+        "default": false,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 4
+          }
+        ]
+      },
+      {
+        "id": "Properties_Archangel/Arms",
+        "label": "Arms",
+        "control": "enum",
+        "default": 1,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 4
+          }
+        ]
+      },
+      {
+        "id": "Properties_Archangel/Shoes",
+        "label": "Shoes",
+        "control": "enum",
+        "default": 3,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 4
+          }
+        ]
+      },
+      {
+        "id": "Properties_Archangel/Back Cloth",
+        "label": "Back Cloth",
+        "control": "toggle",
+        "default": false,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 4
+          },
+          {
+            "prop": "LowerBody",
+            "value_in": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Properties_Archangel/Crown",
+        "label": "Helmet",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 4
+          }
+        ]
+      },
+      {
+        "id": "Properties_Archangel/Shirt",
+        "label": "Shirt",
+        "control": "toggle",
+        "default": true,
+        "enum_labels": [
+          "None",
+          "Full",
+          "Revealed"
+        ],
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 4
+          }
+        ]
+      },
+      {
+        "id": "Properties_Archangel/Collar",
+        "label": "Pauldrons",
+        "control": "toggle",
+        "default": true,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 4
+          },
+          {
+            "prop": "Shirt",
+            "equals": true
+          }
+        ]
+      },
+      {
+        "id": "Properties_Archangel/LowerBody",
+        "label": "Lower Body",
+        "control": "enum",
+        "default": 0,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 4
+          }
+        ]
+      },
+      {
+        "id": "Properties_Archangel/Tattoo",
+        "label": "Tattoo",
+        "control": "toggle",
+        "default": false,
+        "visible_when": [
+          {
+            "prop": "skin_id",
+            "equals": 4
+          }
+        ]
+      }
+    ]
+  }
+}

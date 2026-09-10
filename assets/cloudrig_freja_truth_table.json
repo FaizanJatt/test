@@ -1,0 +1,4731 @@
+{
+ "skins": {
+  "0": [
+   "Freja_Eye",
+   "Freja_EyeShadow",
+   "Freja_Nude_Body",
+   "Freja_OW2_Boots",
+   "Freja_OW2_Chest_Armor",
+   "Freja_OW2_Chest_Armor_Hoodie",
+   "Freja_OW2_Collar_Fur",
+   "Freja_OW2_Earring",
+   "Freja_OW2_Gloves",
+   "Freja_OW2_Hair",
+   "Freja_OW2_Hair-Front",
+   "Freja_OW2_Hair-Side",
+   "Freja_OW2_Hair_Straps",
+   "Freja_OW2_Nose_Piercing",
+   "Freja_OW2_Weapon",
+   "Freja_OW2_Weapon_Arrow",
+   "Freja_OW2_Weapon_Magazine",
+   "Freja_Teeth_Lower",
+   "Freja_Teeth_Upper",
+   "Freja_Tongue"
+  ],
+  "1": [
+   "Freja_Eye",
+   "Freja_EyeShadow",
+   "Freja_Heart_of_Courage_Earring",
+   "Freja_Heart_of_Courage_Gloves",
+   "Freja_Heart_of_Courage_Hair",
+   "Freja_Heart_of_Courage_HairTail",
+   "Freja_Heart_of_Courage_Hair_Misc",
+   "Freja_Heart_of_Courage_Hair_MiscRibbon",
+   "Freja_Heart_of_Courage_Hair_Misc_Wings",
+   "Freja_Heart_of_Courage_Hair_Side",
+   "Freja_Heart_of_Courage_Highheels",
+   "Freja_Heart_of_Courage_Ribbon_Neck",
+   "Freja_Heart_of_Courage_Weapon",
+   "Freja_Nude_Body",
+   "Freja_Teeth_Lower",
+   "Freja_Teeth_Upper",
+   "Freja_Tongue"
+  ],
+  "2": [
+   "Freja_Eye",
+   "Freja_EyeShadow",
+   "Freja_Nude_Body",
+   "Freja_Scarlett_Ammo",
+   "Freja_Scarlett_Boots",
+   "Freja_Scarlett_Chest_Hoodie",
+   "Freja_Scarlett_Chest_Open",
+   "Freja_Scarlett_Earring",
+   "Freja_Scarlett_Gloves",
+   "Freja_Scarlett_Hair",
+   "Freja_Scarlett_Hair_Back",
+   "Freja_Scarlett_Hair_Front",
+   "Freja_Scarlett_Knife",
+   "Freja_Scarlett_Outfit_Arms",
+   "Freja_Scarlett_Outfit_Neck_Zipper",
+   "Freja_Scarlett_Straps_Ammo",
+   "Freja_Scarlett_Straps_Upper",
+   "Freja_Scarlett_Thight_Strap",
+   "Freja_Scarlett_Weapon",
+   "Freja_Scarlett_Weapon_Magazine",
+   "Freja_Scarlett_Wrist",
+   "Freja_Teeth_Lower",
+   "Freja_Teeth_Upper",
+   "Freja_Tongue"
+  ],
+  "3": [
+   "Freja_Eye",
+   "Freja_EyeShadow",
+   "Freja_Nude_Body",
+   "Freja_Streetwear_Belt",
+   "Freja_Streetwear_BodyReveal",
+   "Freja_Streetwear_BodyStrapConnect",
+   "Freja_Streetwear_Gloves",
+   "Freja_Streetwear_Hair",
+   "Freja_Streetwear_Hat",
+   "Freja_Streetwear_Headphone",
+   "Freja_Streetwear_NosePiercing",
+   "Freja_Streetwear_Shoes",
+   "Freja_Streetwear_Sleeves",
+   "Freja_Streetwear_Sleeves_Glass",
+   "Freja_Streetwear_Weapon",
+   "Freja_Streetwear_Weapon_Decal",
+   "Freja_Streetwear_Weapon_Glass",
+   "Freja_Streetwear_Weapon_Magazine",
+   "Freja_Teeth_Lower",
+   "Freja_Teeth_Upper",
+   "Freja_Tongue"
+  ],
+  "4": [
+   "Freja_Archangel_ArmsL_Armor",
+   "Freja_Archangel_ArmsR",
+   "Freja_Archangel_Hair",
+   "Freja_Archangel_Helmet",
+   "Freja_Archangel_Legs",
+   "Freja_Archangel_LegsUpper",
+   "Freja_Archangel_Shoulderguard",
+   "Freja_Archangel_SideArmor",
+   "Freja_Archangel_UpperBody_Armor",
+   "Freja_Archangel_Weapon",
+   "Freja_Archangel_Weapon_Arrow",
+   "Freja_Archangel_Weapon_Mag",
+   "Freja_Eye",
+   "Freja_EyeShadow",
+   "Freja_Nude_Body",
+   "Freja_Teeth_Lower",
+   "Freja_Teeth_Upper",
+   "Freja_Tongue"
+  ]
+ },
+ "settings": {
+  "Character_Properties/Pubes": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "ng/Freja_Pubic_Hair/Math/1"
+   ],
+   "varying_targets": {
+    "ng/Freja_Pubic_Hair/Math/1": {
+     "0": 0.0,
+     "1": 1.0
+    }
+   }
+  },
+  "Character_Properties/Makeup: Lower Eyelids": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja Face/Mix.001/7"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Makeup: Cheeks": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja Face/Mix/7"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Finger Nail Color": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja_Body_FingerNails/Mix/7"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Lips Wetness": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja Face/Value.001/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Pupil Size": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "shape/Freja_Eye/PupilSize"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Iris Size": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "shape/Freja_Eye/IrisSize"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Eyelid Wetness": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja Face/Value.003/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Face Wetness": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja Face/Value.002/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Eye Roughness": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja Eye/Value/0",
+    "mat/Refract/Value.002/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Eye Twinkle Color": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Refract/Mix.001/7"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Fake Hair Reflections": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Pussy Color": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja_Body_Nude/Mix.001/7"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Pussy Wetness": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Body_Nude/Value.001/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Anus Wetness": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Body_Nude/Value.002/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Anus Color": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja_Body_Nude/Mix.003/7"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Body Sun Tan": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "ng/Freja Neck Seam/Mix/0",
+    "ng/Freja Sun Tan Diffuse/Value.003/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Pubic Skin Color": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja_Body_Nude/Mix.002/7"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Pussy Inside Color": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Eye Emissive Direction": {
+   "control": "direction_vec",
+   "value_type": "float3",
+   "driver_targets": [],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Fake Hair Light Direction": {
+   "control": "direction_vec",
+   "value_type": "float3",
+   "driver_targets": [],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Eye Twinkle Rotation": {
+   "control": "direction_vec",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Refract/Mapping.005/1",
+    "mat/Refract/Value.001/0",
+    "mat/Refract/Value.003/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Eye Twinkle Size": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Refract/Value.004/0",
+    "mat/Refract/Value.005/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Eye Emissive": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja Eye/Mix.004/7"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Hair Emissive": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Hair/Value/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Eye Twinkle Intensity": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Refract/Mix.001/7"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Nipple Size": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "shape/Freja_Archangel_Upperbody/nipple-Size",
+    "shape/Freja_Nude_Body/nipple-Size",
+    "shape/Freja_Scarlett_Chest_Open/nipple-Size"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Nipple Color": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja_Body_Nude/Mix.006/7"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Nipple_Push_Out": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "shape/Freja_Archangel_Upperbody/Nipple_Push_Out",
+    "shape/Freja_Nude_Body/Nipple_Push_Out",
+    "shape/Freja_Scarlett_Chest_Open/Nipple_Push_Out",
+    "shape/Freja_SportsBra/Nipple_Push_Out"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Nipple_Pointy": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "shape/Freja_Archangel_Upperbody/Nipple_Pointy",
+    "shape/Freja_Nude_Body/Nipple_Pointy",
+    "shape/Freja_SportsBra/Nipple_Pointy"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Nipple_Outer_Scale": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "shape/Freja_Archangel_Upperbody/Nipple_Outer_Scale",
+    "shape/Freja_Nude_Body/Nipple_Outer_Scale",
+    "shape/Freja_Scarlett_Chest_Open/Nipple_Outer_Scale"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Nipple_Inner_Scale": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "shape/Freja_Archangel_Upperbody/Nipple_Inner_Scale",
+    "shape/Freja_Nude_Body/Nipple_Inner_Scale"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Juno Preload": {
+   "control": "string",
+   "value_type": "string",
+   "driver_targets": [],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Juno Matfix": {
+   "control": "string",
+   "value_type": "string",
+   "driver_targets": [],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Less Hourglass": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "shape/Freja_Archangel_Panties/Less Hourglass",
+    "shape/Freja_Archangel_Upperbody/Less Hourglass",
+    "shape/Freja_Archangel_UpperbodyRevealed/Less Hourglass",
+    "shape/Freja_Heart_of_Courage_Skirt_Bind/Less Hourglass",
+    "shape/Freja_Heart_of_Courage_UpperBody/Less Hourglass",
+    "shape/Freja_Nude_Body/Less Hourglass",
+    "shape/Freja_OW2_Bodysuit/Less Hourglass",
+    "shape/Freja_Scarlett_Chest_Closed/Less Hourglass",
+    "shape/Freja_Scarlett_Chest_Open/Less Hourglass",
+    "shape/Freja_Scarlett_Straps_Ammo/Less Hourglass",
+    "shape/Freja_Scarlett_Straps_Upper/Less Hourglass",
+    "shape/Freja_SportsBra/Less Hourglass",
+    "shape/Freja_SportsPanties/Less Hourglass"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Pubic Hair Exp": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "ng/Freja_Pubic_Hair/Math.001/1"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Normal Intensity": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Body_Nude/Math.001/1"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Makeup: Upper Eyelids": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja Face/Mix.002/7"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Finger Nail Length": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "shape/Freja_Nude_Body/Finger Nail Length"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Toe Nail Length": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "shape/Freja_Nude_Body/Toe Nail Length"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Tattoo": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Body_Nude/Value.004/0",
+    "ng/Freja_Tatoo/Math/1"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Tattoo Emissive": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja Face/Math/1",
+    "mat/Freja_Body_Nude/Math/1"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Tattoo Color": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "ng/Freja_Tatoo/Mix.001/7"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Hair Anisotropic Rotation": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Hair/Principled BSDF/17",
+    "mat/Freja_Heart_of_Courage_Hair/Principled BSDF/17",
+    "mat/Streetwear_Hair/Principled BSDF/17"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Hair Fake Reflection Angle": {
+   "control": "direction_vec",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja_Hair/Mapping/2",
+    "mat/Freja_Heart_of_Courage_Hair/Mapping.001/2"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Hair Anisotropic": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Hair/Principled BSDF/16",
+    "mat/Freja_Heart_of_Courage_Hair/Principled BSDF/16",
+    "mat/Freja_Scarlett_Hair/Principled BSDF/16",
+    "mat/Streetwear_Hair/Principled BSDF/16"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Pubes Color": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "ng/Freja_Pubic_Hair/Mix.001/7"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Toe Nail Color": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja_Body_ToeNails/Mix/7"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Body Abs": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "shape/Freja_Archangel_Upperbody/Abs",
+    "shape/Freja_Archangel_UpperbodyRevealed/Abs",
+    "shape/Freja_Heart_of_Courage_UpperBody/Abs",
+    "shape/Freja_Nude_Body/Abs",
+    "shape/Freja_Scarlett_Chest_Closed/Abs",
+    "shape/Freja_Scarlett_Straps_Ammo/Abs",
+    "shape/Freja_Scarlett_Straps_Upper/Abs"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Skin wetness": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "ng/Skin Wetness/Value/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Eye Color": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja Eye/RGB/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Eye Emissive Color": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja Eye/Mix.004/7"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Lips Color": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja Face/Mix.009/7"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Lips Normal Detail": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja Face/Bump.001/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Hair Fake Reflection": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Hair/Mix.005/0",
+    "mat/Freja_Heart_of_Courage_Hair/Mix.005/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Emissive Strength": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Archangel_Body/Math/1",
+    "mat/Archangel_Weapon/Math/1",
+    "mat/Freja_Body_OW2/Math/1",
+    "mat/Freja_Heart_of_Courage_Body/Math/1",
+    "mat/Freja_Outfit_OW2/Math/1",
+    "mat/Freja_Scarlett_Body/Math/1",
+    "mat/Freja_Weapon/Math/1",
+    "mat/Freja_Weapon_Arrow/Principled BSDF/29",
+    "mat/Streetwear_Body/Math/1",
+    "mat/Streetwear_Decals/Math/1",
+    "mat/Streetwear_Weapon/Math/1",
+    "mat/Streetwear_Weapon_Decal/Principled BSDF/29",
+    "mat/mat_14/Math/1"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Hair Roughness Add": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Archangel_Hair/Principled BSDF.001/2",
+    "mat/Freja_Hair/Math/1",
+    "mat/Freja_Heart_of_Courage_Hair/Math.001/0",
+    "mat/Freja_Scarlett_Hair/Principled BSDF/2",
+    "mat/Streetwear_Hair/Principled BSDF/2"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Hair Metalic": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Hair/Principled BSDF/1",
+    "mat/Freja_Heart_of_Courage_Hair/Principled BSDF/1",
+    "mat/Freja_Scarlett_Hair/Principled BSDF/1",
+    "mat/Streetwear_Hair/Principled BSDF/1"
+   ],
+   "effects_by_value": {}
+  },
+  "Character_Properties/Quality": {
+   "control": "enum",
+   "value_type": "int",
+   "driver_targets": [
+    "geo/Freja_Archangel_Hair/GeometryNodes/Socket_3",
+    "mod/Freja_Archangel_ArmsL/Corrective Smooth/show_viewport",
+    "mod/Freja_Archangel_ArmsL_Armor/Corrective Smooth/show_viewport",
+    "mod/Freja_Archangel_ArmsR/Corrective Smooth/show_viewport",
+    "mod/Freja_Archangel_Cape/CorrectiveSmooth/show_viewport",
+    "mod/Freja_Archangel_Hair/Corrective Smooth/show_viewport",
+    "mod/Freja_Archangel_Legs/Corrective Smooth/show_viewport",
+    "mod/Freja_Archangel_LegsUpper/Corrective Smooth/show_viewport",
+    "mod/Freja_Archangel_Panties/Corrective Smooth/show_viewport",
+    "mod/Freja_Archangel_Shoulderguard/Corrective Smooth/show_viewport",
+    "mod/Freja_Archangel_SideArmor/Corrective Smooth/show_viewport",
+    "mod/Freja_Archangel_UpperBody_Armor/CorrectiveSmooth/show_viewport",
+    "mod/Freja_Archangel_Upperbody/CorrectiveSmooth/show_viewport",
+    "mod/Freja_Archangel_UpperbodyBackCloth/Corrective Smooth/show_viewport",
+    "mod/Freja_Archangel_UpperbodyRevealed/CorrectiveSmooth/show_viewport",
+    "mod/Freja_Heart_of_Courage_Cape/CorrectiveSmooth/show_viewport",
+    "mod/Freja_Heart_of_Courage_Gloves/Corrective Smooth/show_viewport",
+    "mod/Freja_Heart_of_Courage_Hair/Corrective Smooth/show_viewport",
+    "mod/Freja_Heart_of_Courage_HairTail/Corrective Smooth/show_viewport",
+    "mod/Freja_Heart_of_Courage_Hair_Misc/Corrective Smooth/show_viewport",
+    "mod/Freja_Heart_of_Courage_Hair_MiscRibbon/Corrective Smooth/show_viewport",
+    "mod/Freja_Heart_of_Courage_Hair_Misc_Wings/Corrective Smooth/show_viewport",
+    "mod/Freja_Heart_of_Courage_Hair_Side/Corrective Smooth/show_viewport",
+    "mod/Freja_Heart_of_Courage_Highheels/Corrective Smooth/show_viewport",
+    "mod/Freja_Heart_of_Courage_Ribbon_Back/Corrective Smooth/show_viewport",
+    "mod/Freja_Heart_of_Courage_Ribbon_Neck/Corrective Smooth/show_viewport",
+    "mod/Freja_Heart_of_Courage_Ribbon_Pelvis/Corrective Smooth/show_viewport",
+    "mod/Freja_Heart_of_Courage_Skirt/Corrective Smooth/show_viewport",
+    "mod/Freja_Heart_of_Courage_Skirt_Bind/Corrective Smooth/show_viewport",
+    "mod/Freja_Heart_of_Courage_UpperBody/Corrective Smooth/show_viewport",
+    "mod/Freja_Heart_of_Courage_UpperBody/Mask/show_render",
+    "mod/Freja_Heart_of_Courage_UpperBody/Mask/show_viewport",
+    "mod/Freja_Heart_of_Courage_UpperBody_Breasts/Corrective Smooth/show_viewport",
+    "mod/Freja_Heart_of_Courage_UpperBody_Wrist/CorrectiveSmooth/show_viewport",
+    "mod/Freja_Heart_of_Courage_UpperBody_Wrist_Ammo/CorrectiveSmooth/show_viewport",
+    "mod/Freja_Nude_Body/Corrective Smooth/show_viewport",
+    "mod/Freja_Nude_Body/Freja Mask Stack - Archangel/show_viewport",
+    "mod/Freja_Nude_Body/Freja Mask Stack - Default/show_viewport",
+    "mod/Freja_Nude_Body/Freja Mask Stack - Heart of Courage/show_viewport",
+    "mod/Freja_Nude_Body/Freja Mask Stack - Scarlett/show_viewport",
+    "mod/Freja_Nude_Body/Freja Mask Stack - Shared/show_viewport",
+    "mod/Freja_Nude_Body/Freja Mask Stack - Streetwear/show_viewport",
+    "mod/Freja_OW2_Belt/CorrectiveSmooth/show_viewport",
+    "mod/Freja_OW2_Bodysuit/CorrectiveSmooth/show_viewport",
+    "mod/Freja_OW2_Boots/CorrectiveSmooth/show_viewport",
+    "mod/Freja_OW2_Chest_Armor/CorrectiveSmooth/show_viewport",
+    "mod/Freja_OW2_Chest_Armor_Hoodie/CorrectiveSmooth/show_viewport",
+    "mod/Freja_OW2_Necklance/CorrectiveSmooth/show_viewport",
+    "mod/Freja_OW2_Shirt/CorrectiveSmooth/show_viewport",
+    "mod/Freja_Scarlett_Boots/Corrective Smooth/show_viewport",
+    "mod/Freja_Scarlett_Chest_Closed/Corrective Smooth/show_viewport",
+    "mod/Freja_Scarlett_Chest_Hoodie/Corrective Smooth/show_viewport",
+    "mod/Freja_Scarlett_Chest_HoodieOn/Corrective Smooth/show_viewport",
+    "mod/Freja_Scarlett_Chest_Open/Corrective Smooth/show_viewport",
+    "mod/Freja_Scarlett_Gloves/Corrective Smooth/show_viewport",
+    "mod/Freja_Scarlett_Outfit_Arms/Corrective Smooth/show_viewport",
+    "mod/Freja_Scarlett_Outfit_Neck_Zipper/Corrective Smooth/show_viewport",
+    "mod/Freja_Scarlett_Straps_Ammo/Corrective Smooth/show_viewport",
+    "mod/Freja_Scarlett_Straps_Upper/Corrective Smooth/show_viewport",
+    "mod/Freja_Scarlett_Thight_Strap/Corrective Smooth/show_viewport",
+    "mod/Freja_Scarlett_Wrist/Corrective Smooth/show_viewport",
+    "mod/Freja_SportsBra/Corrective Smooth/show_viewport",
+    "mod/Freja_SportsPanties/Corrective Smooth/show_viewport",
+    "mod/Freja_Stockings/Corrective Smooth/show_viewport",
+    "mod/Freja_Streetwear_Belt/Corrective Smooth/show_viewport",
+    "mod/Freja_Streetwear_Body/Corrective Smooth/show_viewport",
+    "mod/Freja_Streetwear_BodyReveal/Corrective Smooth/show_viewport",
+    "mod/Freja_Streetwear_Cape/CorrectiveSmooth/show_viewport",
+    "mod/Freja_Streetwear_Gloves/Corrective Smooth/show_viewport",
+    "mod/Freja_Streetwear_Hair/CorrectiveSmooth/show_viewport",
+    "mod/Freja_Streetwear_Hair/Mask/show_viewport",
+    "mod/Freja_Streetwear_Pants/Corrective Smooth/show_viewport",
+    "mod/Freja_Streetwear_PantsDown/Corrective Smooth/show_viewport",
+    "mod/Freja_Streetwear_Shoes/Corrective Smooth/show_viewport",
+    "mod/Freja_Streetwear_Sleeves/Corrective Smooth/show_viewport",
+    "mod/Freja_Streetwear_Sleeves_Glass/Corrective Smooth/show_viewport",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Archangel_ArmsL\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Archangel_ArmsL_Armor\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Archangel_ArmsR\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Archangel_Hair\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Archangel_Helmet\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Archangel_Legs\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Archangel_LegsUpper\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Archangel_Panties\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Archangel_Shoulderguard\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Archangel_SideArmor\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Archangel_UpperBody_Armor\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Archangel_Upperbody\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Archangel_UpperbodyBackCloth\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Archangel_UpperbodyRevealed\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Eye\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_EyeShadow\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Heart_of_Courage_Earring\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Heart_of_Courage_Gloves\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Heart_of_Courage_Hair\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Heart_of_Courage_HairTail\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Heart_of_Courage_Hair_Misc\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Heart_of_Courage_Hair_MiscRibbon\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Heart_of_Courage_Hair_Misc_Wings\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Heart_of_Courage_Hair_Side\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Heart_of_Courage_Highheels\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Heart_of_Courage_Ribbon_Back\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Heart_of_Courage_Ribbon_Neck\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Heart_of_Courage_Ribbon_Pelvis\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Heart_of_Courage_Skirt\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Heart_of_Courage_UpperBody\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Heart_of_Courage_UpperBody_Breasts\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Nude_Body\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_OW2_Belt\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_OW2_Belt_Arrows\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_OW2_Belt_Utility\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_OW2_Bodysuit\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_OW2_Boots\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_OW2_Chest_Armor\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_OW2_Chest_Armor_Hoodie\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_OW2_Collar_Fur\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_OW2_Earring\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_OW2_Gloves\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_OW2_Hair\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_OW2_Hair-Front\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_OW2_Hair-Side\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_OW2_Hair_Straps\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_OW2_Necklance\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_OW2_Nose_Piercing\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_OW2_Shirt\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Scarlett_Ammo\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Scarlett_Boots\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Scarlett_Chest_Closed\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Scarlett_Chest_Hoodie\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Scarlett_Chest_HoodieOn\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Scarlett_Chest_Open\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Scarlett_Earring\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Scarlett_Gloves\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Scarlett_Hair\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Scarlett_Hair_Back\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Scarlett_Hair_Front\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Scarlett_Knife\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Scarlett_Outfit_Arms\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Scarlett_Outfit_Neck_Zipper\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Scarlett_Straps_Ammo\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Scarlett_Straps_Upper\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Scarlett_Thight_Strap\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Scarlett_Wrist\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_SportsBra\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_SportsPanties\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Stockings\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Streetwear_Belt\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Streetwear_Body\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Streetwear_BodyReveal\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Streetwear_Gloves\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Streetwear_Hair\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Streetwear_Hat\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Streetwear_Headphone\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Streetwear_NosePiercing\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Streetwear_Pants\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Streetwear_PantsDown\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Streetwear_Shoes\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Streetwear_Sleeves\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Streetwear_Sleeves_Glass\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Teeth_Lower\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Teeth_Upper\"}",
+    "other/{\"field\": \"modifiers[\\\"Subdivision\\\"].levels\", \"object\": \"Freja_Tongue\"}"
+   ],
+   "varying_targets": {
+    "mod/Freja_Streetwear_PantsDown/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Streetwear_Cape/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Heart_of_Courage_Hair_Side/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Heart_of_Courage_Hair_Misc/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Stockings/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_OW2_Belt/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Scarlett_Chest_Closed/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_OW2_Shirt/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Archangel_Panties/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Archangel_LegsUpper/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Streetwear_BodyReveal/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Heart_of_Courage_Hair_Misc_Wings/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Heart_of_Courage_UpperBody_Wrist/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_OW2_Chest_Armor_Hoodie/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Streetwear_Body/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Archangel_ArmsL_Armor/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_OW2_Chest_Armor/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Heart_of_Courage_Ribbon_Pelvis/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Heart_of_Courage_Ribbon_Back/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Streetwear_Sleeves_Glass/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Streetwear_Belt/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Scarlett_Outfit_Arms/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Scarlett_Wrist/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Scarlett_Chest_HoodieOn/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_OW2_Boots/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Heart_of_Courage_Highheels/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Heart_of_Courage_UpperBody/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Streetwear_Gloves/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Scarlett_Chest_Open/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Nude_Body/Freja Mask Stack - Default/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Heart_of_Courage_UpperBody_Wrist_Ammo/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Heart_of_Courage_Skirt_Bind/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Scarlett_Boots/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Archangel_SideArmor/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Streetwear_Pants/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Scarlett_Chest_Hoodie/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Streetwear_Shoes/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_SportsBra/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Heart_of_Courage_HairTail/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Archangel_ArmsL/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Heart_of_Courage_Ribbon_Neck/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Scarlett_Thight_Strap/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Heart_of_Courage_UpperBody_Breasts/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Archangel_UpperbodyRevealed/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Archangel_Shoulderguard/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Archangel_Hair/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Archangel_UpperbodyBackCloth/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_SportsPanties/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Archangel_UpperBody_Armor/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Heart_of_Courage_Gloves/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Heart_of_Courage_Hair_MiscRibbon/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Nude_Body/Freja Mask Stack - Shared/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Heart_of_Courage_Hair/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Archangel_Upperbody/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Archangel_ArmsR/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Streetwear_Hair/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Scarlett_Straps_Ammo/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Archangel_Cape/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_OW2_Necklance/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Scarlett_Outfit_Neck_Zipper/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Archangel_Legs/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_OW2_Bodysuit/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Heart_of_Courage_Skirt/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Scarlett_Straps_Upper/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Streetwear_Sleeves/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Heart_of_Courage_Cape/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Scarlett_Gloves/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    },
+    "mod/Freja_Nude_Body/Corrective Smooth/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1
+    }
+   }
+  },
+  "Physics_Properties/Enable Physics": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "mod/Freja-physics-body/rig/show_render",
+    "mod/Freja-physics-body/rig/show_viewport",
+    "mod/Freja-physics-boobs/Cloth/show_render",
+    "mod/Freja-physics-boobs/Cloth/show_viewport",
+    "mod/Freja-physics-boobs/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-boobs/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-butt/Armature/show_render",
+    "mod/Freja-physics-butt/Armature/show_viewport",
+    "mod/Freja-physics-butt/Cloth/show_render",
+    "mod/Freja-physics-butt/Cloth/show_viewport",
+    "mod/Freja-physics-butt/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-butt/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-cloth-archangel-back/Cloth/show_render",
+    "mod/Freja-physics-cloth-archangel-back/Cloth/show_viewport",
+    "mod/Freja-physics-cloth-archangel-back/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-cloth-archangel-back/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-cloth-archangel-back/rig/show_render",
+    "mod/Freja-physics-cloth-archangel-back/rig/show_viewport",
+    "mod/Freja-physics-cloth-archangel-front/Cloth/show_render",
+    "mod/Freja-physics-cloth-archangel-front/Cloth/show_viewport",
+    "mod/Freja-physics-cloth-archangel-front/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-cloth-archangel-front/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-cloth-archangel-front/rig/show_render",
+    "mod/Freja-physics-cloth-archangel-front/rig/show_viewport",
+    "mod/Freja-physics-cloth-belt/Cloth/show_render",
+    "mod/Freja-physics-cloth-belt/Cloth/show_viewport",
+    "mod/Freja-physics-cloth-belt/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-cloth-belt/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-cloth-belt/rig/show_render",
+    "mod/Freja-physics-cloth-belt/rig/show_viewport",
+    "mod/Freja-physics-cloth/Cloth/show_render",
+    "mod/Freja-physics-cloth/Cloth/show_viewport",
+    "mod/Freja-physics-cloth/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-cloth/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair-archangel/Cloth/show_render",
+    "mod/Freja-physics-hair-archangel/Cloth/show_viewport",
+    "mod/Freja-physics-hair-archangel/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair-archangel/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair-archangel/rig/show_render",
+    "mod/Freja-physics-hair-archangel/rig/show_viewport",
+    "mod/Freja-physics-hair-ponytail.HOC/Cloth/show_render",
+    "mod/Freja-physics-hair-ponytail.HOC/Cloth/show_viewport",
+    "mod/Freja-physics-hair-ponytail.HOC/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair-ponytail.HOC/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair-scarlett/Cloth/show_render",
+    "mod/Freja-physics-hair-scarlett/Cloth/show_viewport",
+    "mod/Freja-physics-hair-scarlett/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair-scarlett/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair-scarlett/rig/show_render",
+    "mod/Freja-physics-hair-scarlett/rig/show_viewport",
+    "mod/Freja-physics-hair-side.HOC/Cloth/show_render",
+    "mod/Freja-physics-hair-side.HOC/Cloth/show_viewport",
+    "mod/Freja-physics-hair-side.HOC/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair-side.HOC/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair-side/Cloth/show_render",
+    "mod/Freja-physics-hair-side/Cloth/show_viewport",
+    "mod/Freja-physics-hair-side/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair-side/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair-streetwear/Cloth/show_render",
+    "mod/Freja-physics-hair-streetwear/Cloth/show_viewport",
+    "mod/Freja-physics-hair-streetwear/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair-streetwear/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair-streetwear/rig/show_render",
+    "mod/Freja-physics-hair-streetwear/rig/show_viewport",
+    "mod/Freja-physics-hair.HOC/Cloth/show_render",
+    "mod/Freja-physics-hair.HOC/Cloth/show_viewport",
+    "mod/Freja-physics-hair.HOC/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair.HOC/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair/Cloth/show_render",
+    "mod/Freja-physics-hair/Cloth/show_viewport",
+    "mod/Freja-physics-hair/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-necklance/Cloth/show_render",
+    "mod/Freja-physics-necklance/Cloth/show_viewport",
+    "mod/Freja-physics-necklance/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-necklance/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-thighs/Cloth/show_render",
+    "mod/Freja-physics-thighs/Cloth/show_viewport",
+    "mod/Freja-physics-thighs/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-thighs/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-thighs/rig/show_render",
+    "mod/Freja-physics-thighs/rig/show_viewport",
+    "mod/Freja_Archangel_Hair/Freja-physics-hair-Archangel/show_render",
+    "mod/Freja_Archangel_Hair/Freja-physics-hair-Archangel/show_viewport",
+    "mod/Freja_Archangel_Panties/Phy-Butt/show_render",
+    "mod/Freja_Archangel_Panties/Phy-Butt/show_viewport",
+    "mod/Freja_Archangel_Panties/Phy-Thighs/show_render",
+    "mod/Freja_Archangel_Panties/Phy-Thighs/show_viewport",
+    "mod/Freja_Archangel_UpperBody_Armor/Phy-Breasts-Closed/show_render",
+    "mod/Freja_Archangel_UpperBody_Armor/Phy-Breasts-Closed/show_viewport",
+    "mod/Freja_Archangel_Upperbody/Phy-Breasts-Closed/show_render",
+    "mod/Freja_Archangel_Upperbody/Phy-Breasts-Closed/show_viewport",
+    "mod/Freja_Archangel_Upperbody/Phy-Breasts-Tabard/show_render",
+    "mod/Freja_Archangel_Upperbody/Phy-Breasts-Tabard/show_viewport",
+    "mod/Freja_Archangel_UpperbodyBackCloth/Phy/show_render",
+    "mod/Freja_Archangel_UpperbodyBackCloth/Phy/show_viewport",
+    "mod/Freja_Archangel_UpperbodyRevealed/Phy-Breasts-Closed/show_render",
+    "mod/Freja_Archangel_UpperbodyRevealed/Phy-Breasts-Closed/show_viewport",
+    "mod/Freja_Archangel_UpperbodyRevealed/Phy-Breasts-Tabard/show_render",
+    "mod/Freja_Archangel_UpperbodyRevealed/Phy-Breasts-Tabard/show_viewport",
+    "mod/Freja_Heart_of_Courage_Hair/Freja-physics-hair-side.HOC/show_render",
+    "mod/Freja_Heart_of_Courage_Hair/Freja-physics-hair-side.HOC/show_viewport",
+    "mod/Freja_Heart_of_Courage_HairTail/SurfaceDeform/show_render",
+    "mod/Freja_Heart_of_Courage_HairTail/SurfaceDeform/show_viewport",
+    "mod/Freja_Heart_of_Courage_Hair_MiscRibbon/SurfaceDeform/show_render",
+    "mod/Freja_Heart_of_Courage_Hair_MiscRibbon/SurfaceDeform/show_viewport",
+    "mod/Freja_Heart_of_Courage_Hair_Side/Freja-physics-hair-side.HOC/show_render",
+    "mod/Freja_Heart_of_Courage_Hair_Side/Freja-physics-hair-side.HOC/show_viewport",
+    "mod/Freja_Heart_of_Courage_Highheels/Phy-Thighs/show_render",
+    "mod/Freja_Heart_of_Courage_Highheels/Phy-Thighs/show_viewport",
+    "mod/Freja_Nude_Body/Phy-Boobs-Archangel-Hidden/show_render",
+    "mod/Freja_Nude_Body/Phy-Boobs-Archangel-Hidden/show_viewport",
+    "mod/Freja_Nude_Body/Phy-Boobs-Archangel-Show/show_render",
+    "mod/Freja_Nude_Body/Phy-Boobs-Archangel-Show/show_viewport",
+    "mod/Freja_Nude_Body/Phy-Boobs-Scarlett/show_render",
+    "mod/Freja_Nude_Body/Phy-Boobs-Scarlett/show_viewport",
+    "mod/Freja_Nude_Body/Phy-Boobs-Streetwear-Show/show_render",
+    "mod/Freja_Nude_Body/Phy-Boobs-Streetwear-Show/show_viewport",
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_render",
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_viewport",
+    "mod/Freja_Nude_Body/Phy-Butt/show_render",
+    "mod/Freja_Nude_Body/Phy-Butt/show_viewport",
+    "mod/Freja_Nude_Body/Phy-Thighs/show_render",
+    "mod/Freja_Nude_Body/Phy-Thighs/show_viewport",
+    "mod/Freja_OW2_Boots/Phy-Thighs/show_render",
+    "mod/Freja_OW2_Boots/Phy-Thighs/show_viewport",
+    "mod/Freja_OW2_Hair-Front/Physics/show_render",
+    "mod/Freja_OW2_Hair-Front/Physics/show_viewport",
+    "mod/Freja_OW2_Hair-Side/Physics/show_render",
+    "mod/Freja_OW2_Hair-Side/Physics/show_viewport",
+    "mod/Freja_OW2_Hair/Physics/show_render",
+    "mod/Freja_OW2_Hair/Physics/show_viewport",
+    "mod/Freja_OW2_Hair_Straps/Physics/show_render",
+    "mod/Freja_OW2_Hair_Straps/Physics/show_viewport",
+    "mod/Freja_OW2_Necklance/Phy/show_render",
+    "mod/Freja_OW2_Necklance/Phy/show_viewport",
+    "mod/Freja_OW2_Shirt/Phy-Closed/show_render",
+    "mod/Freja_OW2_Shirt/Phy-Closed/show_viewport",
+    "mod/Freja_OW2_Shirt/Phy-Exposed/show_render",
+    "mod/Freja_OW2_Shirt/Phy-Exposed/show_viewport",
+    "mod/Freja_OW2_Shirt/Phy-RolledUp/show_render",
+    "mod/Freja_OW2_Shirt/Phy-RolledUp/show_viewport",
+    "mod/Freja_Scarlett_Chest_Closed/Phy-BoobsHidden/show_render",
+    "mod/Freja_Scarlett_Chest_Closed/Phy-BoobsHidden/show_viewport",
+    "mod/Freja_Scarlett_Chest_Open/Phy-BoobsHidden/show_render",
+    "mod/Freja_Scarlett_Chest_Open/Phy-BoobsHidden/show_viewport",
+    "mod/Freja_Scarlett_Hair_Back/Physics/show_render",
+    "mod/Freja_Scarlett_Hair_Back/Physics/show_viewport",
+    "mod/Freja_Scarlett_Hair_Front/Physics/show_render",
+    "mod/Freja_Scarlett_Hair_Front/Physics/show_viewport",
+    "mod/Freja_Scarlett_Straps_Ammo/Phy-Butt/show_render",
+    "mod/Freja_Scarlett_Straps_Ammo/Phy-Butt/show_viewport",
+    "mod/Freja_SportsBra/Phy-BoobsExposed/show_render",
+    "mod/Freja_SportsBra/Phy-BoobsExposed/show_viewport",
+    "mod/Freja_SportsBra/Phy-BoobsHidden/show_render",
+    "mod/Freja_SportsBra/Phy-BoobsHidden/show_viewport",
+    "mod/Freja_SportsPanties/Phy-Butt/show_render",
+    "mod/Freja_SportsPanties/Phy-Butt/show_viewport",
+    "mod/Freja_Stockings/Phy-Thighs/show_render",
+    "mod/Freja_Stockings/Phy-Thighs/show_viewport",
+    "mod/Freja_Streetwear_Belt/Phy-Belt/show_render",
+    "mod/Freja_Streetwear_Belt/Phy-Belt/show_viewport",
+    "mod/Freja_Streetwear_Belt/Phy-Butt/show_render",
+    "mod/Freja_Streetwear_Belt/Phy-Butt/show_viewport",
+    "mod/Freja_Streetwear_Belt/Phy-Thighs/show_render",
+    "mod/Freja_Streetwear_Belt/Phy-Thighs/show_viewport",
+    "mod/Freja_Streetwear_Body/Phy-Boobs-Streetwear-Show/show_render",
+    "mod/Freja_Streetwear_Body/Phy-Boobs-Streetwear-Show/show_viewport",
+    "mod/Freja_Streetwear_BodyReveal/Phy-BoobsExposed/show_render",
+    "mod/Freja_Streetwear_BodyReveal/Phy-BoobsExposed/show_viewport",
+    "mod/Freja_Streetwear_Hair/Physics/show_render",
+    "mod/Freja_Streetwear_Hair/Physics/show_viewport",
+    "mod/Freja_Streetwear_Pants/Phy-Butt/show_render",
+    "mod/Freja_Streetwear_Pants/Phy-Butt/show_viewport",
+    "mod/Freja_Streetwear_Pants/Phy-Thighs/show_render",
+    "mod/Freja_Streetwear_Pants/Phy-Thighs/show_viewport",
+    "obj_vis/Freja-physics-body",
+    "obj_vis/Freja-physics-boobs",
+    "obj_vis/Freja-physics-butt",
+    "obj_vis/Freja-physics-cloth",
+    "obj_vis/Freja-physics-cloth-archangel-back",
+    "obj_vis/Freja-physics-cloth-archangel-front",
+    "obj_vis/Freja-physics-cloth-belt",
+    "obj_vis/Freja-physics-hair",
+    "obj_vis/Freja-physics-hair-archangel",
+    "obj_vis/Freja-physics-hair-ponytail.HOC",
+    "obj_vis/Freja-physics-hair-scarlett",
+    "obj_vis/Freja-physics-hair-side",
+    "obj_vis/Freja-physics-hair-side.HOC",
+    "obj_vis/Freja-physics-hair-streetwear",
+    "obj_vis/Freja-physics-hair.HOC",
+    "obj_vis/Freja-physics-necklance",
+    "obj_vis/Freja-physics-thighs",
+    "other/{\"field\": \"collision.use\", \"object\": \"Freja-physics-body\"}",
+    "other/{\"field\": \"collision.use\", \"object\": \"Freja-physics-boobs\"}",
+    "other/{\"field\": \"collision.use\", \"object\": \"Freja-physics-butt\"}",
+    "other/{\"field\": \"collision.use\", \"object\": \"Freja-physics-thighs\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].collision_settings.use_collision\", \"object\": \"Freja-physics-boobs\"}"
+   ],
+   "varying_targets": {
+    "mod/Freja_OW2_Shirt/Phy-Closed/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Archangel_Panties/Phy-Thighs/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_SportsBra/Phy-BoobsExposed/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-hair-side/Cloth/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-boobs/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Stockings/Phy-Thighs/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_OW2_Hair-Front/Physics/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_SportsPanties/Phy-Butt/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Streetwear_Pants/Phy-Thighs/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-hair/Cloth/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_OW2_Boots/Phy-Thighs/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "obj_vis/Freja-physics-hair-side": {
+     "0": 1,
+     "1": 0
+    },
+    "mod/Freja_OW2_Hair_Straps/Physics/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Streetwear_Pants/Phy-Butt/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Scarlett_Chest_Closed/Phy-BoobsHidden/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_OW2_Hair/Physics/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-hair-side/Cloth/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Scarlett_Chest_Open/Phy-BoobsHidden/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-hair-side/CorrectiveSmooth/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_OW2_Hair-Side/Physics/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-hair/Cloth/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Archangel_Panties/Phy-Thighs/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_SportsBra/Phy-BoobsExposed/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Nude_Body/Phy-Butt/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Heart_of_Courage_Highheels/Phy-Thighs/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_OW2_Hair-Front/Physics/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "obj_vis/Freja-physics-butt": {
+     "0": 1,
+     "1": 0
+    },
+    "mod/Freja-physics-thighs/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Stockings/Phy-Thighs/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_OW2_Hair/Physics/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Scarlett_Straps_Ammo/Phy-Butt/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-thighs/CorrectiveSmooth/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Streetwear_Belt/Phy-Butt/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-hair-side/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-boobs/CorrectiveSmooth/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_OW2_Shirt/Phy-Closed/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-boobs/Cloth/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-butt/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-body/rig/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Heart_of_Courage_Highheels/Phy-Thighs/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-body/rig/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Scarlett_Chest_Open/Phy-BoobsHidden/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Archangel_UpperBody_Armor/Phy-Breasts-Closed/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_OW2_Boots/Phy-Thighs/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Nude_Body/Phy-Thighs/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Archangel_Panties/Phy-Butt/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Streetwear_Belt/Phy-Butt/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-thighs/rig/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "obj_vis/Freja-physics-boobs": {
+     "0": 1,
+     "1": 0
+    },
+    "mod/Freja-physics-butt/Cloth/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-butt/CorrectiveSmooth/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "obj_vis/Freja-physics-thighs": {
+     "0": 1,
+     "1": 0
+    },
+    "mod/Freja_OW2_Hair_Straps/Physics/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Streetwear_Belt/Phy-Thighs/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-hair/CorrectiveSmooth/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Scarlett_Chest_Closed/Phy-BoobsHidden/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_OW2_Hair-Side/Physics/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Nude_Body/Phy-Butt/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-thighs/Cloth/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-boobs/Cloth/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Archangel_Panties/Phy-Butt/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-thighs/rig/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-hair/CorrectiveSmooth/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Nude_Body/Phy-Thighs/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-butt/Armature/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Scarlett_Straps_Ammo/Phy-Butt/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-thighs/Cloth/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Streetwear_Pants/Phy-Thighs/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja-physics-butt/Armature/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_SportsPanties/Phy-Butt/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Streetwear_Pants/Phy-Butt/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Archangel_UpperBody_Armor/Phy-Breasts-Closed/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Streetwear_Belt/Phy-Thighs/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "obj_vis/Freja-physics-body": {
+     "0": 1,
+     "1": 0
+    },
+    "mod/Freja-physics-butt/Cloth/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "obj_vis/Freja-physics-hair": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  "Physics_Properties/Physics Frame End": {
+   "control": "int_slider",
+   "value_type": "int",
+   "driver_targets": [
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_end\", \"object\": \"Freja-physics-boobs\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_end\", \"object\": \"Freja-physics-butt\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_end\", \"object\": \"Freja-physics-cloth\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_end\", \"object\": \"Freja-physics-cloth-archangel-back\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_end\", \"object\": \"Freja-physics-cloth-archangel-front\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_end\", \"object\": \"Freja-physics-cloth-belt\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_end\", \"object\": \"Freja-physics-hair\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_end\", \"object\": \"Freja-physics-hair-archangel\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_end\", \"object\": \"Freja-physics-hair-ponytail.HOC\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_end\", \"object\": \"Freja-physics-hair-scarlett\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_end\", \"object\": \"Freja-physics-hair-side\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_end\", \"object\": \"Freja-physics-hair-side.HOC\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_end\", \"object\": \"Freja-physics-hair-streetwear\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_end\", \"object\": \"Freja-physics-hair.HOC\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_end\", \"object\": \"Freja-physics-necklance\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_end\", \"object\": \"Freja-physics-thighs\"}"
+   ],
+   "effects_by_value": {}
+  },
+  "Physics_Properties/Physics Frame Start": {
+   "control": "int_slider",
+   "value_type": "int",
+   "driver_targets": [
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_start\", \"object\": \"Freja-physics-boobs\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_start\", \"object\": \"Freja-physics-butt\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_start\", \"object\": \"Freja-physics-cloth\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_start\", \"object\": \"Freja-physics-cloth-archangel-back\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_start\", \"object\": \"Freja-physics-cloth-archangel-front\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_start\", \"object\": \"Freja-physics-cloth-belt\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_start\", \"object\": \"Freja-physics-hair\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_start\", \"object\": \"Freja-physics-hair-archangel\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_start\", \"object\": \"Freja-physics-hair-ponytail.HOC\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_start\", \"object\": \"Freja-physics-hair-scarlett\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_start\", \"object\": \"Freja-physics-hair-side\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_start\", \"object\": \"Freja-physics-hair-side.HOC\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_start\", \"object\": \"Freja-physics-hair-streetwear\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_start\", \"object\": \"Freja-physics-hair.HOC\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_start\", \"object\": \"Freja-physics-necklance\"}",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].point_cache.frame_start\", \"object\": \"Freja-physics-thighs\"}"
+   ],
+   "effects_by_value": {}
+  },
+  "Physics_Properties/Physics Butt": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "mod/Freja-physics-butt/Armature/show_render",
+    "mod/Freja-physics-butt/Armature/show_viewport",
+    "mod/Freja-physics-butt/Cloth/show_render",
+    "mod/Freja-physics-butt/Cloth/show_viewport",
+    "mod/Freja-physics-butt/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-butt/CorrectiveSmooth/show_viewport",
+    "mod/Freja_Archangel_Panties/Phy-Butt/show_render",
+    "mod/Freja_Archangel_Panties/Phy-Butt/show_viewport",
+    "mod/Freja_Nude_Body/Phy-Butt/show_render",
+    "mod/Freja_Nude_Body/Phy-Butt/show_viewport",
+    "mod/Freja_Scarlett_Straps_Ammo/Phy-Butt/show_render",
+    "mod/Freja_Scarlett_Straps_Ammo/Phy-Butt/show_viewport",
+    "mod/Freja_SportsPanties/Phy-Butt/show_render",
+    "mod/Freja_SportsPanties/Phy-Butt/show_viewport",
+    "mod/Freja_Streetwear_Belt/Phy-Butt/show_render",
+    "mod/Freja_Streetwear_Belt/Phy-Butt/show_viewport",
+    "mod/Freja_Streetwear_Pants/Phy-Butt/show_render",
+    "mod/Freja_Streetwear_Pants/Phy-Butt/show_viewport",
+    "obj_vis/Freja-physics-butt"
+   ],
+   "varying_targets": {}
+  },
+  "Physics_Properties/Physics Boobs": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "mod/Freja-physics-boobs/Cloth/show_render",
+    "mod/Freja-physics-boobs/Cloth/show_viewport",
+    "mod/Freja-physics-boobs/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-boobs/CorrectiveSmooth/show_viewport",
+    "mod/Freja_Archangel_UpperBody_Armor/Phy-Breasts-Closed/show_render",
+    "mod/Freja_Archangel_UpperBody_Armor/Phy-Breasts-Closed/show_viewport",
+    "mod/Freja_Archangel_Upperbody/Phy-Breasts-Closed/show_render",
+    "mod/Freja_Archangel_Upperbody/Phy-Breasts-Closed/show_viewport",
+    "mod/Freja_Archangel_UpperbodyRevealed/Phy-Breasts-Closed/show_render",
+    "mod/Freja_Archangel_UpperbodyRevealed/Phy-Breasts-Closed/show_viewport",
+    "mod/Freja_Nude_Body/Phy-Boobs-Archangel-Hidden/show_render",
+    "mod/Freja_Nude_Body/Phy-Boobs-Archangel-Hidden/show_viewport",
+    "mod/Freja_Nude_Body/Phy-Boobs-Archangel-Show/show_render",
+    "mod/Freja_Nude_Body/Phy-Boobs-Archangel-Show/show_viewport",
+    "mod/Freja_Nude_Body/Phy-Boobs-Scarlett/show_render",
+    "mod/Freja_Nude_Body/Phy-Boobs-Scarlett/show_viewport",
+    "mod/Freja_Nude_Body/Phy-Boobs-Streetwear-Show/show_render",
+    "mod/Freja_Nude_Body/Phy-Boobs-Streetwear-Show/show_viewport",
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_render",
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_viewport",
+    "mod/Freja_OW2_Shirt/Phy-Closed/show_render",
+    "mod/Freja_OW2_Shirt/Phy-Closed/show_viewport",
+    "mod/Freja_OW2_Shirt/Phy-Exposed/show_render",
+    "mod/Freja_OW2_Shirt/Phy-Exposed/show_viewport",
+    "mod/Freja_OW2_Shirt/Phy-RolledUp/show_render",
+    "mod/Freja_OW2_Shirt/Phy-RolledUp/show_viewport",
+    "mod/Freja_Scarlett_Chest_Closed/Phy-BoobsHidden/show_render",
+    "mod/Freja_Scarlett_Chest_Closed/Phy-BoobsHidden/show_viewport",
+    "mod/Freja_Scarlett_Chest_Open/Phy-BoobsHidden/show_render",
+    "mod/Freja_Scarlett_Chest_Open/Phy-BoobsHidden/show_viewport",
+    "mod/Freja_SportsBra/Phy-BoobsExposed/show_render",
+    "mod/Freja_SportsBra/Phy-BoobsExposed/show_viewport",
+    "mod/Freja_SportsBra/Phy-BoobsHidden/show_render",
+    "mod/Freja_SportsBra/Phy-BoobsHidden/show_viewport",
+    "mod/Freja_Streetwear_Body/Phy-Boobs-Streetwear-Show/show_render",
+    "mod/Freja_Streetwear_Body/Phy-Boobs-Streetwear-Show/show_viewport",
+    "mod/Freja_Streetwear_BodyReveal/Phy-BoobsExposed/show_render",
+    "mod/Freja_Streetwear_BodyReveal/Phy-BoobsExposed/show_viewport",
+    "obj_vis/Freja-physics-boobs",
+    "other/{\"field\": \"modifiers[\\\"Cloth\\\"].collision_settings.use_collision\", \"object\": \"Freja-physics-boobs\"}"
+   ],
+   "varying_targets": {}
+  },
+  "Physics_Properties/Physics Hair": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "mod/Freja-physics-cloth-archangel-front/Cloth/show_render",
+    "mod/Freja-physics-cloth-archangel-front/Cloth/show_viewport",
+    "mod/Freja-physics-cloth-archangel-front/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-cloth-archangel-front/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-cloth-archangel-front/rig/show_render",
+    "mod/Freja-physics-cloth-archangel-front/rig/show_viewport",
+    "mod/Freja-physics-hair-archangel/Cloth/show_render",
+    "mod/Freja-physics-hair-archangel/Cloth/show_viewport",
+    "mod/Freja-physics-hair-archangel/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair-archangel/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair-archangel/rig/show_render",
+    "mod/Freja-physics-hair-archangel/rig/show_viewport",
+    "mod/Freja-physics-hair-ponytail.HOC/Cloth/show_render",
+    "mod/Freja-physics-hair-ponytail.HOC/Cloth/show_viewport",
+    "mod/Freja-physics-hair-ponytail.HOC/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair-ponytail.HOC/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair-scarlett/Cloth/show_render",
+    "mod/Freja-physics-hair-scarlett/Cloth/show_viewport",
+    "mod/Freja-physics-hair-scarlett/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair-scarlett/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair-scarlett/rig/show_render",
+    "mod/Freja-physics-hair-scarlett/rig/show_viewport",
+    "mod/Freja-physics-hair-side.HOC/Cloth/show_render",
+    "mod/Freja-physics-hair-side.HOC/Cloth/show_viewport",
+    "mod/Freja-physics-hair-side.HOC/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair-side.HOC/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair-side/Cloth/show_render",
+    "mod/Freja-physics-hair-side/Cloth/show_viewport",
+    "mod/Freja-physics-hair-side/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair-side/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair-streetwear/Cloth/show_render",
+    "mod/Freja-physics-hair-streetwear/Cloth/show_viewport",
+    "mod/Freja-physics-hair-streetwear/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair-streetwear/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair-streetwear/rig/show_render",
+    "mod/Freja-physics-hair-streetwear/rig/show_viewport",
+    "mod/Freja-physics-hair.HOC/Cloth/show_render",
+    "mod/Freja-physics-hair.HOC/Cloth/show_viewport",
+    "mod/Freja-physics-hair.HOC/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair.HOC/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair/Cloth/show_render",
+    "mod/Freja-physics-hair/Cloth/show_viewport",
+    "mod/Freja-physics-hair/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair/CorrectiveSmooth/show_viewport",
+    "mod/Freja_Archangel_Hair/Freja-physics-hair-Archangel/show_render",
+    "mod/Freja_Archangel_Hair/Freja-physics-hair-Archangel/show_viewport",
+    "mod/Freja_Heart_of_Courage_Hair/Freja-physics-hair-side.HOC/show_render",
+    "mod/Freja_Heart_of_Courage_Hair/Freja-physics-hair-side.HOC/show_viewport",
+    "mod/Freja_Heart_of_Courage_HairTail/SurfaceDeform/show_render",
+    "mod/Freja_Heart_of_Courage_HairTail/SurfaceDeform/show_viewport",
+    "mod/Freja_Heart_of_Courage_Hair_MiscRibbon/SurfaceDeform/show_render",
+    "mod/Freja_Heart_of_Courage_Hair_MiscRibbon/SurfaceDeform/show_viewport",
+    "mod/Freja_Heart_of_Courage_Hair_Side/Freja-physics-hair-side.HOC/show_render",
+    "mod/Freja_Heart_of_Courage_Hair_Side/Freja-physics-hair-side.HOC/show_viewport",
+    "mod/Freja_OW2_Hair-Front/Physics/show_render",
+    "mod/Freja_OW2_Hair-Front/Physics/show_viewport",
+    "mod/Freja_OW2_Hair-Side/Physics/show_render",
+    "mod/Freja_OW2_Hair-Side/Physics/show_viewport",
+    "mod/Freja_OW2_Hair/Physics/show_render",
+    "mod/Freja_OW2_Hair/Physics/show_viewport",
+    "mod/Freja_OW2_Hair_Straps/Physics/show_render",
+    "mod/Freja_OW2_Hair_Straps/Physics/show_viewport",
+    "mod/Freja_Scarlett_Hair_Back/Physics/show_render",
+    "mod/Freja_Scarlett_Hair_Back/Physics/show_viewport",
+    "mod/Freja_Scarlett_Hair_Front/Physics/show_render",
+    "mod/Freja_Scarlett_Hair_Front/Physics/show_viewport",
+    "mod/Freja_Streetwear_Hair/Physics/show_render",
+    "mod/Freja_Streetwear_Hair/Physics/show_viewport",
+    "obj_vis/Freja-physics-hair",
+    "obj_vis/Freja-physics-hair-archangel",
+    "obj_vis/Freja-physics-hair-ponytail.HOC",
+    "obj_vis/Freja-physics-hair-scarlett",
+    "obj_vis/Freja-physics-hair-side",
+    "obj_vis/Freja-physics-hair-side.HOC",
+    "obj_vis/Freja-physics-hair-streetwear",
+    "obj_vis/Freja-physics-hair.HOC"
+   ],
+   "varying_targets": {}
+  },
+  "Physics_Properties/Physics Jacket": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [],
+   "varying_targets": {}
+  },
+  "Physics_Properties/Physics Collision": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "mod/Freja-physics-body/rig/show_render",
+    "mod/Freja-physics-body/rig/show_viewport",
+    "obj_vis/Freja-physics-body",
+    "other/{\"field\": \"collision.use\", \"object\": \"Freja-physics-body\"}",
+    "other/{\"field\": \"collision.use\", \"object\": \"Freja-physics-boobs\"}",
+    "other/{\"field\": \"collision.use\", \"object\": \"Freja-physics-butt\"}",
+    "other/{\"field\": \"collision.use\", \"object\": \"Freja-physics-thighs\"}"
+   ],
+   "varying_targets": {}
+  },
+  "Physics_Properties/Physics Fix Script": {
+   "control": "string",
+   "value_type": "string",
+   "driver_targets": [],
+   "effects_by_value": {}
+  },
+  "Physics_Properties/Physics Cloth": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "mod/Freja-physics-cloth/Cloth/show_render",
+    "mod/Freja-physics-cloth/Cloth/show_viewport",
+    "mod/Freja-physics-cloth/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-cloth/CorrectiveSmooth/show_viewport",
+    "obj_vis/Freja-physics-cloth"
+   ],
+   "varying_targets": {}
+  },
+  "Physics_Properties/Physics Necklance": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "mod/Freja-physics-necklance/Cloth/show_render",
+    "mod/Freja-physics-necklance/Cloth/show_viewport",
+    "mod/Freja-physics-necklance/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-necklance/CorrectiveSmooth/show_viewport",
+    "mod/Freja_OW2_Necklance/Phy/show_render",
+    "mod/Freja_OW2_Necklance/Phy/show_viewport",
+    "obj_vis/Freja-physics-necklance"
+   ],
+   "varying_targets": {}
+  },
+  "Physics_Properties/Cloth_Misc": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "mod/Freja-physics-cloth-archangel-back/Cloth/show_render",
+    "mod/Freja-physics-cloth-archangel-back/Cloth/show_viewport",
+    "mod/Freja-physics-cloth-archangel-back/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-cloth-archangel-back/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-cloth-archangel-back/rig/show_render",
+    "mod/Freja-physics-cloth-archangel-back/rig/show_viewport",
+    "mod/Freja-physics-cloth-belt/Cloth/show_render",
+    "mod/Freja-physics-cloth-belt/Cloth/show_viewport",
+    "mod/Freja-physics-cloth-belt/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-cloth-belt/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-cloth-belt/rig/show_render",
+    "mod/Freja-physics-cloth-belt/rig/show_viewport",
+    "mod/Freja_Archangel_Upperbody/Phy-Breasts-Tabard/show_render",
+    "mod/Freja_Archangel_Upperbody/Phy-Breasts-Tabard/show_viewport",
+    "mod/Freja_Archangel_UpperbodyBackCloth/Phy/show_render",
+    "mod/Freja_Archangel_UpperbodyBackCloth/Phy/show_viewport",
+    "mod/Freja_Archangel_UpperbodyRevealed/Phy-Breasts-Tabard/show_render",
+    "mod/Freja_Archangel_UpperbodyRevealed/Phy-Breasts-Tabard/show_viewport",
+    "mod/Freja_Streetwear_Belt/Phy-Belt/show_render",
+    "mod/Freja_Streetwear_Belt/Phy-Belt/show_viewport",
+    "obj_vis/Freja-physics-cloth-archangel-back",
+    "obj_vis/Freja-physics-cloth-archangel-front",
+    "obj_vis/Freja-physics-cloth-belt"
+   ],
+   "varying_targets": {}
+  },
+  "Physics_Properties/Physics Thighs": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "mod/Freja-physics-thighs/Cloth/show_render",
+    "mod/Freja-physics-thighs/Cloth/show_viewport",
+    "mod/Freja-physics-thighs/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-thighs/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-thighs/rig/show_render",
+    "mod/Freja-physics-thighs/rig/show_viewport",
+    "mod/Freja_Archangel_Panties/Phy-Thighs/show_render",
+    "mod/Freja_Archangel_Panties/Phy-Thighs/show_viewport",
+    "mod/Freja_Heart_of_Courage_Highheels/Phy-Thighs/show_render",
+    "mod/Freja_Heart_of_Courage_Highheels/Phy-Thighs/show_viewport",
+    "mod/Freja_Nude_Body/Phy-Thighs/show_render",
+    "mod/Freja_Nude_Body/Phy-Thighs/show_viewport",
+    "mod/Freja_OW2_Boots/Phy-Thighs/show_render",
+    "mod/Freja_OW2_Boots/Phy-Thighs/show_viewport",
+    "mod/Freja_Stockings/Phy-Thighs/show_render",
+    "mod/Freja_Stockings/Phy-Thighs/show_viewport",
+    "mod/Freja_Streetwear_Belt/Phy-Thighs/show_render",
+    "mod/Freja_Streetwear_Belt/Phy-Thighs/show_viewport",
+    "mod/Freja_Streetwear_Pants/Phy-Thighs/show_render",
+    "mod/Freja_Streetwear_Pants/Phy-Thighs/show_viewport",
+    "obj_vis/Freja-physics-thighs",
+    "other/{\"field\": \"collision.use\", \"object\": \"Freja-physics-thighs\"}"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Skins/nsfw_on": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "geo/Freja_Heart_of_Courage_UpperBody/Mask/Socket_3",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Heart of Courage/Socket_15",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Heart of Courage/Socket_5",
+    "mat/Freja_Outfit_OW2/Math.002/1",
+    "mat/Freja_Outfit_OW2/Math.003/1",
+    "mat/Freja_Outfit_OW2/Math.004/0",
+    "mod/Freja_Heart_of_Courage_Skirt/Phy/show_render",
+    "mod/Freja_Heart_of_Courage_Skirt/Phy/show_viewport",
+    "mod/Freja_Heart_of_Courage_UpperBody/Phy-Freja_Heart_of_Courage_Skirt/show_render",
+    "mod/Freja_Heart_of_Courage_UpperBody/Phy-Freja_Heart_of_Courage_Skirt/show_viewport",
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_render",
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_viewport",
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_render",
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_viewport",
+    "mod/Freja_OW2_Bodysuit/Phy-Breasts-Closed/show_render",
+    "mod/Freja_OW2_Bodysuit/Phy-Breasts-Closed/show_viewport",
+    "mod/Freja_OW2_Bodysuit/Phy-Breasts-Open/show_render",
+    "mod/Freja_OW2_Bodysuit/Phy-Breasts-Open/show_viewport",
+    "mod/Freja_SportsBra/Phy-BoobsExposed/show_render",
+    "mod/Freja_SportsBra/Phy-BoobsExposed/show_viewport",
+    "mod/Freja_SportsBra/Phy-BoobsHidden/show_render",
+    "mod/Freja_SportsBra/Phy-BoobsHidden/show_viewport",
+    "ng/Freja HOC Skirt/Math/1",
+    "ng/Freja HOC Skirt/Mix/0",
+    "obj_vis/Freja_Heart_of_Courage_Cape",
+    "obj_vis/Freja_Heart_of_Courage_Ribbon_Back",
+    "obj_vis/Freja_Heart_of_Courage_Ribbon_Pelvis",
+    "obj_vis/Freja_Heart_of_Courage_Skirt",
+    "obj_vis/Freja_Heart_of_Courage_UpperBody",
+    "obj_vis/Freja_Heart_of_Courage_UpperBody_Breasts",
+    "obj_vis/Freja_OW2_Bodysuit",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back_01\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back_02\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back_03\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back_04\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front_01\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front_02\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front_03\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front_04\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "shape/Freja-physics-boobs/Freja Breasts Cloth Squeeze",
+    "shape/Freja_Heart_of_Courage_Gloves/Shrink",
+    "shape/Freja_Heart_of_Courage_Skirt/RollDown",
+    "shape/Freja_Heart_of_Courage_Skirt/UpperBody",
+    "shape/Freja_Heart_of_Courage_Skirt/key_blocks[\"RollDown\"].mute",
+    "shape/Freja_Heart_of_Courage_Skirt/key_blocks[\"UpperBody\"].mute",
+    "shape/Freja_Heart_of_Courage_UpperBody/CompressToChest",
+    "shape/Freja_Nude_Body/Freja Bodysuit",
+    "shape/Freja_Nude_Body/Freja Breasts Cloth Squeeze",
+    "shape/Freja_Nude_Body/Freja HOC Upperbody",
+    "shape/Freja_Nude_Body/Freja HOC Upperbody Breasts",
+    "shape/Freja_OW2_Bodysuit/Exposed",
+    "shape/Freja_OW2_Shirt/Exposed",
+    "shape/Freja_OW2_Shirt/ExposedAndChestArmor",
+    "shape/Freja_OW2_Shirt/RolledUp",
+    "shape/Freja_OW2_Shirt/ShirtOffset",
+    "shape/Freja_OW2_Shirt/TuckedAway"
+   ],
+   "varying_targets": {
+    "shape/Freja-physics-boobs/Freja Breasts Cloth Squeeze": {
+     "0": 1.0,
+     "1": 0.0
+    },
+    "obj_vis/Freja_OW2_Bodysuit": {
+     "0": 0,
+     "1": 1
+    },
+    "shape/Freja_Heart_of_Courage_Gloves/Shrink": {
+     "0": 1.0,
+     "1": 0.0
+    },
+    "mod/Freja_Heart_of_Courage_Skirt/Phy/show_render": {
+     "0": 1,
+     "1": 0
+    },
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_viewport": {
+     "0": 1,
+     "1": 0
+    },
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_render": {
+     "0": 1,
+     "1": 0
+    },
+    "mod/Freja_Heart_of_Courage_Skirt/Phy/show_viewport": {
+     "0": 1,
+     "1": 0
+    },
+    "shape/Freja_Nude_Body/Freja Breasts Cloth Squeeze": {
+     "0": 1.0,
+     "1": 0.0
+    },
+    "shape/Freja_Nude_Body/Freja Bodysuit": {
+     "0": 1.0,
+     "1": 0.0
+    }
+   }
+  },
+  "Properties_Skins/Chest Armor": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_OW2_Cape",
+    "obj_vis/Freja_OW2_Chest_Armor",
+    "obj_vis/Freja_OW2_Chest_Armor_Hoodie",
+    "obj_vis/Freja_OW2_Collar_Fur",
+    "other/{\"field\": \"pose.bones[\\\"collar_fur_01.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"collar_fur_01.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"collar_fur_02.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"collar_fur_02.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"collar_fur_03.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"collar_fur_03.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "shape/Freja_OW2_Shirt/ExposedAndChestArmor"
+   ],
+   "varying_targets": {
+    "obj_vis/Freja_OW2_Chest_Armor_Hoodie": {
+     "0": 1,
+     "1": 0
+    },
+    "obj_vis/Freja_OW2_Chest_Armor": {
+     "0": 1,
+     "1": 0
+    },
+    "obj_vis/Freja_OW2_Collar_Fur": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  "Properties_Skins/Hoodie": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_OW2_Cape",
+    "obj_vis/Freja_OW2_Chest_Armor_Hoodie"
+   ],
+   "varying_targets": {
+    "obj_vis/Freja_OW2_Chest_Armor_Hoodie": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  "Properties_Skins/Earring": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_OW2_Earring"
+   ],
+   "varying_targets": {
+    "obj_vis/Freja_OW2_Earring": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  "Properties_Skins/Gloves": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "geo/Freja_Nude_Body/Freja Mask Stack - Default/Socket_7",
+    "obj_vis/Freja_OW2_Gloves"
+   ],
+   "varying_targets": {
+    "obj_vis/Freja_OW2_Gloves": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  "Properties_Skins/Fur Collar": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_OW2_Collar_Fur",
+    "other/{\"field\": \"pose.bones[\\\"collar_fur_01.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"collar_fur_01.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"collar_fur_02.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"collar_fur_02.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"collar_fur_03.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"collar_fur_03.R\\\"].hide\", \"object\": \"RIG-Freja\"}"
+   ],
+   "varying_targets": {
+    "obj_vis/Freja_OW2_Collar_Fur": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  "Properties_Skins/Hair Straps": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "geo/Freja_Streetwear_Hair/Mask/Socket_7",
+    "obj_vis/Freja_Heart_of_Courage_HairTail",
+    "obj_vis/Freja_Heart_of_Courage_Hair_Misc",
+    "obj_vis/Freja_OW2_Hair_Straps",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_001.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_001.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_002.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_002.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_003.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_003.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_004.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_004.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_005.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSide_01.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSide_01.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSide_02.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSide_02.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_Hair_01\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_Hair_02\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_Hair_03\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_Hair_04\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_Hair_05\\\"].hide\", \"object\": \"RIG-Freja\"}"
+   ],
+   "varying_targets": {
+    "obj_vis/Freja_OW2_Hair_Straps": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  "Properties_Skins/High Heels": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "geo/Freja_Nude_Body/Freja Mask Stack - Default/Socket_5",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Shared/Socket_3",
+    "obj_vis/Freja_OW2_Boots",
+    "obj_vis/Freja_Stockings",
+    "shape/Freja_Nude_Body/Freja High Heels Tighten",
+    "shape/Freja_Nude_Body/Freja Stockings",
+    "shape/Freja_Scarlett_Straps_Ammo/Freja Stockings",
+    "shape/Freja_Scarlett_Thight_Strap/Freja Stockings"
+   ],
+   "varying_targets": {
+    "obj_vis/Freja_OW2_Boots": {
+     "0": 1,
+     "1": 0
+    },
+    "shape/Freja_Nude_Body/Freja High Heels Tighten": {
+     "0": 0.0,
+     "1": 1.0
+    }
+   }
+  },
+  "Properties_Skins/Belt Arrows": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_OW2_Belt_Arrows"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Skins/Nose Piercing": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_OW2_Nose_Piercing"
+   ],
+   "varying_targets": {
+    "obj_vis/Freja_OW2_Nose_Piercing": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  "Properties_Skins/Belt Utility": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_OW2_Belt_Utility"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Skins/Bodysuit Expose Belly": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Outfit_OW2/Math.003/1"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Skins/Hair Side": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "geo/Freja_Streetwear_Hair/Mask/Socket_5",
+    "obj_vis/Freja_Heart_of_Courage_Hair_Side",
+    "obj_vis/Freja_OW2_Hair-Side",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairFrontMiddle\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairFront_01.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairFront_01.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairFront_02.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairFront_02.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairFront_03.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairFront_03.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_01.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_01.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_02.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_02.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_03.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_03.R\\\"].hide\", \"object\": \"RIG-Freja\"}"
+   ],
+   "varying_targets": {
+    "obj_vis/Freja_OW2_Hair-Side": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  "Properties_Skins/Hair Front": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "geo/Freja_Streetwear_Hair/Mask/Socket_3",
+    "mod/Freja-physics-hair-scarlett/Cloth/show_render",
+    "mod/Freja-physics-hair-scarlett/Cloth/show_viewport",
+    "mod/Freja-physics-hair-scarlett/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair-scarlett/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair-scarlett/rig/show_render",
+    "mod/Freja-physics-hair-scarlett/rig/show_viewport",
+    "mod/Freja_Archangel_Hair/GeometryNodes/show_render",
+    "mod/Freja_Archangel_Hair/GeometryNodes/show_viewport",
+    "mod/Freja_Scarlett_Hair_Back/Physics/show_render",
+    "mod/Freja_Scarlett_Hair_Back/Physics/show_viewport",
+    "mod/Freja_Scarlett_Hair_Front/Physics/show_render",
+    "mod/Freja_Scarlett_Hair_Front/Physics/show_viewport",
+    "mod/Freja_Streetwear_Hair/Physics/show_render",
+    "mod/Freja_Streetwear_Hair/Physics/show_viewport",
+    "obj_vis/Freja-physics-hair-archangel",
+    "obj_vis/Freja-physics-hair-scarlett",
+    "obj_vis/Freja-physics-hair-streetwear",
+    "obj_vis/Freja_OW2_Hair-Front",
+    "obj_vis/Freja_Scarlett_Hair_Front",
+    "other/{\"field\": \"pose.bones[\\\"Hair_03\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_04\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_05\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_06\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_Middle.001.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_Middle.001.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_Middle.002.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_Middle.002.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_Middle.003.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_Middle.003.R\\\"].hide\", \"object\": \"RIG-Freja\"}"
+   ],
+   "varying_targets": {
+    "obj_vis/Freja_OW2_Hair-Front": {
+     "0": 1,
+     "1": 0
+    },
+    "mod/Freja_Archangel_Hair/GeometryNodes/show_render": {
+     "0": 1,
+     "1": 0
+    },
+    "mod/Freja_Archangel_Hair/GeometryNodes/show_viewport": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  "Properties_Skins/See-through belly": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Outfit_OW2/Math.004/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Skins/Shirt_Lewd": {
+   "control": "enum",
+   "value_type": "int",
+   "driver_targets": [
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_render",
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_viewport",
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_render",
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_viewport",
+    "mod/Freja_OW2_Shirt/Phy-Closed/show_render",
+    "mod/Freja_OW2_Shirt/Phy-Closed/show_viewport",
+    "mod/Freja_OW2_Shirt/Phy-Exposed/show_render",
+    "mod/Freja_OW2_Shirt/Phy-Exposed/show_viewport",
+    "mod/Freja_OW2_Shirt/Phy-RolledUp/show_render",
+    "mod/Freja_OW2_Shirt/Phy-RolledUp/show_viewport",
+    "mod/Freja_SportsBra/Phy-BoobsExposed/show_render",
+    "mod/Freja_SportsBra/Phy-BoobsExposed/show_viewport",
+    "mod/Freja_SportsBra/Phy-BoobsHidden/show_render",
+    "mod/Freja_SportsBra/Phy-BoobsHidden/show_viewport",
+    "shape/Freja-physics-boobs/Freja Breasts Cloth Squeeze",
+    "shape/Freja_Nude_Body/Freja Breasts Cloth Squeeze",
+    "shape/Freja_OW2_Shirt/Exposed",
+    "shape/Freja_OW2_Shirt/ExposedAndChestArmor",
+    "shape/Freja_OW2_Shirt/RolledUp",
+    "shape/Freja_OW2_Shirt/ShirtOffset",
+    "shape/Freja_OW2_Shirt/TuckedAway"
+   ],
+   "varying_targets": {
+    "shape/Freja_OW2_Shirt/TuckedAway": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 1.0
+    },
+    "shape/Freja_OW2_Shirt/RolledUp": {
+     "0": 0.0,
+     "1": 1.0,
+     "2": 0.0,
+     "3": 0.0
+    },
+    "shape/Freja_OW2_Shirt/ExposedAndChestArmor": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 1.0,
+     "3": 0.0
+    },
+    "shape/Freja_OW2_Shirt/ShirtOffset": {
+     "0": 0.0,
+     "1": 1.0,
+     "2": 1.0,
+     "3": 0.0
+    },
+    "shape/Freja_OW2_Shirt/Exposed": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 1.0,
+     "3": 0.0
+    }
+   }
+  },
+  "Properties_Skins/Cape Emissive Color": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja_Body_OW2/Mix.006/7"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Skins/Cape Emissive": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Body_OW2/Value.003/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Skins/Hair Color Multiplier": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja_Hair/RGB/0",
+    "mat/Freja_Heart_of_Courage_Hair/Mix.004/7",
+    "mat/Freja_Heart_of_Courage_Hair/Mix.008/7",
+    "mat/Streetwear_Hair/Mix.001/7"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Skins/Bodysuit_Lewd_Lower": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "mat/Freja_Outfit_OW2/Math.002/1"
+   ],
+   "varying_targets": {
+    "mat/Freja_Outfit_OW2/Math.002/1": {
+     "0": 0.0,
+     "1": 1.0
+    }
+   }
+  },
+  "Properties_Skins/$skin_color": {
+   "control": "enum",
+   "value_type": "int",
+   "driver_targets": [
+    "mat/Freja_Body_OW2/Skin/0",
+    "mat/Freja_Outfit_OW2/Skin/0"
+   ],
+   "varying_targets": {
+    "mat/Freja_Outfit_OW2/Skin/0": {
+     "0": 1.0,
+     "1": 2.0,
+     "2": 3.0,
+     "3": 4.0,
+     "4": 5.0
+    },
+    "mat/Freja_Body_OW2/Skin/0": {
+     "0": 1.0,
+     "1": 2.0,
+     "2": 3.0,
+     "3": 4.0,
+     "4": 5.0
+    }
+   }
+  },
+  "Properties_Skins/Bodysuit_Lewd": {
+   "control": "enum",
+   "value_type": "int",
+   "driver_targets": [
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_render",
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_viewport",
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_render",
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_viewport",
+    "mod/Freja_OW2_Bodysuit/Phy-Breasts-Closed/show_render",
+    "mod/Freja_OW2_Bodysuit/Phy-Breasts-Closed/show_viewport",
+    "mod/Freja_OW2_Bodysuit/Phy-Breasts-Open/show_render",
+    "mod/Freja_OW2_Bodysuit/Phy-Breasts-Open/show_viewport",
+    "mod/Freja_OW2_Shirt/Phy-Exposed/show_render",
+    "mod/Freja_OW2_Shirt/Phy-Exposed/show_viewport",
+    "mod/Freja_SportsBra/Phy-BoobsExposed/show_render",
+    "mod/Freja_SportsBra/Phy-BoobsExposed/show_viewport",
+    "mod/Freja_SportsBra/Phy-BoobsHidden/show_render",
+    "mod/Freja_SportsBra/Phy-BoobsHidden/show_viewport",
+    "shape/Freja-physics-boobs/Freja Breasts Cloth Squeeze",
+    "shape/Freja_Nude_Body/Freja Breasts Cloth Squeeze",
+    "shape/Freja_OW2_Bodysuit/Exposed",
+    "shape/Freja_OW2_Shirt/Exposed",
+    "shape/Freja_OW2_Shirt/ExposedAndChestArmor",
+    "shape/Freja_OW2_Shirt/RolledUp",
+    "shape/Freja_OW2_Shirt/TuckedAway"
+   ],
+   "varying_targets": {
+    "shape/Freja_OW2_Bodysuit/Exposed": {
+     "0": 0.0,
+     "1": 1.0
+    },
+    "mod/Freja_OW2_Bodysuit/Phy-Breasts-Closed/show_render": {
+     "0": 1,
+     "1": 0
+    },
+    "mod/Freja_OW2_Bodysuit/Phy-Breasts-Open/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_OW2_Bodysuit/Phy-Breasts-Open/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_OW2_Bodysuit/Phy-Breasts-Closed/show_viewport": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  "Properties_Skins/skin_id": {
+   "control": "enum",
+   "value_type": "int",
+   "driver_targets": [
+    "geo/Freja_Heart_of_Courage_UpperBody/Mask/Socket_3",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Archangel/Socket_15",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Archangel/Socket_16",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Archangel/Socket_17",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Archangel/Socket_18",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Archangel/Socket_25",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Default/Socket_3",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Default/Socket_5",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Default/Socket_7",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Heart of Courage/Socket_15",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Heart of Courage/Socket_5",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Heart of Courage/Socket_7",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Heart of Courage/Socket_9",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Scarlett/Socket_11",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Scarlett/Socket_15",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Scarlett/Socket_9",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Shared/Socket_3",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Streetwear/Socket_11",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Streetwear/Socket_15",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Streetwear/Socket_16",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Streetwear/Socket_17",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Streetwear/Socket_25",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Streetwear/Socket_28",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Streetwear/Socket_9",
+    "mat/Freja Eye/Mix.001/0",
+    "mat/Freja Eye/Mix.003/0",
+    "mat/Freja Eye/Mix.006/0",
+    "mat/Freja Face/Math.008/1",
+    "mat/Freja Face/Math.009/1",
+    "mat/Freja Face/Value.004/0",
+    "mat/Freja Teeth/Mix.010/0",
+    "mat/Freja Teeth/Mix.011/0",
+    "mat/Freja_Body_Nude/Group/1",
+    "mat/Freja_Body_Nude/Value.003/0",
+    "mat/Freja_Body_Nude/Value.004/0",
+    "mod/Freja-physics-cloth-archangel-back/Cloth/show_render",
+    "mod/Freja-physics-cloth-archangel-back/Cloth/show_viewport",
+    "mod/Freja-physics-cloth-archangel-back/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-cloth-archangel-back/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-cloth-archangel-back/rig/show_render",
+    "mod/Freja-physics-cloth-archangel-back/rig/show_viewport",
+    "mod/Freja-physics-cloth-archangel-front/Cloth/show_render",
+    "mod/Freja-physics-cloth-archangel-front/Cloth/show_viewport",
+    "mod/Freja-physics-cloth-archangel-front/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-cloth-archangel-front/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-cloth-archangel-front/rig/show_render",
+    "mod/Freja-physics-cloth-archangel-front/rig/show_viewport",
+    "mod/Freja-physics-cloth-belt/Cloth/show_render",
+    "mod/Freja-physics-cloth-belt/Cloth/show_viewport",
+    "mod/Freja-physics-cloth-belt/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-cloth-belt/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-cloth-belt/rig/show_render",
+    "mod/Freja-physics-cloth-belt/rig/show_viewport",
+    "mod/Freja-physics-hair-archangel/Cloth/show_render",
+    "mod/Freja-physics-hair-archangel/Cloth/show_viewport",
+    "mod/Freja-physics-hair-archangel/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair-archangel/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair-archangel/rig/show_render",
+    "mod/Freja-physics-hair-archangel/rig/show_viewport",
+    "mod/Freja-physics-hair-ponytail.HOC/Cloth/show_render",
+    "mod/Freja-physics-hair-ponytail.HOC/Cloth/show_viewport",
+    "mod/Freja-physics-hair-ponytail.HOC/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair-ponytail.HOC/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair-scarlett/Cloth/show_render",
+    "mod/Freja-physics-hair-scarlett/Cloth/show_viewport",
+    "mod/Freja-physics-hair-scarlett/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair-scarlett/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair-scarlett/rig/show_render",
+    "mod/Freja-physics-hair-scarlett/rig/show_viewport",
+    "mod/Freja-physics-hair-side.HOC/Cloth/show_render",
+    "mod/Freja-physics-hair-side.HOC/Cloth/show_viewport",
+    "mod/Freja-physics-hair-side.HOC/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair-side.HOC/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair-side/Cloth/show_render",
+    "mod/Freja-physics-hair-side/Cloth/show_viewport",
+    "mod/Freja-physics-hair-side/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair-side/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair-streetwear/Cloth/show_render",
+    "mod/Freja-physics-hair-streetwear/Cloth/show_viewport",
+    "mod/Freja-physics-hair-streetwear/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair-streetwear/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair-streetwear/rig/show_render",
+    "mod/Freja-physics-hair-streetwear/rig/show_viewport",
+    "mod/Freja-physics-hair.HOC/Cloth/show_render",
+    "mod/Freja-physics-hair.HOC/Cloth/show_viewport",
+    "mod/Freja-physics-hair.HOC/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair.HOC/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-hair/Cloth/show_render",
+    "mod/Freja-physics-hair/Cloth/show_viewport",
+    "mod/Freja-physics-hair/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-hair/CorrectiveSmooth/show_viewport",
+    "mod/Freja_Archangel_Hair/Freja-physics-hair-Archangel/show_render",
+    "mod/Freja_Archangel_Hair/Freja-physics-hair-Archangel/show_viewport",
+    "mod/Freja_Archangel_Upperbody/Phy-Breasts-Closed/show_render",
+    "mod/Freja_Archangel_Upperbody/Phy-Breasts-Closed/show_viewport",
+    "mod/Freja_Archangel_Upperbody/Phy-Breasts-Tabard/show_render",
+    "mod/Freja_Archangel_Upperbody/Phy-Breasts-Tabard/show_viewport",
+    "mod/Freja_Archangel_UpperbodyBackCloth/Phy/show_render",
+    "mod/Freja_Archangel_UpperbodyBackCloth/Phy/show_viewport",
+    "mod/Freja_Archangel_UpperbodyRevealed/Phy-Breasts-Closed/show_render",
+    "mod/Freja_Archangel_UpperbodyRevealed/Phy-Breasts-Closed/show_viewport",
+    "mod/Freja_Archangel_UpperbodyRevealed/Phy-Breasts-Tabard/show_render",
+    "mod/Freja_Archangel_UpperbodyRevealed/Phy-Breasts-Tabard/show_viewport",
+    "mod/Freja_Heart_of_Courage_Hair/Freja-physics-hair-side.HOC/show_render",
+    "mod/Freja_Heart_of_Courage_Hair/Freja-physics-hair-side.HOC/show_viewport",
+    "mod/Freja_Heart_of_Courage_HairTail/SurfaceDeform/show_render",
+    "mod/Freja_Heart_of_Courage_HairTail/SurfaceDeform/show_viewport",
+    "mod/Freja_Heart_of_Courage_Hair_MiscRibbon/SurfaceDeform/show_render",
+    "mod/Freja_Heart_of_Courage_Hair_MiscRibbon/SurfaceDeform/show_viewport",
+    "mod/Freja_Heart_of_Courage_Hair_Side/Freja-physics-hair-side.HOC/show_render",
+    "mod/Freja_Heart_of_Courage_Hair_Side/Freja-physics-hair-side.HOC/show_viewport",
+    "mod/Freja_Heart_of_Courage_UpperBody/Mask/show_render",
+    "mod/Freja_Heart_of_Courage_UpperBody/Mask/show_viewport",
+    "mod/Freja_Heart_of_Courage_UpperBody/Phy-Freja_Heart_of_Courage_Skirt/show_render",
+    "mod/Freja_Heart_of_Courage_UpperBody/Phy-Freja_Heart_of_Courage_Skirt/show_viewport",
+    "mod/Freja_Nude_Body/Freja Mask Stack - Archangel/show_render",
+    "mod/Freja_Nude_Body/Freja Mask Stack - Archangel/show_viewport",
+    "mod/Freja_Nude_Body/Freja Mask Stack - Default/show_render",
+    "mod/Freja_Nude_Body/Freja Mask Stack - Default/show_viewport",
+    "mod/Freja_Nude_Body/Freja Mask Stack - Heart of Courage/show_render",
+    "mod/Freja_Nude_Body/Freja Mask Stack - Heart of Courage/show_viewport",
+    "mod/Freja_Nude_Body/Freja Mask Stack - Scarlett/show_render",
+    "mod/Freja_Nude_Body/Freja Mask Stack - Scarlett/show_viewport",
+    "mod/Freja_Nude_Body/Freja Mask Stack - Streetwear/show_render",
+    "mod/Freja_Nude_Body/Freja Mask Stack - Streetwear/show_viewport",
+    "mod/Freja_Nude_Body/Phy-Boobs-Archangel-Hidden/show_render",
+    "mod/Freja_Nude_Body/Phy-Boobs-Archangel-Hidden/show_viewport",
+    "mod/Freja_Nude_Body/Phy-Boobs-Archangel-Show/show_render",
+    "mod/Freja_Nude_Body/Phy-Boobs-Archangel-Show/show_viewport",
+    "mod/Freja_Nude_Body/Phy-Boobs-Scarlett/show_render",
+    "mod/Freja_Nude_Body/Phy-Boobs-Scarlett/show_viewport",
+    "mod/Freja_Nude_Body/Phy-Boobs-Streetwear-Show/show_render",
+    "mod/Freja_Nude_Body/Phy-Boobs-Streetwear-Show/show_viewport",
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_render",
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_viewport",
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_render",
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_viewport",
+    "mod/Freja_OW2_Hair-Front/Physics/show_render",
+    "mod/Freja_OW2_Hair-Front/Physics/show_viewport",
+    "mod/Freja_OW2_Hair-Side/Physics/show_render",
+    "mod/Freja_OW2_Hair-Side/Physics/show_viewport",
+    "mod/Freja_OW2_Hair/Physics/show_render",
+    "mod/Freja_OW2_Hair/Physics/show_viewport",
+    "mod/Freja_OW2_Hair_Straps/Physics/show_render",
+    "mod/Freja_OW2_Hair_Straps/Physics/show_viewport",
+    "mod/Freja_Scarlett_Hair_Back/Physics/show_render",
+    "mod/Freja_Scarlett_Hair_Back/Physics/show_viewport",
+    "mod/Freja_Scarlett_Hair_Front/Physics/show_render",
+    "mod/Freja_Scarlett_Hair_Front/Physics/show_viewport",
+    "mod/Freja_SportsBra/Phy-BoobsExposed/show_render",
+    "mod/Freja_SportsBra/Phy-BoobsExposed/show_viewport",
+    "mod/Freja_SportsBra/Phy-BoobsHidden/show_render",
+    "mod/Freja_SportsBra/Phy-BoobsHidden/show_viewport",
+    "mod/Freja_Streetwear_Belt/Phy-Belt/show_render",
+    "mod/Freja_Streetwear_Belt/Phy-Belt/show_viewport",
+    "mod/Freja_Streetwear_Body/Phy-Boobs-Streetwear-Show/show_render",
+    "mod/Freja_Streetwear_Body/Phy-Boobs-Streetwear-Show/show_viewport",
+    "mod/Freja_Streetwear_BodyReveal/Phy-BoobsExposed/show_render",
+    "mod/Freja_Streetwear_BodyReveal/Phy-BoobsExposed/show_viewport",
+    "mod/Freja_Streetwear_Hair/Mask/show_render",
+    "mod/Freja_Streetwear_Hair/Mask/show_viewport",
+    "mod/Freja_Streetwear_Hair/Physics/show_render",
+    "mod/Freja_Streetwear_Hair/Physics/show_viewport",
+    "ng/Freja HOC Skirt/Math/1",
+    "ng/Freja Scarlett Bodysuit/Math.002/1",
+    "ng/Freja Scarlett Bodysuit/Math/1",
+    "obj_vis/Freja-physics-cloth-archangel-back",
+    "obj_vis/Freja-physics-cloth-archangel-front",
+    "obj_vis/Freja-physics-cloth-belt",
+    "obj_vis/Freja-physics-hair",
+    "obj_vis/Freja-physics-hair-archangel",
+    "obj_vis/Freja-physics-hair-ponytail.HOC",
+    "obj_vis/Freja-physics-hair-scarlett",
+    "obj_vis/Freja-physics-hair-side",
+    "obj_vis/Freja-physics-hair-side.HOC",
+    "obj_vis/Freja-physics-hair-streetwear",
+    "obj_vis/Freja-physics-hair.HOC",
+    "obj_vis/Freja-physics-necklance",
+    "obj_vis/Freja_Archangel_ArmsL",
+    "obj_vis/Freja_Archangel_ArmsL_Armor",
+    "obj_vis/Freja_Archangel_ArmsR",
+    "obj_vis/Freja_Archangel_Cape",
+    "obj_vis/Freja_Archangel_Hair",
+    "obj_vis/Freja_Archangel_Helmet",
+    "obj_vis/Freja_Archangel_Legs",
+    "obj_vis/Freja_Archangel_LegsUpper",
+    "obj_vis/Freja_Archangel_Panties",
+    "obj_vis/Freja_Archangel_Shoulderguard",
+    "obj_vis/Freja_Archangel_SideArmor",
+    "obj_vis/Freja_Archangel_UpperBody_Armor",
+    "obj_vis/Freja_Archangel_Upperbody",
+    "obj_vis/Freja_Archangel_UpperbodyBackCloth",
+    "obj_vis/Freja_Archangel_UpperbodyRevealed",
+    "obj_vis/Freja_Archangel_Weapon",
+    "obj_vis/Freja_Archangel_Weapon_Arrow",
+    "obj_vis/Freja_Archangel_Weapon_Mag",
+    "obj_vis/Freja_Heart_of_Courage_Cape",
+    "obj_vis/Freja_Heart_of_Courage_Earring",
+    "obj_vis/Freja_Heart_of_Courage_Gloves",
+    "obj_vis/Freja_Heart_of_Courage_Hair",
+    "obj_vis/Freja_Heart_of_Courage_HairTail",
+    "obj_vis/Freja_Heart_of_Courage_Hair_Misc",
+    "obj_vis/Freja_Heart_of_Courage_Hair_MiscRibbon",
+    "obj_vis/Freja_Heart_of_Courage_Hair_Misc_Wings",
+    "obj_vis/Freja_Heart_of_Courage_Hair_Side",
+    "obj_vis/Freja_Heart_of_Courage_Highheels",
+    "obj_vis/Freja_Heart_of_Courage_Kittie",
+    "obj_vis/Freja_Heart_of_Courage_Ribbon_Back",
+    "obj_vis/Freja_Heart_of_Courage_Ribbon_Neck",
+    "obj_vis/Freja_Heart_of_Courage_Ribbon_Pelvis",
+    "obj_vis/Freja_Heart_of_Courage_Skirt",
+    "obj_vis/Freja_Heart_of_Courage_UpperBody",
+    "obj_vis/Freja_Heart_of_Courage_UpperBody_Breasts",
+    "obj_vis/Freja_Heart_of_Courage_UpperBody_Wrist",
+    "obj_vis/Freja_Heart_of_Courage_UpperBody_Wrist_Ammo",
+    "obj_vis/Freja_Heart_of_Courage_Weapon",
+    "obj_vis/Freja_OW2_Belt",
+    "obj_vis/Freja_OW2_Belt_Arrows",
+    "obj_vis/Freja_OW2_Belt_Utility",
+    "obj_vis/Freja_OW2_Bodysuit",
+    "obj_vis/Freja_OW2_Boots",
+    "obj_vis/Freja_OW2_Cape",
+    "obj_vis/Freja_OW2_Chest_Armor",
+    "obj_vis/Freja_OW2_Chest_Armor_Hoodie",
+    "obj_vis/Freja_OW2_Collar_Fur",
+    "obj_vis/Freja_OW2_Earring",
+    "obj_vis/Freja_OW2_Gloves",
+    "obj_vis/Freja_OW2_Hair",
+    "obj_vis/Freja_OW2_Hair-Front",
+    "obj_vis/Freja_OW2_Hair-Side",
+    "obj_vis/Freja_OW2_Hair_Straps",
+    "obj_vis/Freja_OW2_Necklance",
+    "obj_vis/Freja_OW2_Nose_Piercing",
+    "obj_vis/Freja_OW2_Shirt",
+    "obj_vis/Freja_OW2_Weapon",
+    "obj_vis/Freja_OW2_Weapon_Arrow",
+    "obj_vis/Freja_OW2_Weapon_Magazine",
+    "obj_vis/Freja_Scarlett_Ammo",
+    "obj_vis/Freja_Scarlett_Boots",
+    "obj_vis/Freja_Scarlett_Cape",
+    "obj_vis/Freja_Scarlett_Chest_Closed",
+    "obj_vis/Freja_Scarlett_Chest_Hoodie",
+    "obj_vis/Freja_Scarlett_Chest_HoodieOn",
+    "obj_vis/Freja_Scarlett_Chest_Open",
+    "obj_vis/Freja_Scarlett_Earring",
+    "obj_vis/Freja_Scarlett_Gloves",
+    "obj_vis/Freja_Scarlett_Hair",
+    "obj_vis/Freja_Scarlett_Hair_Back",
+    "obj_vis/Freja_Scarlett_Hair_Front",
+    "obj_vis/Freja_Scarlett_Knife",
+    "obj_vis/Freja_Scarlett_Outfit_Arms",
+    "obj_vis/Freja_Scarlett_Outfit_Neck_Zipper",
+    "obj_vis/Freja_Scarlett_Straps_Ammo",
+    "obj_vis/Freja_Scarlett_Straps_Upper",
+    "obj_vis/Freja_Scarlett_Thight_Strap",
+    "obj_vis/Freja_Scarlett_Weapon",
+    "obj_vis/Freja_Scarlett_Weapon_Magazine",
+    "obj_vis/Freja_Scarlett_Wrist",
+    "obj_vis/Freja_Stockings",
+    "obj_vis/Freja_Streetwear_Belt",
+    "obj_vis/Freja_Streetwear_Body",
+    "obj_vis/Freja_Streetwear_BodyReveal",
+    "obj_vis/Freja_Streetwear_BodyStrapConnect",
+    "obj_vis/Freja_Streetwear_Cape",
+    "obj_vis/Freja_Streetwear_Gloves",
+    "obj_vis/Freja_Streetwear_Hair",
+    "obj_vis/Freja_Streetwear_Hat",
+    "obj_vis/Freja_Streetwear_Headphone",
+    "obj_vis/Freja_Streetwear_NosePiercing",
+    "obj_vis/Freja_Streetwear_Pants",
+    "obj_vis/Freja_Streetwear_PantsDown",
+    "obj_vis/Freja_Streetwear_Shoes",
+    "obj_vis/Freja_Streetwear_Sleeves",
+    "obj_vis/Freja_Streetwear_Sleeves_Glass",
+    "obj_vis/Freja_Streetwear_Weapon",
+    "obj_vis/Freja_Streetwear_Weapon_Decal",
+    "obj_vis/Freja_Streetwear_Weapon_Glass",
+    "obj_vis/Freja_Streetwear_Weapon_Magazine",
+    "obj_vis/RIG-Heart_of_Courage_Kittie",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_001.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_001.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_001\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_002.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_002.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_003.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_003.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_004.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_004.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_005.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_Scarlett_1\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_Scarlett_2\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_Scarlett_3\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_Scarlett_4\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_Scarlett_5\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"BackHair_Scarlett_6\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairFrontMiddle\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairFront_01.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairFront_01.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairFront_02.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairFront_02.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairFront_03.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairFront_03.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSideTail_01.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSideTail_01.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSideTail_02.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSideTail_02.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSideTail_03.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSideTail_03.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSideTail_04.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSideTail_04.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSide_01.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSide_01.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSide_02.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSide_02.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_Hair_01\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_Hair_02\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_Hair_03\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_Hair_04\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_Hair_05\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_Ornament_01.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_Ornament_01.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_Ornament_02.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_Ornament_02.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back_01\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back_02\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back_03\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back_04\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front_01\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front_02\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front_03\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front_04\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Neck\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Neck_01.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Neck_01.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Neck_02.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Neck_02.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_01.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_01.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_02.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_02.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_03.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_03.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_03\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_04\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_05\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_06\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_Middle.001.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_Middle.001.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_Middle.002.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_Middle.002.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_Middle.003.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_Middle.003.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_Scarlett_Front_01\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_Scarlett_Front_02\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_Scarlett_Front_03\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Hair_Scarlett_Front_04\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Scarlett_Knife\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"Scarlett_Zipper_Neck\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"belt_01\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"belt_02\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"belt_03\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"belt_04\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"belt_arrows\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"belt_arrows_straps_01\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"belt_arrows_straps_02\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"belt_arrows_straps_03\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"belt_arrows_straps_04\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"collar_fur_01.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"collar_fur_01.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"collar_fur_02.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"collar_fur_02.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"collar_fur_03.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"collar_fur_03.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"necklance_01\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"necklance_02\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"necklance_emblem\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"necklance_side_01.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"necklance_side_01.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"necklance_side_02.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"necklance_side_02.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "shape/Freja-physics-boobs/Freja Breasts Cloth Squeeze",
+    "shape/Freja_Heart_of_Courage_Skirt/UpperBody",
+    "shape/Freja_Heart_of_Courage_UpperBody/CompressToChest",
+    "shape/Freja_Nude_Body/Freja Archangel Breasts",
+    "shape/Freja_Nude_Body/Freja Bodysuit",
+    "shape/Freja_Nude_Body/Freja Bodysuit Neck and Hand",
+    "shape/Freja_Nude_Body/Freja Bodysuit Scarlett Belly",
+    "shape/Freja_Nude_Body/Freja Breasts Cloth Squeeze",
+    "shape/Freja_Nude_Body/Freja Cloth Chest",
+    "shape/Freja_Nude_Body/Freja HOC Upperbody",
+    "shape/Freja_Nude_Body/Freja HOC Upperbody Breasts",
+    "shape/Freja_Nude_Body/Freja High Heels Tighten",
+    "shape/Freja_Nude_Body/Freja Scarlett Ammo Strap",
+    "shape/Freja_Nude_Body/Freja Scarlett Chest Strap",
+    "shape/Freja_Nude_Body/Freja Scarlett Collar",
+    "shape/Freja_Nude_Body/Freja Scarlett Collar Guard",
+    "shape/Freja_Nude_Body/Freja Scarlett Thight Strap",
+    "shape/Freja_Nude_Body/Freja Stockings",
+    "shape/Freja_Nude_Body/key_blocks[\"Freja Bodysuit\"].mute",
+    "shape/Freja_Nude_Body/key_blocks[\"Freja Breasts Cloth Squeeze\"].mute",
+    "shape/Freja_Nude_Body/key_blocks[\"Freja Cloth Chest\"].mute",
+    "shape/Freja_Nude_Body/key_blocks[\"Freja HOC Upperbody Breasts\"].mute",
+    "shape/Freja_Nude_Body/key_blocks[\"Freja HOC Upperbody\"].mute",
+    "shape/Freja_Nude_Body/key_blocks[\"Freja High Heels Tighten\"].mute",
+    "shape/Freja_OW2_Bodysuit/HideChest",
+    "shape/Freja_Scarlett_Straps_Ammo/Freja Stockings",
+    "shape/Freja_Scarlett_Thight_Strap/Freja Stockings"
+   ],
+   "varying_targets": {
+    "obj_vis/Freja_Streetwear_Gloves": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 0,
+     "4": 1
+    },
+    "mat/Freja Eye/Mix.006/0": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 1.0,
+     "3": 0.0,
+     "4": 0.0
+    },
+    "mod/Freja_Nude_Body/Freja Mask Stack - Scarlett/show_viewport": {
+     "0": 0,
+     "1": 0,
+     "2": 1,
+     "3": 0,
+     "4": 0
+    },
+    "mod/Freja_Nude_Body/Freja Mask Stack - Scarlett/show_render": {
+     "0": 0,
+     "1": 0,
+     "2": 1,
+     "3": 0,
+     "4": 0
+    },
+    "mod/Freja_Nude_Body/Freja Mask Stack - Archangel/show_render": {
+     "0": 0,
+     "1": 0,
+     "2": 0,
+     "3": 0,
+     "4": 1
+    },
+    "obj_vis/Freja_Heart_of_Courage_Hair_Misc": {
+     "0": 1,
+     "1": 0,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Archangel_Shoulderguard": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 0
+    },
+    "mod/Freja_Nude_Body/Freja Mask Stack - Streetwear/show_viewport": {
+     "0": 0,
+     "1": 0,
+     "2": 0,
+     "3": 1,
+     "4": 0
+    },
+    "obj_vis/Freja_OW2_Hair_Straps": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "mat/Freja Face/Math.009/1": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 1.0,
+     "3": 0.0,
+     "4": 0.0
+    },
+    "obj_vis/Freja_OW2_Hair-Side": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "mat/Freja Eye/Mix.003/0": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 1.0,
+     "3": 0.0,
+     "4": 0.0
+    },
+    "mat/Freja Teeth/Mix.011/0": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 1.0,
+     "3": 0.0,
+     "4": 0.0
+    },
+    "obj_vis/Freja_Streetwear_Weapon_Decal": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 0,
+     "4": 1
+    },
+    "obj_vis/Freja_OW2_Boots": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_OW2_Hair": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Archangel_Weapon_Mag": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 0
+    },
+    "ng/Freja Scarlett Bodysuit/Math/1": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 1.0,
+     "3": 0.0,
+     "4": 0.0
+    },
+    "obj_vis/Freja_Archangel_Legs": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 0
+    },
+    "obj_vis/Freja_Streetwear_BodyStrapConnect": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 0,
+     "4": 1
+    },
+    "obj_vis/Freja_OW2_Weapon_Magazine": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Heart_of_Courage_Hair": {
+     "0": 1,
+     "1": 0,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "shape/Freja_Nude_Body/Freja High Heels Tighten": {
+     "0": 1.0,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.0,
+     "4": 0.0
+    },
+    "obj_vis/Freja_Streetwear_BodyReveal": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 0,
+     "4": 1
+    },
+    "obj_vis/Freja_Heart_of_Courage_Ribbon_Neck": {
+     "0": 1,
+     "1": 0,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "shape/Freja_Nude_Body/Freja Scarlett Thight Strap": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 1.0,
+     "3": 0.0,
+     "4": 0.0
+    },
+    "mat/Freja_Body_Nude/Group/1": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 1.0,
+     "3": 0.0,
+     "4": 0.0
+    },
+    "mod/Freja_Nude_Body/Freja Mask Stack - Streetwear/show_render": {
+     "0": 0,
+     "1": 0,
+     "2": 0,
+     "3": 1,
+     "4": 0
+    },
+    "mat/Freja Face/Value.004/0": {
+     "0": 0.0,
+     "1": 1.0,
+     "2": 1.0,
+     "3": 0.0,
+     "4": 0.0
+    },
+    "obj_vis/Freja_Archangel_ArmsL_Armor": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 0
+    },
+    "obj_vis/Freja_OW2_Chest_Armor_Hoodie": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "mod/Freja_Nude_Body/Freja Mask Stack - Default/show_render": {
+     "0": 1,
+     "1": 0,
+     "2": 0,
+     "3": 0,
+     "4": 0
+    },
+    "obj_vis/Freja_Streetwear_Weapon": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 0,
+     "4": 1
+    },
+    "obj_vis/Freja_Scarlett_Hair": {
+     "0": 1,
+     "1": 1,
+     "2": 0,
+     "3": 1,
+     "4": 1
+    },
+    "shape/Freja_Nude_Body/Freja Scarlett Collar Guard": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 1.0,
+     "3": 0.0,
+     "4": 0.0
+    },
+    "obj_vis/Freja_Streetwear_Shoes": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 0,
+     "4": 1
+    },
+    "obj_vis/Freja_Archangel_UpperBody_Armor": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 0
+    },
+    "obj_vis/Freja_Streetwear_Headphone": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 0,
+     "4": 1
+    },
+    "obj_vis/Freja_Streetwear_Hat": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 0,
+     "4": 1
+    },
+    "obj_vis/Freja_Scarlett_Chest_Hoodie": {
+     "0": 1,
+     "1": 1,
+     "2": 0,
+     "3": 1,
+     "4": 1
+    },
+    "shape/Freja_Nude_Body/Freja Scarlett Collar": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 1.0,
+     "3": 0.0,
+     "4": 0.0
+    },
+    "obj_vis/Freja_OW2_Hair-Front": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "mod/Freja_Heart_of_Courage_UpperBody/Mask/show_render": {
+     "0": 0,
+     "1": 1,
+     "2": 0,
+     "3": 0,
+     "4": 0
+    },
+    "obj_vis/Freja_Archangel_Helmet": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 0
+    },
+    "mod/Freja_Nude_Body/Freja Mask Stack - Default/show_viewport": {
+     "0": 1,
+     "1": 0,
+     "2": 0,
+     "3": 0,
+     "4": 0
+    },
+    "obj_vis/Freja_Heart_of_Courage_Highheels": {
+     "0": 1,
+     "1": 0,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Heart_of_Courage_Hair_Misc_Wings": {
+     "0": 1,
+     "1": 0,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Streetwear_NosePiercing": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 0,
+     "4": 1
+    },
+    "mod/Freja_Heart_of_Courage_UpperBody/Mask/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 0,
+     "3": 0,
+     "4": 0
+    },
+    "obj_vis/Freja_Scarlett_Chest_Open": {
+     "0": 1,
+     "1": 1,
+     "2": 0,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Scarlett_Boots": {
+     "0": 1,
+     "1": 1,
+     "2": 0,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Scarlett_Hair_Front": {
+     "0": 1,
+     "1": 1,
+     "2": 0,
+     "3": 1,
+     "4": 1
+    },
+    "mod/Freja_Nude_Body/Freja Mask Stack - Archangel/show_viewport": {
+     "0": 0,
+     "1": 0,
+     "2": 0,
+     "3": 0,
+     "4": 1
+    },
+    "obj_vis/Freja_Scarlett_Outfit_Arms": {
+     "0": 1,
+     "1": 1,
+     "2": 0,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Heart_of_Courage_HairTail": {
+     "0": 1,
+     "1": 0,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Scarlett_Gloves": {
+     "0": 1,
+     "1": 1,
+     "2": 0,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Streetwear_Belt": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 0,
+     "4": 1
+    },
+    "mat/Freja_Body_Nude/Value.004/0": {
+     "0": 1.0,
+     "1": 1.0,
+     "2": 1.0,
+     "3": 1.0,
+     "4": 0.0
+    },
+    "obj_vis/Freja_OW2_Chest_Armor": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Streetwear_Sleeves_Glass": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 0,
+     "4": 1
+    },
+    "obj_vis/Freja_Scarlett_Weapon": {
+     "0": 1,
+     "1": 1,
+     "2": 0,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Scarlett_Weapon_Magazine": {
+     "0": 1,
+     "1": 1,
+     "2": 0,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Streetwear_Weapon_Glass": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 0,
+     "4": 1
+    },
+    "shape/Freja_Nude_Body/Freja Bodysuit Scarlett Belly": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 1.0,
+     "3": 0.0,
+     "4": 0.0
+    },
+    "obj_vis/Freja_Scarlett_Hair_Back": {
+     "0": 1,
+     "1": 1,
+     "2": 0,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Scarlett_Wrist": {
+     "0": 1,
+     "1": 1,
+     "2": 0,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Streetwear_Sleeves": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 0,
+     "4": 1
+    },
+    "obj_vis/Freja_Archangel_LegsUpper": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 0
+    },
+    "mod/Freja_Streetwear_Hair/Mask/show_viewport": {
+     "0": 0,
+     "1": 0,
+     "2": 0,
+     "3": 1,
+     "4": 0
+    },
+    "obj_vis/Freja_OW2_Gloves": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Scarlett_Earring": {
+     "0": 1,
+     "1": 1,
+     "2": 0,
+     "3": 1,
+     "4": 1
+    },
+    "mod/Freja_Streetwear_Hair/Mask/show_render": {
+     "0": 0,
+     "1": 0,
+     "2": 0,
+     "3": 1,
+     "4": 0
+    },
+    "obj_vis/Freja_OW2_Weapon": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Archangel_Hair": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 0
+    },
+    "obj_vis/Freja_Scarlett_Outfit_Neck_Zipper": {
+     "0": 1,
+     "1": 1,
+     "2": 0,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_OW2_Collar_Fur": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Streetwear_Hair": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 0,
+     "4": 1
+    },
+    "shape/Freja_Nude_Body/Freja Scarlett Ammo Strap": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 1.0,
+     "3": 0.0,
+     "4": 0.0
+    },
+    "obj_vis/Freja_OW2_Nose_Piercing": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Archangel_Weapon": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 0
+    },
+    "mod/Freja_Nude_Body/Freja Mask Stack - Heart of Courage/show_viewport": {
+     "0": 0,
+     "1": 1,
+     "2": 0,
+     "3": 0,
+     "4": 0
+    },
+    "obj_vis/Freja_OW2_Weapon_Arrow": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "mat/Freja Face/Math.008/1": {
+     "0": 0.0,
+     "1": 1.0,
+     "2": 0.0,
+     "3": 0.0,
+     "4": 0.0
+    },
+    "obj_vis/Freja_Archangel_ArmsR": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 0
+    },
+    "obj_vis/Freja_OW2_Earring": {
+     "0": 0,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Heart_of_Courage_Weapon": {
+     "0": 1,
+     "1": 0,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Heart_of_Courage_Hair_MiscRibbon": {
+     "0": 1,
+     "1": 0,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "mat/Freja_Body_Nude/Value.003/0": {
+     "0": 0.0,
+     "1": 1.0,
+     "2": 0.0,
+     "3": 0.0,
+     "4": 0.0
+    },
+    "obj_vis/Freja_Scarlett_Straps_Upper": {
+     "0": 1,
+     "1": 1,
+     "2": 0,
+     "3": 1,
+     "4": 1
+    },
+    "mat/Freja Teeth/Mix.010/0": {
+     "0": 0.0,
+     "1": 1.0,
+     "2": 0.0,
+     "3": 0.0,
+     "4": 0.0
+    },
+    "obj_vis/Freja_Heart_of_Courage_Earring": {
+     "0": 1,
+     "1": 0,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Heart_of_Courage_Gloves": {
+     "0": 1,
+     "1": 0,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Archangel_SideArmor": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 0
+    },
+    "mod/Freja_Nude_Body/Freja Mask Stack - Heart of Courage/show_render": {
+     "0": 0,
+     "1": 1,
+     "2": 0,
+     "3": 0,
+     "4": 0
+    },
+    "shape/Freja_Nude_Body/Freja Bodysuit Neck and Hand": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 1.0,
+     "3": 0.0,
+     "4": 0.0
+    },
+    "mat/Freja Eye/Mix.001/0": {
+     "0": 0.0,
+     "1": 1.0,
+     "2": 0.0,
+     "3": 0.0,
+     "4": 0.0
+    },
+    "shape/Freja_Nude_Body/Freja Scarlett Chest Strap": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 1.0,
+     "3": 0.0,
+     "4": 0.0
+    },
+    "obj_vis/Freja_Scarlett_Thight_Strap": {
+     "0": 1,
+     "1": 1,
+     "2": 0,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Archangel_Weapon_Arrow": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 0
+    },
+    "obj_vis/Freja_Scarlett_Straps_Ammo": {
+     "0": 1,
+     "1": 1,
+     "2": 0,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Heart_of_Courage_Hair_Side": {
+     "0": 1,
+     "1": 0,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Scarlett_Knife": {
+     "0": 1,
+     "1": 1,
+     "2": 0,
+     "3": 1,
+     "4": 1
+    },
+    "ng/Freja Scarlett Bodysuit/Math.002/1": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 1.0,
+     "3": 0.0,
+     "4": 0.0
+    },
+    "obj_vis/Freja_Scarlett_Ammo": {
+     "0": 1,
+     "1": 1,
+     "2": 0,
+     "3": 1,
+     "4": 1
+    },
+    "obj_vis/Freja_Streetwear_Weapon_Magazine": {
+     "0": 1,
+     "1": 1,
+     "2": 1,
+     "3": 0,
+     "4": 1
+    }
+   }
+  },
+  "Properties_Skins/Shirt": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "geo/Freja_Nude_Body/Freja Mask Stack - Default/Socket_3",
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_render",
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_viewport",
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_render",
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_viewport",
+    "mod/Freja_SportsBra/Phy-BoobsExposed/show_render",
+    "mod/Freja_SportsBra/Phy-BoobsExposed/show_viewport",
+    "mod/Freja_SportsBra/Phy-BoobsHidden/show_render",
+    "mod/Freja_SportsBra/Phy-BoobsHidden/show_viewport",
+    "obj_vis/Freja_OW2_Shirt",
+    "shape/Freja-physics-boobs/Freja Breasts Cloth Squeeze",
+    "shape/Freja_Nude_Body/Freja Breasts Cloth Squeeze",
+    "shape/Freja_Nude_Body/Freja Cloth Chest",
+    "shape/Freja_OW2_Bodysuit/HideChest"
+   ],
+   "varying_targets": {
+    "shape/Freja-physics-boobs/Freja Breasts Cloth Squeeze": {
+     "0": 0.0,
+     "1": 1.0
+    },
+    "shape/Freja_Nude_Body/Freja Cloth Chest": {
+     "0": 0.0,
+     "1": 1.0
+    },
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "shape/Freja_OW2_Bodysuit/HideChest": {
+     "0": 0.0,
+     "1": 1.0
+    },
+    "obj_vis/Freja_OW2_Shirt": {
+     "0": 1,
+     "1": 0
+    },
+    "shape/Freja_Nude_Body/Freja Breasts Cloth Squeeze": {
+     "0": 0.0,
+     "1": 1.0
+    }
+   }
+  },
+  "Properties_Skins/Bodysuit": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_render",
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_viewport",
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_render",
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_viewport",
+    "mod/Freja_OW2_Shirt/Phy-Exposed/show_render",
+    "mod/Freja_OW2_Shirt/Phy-Exposed/show_viewport",
+    "mod/Freja_SportsBra/Phy-BoobsExposed/show_render",
+    "mod/Freja_SportsBra/Phy-BoobsExposed/show_viewport",
+    "mod/Freja_SportsBra/Phy-BoobsHidden/show_render",
+    "mod/Freja_SportsBra/Phy-BoobsHidden/show_viewport",
+    "obj_vis/Freja_OW2_Bodysuit",
+    "shape/Freja-physics-boobs/Freja Breasts Cloth Squeeze",
+    "shape/Freja_Nude_Body/Freja Bodysuit",
+    "shape/Freja_Nude_Body/Freja Breasts Cloth Squeeze"
+   ],
+   "varying_targets": {
+    "shape/Freja-physics-boobs/Freja Breasts Cloth Squeeze": {
+     "0": 0.0,
+     "1": 1.0
+    },
+    "obj_vis/Freja_OW2_Bodysuit": {
+     "0": 1,
+     "1": 0
+    },
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_viewport": {
+     "0": 0,
+     "1": 1
+    },
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_render": {
+     "0": 0,
+     "1": 1
+    },
+    "shape/Freja_Nude_Body/Freja Breasts Cloth Squeeze": {
+     "0": 0.0,
+     "1": 1.0
+    },
+    "shape/Freja_Nude_Body/Freja Bodysuit": {
+     "0": 0.0,
+     "1": 1.0
+    }
+   }
+  },
+  "Properties_Skins/Cape": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_OW2_Cape"
+   ],
+   "varying_targets": {
+    "obj_vis/Freja_OW2_Cape": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  "Properties_Skins/Necklance": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja-physics-necklance",
+    "obj_vis/Freja_OW2_Necklance",
+    "other/{\"field\": \"pose.bones[\\\"necklance_01\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"necklance_02\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"necklance_emblem\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"necklance_side_01.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"necklance_side_01.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"necklance_side_02.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"necklance_side_02.R\\\"].hide\", \"object\": \"RIG-Freja\"}"
+   ],
+   "varying_targets": {
+    "obj_vis/Freja_OW2_Necklance": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  "Properties_Skins/Belt": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_OW2_Belt",
+    "obj_vis/Freja_OW2_Belt_Arrows",
+    "obj_vis/Freja_OW2_Belt_Utility",
+    "other/{\"field\": \"pose.bones[\\\"belt_01\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"belt_02\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"belt_03\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"belt_04\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"belt_arrows\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"belt_arrows_straps_01\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"belt_arrows_straps_02\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"belt_arrows_straps_03\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"belt_arrows_straps_04\\\"].hide\", \"object\": \"RIG-Freja\"}"
+   ],
+   "varying_targets": {
+    "obj_vis/Freja_OW2_Belt_Arrows": {
+     "0": 1,
+     "1": 0
+    },
+    "obj_vis/Freja_OW2_Belt_Utility": {
+     "0": 1,
+     "1": 0
+    },
+    "obj_vis/Freja_OW2_Belt": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  "Properties_Accessories/Bra_ID": {
+   "control": "enum",
+   "value_type": "int",
+   "driver_targets": [
+    "obj_vis/Freja_SportsBra",
+    "shape/Freja_SportsBra/Exposed"
+   ],
+   "varying_targets": {
+    "shape/Freja_SportsBra/Exposed": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 1.0
+    },
+    "obj_vis/Freja_SportsBra": {
+     "0": 1,
+     "1": 0,
+     "2": 0
+    }
+   }
+  },
+  "Properties_Accessories/Panties_ID": {
+   "control": "enum",
+   "value_type": "int",
+   "driver_targets": [
+    "obj_vis/Freja_SportsPanties",
+    "shape/Freja_SportsPanties/Side"
+   ],
+   "varying_targets": {
+    "shape/Freja_SportsPanties/Side": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 1.0
+    },
+    "obj_vis/Freja_SportsPanties": {
+     "0": 1,
+     "1": 0,
+     "2": 0
+    }
+   }
+  },
+  "Properties_Accessories/Bikini Alt": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Panties/Group.001/3"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Accessories/Bra Alt": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_SportsBra/Group.001/3"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Accessories/Bikini AltText": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Panties/Group.001/4"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Accessories/Bra AltText": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_SportsBra/Group.001/4"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Accessories/Bra Color1": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja_SportsBra/Group.001/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Accessories/Bikini Color1": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja_Panties/Group.001/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Accessories/Bra Color2": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja_SportsBra/Group.001/1"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Accessories/Bikini Color2": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja_Panties/Group.001/1"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Accessories/Stockings": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "geo/Freja_Nude_Body/Freja Mask Stack - Shared/Socket_3",
+    "obj_vis/Freja_Stockings",
+    "shape/Freja_Nude_Body/Freja Scarlett Thight Strap",
+    "shape/Freja_Nude_Body/Freja Stockings",
+    "shape/Freja_Scarlett_Straps_Ammo/Freja Stockings",
+    "shape/Freja_Scarlett_Thight_Strap/Freja Stockings"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Accessories/Stocking Camo1": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Stockings/Math.001/1"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Accessories/Stocking Camo2": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Stockings/Math/1"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Accessories/Stockings Color1": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja_Stockings/RGB/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Accessories/Stocking Tile2": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Stockings/Value.001/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Accessories/Stocking Tile1": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Stockings/Value/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Accessories/Stockings Color2": {
+   "control": "color_rgb",
+   "value_type": "float3",
+   "driver_targets": [
+    "mat/Freja_Stockings/RGB.001/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Accessories/Bra Camo": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_SportsBra/Group.001/2"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Accessories/Bikini Camo": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Panties/Group.001/2"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_HOC/Thight Tattoo": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "mat/Freja Face/Value.004/0",
+    "mat/Freja_Body_Nude/Value.003/0"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_HOC/Highheels": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "geo/Freja_Nude_Body/Freja Mask Stack - Heart of Courage/Socket_9",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Shared/Socket_3",
+    "obj_vis/Freja_Heart_of_Courage_Highheels",
+    "obj_vis/Freja_Stockings",
+    "shape/Freja_Nude_Body/Freja Stockings",
+    "shape/Freja_Scarlett_Straps_Ammo/Freja Stockings",
+    "shape/Freja_Scarlett_Thight_Strap/Freja Stockings"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_HOC/Gloves": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "geo/Freja_Nude_Body/Freja Mask Stack - Heart of Courage/Socket_7",
+    "obj_vis/Freja_Heart_of_Courage_Gloves"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_HOC/Earring": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Heart_of_Courage_Earring"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_HOC/Cape": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Heart_of_Courage_Cape"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_HOC/Head Accessory": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Heart_of_Courage_Hair_Misc_Wings",
+    "other/{\"field\": \"pose.bones[\\\"HOC_Ornament_01.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_Ornament_01.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_Ornament_02.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_Ornament_02.R\\\"].hide\", \"object\": \"RIG-Freja\"}"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_HOC/Head Ribbon": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Heart_of_Courage_Hair_MiscRibbon",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSideTail_01.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSideTail_01.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSideTail_02.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSideTail_02.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSideTail_03.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSideTail_03.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSideTail_04.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOC_HairSideTail_04.R\\\"].hide\", \"object\": \"RIG-Freja\"}"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_HOC/Wrist Weapon Misc": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Heart_of_Courage_UpperBody_Wrist_Ammo"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_HOC/Wrist Weapon": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Heart_of_Courage_UpperBody_Wrist",
+    "obj_vis/Freja_Heart_of_Courage_UpperBody_Wrist_Ammo",
+    "shape/Freja_Heart_of_Courage_UpperBody/Shrink"
+   ],
+   "varying_targets": {
+    "shape/Freja_Heart_of_Courage_UpperBody/Shrink": {
+     "0": 0.0,
+     "1": 1.0
+    }
+   }
+  },
+  "Properties_HOC/Kitten": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Heart_of_Courage_Kittie",
+    "obj_vis/RIG-Heart_of_Courage_Kittie"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_HOC/Ribbon Pelvis Front": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Heart_of_Courage_Ribbon_Pelvis",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front_01\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front_02\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front_03\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front_04\\\"].hide\", \"object\": \"RIG-Freja\"}"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_HOC/Neck Ribbon": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Heart_of_Courage_Ribbon_Neck",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Neck\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Neck_01.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Neck_01.R\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Neck_02.L\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Neck_02.R\\\"].hide\", \"object\": \"RIG-Freja\"}"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_HOC/Ribbon Pelvis Back": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Heart_of_Courage_Ribbon_Back",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back_01\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back_02\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back_03\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back_04\\\"].hide\", \"object\": \"RIG-Freja\"}"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_HOC/SkirtOn": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "ng/Freja HOC Skirt/Math/1",
+    "ng/Freja HOC Skirt/Mix/0"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_HOC/Skirt_Tear": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "ng/Freja HOC Skirt/Mix/0"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_HOC/RecolorHue": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Heart_of_Courage_Body/Hue/Saturation/Value.001/0",
+    "mat/Freja_Heart_of_Courage_Skirt/Hue/Saturation/Value.001/0"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_HOC/RecolorSat": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Heart_of_Courage_Body/Hue/Saturation/Value.001/1",
+    "mat/Freja_Heart_of_Courage_Skirt/Hue/Saturation/Value.001/1"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_HOC/RecolorVal": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "mat/Freja_Heart_of_Courage_Body/Hue/Saturation/Value.001/2",
+    "mat/Freja_Heart_of_Courage_Skirt/Hue/Saturation/Value.001/2"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_HOC/Skirt": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "mod/Freja_Heart_of_Courage_UpperBody/Phy-Freja_Heart_of_Courage_Skirt/show_render",
+    "mod/Freja_Heart_of_Courage_UpperBody/Phy-Freja_Heart_of_Courage_Skirt/show_viewport",
+    "obj_vis/Freja_Heart_of_Courage_Ribbon_Back",
+    "obj_vis/Freja_Heart_of_Courage_Ribbon_Pelvis",
+    "obj_vis/Freja_Heart_of_Courage_Skirt",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back_01\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back_02\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back_03\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back_04\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front_01\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front_02\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front_03\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front_04\\\"].hide\", \"object\": \"RIG-Freja\"}"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_HOC/Shirt": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "geo/Freja_Heart_of_Courage_UpperBody/Mask/Socket_3",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Heart of Courage/Socket_15",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Heart of Courage/Socket_5",
+    "mod/Freja_Heart_of_Courage_Skirt/Phy/show_render",
+    "mod/Freja_Heart_of_Courage_Skirt/Phy/show_viewport",
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_render",
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_viewport",
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_render",
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_viewport",
+    "obj_vis/Freja_Heart_of_Courage_Cape",
+    "obj_vis/Freja_Heart_of_Courage_Ribbon_Back",
+    "obj_vis/Freja_Heart_of_Courage_Ribbon_Pelvis",
+    "obj_vis/Freja_Heart_of_Courage_UpperBody",
+    "obj_vis/Freja_Heart_of_Courage_UpperBody_Breasts",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back_01\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back_02\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back_03\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Back_04\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front_01\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front_02\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front_03\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "other/{\"field\": \"pose.bones[\\\"HOF_Ribbon_Front_04\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "shape/Freja-physics-boobs/Freja Breasts Cloth Squeeze",
+    "shape/Freja_Heart_of_Courage_Gloves/Shrink",
+    "shape/Freja_Heart_of_Courage_Skirt/RollDown",
+    "shape/Freja_Heart_of_Courage_Skirt/UpperBody",
+    "shape/Freja_Heart_of_Courage_UpperBody/CompressToChest",
+    "shape/Freja_Nude_Body/Freja HOC Upperbody",
+    "shape/Freja_Nude_Body/Freja HOC Upperbody Breasts"
+   ],
+   "varying_targets": {
+    "shape/Freja_Heart_of_Courage_Skirt/RollDown": {
+     "0": 1.0,
+     "1": 0.0
+    },
+    "shape/Freja_Heart_of_Courage_Gloves/Shrink": {
+     "0": 0.0,
+     "1": 1.0
+    }
+   }
+  },
+  "Properties_HOC/Shirt Open": {
+   "control": "enum",
+   "value_type": "int",
+   "driver_targets": [
+    "geo/Freja_Heart_of_Courage_UpperBody/Mask/Socket_3",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Heart of Courage/Socket_15",
+    "mod/Freja_Heart_of_Courage_Skirt/Phy/show_render",
+    "mod/Freja_Heart_of_Courage_Skirt/Phy/show_viewport",
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_render",
+    "mod/Freja_Nude_Body/Phy-BoobsExposed/show_viewport",
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_render",
+    "mod/Freja_Nude_Body/Phy-BoobsHidden/show_viewport",
+    "obj_vis/Freja_Heart_of_Courage_UpperBody_Breasts",
+    "shape/Freja-physics-boobs/Freja Breasts Cloth Squeeze",
+    "shape/Freja_Heart_of_Courage_Skirt/RollDown",
+    "shape/Freja_Heart_of_Courage_Skirt/UpperBody",
+    "shape/Freja_Heart_of_Courage_UpperBody/CompressToChest",
+    "shape/Freja_Nude_Body/Freja HOC Upperbody Breasts"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Scarlett/Earring": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Scarlett_Earring"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Scarlett/Wrist": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Scarlett_Wrist"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Scarlett/Shoes": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "geo/Freja_Nude_Body/Freja Mask Stack - Scarlett/Socket_9",
+    "obj_vis/Freja_Scarlett_Boots"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Scarlett/Gloves": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "geo/Freja_Nude_Body/Freja Mask Stack - Scarlett/Socket_11",
+    "obj_vis/Freja_Scarlett_Gloves"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Scarlett/Straps_Ammo": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Scarlett_Ammo",
+    "obj_vis/Freja_Scarlett_Straps_Ammo",
+    "other/{\"field\": \"pose.bones[\\\"belt_arrows\\\"].hide\", \"object\": \"RIG-Freja\"}",
+    "shape/Freja_Nude_Body/Freja Scarlett Ammo Strap"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Scarlett/Straps_Upper": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Scarlett_Straps_Upper",
+    "shape/Freja_Nude_Body/Freja Scarlett Chest Strap"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Scarlett/Thight_Strap": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Scarlett_Knife",
+    "obj_vis/Freja_Scarlett_Thight_Strap",
+    "shape/Freja_Nude_Body/Freja Scarlett Thight Strap"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Scarlett/Cape": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Scarlett_Cape"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Scarlett/ChestForced": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [],
+   "varying_targets": {}
+  },
+  "Properties_Scarlett/OutfitTearBreasts": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "ng/Freja Scarlett Bodysuit/Math.005/1"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Scarlett/OutfitTearBottom": {
+   "control": "float_slider",
+   "value_type": "float",
+   "driver_targets": [
+    "ng/Freja Scarlett Bodysuit/Math.003/1"
+   ],
+   "effects_by_value": {}
+  },
+  "Properties_Scarlett/Outfit": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "ng/Freja Scarlett Bodysuit/Math.002/1",
+    "ng/Freja Scarlett Bodysuit/Math/1",
+    "obj_vis/Freja_Scarlett_Outfit_Neck_Zipper",
+    "shape/Freja_Nude_Body/Freja Bodysuit Neck and Hand",
+    "shape/Freja_Nude_Body/Freja Bodysuit Scarlett Belly"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Scarlett/CollarGuard": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Scarlett_Outfit_Arms",
+    "shape/Freja_Nude_Body/Freja Scarlett Collar Guard"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Scarlett/Hoodie": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Scarlett_Chest_Hoodie",
+    "obj_vis/Freja_Scarlett_Chest_HoodieOn",
+    "obj_vis/Freja_Scarlett_Hair_Back"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Scarlett/Chest": {
+   "control": "enum",
+   "value_type": "int",
+   "driver_targets": [
+    "geo/Freja_Nude_Body/Freja Mask Stack - Scarlett/Socket_15",
+    "obj_vis/Freja_Scarlett_Cape",
+    "obj_vis/Freja_Scarlett_Chest_Closed",
+    "obj_vis/Freja_Scarlett_Chest_Hoodie",
+    "obj_vis/Freja_Scarlett_Chest_HoodieOn",
+    "obj_vis/Freja_Scarlett_Chest_Open",
+    "obj_vis/Freja_Scarlett_Hair_Back",
+    "shape/Freja_Nude_Body/Freja Scarlett Collar"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Streetwear/Sleeves": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "geo/Freja_Nude_Body/Freja Mask Stack - Streetwear/Socket_16",
+    "obj_vis/Freja_Streetwear_BodyStrapConnect",
+    "obj_vis/Freja_Streetwear_Sleeves",
+    "obj_vis/Freja_Streetwear_Sleeves_Glass"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Streetwear/Belt": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Streetwear_Belt"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Streetwear/Pants": {
+   "control": "enum",
+   "value_type": "int",
+   "driver_targets": [
+    "geo/Freja_Nude_Body/Freja Mask Stack - Streetwear/Socket_25",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Streetwear/Socket_28",
+    "obj_vis/Freja_Streetwear_Pants",
+    "obj_vis/Freja_Streetwear_PantsDown"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Streetwear/Shoes": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "geo/Freja_Nude_Body/Freja Mask Stack - Streetwear/Socket_17",
+    "obj_vis/Freja_Streetwear_Shoes"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Streetwear/Headphones": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Streetwear_Headphone"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Streetwear/Gloves": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "geo/Freja_Nude_Body/Freja Mask Stack - Streetwear/Socket_15",
+    "obj_vis/Freja_Streetwear_Gloves"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Streetwear/Cape": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Streetwear_Cape"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Streetwear/Shirt": {
+   "control": "enum",
+   "value_type": "int",
+   "driver_targets": [
+    "geo/Freja_Nude_Body/Freja Mask Stack - Streetwear/Socket_11",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Streetwear/Socket_9",
+    "mod/Freja_Streetwear_Body/Phy-Boobs-Streetwear-Show/show_render",
+    "mod/Freja_Streetwear_Body/Phy-Boobs-Streetwear-Show/show_viewport",
+    "mod/Freja_Streetwear_BodyReveal/Phy-BoobsExposed/show_render",
+    "mod/Freja_Streetwear_BodyReveal/Phy-BoobsExposed/show_viewport",
+    "obj_vis/Freja_Streetwear_Body",
+    "obj_vis/Freja_Streetwear_BodyReveal",
+    "obj_vis/Freja_Streetwear_BodyStrapConnect"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Archangel/Panties": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "geo/Freja_Nude_Body/Freja Mask Stack - Archangel/Socket_25",
+    "obj_vis/Freja_Archangel_Panties"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Archangel/Cape": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Archangel_Cape"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Archangel/Arms": {
+   "control": "enum",
+   "value_type": "int",
+   "driver_targets": [
+    "geo/Freja_Nude_Body/Freja Mask Stack - Archangel/Socket_17",
+    "obj_vis/Freja_Archangel_ArmsL",
+    "obj_vis/Freja_Archangel_ArmsL_Armor",
+    "obj_vis/Freja_Archangel_ArmsR"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Archangel/Shoes": {
+   "control": "enum",
+   "value_type": "int",
+   "driver_targets": [
+    "geo/Freja_Nude_Body/Freja Mask Stack - Archangel/Socket_15",
+    "geo/Freja_Nude_Body/Freja Mask Stack - Archangel/Socket_16",
+    "obj_vis/Freja_Archangel_Legs",
+    "obj_vis/Freja_Archangel_LegsUpper",
+    "obj_vis/Freja_Archangel_SideArmor"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Archangel/Back Cloth": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "mod/Freja-physics-cloth-archangel-back/Cloth/show_render",
+    "mod/Freja-physics-cloth-archangel-back/Cloth/show_viewport",
+    "mod/Freja-physics-cloth-archangel-back/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-cloth-archangel-back/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-cloth-archangel-back/rig/show_render",
+    "mod/Freja-physics-cloth-archangel-back/rig/show_viewport",
+    "mod/Freja_Archangel_UpperbodyBackCloth/Phy/show_render",
+    "mod/Freja_Archangel_UpperbodyBackCloth/Phy/show_viewport",
+    "obj_vis/Freja-physics-cloth-archangel-back",
+    "obj_vis/Freja_Archangel_UpperbodyBackCloth"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Archangel/Crown": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "mod/Freja_Archangel_Hair/GeometryNodes/show_render",
+    "mod/Freja_Archangel_Hair/GeometryNodes/show_viewport",
+    "obj_vis/Freja_Archangel_Helmet",
+    "shape/Freja_Archangel_Hair/PushOut"
+   ],
+   "varying_targets": {
+    "mod/Freja_Archangel_Hair/GeometryNodes/show_render": {
+     "0": 1,
+     "1": 0
+    },
+    "mod/Freja_Archangel_Hair/GeometryNodes/show_viewport": {
+     "0": 1,
+     "1": 0
+    },
+    "shape/Freja_Archangel_Hair/PushOut": {
+     "0": 1.0,
+     "1": 0.0
+    }
+   }
+  },
+  "Properties_Archangel/Shirt": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "geo/Freja_Nude_Body/Freja Mask Stack - Archangel/Socket_18",
+    "obj_vis/Freja_Archangel_Shoulderguard",
+    "obj_vis/Freja_Archangel_UpperBody_Armor"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Archangel/Collar": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "obj_vis/Freja_Archangel_Shoulderguard"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Archangel/LowerBody": {
+   "control": "enum",
+   "value_type": "int",
+   "driver_targets": [
+    "mod/Freja-physics-cloth-archangel-back/Cloth/show_render",
+    "mod/Freja-physics-cloth-archangel-back/Cloth/show_viewport",
+    "mod/Freja-physics-cloth-archangel-back/CorrectiveSmooth/show_render",
+    "mod/Freja-physics-cloth-archangel-back/CorrectiveSmooth/show_viewport",
+    "mod/Freja-physics-cloth-archangel-back/rig/show_render",
+    "mod/Freja-physics-cloth-archangel-back/rig/show_viewport",
+    "mod/Freja_Archangel_Upperbody/Phy-Breasts-Closed/show_render",
+    "mod/Freja_Archangel_Upperbody/Phy-Breasts-Closed/show_viewport",
+    "mod/Freja_Archangel_Upperbody/Phy-Breasts-Tabard/show_render",
+    "mod/Freja_Archangel_Upperbody/Phy-Breasts-Tabard/show_viewport",
+    "mod/Freja_Archangel_UpperbodyBackCloth/Phy/show_render",
+    "mod/Freja_Archangel_UpperbodyBackCloth/Phy/show_viewport",
+    "mod/Freja_Archangel_UpperbodyRevealed/Phy-Breasts-Closed/show_render",
+    "mod/Freja_Archangel_UpperbodyRevealed/Phy-Breasts-Closed/show_viewport",
+    "mod/Freja_Archangel_UpperbodyRevealed/Phy-Breasts-Tabard/show_render",
+    "mod/Freja_Archangel_UpperbodyRevealed/Phy-Breasts-Tabard/show_viewport",
+    "mod/Freja_Nude_Body/Phy-Boobs-Archangel-Hidden/show_render",
+    "mod/Freja_Nude_Body/Phy-Boobs-Archangel-Hidden/show_viewport",
+    "mod/Freja_Nude_Body/Phy-Boobs-Archangel-Show/show_render",
+    "mod/Freja_Nude_Body/Phy-Boobs-Archangel-Show/show_viewport",
+    "mod/Freja_Nude_Body/Phy-Boobs-Streetwear-Show/show_render",
+    "mod/Freja_Nude_Body/Phy-Boobs-Streetwear-Show/show_viewport",
+    "mod/Freja_Streetwear_Body/Phy-Boobs-Streetwear-Show/show_render",
+    "mod/Freja_Streetwear_Body/Phy-Boobs-Streetwear-Show/show_viewport",
+    "mod/Freja_Streetwear_BodyReveal/Phy-BoobsExposed/show_render",
+    "mod/Freja_Streetwear_BodyReveal/Phy-BoobsExposed/show_viewport",
+    "obj_vis/Freja-physics-cloth-archangel-back",
+    "obj_vis/Freja-physics-cloth-archangel-front",
+    "obj_vis/Freja_Archangel_Upperbody",
+    "obj_vis/Freja_Archangel_UpperbodyBackCloth",
+    "obj_vis/Freja_Archangel_UpperbodyRevealed",
+    "shape/Freja_Nude_Body/Freja Archangel Breasts"
+   ],
+   "varying_targets": {}
+  },
+  "Properties_Archangel/Tattoo": {
+   "control": "toggle",
+   "value_type": "bool",
+   "driver_targets": [
+    "mat/Freja_Body_Nude/Value.004/0"
+   ],
+   "varying_targets": {}
+  }
+ }
+}

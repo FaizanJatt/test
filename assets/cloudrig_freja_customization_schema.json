@@ -1,0 +1,6841 @@
+{
+  "meta": {
+    "character": "Freja",
+    "rig_object": "RIG-Freja",
+    "blender_version": "5.2.0 LTS",
+    "generated": "2025-10-19 (rig)",
+    "source": "CloudRig generated rig UI + custom properties",
+    "note": "All values are Blender ID custom-properties living on pose bones of RIG-Freja. Set them via  rig.pose.bones['<owner_bone>']['<prop_name>'] = <value>  then rig.data.update_tag() / frame change to fire drivers."
+  },
+  "how_to_read": {
+    "control": "toggle=on/off | enum=pick one label by index | float_slider/int_slider=range | color_rgb=linear RGB 0..1 triplet | direction_vec=xyz | string=text",
+    "visible_when": "list of {prop, equals}. The setting is only meaningful / shown in the UI when ALL listed sibling props on the same bone hold the given value. equals may be 'True'/'False' or an index string like '1,2' meaning value in {1,2}.",
+    "drives": "what changes in the 3D scene when the value changes: object_visibility (mesh shown/hidden), modifier_toggle, shape_key (morph), material_value (shader input), shader_nodegroup, geonodes_mask (body part masked away under clothing)."
+  },
+  "skins": {
+    "selector": "Properties_Skins/skin_id",
+    "values": {
+      "0": {
+        "name": "Default (OW2)",
+        "mesh_prefix": "Freja_OW2_",
+        "property_bone": "Properties_Skins",
+        "skin_color_prop": "Properties_Skins/$skin_color"
+      },
+      "1": {
+        "name": "Heart of Courage",
+        "mesh_prefix": "Freja_Heart_of_Courage_",
+        "property_bone": "Properties_HOC"
+      },
+      "2": {
+        "name": "Scarlett",
+        "mesh_prefix": "Freja_Scarlett_",
+        "property_bone": "Properties_Scarlett"
+      },
+      "3": {
+        "name": "Streetwear",
+        "mesh_prefix": "Freja_Streetwear_",
+        "property_bone": "Properties_Streetwear"
+      },
+      "4": {
+        "name": "Archangel",
+        "mesh_prefix": "Freja_Archangel_",
+        "property_bone": "Properties_Archangel"
+      }
+    },
+    "skin_color_values": [
+      "(OW2)",
+      "Rauðr",
+      "Syren",
+      "Lavendel",
+      "Solsikke"
+    ],
+    "shared_meshes": [
+      "Freja_Nude_Body (83 shape keys - the base body all masks/morphs act on)",
+      "Freja_Eye",
+      "Freja_Teeth_Upper",
+      "Freja_Teeth_Lower",
+      "Freja_Tongue",
+      "Freja_SportsBra",
+      "Freja_SportsPanties",
+      "Freja_Stockings",
+      "Freja_EyeShadow"
+    ]
+  },
+  "settings": [
+    {
+      "id": "Character_Properties/Pubes",
+      "label": "Pubes",
+      "prop_name": "Pubes",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": false,
+      "drives": {
+        "kinds": {
+          "shader_nodegroup": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Makeup: Lower Eyelids",
+      "label": "Makeup: Lower Eyelids",
+      "prop_name": "Makeup: Lower Eyelids",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "current": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja Face"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Makeup: Cheeks",
+      "label": "Makeup: Cheeks",
+      "prop_name": "Makeup: Cheeks",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "current": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja Face"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Finger Nail Color",
+      "label": "Finger Nail Color",
+      "prop_name": "Finger Nail Color",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        1.0,
+        0.6000000238418579,
+        0.6000000238418579
+      ],
+      "current": [
+        1.0,
+        0.6000000238418579,
+        0.6000000238418579
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Body_FingerNails"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Lips Wetness",
+      "label": "Lips Wetness",
+      "prop_name": "Lips Wetness",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja Face"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Pupil Size",
+      "label": "Pupil Size",
+      "prop_name": "Pupil Size",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Face",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": -1.0,
+      "max": 1.0,
+      "soft_min": -1.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "shape_key": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Eye"
+        ]
+      }
+    },
+    {
+      "id": "Character_Properties/Iris Size",
+      "label": "Iris Size",
+      "prop_name": "Iris Size",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Face",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": -0.5,
+      "max": 1.0,
+      "soft_min": -0.5,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "shape_key": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Eye"
+        ]
+      }
+    },
+    {
+      "id": "Character_Properties/Eyelid Wetness",
+      "label": "Eyelid Wetness",
+      "prop_name": "Eyelid Wetness",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja Face"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Face Wetness",
+      "label": "Face Wetness",
+      "prop_name": "Face Wetness",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja Face"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Eye Roughness",
+      "label": "Eye Roughness",
+      "prop_name": "Eye Roughness",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 2.0,
+      "soft_min": 0.0,
+      "soft_max": 2.0,
+      "drives": {
+        "kinds": {
+          "material_value": 2
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja Eye",
+          "Refract"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Eye Twinkle Color",
+      "label": "Eye Twinkle Color",
+      "prop_name": "Eye Twinkle Color",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "current": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Refract"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Fake Hair Reflections",
+      "label": "Fake Hair Reflections",
+      "prop_name": "Fake Hair Reflections",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": null,
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.20000000298023224,
+      "current": 0.20000000298023224,
+      "min": 0.0,
+      "max": 2.0,
+      "soft_min": 0.0,
+      "soft_max": 2.0
+    },
+    {
+      "id": "Character_Properties/Pussy Color",
+      "label": "Pussy Color",
+      "prop_name": "Pussy Color",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "current": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Body_Nude"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Pussy Wetness",
+      "label": "Pussy Wetness",
+      "prop_name": "Pussy Wetness",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Body_Nude"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Anus Wetness",
+      "label": "Anus Wetness",
+      "prop_name": "Anus Wetness",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Body_Nude"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Anus Color",
+      "label": "Anus Color",
+      "prop_name": "Anus Color",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "current": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Body_Nude"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Body Sun Tan",
+      "label": "Body Sun Tan",
+      "prop_name": "Body Sun Tan",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "shader_nodegroup": 2
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Pubic Skin Color",
+      "label": "Pubic Skin Color",
+      "prop_name": "Pubic Skin Color",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "current": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Body_Nude"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Pussy Inside Color",
+      "label": "Pussy Inside Color",
+      "prop_name": "Pussy Inside Color",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": null,
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "current": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": "Character_Properties/Eye Emissive Direction",
+      "label": "Eye Emissive Direction",
+      "prop_name": "Eye Emissive Direction",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": null,
+      "control": "direction_vec",
+      "value_type": "float3",
+      "default": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "current": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "Character_Properties/Fake Hair Light Direction",
+      "label": "Fake Hair Light Direction",
+      "prop_name": "Fake Hair Light Direction",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": null,
+      "control": "direction_vec",
+      "value_type": "float3",
+      "default": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "current": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "Character_Properties/Eye Twinkle Rotation",
+      "label": "Eye Twinkle Rotation",
+      "prop_name": "Eye Twinkle Rotation",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "direction_vec",
+      "value_type": "float3",
+      "default": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "current": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Refract"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Eye Twinkle Size",
+      "label": "Eye Twinkle Size",
+      "prop_name": "Eye Twinkle Size",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 2.0,
+      "soft_min": 0.0,
+      "soft_max": 2.0,
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Refract"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Eye Emissive",
+      "label": "Eye Emissive",
+      "prop_name": "Eye Emissive",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 15.0,
+      "soft_min": 0.0,
+      "soft_max": 5.0,
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja Eye"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Hair Emissive",
+      "label": "Hair Emissive",
+      "prop_name": "Hair Emissive",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.5,
+      "current": 1.5,
+      "min": 0.0,
+      "max": 50.0,
+      "soft_min": 0.0,
+      "soft_max": 5.0,
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Hair"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Eye Twinkle Intensity",
+      "label": "Eye Twinkle Intensity",
+      "prop_name": "Eye Twinkle Intensity",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 15.0,
+      "soft_min": 0.0,
+      "soft_max": 3.0,
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Refract"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Nipple Size",
+      "label": "Nipple Size",
+      "prop_name": "Nipple Size",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.3499999940395355,
+      "current": 0.3499999940395355,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "shape_key": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Archangel_Upperbody",
+          "Freja_Nude_Body",
+          "Freja_Scarlett_Chest_Open"
+        ]
+      }
+    },
+    {
+      "id": "Character_Properties/Nipple Color",
+      "label": "Nipple Color",
+      "prop_name": "Nipple Color",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        0.753000020980835,
+        0.5649999976158142,
+        0.5460000038146973
+      ],
+      "current": [
+        0.753000020980835,
+        0.5649999976158142,
+        0.5460000038146973
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Body_Nude"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Nipple_Push_Out",
+      "label": "Push Out",
+      "prop_name": "Nipple_Push_Out",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": -1.0,
+      "max": 2.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "shape_key": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Archangel_Upperbody",
+          "Freja_Nude_Body",
+          "Freja_Scarlett_Chest_Open",
+          "Freja_SportsBra"
+        ]
+      }
+    },
+    {
+      "id": "Character_Properties/Nipple_Pointy",
+      "label": "Pointy",
+      "prop_name": "Nipple_Pointy",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": -1.0,
+      "max": 2.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "shape_key": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Archangel_Upperbody",
+          "Freja_Nude_Body",
+          "Freja_SportsBra"
+        ]
+      }
+    },
+    {
+      "id": "Character_Properties/Nipple_Outer_Scale",
+      "label": "Outer Scale",
+      "prop_name": "Nipple_Outer_Scale",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": -1.0,
+      "max": 2.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "shape_key": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Archangel_Upperbody",
+          "Freja_Nude_Body",
+          "Freja_Scarlett_Chest_Open"
+        ]
+      }
+    },
+    {
+      "id": "Character_Properties/Nipple_Inner_Scale",
+      "label": "Inner Scale",
+      "prop_name": "Nipple_Inner_Scale",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": -1.0,
+      "max": 2.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "shape_key": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Archangel_Upperbody",
+          "Freja_Nude_Body"
+        ]
+      }
+    },
+    {
+      "id": "Character_Properties/Juno Preload",
+      "label": "Juno Preload",
+      "prop_name": "Juno Preload",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": null,
+      "control": "string",
+      "value_type": "string",
+      "default": {},
+      "current": {}
+    },
+    {
+      "id": "Character_Properties/Juno Matfix",
+      "label": "Juno Matfix",
+      "prop_name": "Juno Matfix",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": null,
+      "control": "string",
+      "value_type": "string",
+      "default": {},
+      "current": {}
+    },
+    {
+      "id": "Character_Properties/Less Hourglass",
+      "label": "Waistline",
+      "prop_name": "Less Hourglass",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.5649999976158142,
+      "current": 0.5649999976158142,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "shape_key": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Archangel_Panties",
+          "Freja_Archangel_Upperbody",
+          "Freja_Archangel_UpperbodyRevealed",
+          "Freja_Heart_of_Courage_Skirt_Bind",
+          "Freja_Heart_of_Courage_UpperBody",
+          "Freja_Nude_Body",
+          "Freja_OW2_Bodysuit",
+          "Freja_Scarlett_Chest_Closed",
+          "Freja_Scarlett_Chest_Open",
+          "Freja_Scarlett_Straps_Ammo",
+          "Freja_Scarlett_Straps_Upper",
+          "Freja_SportsBra",
+          "Freja_SportsPanties"
+        ]
+      }
+    },
+    {
+      "id": "Character_Properties/Pubic Hair Exp",
+      "label": "Pubic Hair Exp",
+      "prop_name": "Pubic Hair Exp",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.25,
+      "soft_min": 0.0,
+      "soft_max": 1.25,
+      "visible_when": [
+        {
+          "prop": "Pubes",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "shader_nodegroup": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Normal Intensity",
+      "label": "Normal Intensity",
+      "prop_name": "Normal Intensity",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.125,
+      "current": 1.125,
+      "min": 0.0,
+      "max": 1.5,
+      "soft_min": 0.0,
+      "soft_max": 1.5,
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Body_Nude"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Makeup: Upper Eyelids",
+      "label": "Makeup: Upper Eyelids",
+      "prop_name": "Makeup: Upper Eyelids",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "current": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja Face"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Finger Nail Length",
+      "label": "Finger Nail Length",
+      "prop_name": "Finger Nail Length",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.25,
+      "current": 0.25,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "shape_key": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Nude_Body"
+        ]
+      }
+    },
+    {
+      "id": "Character_Properties/Toe Nail Length",
+      "label": "Toe Nail Length",
+      "prop_name": "Toe Nail Length",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.25,
+      "current": 0.25,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "shape_key": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Nude_Body"
+        ]
+      }
+    },
+    {
+      "id": "Character_Properties/Tattoo",
+      "label": "Intensity",
+      "prop_name": "Tattoo",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "material_value": 1,
+          "shader_nodegroup": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Body_Nude"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Tattoo Emissive",
+      "label": "Emissive",
+      "prop_name": "Tattoo Emissive",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "material_value": 2
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja Face",
+          "Freja_Body_Nude"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Tattoo Color",
+      "label": "Color",
+      "prop_name": "Tattoo Color",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "current": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "drives": {
+        "kinds": {
+          "shader_nodegroup": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Hair Anisotropic Rotation",
+      "label": "Anisotropic Rotation",
+      "prop_name": "Hair Anisotropic Rotation",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "material_value": 3
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Hair",
+          "Freja_Heart_of_Courage_Hair",
+          "Streetwear_Hair"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Hair Fake Reflection Angle",
+      "label": "Hair Fake Reflection Angle",
+      "prop_name": "Hair Fake Reflection Angle",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "direction_vec",
+      "value_type": "float3",
+      "default": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "current": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 2
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Hair",
+          "Freja_Heart_of_Courage_Hair"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Hair Anisotropic",
+      "label": "Anisotropic",
+      "prop_name": "Hair Anisotropic",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "material_value": 4
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Hair",
+          "Freja_Heart_of_Courage_Hair",
+          "Freja_Scarlett_Hair",
+          "Streetwear_Hair"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Pubes Color",
+      "label": "Pubes Color",
+      "prop_name": "Pubes Color",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Properties",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        0.043345000594854355,
+        0.01739400066435337,
+        0.005787000060081482
+      ],
+      "current": [
+        0.043345000594854355,
+        0.01739400066435337,
+        0.005787000060081482
+      ],
+      "visible_when": [
+        {
+          "prop": "Pubes",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "shader_nodegroup": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Toe Nail Color",
+      "label": "Toe Nail Color",
+      "prop_name": "Toe Nail Color",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        1.0,
+        0.6000000238418579,
+        0.6000000238418579
+      ],
+      "current": [
+        1.0,
+        0.6000000238418579,
+        0.6000000238418579
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Body_ToeNails"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Body Abs",
+      "label": "Abs",
+      "prop_name": "Body Abs",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "shape_key": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Archangel_Upperbody",
+          "Freja_Archangel_UpperbodyRevealed",
+          "Freja_Heart_of_Courage_UpperBody",
+          "Freja_Nude_Body",
+          "Freja_Scarlett_Chest_Closed",
+          "Freja_Scarlett_Straps_Ammo",
+          "Freja_Scarlett_Straps_Upper"
+        ]
+      }
+    },
+    {
+      "id": "Character_Properties/Skin wetness",
+      "label": "Skin Wetness",
+      "prop_name": "Skin wetness",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.25,
+      "current": 0.25,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "shader_nodegroup": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Eye Color",
+      "label": "Color",
+      "prop_name": "Eye Color",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        0.6499999761581421,
+        1.0,
+        0.44999998807907104
+      ],
+      "current": [
+        0.6499999761581421,
+        1.0,
+        0.44999998807907104
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja Eye"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Eye Emissive Color",
+      "label": "Eye Emissive Color",
+      "prop_name": "Eye Emissive Color",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        0.6499999761581421,
+        1.0,
+        0.44999998807907104
+      ],
+      "current": [
+        0.6499999761581421,
+        1.0,
+        0.44999998807907104
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja Eye"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Lips Color",
+      "label": "Lips Color",
+      "prop_name": "Lips Color",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "current": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja Face"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Lips Normal Detail",
+      "label": "Lips Normal Detail",
+      "prop_name": "Lips Normal Detail",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.15000000596046448,
+      "current": 0.15000000596046448,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja Face"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Hair Fake Reflection",
+      "label": "Hair Fake Reflection",
+      "prop_name": "Hair Fake Reflection",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.22499999403953552,
+      "current": 0.22499999403953552,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "material_value": 2
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Hair",
+          "Freja_Heart_of_Courage_Hair"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Emissive Strength",
+      "label": "Global Emissive Strength",
+      "prop_name": "Emissive Strength",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 50.0,
+      "soft_min": 0.0,
+      "soft_max": 10.0,
+      "drives": {
+        "kinds": {
+          "material_value": 13
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Archangel_Body",
+          "Archangel_Weapon",
+          "Freja_Body_OW2",
+          "Freja_Heart_of_Courage_Body",
+          "Freja_Outfit_OW2",
+          "Freja_Scarlett_Body",
+          "Freja_Weapon",
+          "Freja_Weapon_Arrow",
+          "Streetwear_Body",
+          "Streetwear_Decals",
+          "Streetwear_Weapon",
+          "Streetwear_Weapon_Decal",
+          "mat_14"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Hair Roughness Add",
+      "label": "Roughness",
+      "prop_name": "Hair Roughness Add",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.30000001192092896,
+      "current": 0.30000001192092896,
+      "min": -1.0,
+      "max": 1.0,
+      "soft_min": -1.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "material_value": 5
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Archangel_Hair",
+          "Freja_Hair",
+          "Freja_Heart_of_Courage_Hair",
+          "Freja_Scarlett_Hair",
+          "Streetwear_Hair"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Hair Metalic",
+      "label": "Metalic",
+      "prop_name": "Hair Metalic",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Material",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "drives": {
+        "kinds": {
+          "material_value": 4
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Hair",
+          "Freja_Heart_of_Courage_Hair",
+          "Freja_Scarlett_Hair",
+          "Streetwear_Hair"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Character_Properties/Quality",
+      "label": "Quality",
+      "prop_name": "Quality",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "General",
+      "control": "enum",
+      "value_type": "int",
+      "default": 1,
+      "current": 1,
+      "enum_labels": [
+        "⚠️Performance",
+        "Default",
+        "Medium",
+        "Render"
+      ],
+      "min": 0,
+      "max": 3,
+      "description": "Switch the quality here to adjust the modifiers on the character: Use Performance if you wish to disable heavier modifiers (WARNING: This will cause the RENDER and VIEWPORT to look different! Use Performance when you work, then disable it by switching back to Default, or use Render or other settings to preview much heavier modifiers! (Might lead to huge performance loss in viewport!) ",
+      "drives": {
+        "kinds": {
+          "object_other": 1,
+          "modifier_toggle": 10,
+          "geonodes_mask": 1
+        },
+        "affected_objects_sample": [
+          "Freja_Archangel_ArmsL",
+          "Freja_Archangel_ArmsL_Armor",
+          "Freja_Archangel_ArmsR",
+          "Freja_Archangel_Cape",
+          "Freja_Archangel_Hair",
+          "Freja_Archangel_Helmet",
+          "Freja_Archangel_Legs",
+          "Freja_Archangel_LegsUpper",
+          "Freja_Archangel_Panties",
+          "Freja_Archangel_Shoulderguard",
+          "Freja_Archangel_SideArmor",
+          "Freja_Archangel_UpperBody_Armor"
+        ],
+        "affected_object_count": 92,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Physics_Properties/Enable Physics",
+      "label": "Physics",
+      "prop_name": "Enable Physics",
+      "owner_bone": "Physics_Properties",
+      "group": "physics",
+      "panel": "Physics",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": false,
+      "enum_labels": [
+        "Disabled",
+        "Enabled"
+      ],
+      "min": 0,
+      "max": null,
+      "drives": {
+        "kinds": {
+          "object_visibility": 2,
+          "object_other": 2,
+          "modifier_toggle": 46
+        },
+        "affected_objects_sample": [
+          "Freja-physics-body",
+          "Freja-physics-boobs",
+          "Freja-physics-butt",
+          "Freja-physics-cloth",
+          "Freja-physics-cloth-archangel-back",
+          "Freja-physics-cloth-archangel-front",
+          "Freja-physics-cloth-belt",
+          "Freja-physics-hair",
+          "Freja-physics-hair-archangel",
+          "Freja-physics-hair-ponytail.HOC",
+          "Freja-physics-hair-scarlett",
+          "Freja-physics-hair-side"
+        ],
+        "affected_object_count": 49,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Physics_Properties/Physics Frame End",
+      "label": "Frame End",
+      "prop_name": "Physics Frame End",
+      "owner_bone": "Physics_Properties",
+      "group": "physics",
+      "panel": "Physics",
+      "control": "int_slider",
+      "value_type": "int",
+      "default": 250,
+      "current": 250,
+      "min": -2147483648,
+      "max": 2147483647,
+      "soft_min": 0,
+      "soft_max": 100000,
+      "visible_when": [
+        {
+          "prop": "Enable Physics",
+          "equals": "True"
+        }
+      ],
+      "ui_operator": "ptcache.free_bake_all",
+      "drives": {
+        "kinds": {
+          "object_other": 1
+        },
+        "affected_objects_sample": [
+          "Freja-physics-boobs",
+          "Freja-physics-butt",
+          "Freja-physics-cloth",
+          "Freja-physics-cloth-archangel-back",
+          "Freja-physics-cloth-archangel-front",
+          "Freja-physics-cloth-belt",
+          "Freja-physics-hair",
+          "Freja-physics-hair-archangel",
+          "Freja-physics-hair-ponytail.HOC",
+          "Freja-physics-hair-scarlett",
+          "Freja-physics-hair-side",
+          "Freja-physics-hair-side.HOC"
+        ],
+        "affected_object_count": 16,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Physics_Properties/Physics Frame Start",
+      "label": "Frame Start",
+      "prop_name": "Physics Frame Start",
+      "owner_bone": "Physics_Properties",
+      "group": "physics",
+      "panel": "Physics",
+      "control": "int_slider",
+      "value_type": "int",
+      "default": 1,
+      "current": 1,
+      "min": -2147483647,
+      "max": 2147483647,
+      "soft_min": 0,
+      "soft_max": 100000,
+      "visible_when": [
+        {
+          "prop": "Enable Physics",
+          "equals": "True"
+        }
+      ],
+      "ui_operator": "ptcache.bake_all",
+      "drives": {
+        "kinds": {
+          "object_other": 1
+        },
+        "affected_objects_sample": [
+          "Freja-physics-boobs",
+          "Freja-physics-butt",
+          "Freja-physics-cloth",
+          "Freja-physics-cloth-archangel-back",
+          "Freja-physics-cloth-archangel-front",
+          "Freja-physics-cloth-belt",
+          "Freja-physics-hair",
+          "Freja-physics-hair-archangel",
+          "Freja-physics-hair-ponytail.HOC",
+          "Freja-physics-hair-scarlett",
+          "Freja-physics-hair-side",
+          "Freja-physics-hair-side.HOC"
+        ],
+        "affected_object_count": 16,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Physics_Properties/Physics Butt",
+      "label": "Physics Butt",
+      "prop_name": "Physics Butt",
+      "owner_bone": "Physics_Properties",
+      "group": "physics",
+      "panel": "Physics",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "description": "Enable physics for butt",
+      "visible_when": [
+        {
+          "prop": "Enable Physics",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "modifier_toggle": 8,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja-physics-butt",
+          "Freja_Archangel_Panties",
+          "Freja_Nude_Body",
+          "Freja_Scarlett_Straps_Ammo",
+          "Freja_SportsPanties",
+          "Freja_Streetwear_Belt",
+          "Freja_Streetwear_Pants"
+        ],
+        "affected_object_count": 7,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Physics_Properties/Physics Boobs",
+      "label": "Physics Boobs",
+      "prop_name": "Physics Boobs",
+      "owner_bone": "Physics_Properties",
+      "group": "physics",
+      "panel": "Physics",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "description": "Enable physics for breasts",
+      "visible_when": [
+        {
+          "prop": "Enable Physics",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "modifier_toggle": 24,
+          "object_visibility": 2,
+          "object_other": 1
+        },
+        "affected_objects_sample": [
+          "Freja-physics-boobs",
+          "Freja_Archangel_UpperBody_Armor",
+          "Freja_Archangel_Upperbody",
+          "Freja_Archangel_UpperbodyRevealed",
+          "Freja_Nude_Body",
+          "Freja_OW2_Shirt",
+          "Freja_Scarlett_Chest_Closed",
+          "Freja_Scarlett_Chest_Open",
+          "Freja_SportsBra",
+          "Freja_Streetwear_Body",
+          "Freja_Streetwear_BodyReveal"
+        ],
+        "affected_object_count": 11,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Physics_Properties/Physics Hair",
+      "label": "Physics Hair",
+      "prop_name": "Physics Hair",
+      "owner_bone": "Physics_Properties",
+      "group": "physics",
+      "panel": "Physics",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "description": "Enable physics for hair",
+      "visible_when": [
+        {
+          "prop": "Enable Physics",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "modifier_toggle": 14,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja-physics-cloth-archangel-front",
+          "Freja-physics-hair",
+          "Freja-physics-hair-archangel",
+          "Freja-physics-hair-ponytail.HOC",
+          "Freja-physics-hair-scarlett",
+          "Freja-physics-hair-side",
+          "Freja-physics-hair-side.HOC",
+          "Freja-physics-hair-streetwear",
+          "Freja-physics-hair.HOC",
+          "Freja_Archangel_Hair",
+          "Freja_Heart_of_Courage_Hair",
+          "Freja_Heart_of_Courage_HairTail"
+        ],
+        "affected_object_count": 21,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Physics_Properties/Physics Jacket",
+      "label": "Physics Jacket",
+      "prop_name": "Physics Jacket",
+      "owner_bone": "Physics_Properties",
+      "group": "physics",
+      "panel": null,
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "description": "Enable physics on the jacket straps"
+    },
+    {
+      "id": "Physics_Properties/Physics Collision",
+      "label": "Physics Collision",
+      "prop_name": "Physics Collision",
+      "owner_bone": "Physics_Properties",
+      "group": "physics",
+      "panel": "Physics",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "description": "Enable collision for the arms/legs",
+      "visible_when": [
+        {
+          "prop": "Enable Physics",
+          "equals": "True"
+        }
+      ],
+      "ui_operator": "object.regenerate_collision_operator",
+      "drives": {
+        "kinds": {
+          "object_visibility": 2,
+          "object_other": 1,
+          "modifier_toggle": 2
+        },
+        "affected_objects_sample": [
+          "Freja-physics-body",
+          "Freja-physics-boobs",
+          "Freja-physics-butt",
+          "Freja-physics-thighs"
+        ],
+        "affected_object_count": 4,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Physics_Properties/Physics Fix Script",
+      "label": "Physics Fix Script",
+      "prop_name": "Physics Fix Script",
+      "owner_bone": "Physics_Properties",
+      "group": "physics",
+      "panel": null,
+      "control": "string",
+      "value_type": "string",
+      "default": {},
+      "current": {}
+    },
+    {
+      "id": "Physics_Properties/Physics Cloth",
+      "label": "Physics Cloth (Cape)",
+      "prop_name": "Physics Cloth",
+      "owner_bone": "Physics_Properties",
+      "group": "physics",
+      "panel": "Physics",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": false,
+      "visible_when": [
+        {
+          "prop": "Enable Physics",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "modifier_toggle": 4,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja-physics-cloth"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Physics_Properties/Physics Necklance",
+      "label": "Physics Necklance",
+      "prop_name": "Physics Necklance",
+      "owner_bone": "Physics_Properties",
+      "group": "physics",
+      "panel": "Physics",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": false,
+      "visible_when": [
+        {
+          "prop": "Enable Physics",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2,
+          "modifier_toggle": 6
+        },
+        "affected_objects_sample": [
+          "Freja-physics-necklance",
+          "Freja_OW2_Necklance"
+        ],
+        "affected_object_count": 2,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Physics_Properties/Cloth_Misc",
+      "label": "Physics Cloth (Misc, Belts)",
+      "prop_name": "Cloth_Misc",
+      "owner_bone": "Physics_Properties",
+      "group": "physics",
+      "panel": "Physics",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "Enable Physics",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2,
+          "modifier_toggle": 12
+        },
+        "affected_objects_sample": [
+          "Freja-physics-cloth-archangel-back",
+          "Freja-physics-cloth-archangel-front",
+          "Freja-physics-cloth-belt",
+          "Freja_Archangel_Upperbody",
+          "Freja_Archangel_UpperbodyBackCloth",
+          "Freja_Archangel_UpperbodyRevealed",
+          "Freja_Streetwear_Belt"
+        ],
+        "affected_object_count": 7,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Physics_Properties/Physics Thighs",
+      "label": "Physics Thighs",
+      "prop_name": "Physics Thighs",
+      "owner_bone": "Physics_Properties",
+      "group": "physics",
+      "panel": "Physics",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "description": "Recommended to use against other objects, not self intersection",
+      "visible_when": [
+        {
+          "prop": "Enable Physics",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "modifier_toggle": 8,
+          "object_visibility": 2,
+          "object_other": 1
+        },
+        "affected_objects_sample": [
+          "Freja-physics-thighs",
+          "Freja_Archangel_Panties",
+          "Freja_Heart_of_Courage_Highheels",
+          "Freja_Nude_Body",
+          "Freja_OW2_Boots",
+          "Freja_Stockings",
+          "Freja_Streetwear_Belt",
+          "Freja_Streetwear_Pants"
+        ],
+        "affected_object_count": 8,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Skins/nsfw_on",
+      "label": "🔺Toggle Lewd 🔺",
+      "prop_name": "nsfw_on",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": false,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "shape_key": 1,
+          "object_visibility": 2,
+          "modifier_toggle": 12,
+          "geonodes_mask": 3,
+          "material_value": 1,
+          "shader_nodegroup": 1
+        },
+        "affected_objects_sample": [
+          "Freja_Heart_of_Courage_Cape",
+          "Freja_Heart_of_Courage_Ribbon_Back",
+          "Freja_Heart_of_Courage_Ribbon_Pelvis",
+          "Freja_Heart_of_Courage_Skirt",
+          "Freja_Heart_of_Courage_UpperBody",
+          "Freja_Heart_of_Courage_UpperBody_Breasts",
+          "Freja_Nude_Body",
+          "Freja_OW2_Bodysuit",
+          "Freja_SportsBra"
+        ],
+        "affected_object_count": 9,
+        "affected_materials": [
+          "Freja_Outfit_OW2"
+        ],
+        "shape_key_meshes": [
+          "Freja-physics-boobs",
+          "Freja_Heart_of_Courage_Gloves",
+          "Freja_Heart_of_Courage_Skirt",
+          "Freja_Heart_of_Courage_UpperBody",
+          "Freja_Nude_Body",
+          "Freja_OW2_Bodysuit",
+          "Freja_OW2_Shirt"
+        ]
+      }
+    },
+    {
+      "id": "Properties_Skins/Chest Armor",
+      "label": "Chest Armor",
+      "prop_name": "Chest Armor",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2,
+          "shape_key": 1
+        },
+        "affected_objects_sample": [
+          "Freja_OW2_Cape",
+          "Freja_OW2_Chest_Armor",
+          "Freja_OW2_Chest_Armor_Hoodie",
+          "Freja_OW2_Collar_Fur"
+        ],
+        "affected_object_count": 4,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_OW2_Shirt"
+        ]
+      }
+    },
+    {
+      "id": "Properties_Skins/Hoodie",
+      "label": "Hoodie",
+      "prop_name": "Hoodie",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": false,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        },
+        {
+          "prop": "Chest Armor",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_OW2_Cape",
+          "Freja_OW2_Chest_Armor_Hoodie"
+        ],
+        "affected_object_count": 2,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Skins/Earring",
+      "label": "Earring",
+      "prop_name": "Earring",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_OW2_Earring"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Skins/Gloves",
+      "label": "Gloves",
+      "prop_name": "Gloves",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "geonodes_mask": 1,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Nude_Body",
+          "Freja_OW2_Gloves"
+        ],
+        "affected_object_count": 2,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Skins/Fur Collar",
+      "label": "Fur Collar",
+      "prop_name": "Fur Collar",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        },
+        {
+          "prop": "Chest Armor",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_OW2_Collar_Fur"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Skins/Hair Straps",
+      "label": "Back",
+      "prop_name": "Hair Straps",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "drives": {
+        "kinds": {
+          "object_visibility": 2,
+          "geonodes_mask": 1
+        },
+        "affected_objects_sample": [
+          "Freja_Heart_of_Courage_HairTail",
+          "Freja_Heart_of_Courage_Hair_Misc",
+          "Freja_OW2_Hair_Straps",
+          "Freja_Streetwear_Hair"
+        ],
+        "affected_object_count": 4,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Skins/High Heels",
+      "label": "High Heels",
+      "prop_name": "High Heels",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "geonodes_mask": 2,
+          "shape_key": 1,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Nude_Body",
+          "Freja_OW2_Boots",
+          "Freja_Stockings"
+        ],
+        "affected_object_count": 3,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Nude_Body",
+          "Freja_Scarlett_Straps_Ammo",
+          "Freja_Scarlett_Thight_Strap"
+        ]
+      }
+    },
+    {
+      "id": "Properties_Skins/Belt Arrows",
+      "label": "Belt Arrows",
+      "prop_name": "Belt Arrows",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        },
+        {
+          "prop": "Belt",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_OW2_Belt_Arrows"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Skins/Nose Piercing",
+      "label": "Nose Piercing",
+      "prop_name": "Nose Piercing",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_OW2_Nose_Piercing"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Skins/Belt Utility",
+      "label": "Belt Utility",
+      "prop_name": "Belt Utility",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        },
+        {
+          "prop": "Belt",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_OW2_Belt_Utility"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Skins/Bodysuit Expose Belly",
+      "label": "Tear Belly",
+      "prop_name": "Bodysuit Expose Belly",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        },
+        {
+          "prop": "nsfw_on",
+          "equals": "True"
+        },
+        {
+          "prop": "Bodysuit",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Outfit_OW2"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Skins/Hair Side",
+      "label": "Side",
+      "prop_name": "Hair Side",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "drives": {
+        "kinds": {
+          "object_visibility": 2,
+          "geonodes_mask": 1
+        },
+        "affected_objects_sample": [
+          "Freja_Heart_of_Courage_Hair_Side",
+          "Freja_OW2_Hair-Side",
+          "Freja_Streetwear_Hair"
+        ],
+        "affected_object_count": 3,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Skins/Hair Front",
+      "label": "Front",
+      "prop_name": "Hair Front",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "drives": {
+        "kinds": {
+          "object_visibility": 2,
+          "modifier_toggle": 10,
+          "geonodes_mask": 1
+        },
+        "affected_objects_sample": [
+          "Freja-physics-hair-archangel",
+          "Freja-physics-hair-scarlett",
+          "Freja-physics-hair-streetwear",
+          "Freja_Archangel_Hair",
+          "Freja_OW2_Hair-Front",
+          "Freja_Scarlett_Hair_Back",
+          "Freja_Scarlett_Hair_Front",
+          "Freja_Streetwear_Hair"
+        ],
+        "affected_object_count": 8,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Skins/See-through belly",
+      "label": "See-through outfit",
+      "prop_name": "See-through belly",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        },
+        {
+          "prop": "nsfw_on",
+          "equals": "True"
+        },
+        {
+          "prop": "Bodysuit",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Outfit_OW2"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Skins/Shirt_Lewd",
+      "label": "Shirt",
+      "prop_name": "Shirt_Lewd",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "enum",
+      "value_type": "int",
+      "default": 0,
+      "current": 0,
+      "enum_labels": [
+        "Closed",
+        "Rolled up",
+        "Exposed",
+        "Tucked away"
+      ],
+      "min": 0,
+      "max": 3,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        },
+        {
+          "prop": "Shirt",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "shape_key": 1,
+          "modifier_toggle": 10
+        },
+        "affected_objects_sample": [
+          "Freja_Nude_Body",
+          "Freja_OW2_Shirt",
+          "Freja_SportsBra"
+        ],
+        "affected_object_count": 3,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja-physics-boobs",
+          "Freja_Nude_Body",
+          "Freja_OW2_Shirt"
+        ]
+      }
+    },
+    {
+      "id": "Properties_Skins/Cape Emissive Color",
+      "label": "Color",
+      "prop_name": "Cape Emissive Color",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        0.0,
+        0.4995670020580292,
+        1.0
+      ],
+      "current": [
+        0.0,
+        0.4995670020580292,
+        1.0
+      ],
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        },
+        {
+          "prop": "Chest Armor",
+          "equals": "True"
+        },
+        {
+          "prop": "Hoodie",
+          "equals": "True"
+        },
+        {
+          "prop": "Cape",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Body_OW2"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Skins/Cape Emissive",
+      "label": "Emissive",
+      "prop_name": "Cape Emissive",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 2.0,
+      "soft_min": 0.0,
+      "soft_max": 2.0,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        },
+        {
+          "prop": "Chest Armor",
+          "equals": "True"
+        },
+        {
+          "prop": "Hoodie",
+          "equals": "True"
+        },
+        {
+          "prop": "Cape",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Body_OW2"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Skins/Hair Color Multiplier",
+      "label": "Color",
+      "prop_name": "Hair Color Multiplier",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Material",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "current": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 3
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Hair",
+          "Freja_Heart_of_Courage_Hair",
+          "Streetwear_Hair"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Skins/Bodysuit_Lewd_Lower",
+      "label": "Tear Lower",
+      "prop_name": "Bodysuit_Lewd_Lower",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": false,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        },
+        {
+          "prop": "nsfw_on",
+          "equals": "True"
+        },
+        {
+          "prop": "Bodysuit",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Outfit_OW2"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Skins/$skin_color",
+      "label": "Color",
+      "prop_name": "$skin_color",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "enum",
+      "value_type": "int",
+      "default": 0,
+      "current": 0,
+      "enum_labels": [
+        "(OW2)",
+        "Rauðr",
+        "Syren",
+        "Lavendel",
+        "Solsikke"
+      ],
+      "min": 0,
+      "max": 4,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 2
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Body_OW2",
+          "Freja_Outfit_OW2"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Skins/Bodysuit_Lewd",
+      "label": "Bodysuit Upper",
+      "prop_name": "Bodysuit_Lewd",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "enum",
+      "value_type": "int",
+      "default": 0,
+      "current": 0,
+      "enum_labels": [
+        "Closed",
+        "Exposed",
+        "Exposed More"
+      ],
+      "min": 0,
+      "max": 1,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        },
+        {
+          "prop": "nsfw_on",
+          "equals": "True"
+        },
+        {
+          "prop": "Bodysuit",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "shape_key": 1,
+          "modifier_toggle": 10
+        },
+        "affected_objects_sample": [
+          "Freja_Nude_Body",
+          "Freja_OW2_Bodysuit",
+          "Freja_OW2_Shirt",
+          "Freja_SportsBra"
+        ],
+        "affected_object_count": 4,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja-physics-boobs",
+          "Freja_Nude_Body",
+          "Freja_OW2_Bodysuit",
+          "Freja_OW2_Shirt"
+        ]
+      }
+    },
+    {
+      "id": "Properties_Skins/skin_id",
+      "label": "Skin",
+      "prop_name": "skin_id",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "enum",
+      "value_type": "int",
+      "default": 0,
+      "current": 0,
+      "enum_labels": [
+        "Default (OW2)",
+        "Heart of Courage",
+        "Scarlett",
+        "Streetwear",
+        "Archangel"
+      ],
+      "min": 0,
+      "max": 4,
+      "description": "When more added later, will be included here.",
+      "drives": {
+        "kinds": {
+          "shape_key": 1,
+          "object_visibility": 2,
+          "modifier_toggle": 48,
+          "geonodes_mask": 24,
+          "material_value": 4,
+          "shader_nodegroup": 2
+        },
+        "affected_objects_sample": [
+          "Freja-physics-cloth-archangel-back",
+          "Freja-physics-cloth-archangel-front",
+          "Freja-physics-cloth-belt",
+          "Freja-physics-hair",
+          "Freja-physics-hair-archangel",
+          "Freja-physics-hair-ponytail.HOC",
+          "Freja-physics-hair-scarlett",
+          "Freja-physics-hair-side",
+          "Freja-physics-hair-side.HOC",
+          "Freja-physics-hair-streetwear",
+          "Freja-physics-hair.HOC",
+          "Freja-physics-necklance"
+        ],
+        "affected_object_count": 114,
+        "affected_materials": [
+          "Freja Eye",
+          "Freja Face",
+          "Freja Teeth",
+          "Freja_Body_Nude"
+        ],
+        "shape_key_meshes": [
+          "Freja-physics-boobs",
+          "Freja_Heart_of_Courage_Skirt",
+          "Freja_Heart_of_Courage_UpperBody",
+          "Freja_Nude_Body",
+          "Freja_OW2_Bodysuit",
+          "Freja_Scarlett_Straps_Ammo",
+          "Freja_Scarlett_Thight_Strap"
+        ]
+      }
+    },
+    {
+      "id": "Properties_Skins/Shirt",
+      "label": "Shirt",
+      "prop_name": "Shirt",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "shape_key": 1,
+          "geonodes_mask": 1,
+          "modifier_toggle": 4,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Nude_Body",
+          "Freja_OW2_Shirt",
+          "Freja_SportsBra"
+        ],
+        "affected_object_count": 3,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja-physics-boobs",
+          "Freja_Nude_Body",
+          "Freja_OW2_Bodysuit"
+        ]
+      }
+    },
+    {
+      "id": "Properties_Skins/Bodysuit",
+      "label": "Bodysuit",
+      "prop_name": "Bodysuit",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": false,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        },
+        {
+          "prop": "nsfw_on",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "shape_key": 1,
+          "modifier_toggle": 6,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Nude_Body",
+          "Freja_OW2_Bodysuit",
+          "Freja_OW2_Shirt",
+          "Freja_SportsBra"
+        ],
+        "affected_object_count": 4,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja-physics-boobs",
+          "Freja_Nude_Body"
+        ]
+      }
+    },
+    {
+      "id": "Properties_Skins/Cape",
+      "label": "Cape",
+      "prop_name": "Cape",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        },
+        {
+          "prop": "Chest Armor",
+          "equals": "True"
+        },
+        {
+          "prop": "Hoodie",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_OW2_Cape"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Skins/Necklance",
+      "label": "Necklance",
+      "prop_name": "Necklance",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja-physics-necklance",
+          "Freja_OW2_Necklance"
+        ],
+        "affected_object_count": 2,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Skins/Belt",
+      "label": "Belt",
+      "prop_name": "Belt",
+      "owner_bone": "Properties_Skins",
+      "group": "outfit__default_OW2",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "0"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_OW2_Belt",
+          "Freja_OW2_Belt_Arrows",
+          "Freja_OW2_Belt_Utility"
+        ],
+        "affected_object_count": 3,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Accessories/Bra_ID",
+      "label": "Sports Bra",
+      "prop_name": "Bra_ID",
+      "owner_bone": "Properties_Accessories",
+      "group": "underwear_and_extras",
+      "panel": "Properties",
+      "control": "enum",
+      "value_type": "int",
+      "default": 0,
+      "current": 0,
+      "enum_labels": [
+        "Off",
+        "On",
+        "Side"
+      ],
+      "min": 0,
+      "max": 2,
+      "drives": {
+        "kinds": {
+          "object_visibility": 2,
+          "shape_key": 1
+        },
+        "affected_objects_sample": [
+          "Freja_SportsBra"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_SportsBra"
+        ]
+      }
+    },
+    {
+      "id": "Properties_Accessories/Panties_ID",
+      "label": "Panties",
+      "prop_name": "Panties_ID",
+      "owner_bone": "Properties_Accessories",
+      "group": "underwear_and_extras",
+      "panel": "Properties",
+      "control": "enum",
+      "value_type": "int",
+      "default": 0,
+      "current": 0,
+      "enum_labels": [
+        "Off",
+        "On",
+        "Side"
+      ],
+      "min": 0,
+      "max": 2,
+      "drives": {
+        "kinds": {
+          "object_visibility": 2,
+          "shape_key": 1
+        },
+        "affected_objects_sample": [
+          "Freja_SportsPanties"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_SportsPanties"
+        ]
+      }
+    },
+    {
+      "id": "Properties_Accessories/Bikini Alt",
+      "label": "Blend",
+      "prop_name": "Bikini Alt",
+      "owner_bone": "Properties_Accessories",
+      "group": "underwear_and_extras",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "visible_when": [
+        {
+          "prop": "Panties_ID",
+          "equals": "1,2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Panties"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Accessories/Bra Alt",
+      "label": "Blend",
+      "prop_name": "Bra Alt",
+      "owner_bone": "Properties_Accessories",
+      "group": "underwear_and_extras",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "visible_when": [
+        {
+          "prop": "Bra_ID",
+          "equals": "1,2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_SportsBra"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Accessories/Bikini AltText",
+      "label": "Text",
+      "prop_name": "Bikini AltText",
+      "owner_bone": "Properties_Accessories",
+      "group": "underwear_and_extras",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.5,
+      "current": 0.5,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "visible_when": [
+        {
+          "prop": "Panties_ID",
+          "equals": "1,2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Panties"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Accessories/Bra AltText",
+      "label": "Text",
+      "prop_name": "Bra AltText",
+      "owner_bone": "Properties_Accessories",
+      "group": "underwear_and_extras",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.5,
+      "current": 0.5,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "visible_when": [
+        {
+          "prop": "Bra_ID",
+          "equals": "1,2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_SportsBra"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Accessories/Bra Color1",
+      "label": "Color1",
+      "prop_name": "Bra Color1",
+      "owner_bone": "Properties_Accessories",
+      "group": "underwear_and_extras",
+      "panel": "Properties",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        0.017642000690102577,
+        0.009720999747514725,
+        0.0018210000125691295
+      ],
+      "current": [
+        0.017642000690102577,
+        0.009720999747514725,
+        0.0018210000125691295
+      ],
+      "visible_when": [
+        {
+          "prop": "Bra_ID",
+          "equals": "1,2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_SportsBra"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Accessories/Bikini Color1",
+      "label": "Color1",
+      "prop_name": "Bikini Color1",
+      "owner_bone": "Properties_Accessories",
+      "group": "underwear_and_extras",
+      "panel": "Properties",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        0.017642000690102577,
+        0.009720999747514725,
+        0.0018210000125691295
+      ],
+      "current": [
+        0.017642000690102577,
+        0.009720999747514725,
+        0.0018210000125691295
+      ],
+      "visible_when": [
+        {
+          "prop": "Panties_ID",
+          "equals": "1,2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Panties"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Accessories/Bra Color2",
+      "label": "Color2",
+      "prop_name": "Bra Color2",
+      "owner_bone": "Properties_Accessories",
+      "group": "underwear_and_extras",
+      "panel": "Properties",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        0.023152999579906464,
+        0.038203999400138855,
+        0.07035999745130539
+      ],
+      "current": [
+        0.023152999579906464,
+        0.038203999400138855,
+        0.07035999745130539
+      ],
+      "visible_when": [
+        {
+          "prop": "Bra_ID",
+          "equals": "1,2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_SportsBra"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Accessories/Bikini Color2",
+      "label": "Color2",
+      "prop_name": "Bikini Color2",
+      "owner_bone": "Properties_Accessories",
+      "group": "underwear_and_extras",
+      "panel": "Properties",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        0.023152999579906464,
+        0.038203999400138855,
+        0.07035999745130539
+      ],
+      "current": [
+        0.023152999579906464,
+        0.038203999400138855,
+        0.07035999745130539
+      ],
+      "visible_when": [
+        {
+          "prop": "Panties_ID",
+          "equals": "1,2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Panties"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Accessories/Stockings",
+      "label": "Stockings",
+      "prop_name": "Stockings",
+      "owner_bone": "Properties_Accessories",
+      "group": "underwear_and_extras",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": false,
+      "description": "First: disable High Heels to make it visible.",
+      "drives": {
+        "kinds": {
+          "geonodes_mask": 1,
+          "shape_key": 1,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Nude_Body",
+          "Freja_Stockings"
+        ],
+        "affected_object_count": 2,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Nude_Body",
+          "Freja_Scarlett_Straps_Ammo",
+          "Freja_Scarlett_Thight_Strap"
+        ]
+      }
+    },
+    {
+      "id": "Properties_Accessories/Stocking Camo1",
+      "label": "Pattern1",
+      "prop_name": "Stocking Camo1",
+      "owner_bone": "Properties_Accessories",
+      "group": "underwear_and_extras",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.6499999761581421,
+      "current": 0.6499999761581421,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "visible_when": [
+        {
+          "prop": "Stockings",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Stockings"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Accessories/Stocking Camo2",
+      "label": "Pattern2",
+      "prop_name": "Stocking Camo2",
+      "owner_bone": "Properties_Accessories",
+      "group": "underwear_and_extras",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.6499999761581421,
+      "current": 0.6499999761581421,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "visible_when": [
+        {
+          "prop": "Stockings",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Stockings"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Accessories/Stockings Color1",
+      "label": "Color1",
+      "prop_name": "Stockings Color1",
+      "owner_bone": "Properties_Accessories",
+      "group": "underwear_and_extras",
+      "panel": "Properties",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        0.08433599770069122,
+        0.036862000823020935,
+        0.023514000698924065
+      ],
+      "current": [
+        0.08433599770069122,
+        0.036862000823020935,
+        0.023514000698924065
+      ],
+      "visible_when": [
+        {
+          "prop": "Stockings",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Stockings"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Accessories/Stocking Tile2",
+      "label": "Tile2",
+      "prop_name": "Stocking Tile2",
+      "owner_bone": "Properties_Accessories",
+      "group": "underwear_and_extras",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 13.0,
+      "current": 13.0,
+      "min": 0.0,
+      "max": 25.0,
+      "soft_min": 0.0,
+      "soft_max": 25.0,
+      "visible_when": [
+        {
+          "prop": "Stockings",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Stockings"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Accessories/Stocking Tile1",
+      "label": "Tile1",
+      "prop_name": "Stocking Tile1",
+      "owner_bone": "Properties_Accessories",
+      "group": "underwear_and_extras",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 11.0,
+      "current": 11.0,
+      "min": 0.0,
+      "max": 25.0,
+      "soft_min": 0.0,
+      "soft_max": 25.0,
+      "visible_when": [
+        {
+          "prop": "Stockings",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Stockings"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Accessories/Stockings Color2",
+      "label": "Color2",
+      "prop_name": "Stockings Color2",
+      "owner_bone": "Properties_Accessories",
+      "group": "underwear_and_extras",
+      "panel": "Properties",
+      "control": "color_rgb",
+      "value_type": "float3",
+      "default": [
+        0.026114000007510185,
+        0.05312899872660637,
+        0.08587799966335297
+      ],
+      "current": [
+        0.026114000007510185,
+        0.05312899872660637,
+        0.08587799966335297
+      ],
+      "visible_when": [
+        {
+          "prop": "Stockings",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Stockings"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Accessories/Bra Camo",
+      "label": "Camo",
+      "prop_name": "Bra Camo",
+      "owner_bone": "Properties_Accessories",
+      "group": "underwear_and_extras",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.15000000596046448,
+      "current": 0.15000000596046448,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "visible_when": [
+        {
+          "prop": "Bra_ID",
+          "equals": "1,2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_SportsBra"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Accessories/Bikini Camo",
+      "label": "Camo",
+      "prop_name": "Bikini Camo",
+      "owner_bone": "Properties_Accessories",
+      "group": "underwear_and_extras",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.15000000596046448,
+      "current": 0.15000000596046448,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "visible_when": [
+        {
+          "prop": "Panties_ID",
+          "equals": "1,2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Panties"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_HOC/Thight Tattoo",
+      "label": "Thight Tattoo",
+      "prop_name": "Thight Tattoo",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 2
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja Face",
+          "Freja_Body_Nude"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_HOC/Highheels",
+      "label": "Highheels",
+      "prop_name": "Highheels",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2,
+          "geonodes_mask": 2,
+          "shape_key": 1
+        },
+        "affected_objects_sample": [
+          "Freja_Heart_of_Courage_Highheels",
+          "Freja_Nude_Body",
+          "Freja_Stockings"
+        ],
+        "affected_object_count": 3,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Nude_Body",
+          "Freja_Scarlett_Straps_Ammo",
+          "Freja_Scarlett_Thight_Strap"
+        ]
+      }
+    },
+    {
+      "id": "Properties_HOC/Gloves",
+      "label": "Gloves",
+      "prop_name": "Gloves",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2,
+          "geonodes_mask": 1
+        },
+        "affected_objects_sample": [
+          "Freja_Heart_of_Courage_Gloves",
+          "Freja_Nude_Body"
+        ],
+        "affected_object_count": 2,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_HOC/Earring",
+      "label": "Earring",
+      "prop_name": "Earring",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Heart_of_Courage_Earring"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_HOC/Cape",
+      "label": "Cape",
+      "prop_name": "Cape",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        },
+        {
+          "prop": "nsfw_on",
+          "equals": "True"
+        },
+        {
+          "prop": "Shirt",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Heart_of_Courage_Cape"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_HOC/Head Accessory",
+      "label": "Hair Accessory",
+      "prop_name": "Head Accessory",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Heart_of_Courage_Hair_Misc_Wings"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_HOC/Head Ribbon",
+      "label": "Head Ribbon",
+      "prop_name": "Head Ribbon",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Heart_of_Courage_Hair_MiscRibbon"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_HOC/Wrist Weapon Misc",
+      "label": "Wrist Weapon Misc",
+      "prop_name": "Wrist Weapon Misc",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        },
+        {
+          "prop": "Wrist Weapon",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Heart_of_Courage_UpperBody_Wrist_Ammo"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_HOC/Wrist Weapon",
+      "label": "Wrist Weapon",
+      "prop_name": "Wrist Weapon",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": false,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "shape_key": 1,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Heart_of_Courage_UpperBody_Wrist",
+          "Freja_Heart_of_Courage_UpperBody_Wrist_Ammo"
+        ],
+        "affected_object_count": 2,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Heart_of_Courage_UpperBody"
+        ]
+      }
+    },
+    {
+      "id": "Properties_HOC/Kitten",
+      "label": "Kitten",
+      "prop_name": "Kitten",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": false,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Heart_of_Courage_Kittie"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_HOC/Ribbon Pelvis Front",
+      "label": "Ribbon Pelvis Front",
+      "prop_name": "Ribbon Pelvis Front",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Heart_of_Courage_Ribbon_Pelvis"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_HOC/Neck Ribbon",
+      "label": "Neck Ribbon",
+      "prop_name": "Neck Ribbon",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Heart_of_Courage_Ribbon_Neck"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_HOC/Ribbon Pelvis Back",
+      "label": "Ribbon Pelvis Back",
+      "prop_name": "Ribbon Pelvis Back",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Heart_of_Courage_Ribbon_Back"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_HOC/SkirtOn",
+      "label": "Underwear Texture",
+      "prop_name": "SkirtOn",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": false,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        },
+        {
+          "prop": "nsfw_on",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "shader_nodegroup": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_HOC/Skirt_Tear",
+      "label": "Underwear Tear",
+      "prop_name": "Skirt_Tear",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": false,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        },
+        {
+          "prop": "nsfw_on",
+          "equals": "True"
+        },
+        {
+          "prop": "SkirtOn",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "shader_nodegroup": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_HOC/RecolorHue",
+      "label": "Hue",
+      "prop_name": "RecolorHue",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.5,
+      "current": 0.5,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 2
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Heart_of_Courage_Body",
+          "Freja_Heart_of_Courage_Skirt"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_HOC/RecolorSat",
+      "label": "Saturation",
+      "prop_name": "RecolorSat",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 2.0,
+      "soft_min": 0.0,
+      "soft_max": 2.0,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 2
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Heart_of_Courage_Body",
+          "Freja_Heart_of_Courage_Skirt"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_HOC/RecolorVal",
+      "label": "Value",
+      "prop_name": "RecolorVal",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 2.0,
+      "soft_min": 0.0,
+      "soft_max": 2.0,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 2
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Heart_of_Courage_Body",
+          "Freja_Heart_of_Courage_Skirt"
+        ],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_HOC/Skirt",
+      "label": "Skirt",
+      "prop_name": "Skirt",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": false,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        },
+        {
+          "prop": "nsfw_on",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2,
+          "modifier_toggle": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Heart_of_Courage_Ribbon_Back",
+          "Freja_Heart_of_Courage_Ribbon_Pelvis",
+          "Freja_Heart_of_Courage_Skirt",
+          "Freja_Heart_of_Courage_UpperBody"
+        ],
+        "affected_object_count": 4,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_HOC/Shirt",
+      "label": "Dress",
+      "prop_name": "Shirt",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": false,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        },
+        {
+          "prop": "nsfw_on",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "shape_key": 1,
+          "object_visibility": 2,
+          "modifier_toggle": 6,
+          "geonodes_mask": 3
+        },
+        "affected_objects_sample": [
+          "Freja_Heart_of_Courage_Cape",
+          "Freja_Heart_of_Courage_Ribbon_Back",
+          "Freja_Heart_of_Courage_Ribbon_Pelvis",
+          "Freja_Heart_of_Courage_Skirt",
+          "Freja_Heart_of_Courage_UpperBody",
+          "Freja_Heart_of_Courage_UpperBody_Breasts",
+          "Freja_Nude_Body"
+        ],
+        "affected_object_count": 7,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja-physics-boobs",
+          "Freja_Heart_of_Courage_Gloves",
+          "Freja_Heart_of_Courage_Skirt",
+          "Freja_Heart_of_Courage_UpperBody",
+          "Freja_Nude_Body"
+        ]
+      }
+    },
+    {
+      "id": "Properties_HOC/Shirt Open",
+      "label": "Shirt Open",
+      "prop_name": "Shirt Open",
+      "owner_bone": "Properties_HOC",
+      "group": "outfit__heart_of_courage",
+      "panel": "Properties",
+      "control": "enum",
+      "value_type": "int",
+      "default": 1,
+      "current": 1,
+      "enum_labels": [
+        "Closed",
+        "Open",
+        "Fully Exposed"
+      ],
+      "min": 0,
+      "max": 2,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "1"
+        },
+        {
+          "prop": "nsfw_on",
+          "equals": "True"
+        },
+        {
+          "prop": "Shirt",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "shape_key": 1,
+          "modifier_toggle": 6,
+          "geonodes_mask": 2,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Heart_of_Courage_Skirt",
+          "Freja_Heart_of_Courage_UpperBody",
+          "Freja_Heart_of_Courage_UpperBody_Breasts",
+          "Freja_Nude_Body"
+        ],
+        "affected_object_count": 4,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja-physics-boobs",
+          "Freja_Heart_of_Courage_Skirt",
+          "Freja_Heart_of_Courage_UpperBody",
+          "Freja_Nude_Body"
+        ]
+      }
+    },
+    {
+      "id": "Properties_Scarlett/Earring",
+      "label": "Earring",
+      "prop_name": "Earring",
+      "owner_bone": "Properties_Scarlett",
+      "group": "outfit__scarlett",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Scarlett_Earring"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Scarlett/Wrist",
+      "label": "Wrist",
+      "prop_name": "Wrist",
+      "owner_bone": "Properties_Scarlett",
+      "group": "outfit__scarlett",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Scarlett_Wrist"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Scarlett/Shoes",
+      "label": "Shoes",
+      "prop_name": "Shoes",
+      "owner_bone": "Properties_Scarlett",
+      "group": "outfit__scarlett",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "geonodes_mask": 1,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Nude_Body",
+          "Freja_Scarlett_Boots"
+        ],
+        "affected_object_count": 2,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Scarlett/Gloves",
+      "label": "Gloves",
+      "prop_name": "Gloves",
+      "owner_bone": "Properties_Scarlett",
+      "group": "outfit__scarlett",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "geonodes_mask": 1,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Nude_Body",
+          "Freja_Scarlett_Gloves"
+        ],
+        "affected_object_count": 2,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Scarlett/Straps_Ammo",
+      "label": "Straps Ammo",
+      "prop_name": "Straps_Ammo",
+      "owner_bone": "Properties_Scarlett",
+      "group": "outfit__scarlett",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "shape_key": 1,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Scarlett_Ammo",
+          "Freja_Scarlett_Straps_Ammo"
+        ],
+        "affected_object_count": 2,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Nude_Body"
+        ]
+      }
+    },
+    {
+      "id": "Properties_Scarlett/Straps_Upper",
+      "label": "Straps Upper",
+      "prop_name": "Straps_Upper",
+      "owner_bone": "Properties_Scarlett",
+      "group": "outfit__scarlett",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "shape_key": 1,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Scarlett_Straps_Upper"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Nude_Body"
+        ]
+      }
+    },
+    {
+      "id": "Properties_Scarlett/Thight_Strap",
+      "label": "Thight Strap",
+      "prop_name": "Thight_Strap",
+      "owner_bone": "Properties_Scarlett",
+      "group": "outfit__scarlett",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "shape_key": 1,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Scarlett_Knife",
+          "Freja_Scarlett_Thight_Strap"
+        ],
+        "affected_object_count": 2,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Nude_Body"
+        ]
+      }
+    },
+    {
+      "id": "Properties_Scarlett/Cape",
+      "label": "Cape",
+      "prop_name": "Cape",
+      "owner_bone": "Properties_Scarlett",
+      "group": "outfit__scarlett",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": false,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "2"
+        },
+        {
+          "prop": "Chest",
+          "equals": "1,2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Scarlett_Cape"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Scarlett/ChestForced",
+      "label": "ChestForced",
+      "prop_name": "ChestForced",
+      "owner_bone": "Properties_Scarlett",
+      "group": "outfit__scarlett",
+      "panel": null,
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true
+    },
+    {
+      "id": "Properties_Scarlett/OutfitTearBreasts",
+      "label": "Breasts tear",
+      "prop_name": "OutfitTearBreasts",
+      "owner_bone": "Properties_Scarlett",
+      "group": "outfit__scarlett",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "2"
+        },
+        {
+          "prop": "Outfit",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "shader_nodegroup": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Scarlett/OutfitTearBottom",
+      "label": "Bottom tear",
+      "prop_name": "OutfitTearBottom",
+      "owner_bone": "Properties_Scarlett",
+      "group": "outfit__scarlett",
+      "panel": "Properties",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "2"
+        },
+        {
+          "prop": "Outfit",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "shader_nodegroup": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Scarlett/Outfit",
+      "label": "Outfit",
+      "prop_name": "Outfit",
+      "owner_bone": "Properties_Scarlett",
+      "group": "outfit__scarlett",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "enum_labels": [
+        "None",
+        "On"
+      ],
+      "min": 0,
+      "max": null,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "shape_key": 1,
+          "object_visibility": 2,
+          "shader_nodegroup": 1
+        },
+        "affected_objects_sample": [
+          "Freja_Scarlett_Outfit_Neck_Zipper"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Nude_Body"
+        ]
+      }
+    },
+    {
+      "id": "Properties_Scarlett/CollarGuard",
+      "label": "Collar Guard",
+      "prop_name": "CollarGuard",
+      "owner_bone": "Properties_Scarlett",
+      "group": "outfit__scarlett",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "shape_key": 1,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Scarlett_Outfit_Arms"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Nude_Body"
+        ]
+      }
+    },
+    {
+      "id": "Properties_Scarlett/Hoodie",
+      "label": "Hoodie",
+      "prop_name": "Hoodie",
+      "owner_bone": "Properties_Scarlett",
+      "group": "outfit__scarlett",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": false,
+      "enum_labels": [
+        "Off",
+        "On"
+      ],
+      "min": 0,
+      "max": null,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "2"
+        },
+        {
+          "prop": "Chest",
+          "equals": "1,2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Scarlett_Chest_Hoodie",
+          "Freja_Scarlett_Chest_HoodieOn",
+          "Freja_Scarlett_Hair_Back"
+        ],
+        "affected_object_count": 3,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Scarlett/Chest",
+      "label": "Vest",
+      "prop_name": "Chest",
+      "owner_bone": "Properties_Scarlett",
+      "group": "outfit__scarlett",
+      "panel": "Properties",
+      "control": "enum",
+      "value_type": "int",
+      "default": 2,
+      "current": 2,
+      "enum_labels": [
+        "None",
+        "Full",
+        "Exposed"
+      ],
+      "min": 0,
+      "max": 2,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "geonodes_mask": 1,
+          "shape_key": 1,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Nude_Body",
+          "Freja_Scarlett_Cape",
+          "Freja_Scarlett_Chest_Closed",
+          "Freja_Scarlett_Chest_Hoodie",
+          "Freja_Scarlett_Chest_HoodieOn",
+          "Freja_Scarlett_Chest_Open",
+          "Freja_Scarlett_Hair_Back"
+        ],
+        "affected_object_count": 7,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Nude_Body"
+        ]
+      }
+    },
+    {
+      "id": "Properties_Streetwear/Sleeves",
+      "label": "Sleeves",
+      "prop_name": "Sleeves",
+      "owner_bone": "Properties_Streetwear",
+      "group": "outfit__streetwear",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "3"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "geonodes_mask": 1,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Nude_Body",
+          "Freja_Streetwear_BodyStrapConnect",
+          "Freja_Streetwear_Sleeves",
+          "Freja_Streetwear_Sleeves_Glass"
+        ],
+        "affected_object_count": 4,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Streetwear/Belt",
+      "label": "Belt",
+      "prop_name": "Belt",
+      "owner_bone": "Properties_Streetwear",
+      "group": "outfit__streetwear",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "3"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Streetwear_Belt"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Streetwear/Pants",
+      "label": "Pants",
+      "prop_name": "Pants",
+      "owner_bone": "Properties_Streetwear",
+      "group": "outfit__streetwear",
+      "panel": "Properties",
+      "control": "enum",
+      "value_type": "int",
+      "default": 0,
+      "current": 0,
+      "enum_labels": [
+        "None",
+        "Full",
+        "Revealed"
+      ],
+      "min": 0,
+      "max": 2,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "3"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "geonodes_mask": 2,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Nude_Body",
+          "Freja_Streetwear_Pants",
+          "Freja_Streetwear_PantsDown"
+        ],
+        "affected_object_count": 3,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Streetwear/Shoes",
+      "label": "Shoes",
+      "prop_name": "Shoes",
+      "owner_bone": "Properties_Streetwear",
+      "group": "outfit__streetwear",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "3"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "geonodes_mask": 1,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Nude_Body",
+          "Freja_Streetwear_Shoes"
+        ],
+        "affected_object_count": 2,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Streetwear/Headphones",
+      "label": "Headphones",
+      "prop_name": "Headphones",
+      "owner_bone": "Properties_Streetwear",
+      "group": "outfit__streetwear",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "3"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Streetwear_Headphone"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Streetwear/Gloves",
+      "label": "Gloves",
+      "prop_name": "Gloves",
+      "owner_bone": "Properties_Streetwear",
+      "group": "outfit__streetwear",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "3"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "geonodes_mask": 1,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Nude_Body",
+          "Freja_Streetwear_Gloves"
+        ],
+        "affected_object_count": 2,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Streetwear/Cape",
+      "label": "Cape",
+      "prop_name": "Cape",
+      "owner_bone": "Properties_Streetwear",
+      "group": "outfit__streetwear",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": false,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "3"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Streetwear_Cape"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Streetwear/Shirt",
+      "label": "Shirt",
+      "prop_name": "Shirt",
+      "owner_bone": "Properties_Streetwear",
+      "group": "outfit__streetwear",
+      "panel": "Properties",
+      "control": "enum",
+      "value_type": "int",
+      "default": 2,
+      "current": 1,
+      "enum_labels": [
+        "None",
+        "Full",
+        "Revealed"
+      ],
+      "min": 0,
+      "max": 2,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "3"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "geonodes_mask": 2,
+          "object_visibility": 2,
+          "modifier_toggle": 4
+        },
+        "affected_objects_sample": [
+          "Freja_Nude_Body",
+          "Freja_Streetwear_Body",
+          "Freja_Streetwear_BodyReveal",
+          "Freja_Streetwear_BodyStrapConnect"
+        ],
+        "affected_object_count": 4,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Archangel/Panties",
+      "label": "Panties",
+      "prop_name": "Panties",
+      "owner_bone": "Properties_Archangel",
+      "group": "outfit__archangel",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "4"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2,
+          "geonodes_mask": 1
+        },
+        "affected_objects_sample": [
+          "Freja_Archangel_Panties",
+          "Freja_Nude_Body"
+        ],
+        "affected_object_count": 2,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Archangel/Cape",
+      "label": "Cape",
+      "prop_name": "Cape",
+      "owner_bone": "Properties_Archangel",
+      "group": "outfit__archangel",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": false,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "4"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Archangel_Cape"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Archangel/Arms",
+      "label": "Arms",
+      "prop_name": "Arms",
+      "owner_bone": "Properties_Archangel",
+      "group": "outfit__archangel",
+      "panel": "Properties",
+      "control": "enum",
+      "value_type": "int",
+      "default": 1,
+      "current": 2,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "4"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2,
+          "geonodes_mask": 1
+        },
+        "affected_objects_sample": [
+          "Freja_Archangel_ArmsL",
+          "Freja_Archangel_ArmsL_Armor",
+          "Freja_Archangel_ArmsR",
+          "Freja_Nude_Body"
+        ],
+        "affected_object_count": 4,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Archangel/Shoes",
+      "label": "Shoes",
+      "prop_name": "Shoes",
+      "owner_bone": "Properties_Archangel",
+      "group": "outfit__archangel",
+      "panel": "Properties",
+      "control": "enum",
+      "value_type": "int",
+      "default": 3,
+      "current": 3,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "4"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2,
+          "geonodes_mask": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Archangel_Legs",
+          "Freja_Archangel_LegsUpper",
+          "Freja_Archangel_SideArmor",
+          "Freja_Nude_Body"
+        ],
+        "affected_object_count": 4,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Archangel/Back Cloth",
+      "label": "Back Cloth",
+      "prop_name": "Back Cloth",
+      "owner_bone": "Properties_Archangel",
+      "group": "outfit__archangel",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": true,
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "4"
+        },
+        {
+          "prop": "LowerBody",
+          "equals": "1,2"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2,
+          "modifier_toggle": 8
+        },
+        "affected_objects_sample": [
+          "Freja-physics-cloth-archangel-back",
+          "Freja_Archangel_UpperbodyBackCloth"
+        ],
+        "affected_object_count": 2,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Archangel/Crown",
+      "label": "Helmet",
+      "prop_name": "Crown",
+      "owner_bone": "Properties_Archangel",
+      "group": "outfit__archangel",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "description": "Disable/Enable the helmet/crown",
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "4"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "modifier_toggle": 2,
+          "shape_key": 1,
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Archangel_Hair",
+          "Freja_Archangel_Helmet"
+        ],
+        "affected_object_count": 2,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Archangel_Hair"
+        ]
+      }
+    },
+    {
+      "id": "Properties_Archangel/Shirt",
+      "label": "Shirt",
+      "prop_name": "Shirt",
+      "owner_bone": "Properties_Archangel",
+      "group": "outfit__archangel",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "enum_labels": [
+        "None",
+        "Full",
+        "Revealed"
+      ],
+      "min": 0,
+      "max": null,
+      "description": "Upper shirt that holds the shoulderguards too",
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "4"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2,
+          "geonodes_mask": 1
+        },
+        "affected_objects_sample": [
+          "Freja_Archangel_Shoulderguard",
+          "Freja_Archangel_UpperBody_Armor",
+          "Freja_Nude_Body"
+        ],
+        "affected_object_count": 3,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Archangel/Collar",
+      "label": "Pauldrons",
+      "prop_name": "Collar",
+      "owner_bone": "Properties_Archangel",
+      "group": "outfit__archangel",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": true,
+      "current": true,
+      "description": "Disable/Enable pauldrons armor",
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "4"
+        },
+        {
+          "prop": "Shirt",
+          "equals": "True"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2
+        },
+        "affected_objects_sample": [
+          "Freja_Archangel_Shoulderguard"
+        ],
+        "affected_object_count": 1,
+        "affected_materials": [],
+        "shape_key_meshes": []
+      }
+    },
+    {
+      "id": "Properties_Archangel/LowerBody",
+      "label": "Lower Body",
+      "prop_name": "LowerBody",
+      "owner_bone": "Properties_Archangel",
+      "group": "outfit__archangel",
+      "panel": "Properties",
+      "control": "enum",
+      "value_type": "int",
+      "default": 0,
+      "current": 1,
+      "description": "Enables/Disables the tabard/bra bodygroups",
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "4"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "object_visibility": 2,
+          "modifier_toggle": 20,
+          "shape_key": 1
+        },
+        "affected_objects_sample": [
+          "Freja-physics-cloth-archangel-back",
+          "Freja-physics-cloth-archangel-front",
+          "Freja_Archangel_Upperbody",
+          "Freja_Archangel_UpperbodyBackCloth",
+          "Freja_Archangel_UpperbodyRevealed",
+          "Freja_Nude_Body",
+          "Freja_Streetwear_Body",
+          "Freja_Streetwear_BodyReveal"
+        ],
+        "affected_object_count": 8,
+        "affected_materials": [],
+        "shape_key_meshes": [
+          "Freja_Nude_Body"
+        ]
+      }
+    },
+    {
+      "id": "Properties_Archangel/Tattoo",
+      "label": "Tattoo",
+      "prop_name": "Tattoo",
+      "owner_bone": "Properties_Archangel",
+      "group": "outfit__archangel",
+      "panel": "Properties",
+      "control": "toggle",
+      "value_type": "bool",
+      "default": false,
+      "current": true,
+      "description": "By default this skin disables the tattoos on Freja in the game. But you can still enable it back here.",
+      "visible_when": [
+        {
+          "prop": "skin_id",
+          "equals": "4"
+        }
+      ],
+      "drives": {
+        "kinds": {
+          "material_value": 1
+        },
+        "affected_objects_sample": [],
+        "affected_object_count": 0,
+        "affected_materials": [
+          "Freja_Body_Nude"
+        ],
+        "shape_key_meshes": []
+      }
+    }
+  ],
+  "rig_pose_controls": [
+    {
+      "id": "Character_Properties/fk_hinge_neck",
+      "label": "Neck",
+      "prop_name": "fk_hinge_neck",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "FK",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, rotation is not inherited, except from the armature's root",
+      "ui_operator": "pose.cloudrig_snap_bake"
+    },
+    {
+      "id": "Character_Properties/fk_hinge_head",
+      "label": "Head",
+      "prop_name": "fk_hinge_head",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "FK",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, rotation is not inherited, except from the armature's root",
+      "ui_operator": "pose.cloudrig_snap_bake"
+    },
+    {
+      "id": "Character_Properties/fk_hinge_left_finger_thumb1",
+      "label": "Left Finger_Thumb1",
+      "prop_name": "fk_hinge_left_finger_thumb1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, rotation is not inherited, except from the armature's root",
+      "ui_operator": "pose.cloudrig_snap_bake"
+    },
+    {
+      "id": "Character_Properties/ik_stretch_left_finger_thumb1",
+      "label": "Left Finger_Thumb1",
+      "prop_name": "ik_stretch_left_finger_thumb1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Allow the limb to stretch beyond its normal maximum reach for a cartoony effect"
+    },
+    {
+      "id": "Character_Properties/ik_left_finger_thumb1",
+      "label": "Left Finger_Thumb1",
+      "prop_name": "ik_left_finger_thumb1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Switch Finger_Thumb1 to Inverse Kinematics posing mode",
+      "ui_operator": "pose.cloudrig_toggle_ikfk_bake"
+    },
+    {
+      "id": "Character_Properties/finger_ik_full_left_finger_thumb1",
+      "label": "Left Finger_Thumb1",
+      "prop_name": "finger_ik_full_left_finger_thumb1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, the last bone in the chain is also considered part of the IK chain"
+    },
+    {
+      "id": "Character_Properties/fk_hinge_left_finger_index1",
+      "label": "Left Finger_Index1",
+      "prop_name": "fk_hinge_left_finger_index1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, rotation is not inherited, except from the armature's root",
+      "ui_operator": "pose.cloudrig_snap_bake"
+    },
+    {
+      "id": "Character_Properties/ik_stretch_left_finger_index1",
+      "label": "Left Finger_Index1",
+      "prop_name": "ik_stretch_left_finger_index1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Allow the limb to stretch beyond its normal maximum reach for a cartoony effect"
+    },
+    {
+      "id": "Character_Properties/ik_left_finger_index1",
+      "label": "Left Finger_Index1",
+      "prop_name": "ik_left_finger_index1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Switch Finger_Index1 to Inverse Kinematics posing mode",
+      "ui_operator": "pose.cloudrig_toggle_ikfk_bake"
+    },
+    {
+      "id": "Character_Properties/finger_ik_full_left_finger_index1",
+      "label": "Left Finger_Index1",
+      "prop_name": "finger_ik_full_left_finger_index1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, the last bone in the chain is also considered part of the IK chain"
+    },
+    {
+      "id": "Character_Properties/fk_hinge_left_finger_middle1",
+      "label": "Left Finger_Middle1",
+      "prop_name": "fk_hinge_left_finger_middle1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, rotation is not inherited, except from the armature's root",
+      "ui_operator": "pose.cloudrig_snap_bake"
+    },
+    {
+      "id": "Character_Properties/ik_stretch_left_finger_middle1",
+      "label": "Left Finger_Middle1",
+      "prop_name": "ik_stretch_left_finger_middle1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Allow the limb to stretch beyond its normal maximum reach for a cartoony effect"
+    },
+    {
+      "id": "Character_Properties/ik_left_finger_middle1",
+      "label": "Left Finger_Middle1",
+      "prop_name": "ik_left_finger_middle1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Switch Finger_Middle1 to Inverse Kinematics posing mode",
+      "ui_operator": "pose.cloudrig_toggle_ikfk_bake"
+    },
+    {
+      "id": "Character_Properties/finger_ik_full_left_finger_middle1",
+      "label": "Left Finger_Middle1",
+      "prop_name": "finger_ik_full_left_finger_middle1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, the last bone in the chain is also considered part of the IK chain"
+    },
+    {
+      "id": "Character_Properties/fk_hinge_left_finger_ring1",
+      "label": "Left Finger_Ring1",
+      "prop_name": "fk_hinge_left_finger_ring1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, rotation is not inherited, except from the armature's root",
+      "ui_operator": "pose.cloudrig_snap_bake"
+    },
+    {
+      "id": "Character_Properties/ik_stretch_left_finger_ring1",
+      "label": "Left Finger_Ring1",
+      "prop_name": "ik_stretch_left_finger_ring1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Allow the limb to stretch beyond its normal maximum reach for a cartoony effect"
+    },
+    {
+      "id": "Character_Properties/ik_left_finger_ring1",
+      "label": "Left Finger_Ring1",
+      "prop_name": "ik_left_finger_ring1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Switch Finger_Ring1 to Inverse Kinematics posing mode",
+      "ui_operator": "pose.cloudrig_toggle_ikfk_bake"
+    },
+    {
+      "id": "Character_Properties/finger_ik_full_left_finger_ring1",
+      "label": "Left Finger_Ring1",
+      "prop_name": "finger_ik_full_left_finger_ring1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, the last bone in the chain is also considered part of the IK chain"
+    },
+    {
+      "id": "Character_Properties/fk_hinge_left_finger_pinky1",
+      "label": "Left Finger_Pinky1",
+      "prop_name": "fk_hinge_left_finger_pinky1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, rotation is not inherited, except from the armature's root",
+      "ui_operator": "pose.cloudrig_snap_bake"
+    },
+    {
+      "id": "Character_Properties/ik_stretch_left_finger_pinky1",
+      "label": "Left Finger_Pinky1",
+      "prop_name": "ik_stretch_left_finger_pinky1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Allow the limb to stretch beyond its normal maximum reach for a cartoony effect"
+    },
+    {
+      "id": "Character_Properties/ik_left_finger_pinky1",
+      "label": "Left Finger_Pinky1",
+      "prop_name": "ik_left_finger_pinky1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Switch Finger_Pinky1 to Inverse Kinematics posing mode",
+      "ui_operator": "pose.cloudrig_toggle_ikfk_bake"
+    },
+    {
+      "id": "Character_Properties/finger_ik_full_left_finger_pinky1",
+      "label": "Left Finger_Pinky1",
+      "prop_name": "finger_ik_full_left_finger_pinky1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, the last bone in the chain is also considered part of the IK chain"
+    },
+    {
+      "id": "Character_Properties/fk_hinge_right_finger_thumb1",
+      "label": "Right Finger_Thumb1",
+      "prop_name": "fk_hinge_right_finger_thumb1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, rotation is not inherited, except from the armature's root",
+      "ui_operator": "pose.cloudrig_snap_bake"
+    },
+    {
+      "id": "Character_Properties/ik_stretch_right_finger_thumb1",
+      "label": "Right Finger_Thumb1",
+      "prop_name": "ik_stretch_right_finger_thumb1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Allow the limb to stretch beyond its normal maximum reach for a cartoony effect"
+    },
+    {
+      "id": "Character_Properties/ik_right_finger_thumb1",
+      "label": "Right Finger_Thumb1",
+      "prop_name": "ik_right_finger_thumb1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Switch Finger_Thumb1 to Inverse Kinematics posing mode",
+      "ui_operator": "pose.cloudrig_toggle_ikfk_bake"
+    },
+    {
+      "id": "Character_Properties/finger_ik_full_right_finger_thumb1",
+      "label": "Right Finger_Thumb1",
+      "prop_name": "finger_ik_full_right_finger_thumb1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, the last bone in the chain is also considered part of the IK chain"
+    },
+    {
+      "id": "Character_Properties/fk_hinge_right_finger_index1",
+      "label": "Right Finger_Index1",
+      "prop_name": "fk_hinge_right_finger_index1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, rotation is not inherited, except from the armature's root",
+      "ui_operator": "pose.cloudrig_snap_bake"
+    },
+    {
+      "id": "Character_Properties/ik_stretch_right_finger_index1",
+      "label": "Right Finger_Index1",
+      "prop_name": "ik_stretch_right_finger_index1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Allow the limb to stretch beyond its normal maximum reach for a cartoony effect"
+    },
+    {
+      "id": "Character_Properties/ik_right_finger_index1",
+      "label": "Right Finger_Index1",
+      "prop_name": "ik_right_finger_index1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Switch Finger_Index1 to Inverse Kinematics posing mode",
+      "ui_operator": "pose.cloudrig_toggle_ikfk_bake"
+    },
+    {
+      "id": "Character_Properties/finger_ik_full_right_finger_index1",
+      "label": "Right Finger_Index1",
+      "prop_name": "finger_ik_full_right_finger_index1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, the last bone in the chain is also considered part of the IK chain"
+    },
+    {
+      "id": "Character_Properties/fk_hinge_right_finger_middle1",
+      "label": "Right Finger_Middle1",
+      "prop_name": "fk_hinge_right_finger_middle1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, rotation is not inherited, except from the armature's root",
+      "ui_operator": "pose.cloudrig_snap_bake"
+    },
+    {
+      "id": "Character_Properties/ik_stretch_right_finger_middle1",
+      "label": "Right Finger_Middle1",
+      "prop_name": "ik_stretch_right_finger_middle1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Allow the limb to stretch beyond its normal maximum reach for a cartoony effect"
+    },
+    {
+      "id": "Character_Properties/ik_right_finger_middle1",
+      "label": "Right Finger_Middle1",
+      "prop_name": "ik_right_finger_middle1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Switch Finger_Middle1 to Inverse Kinematics posing mode",
+      "ui_operator": "pose.cloudrig_toggle_ikfk_bake"
+    },
+    {
+      "id": "Character_Properties/finger_ik_full_right_finger_middle1",
+      "label": "Right Finger_Middle1",
+      "prop_name": "finger_ik_full_right_finger_middle1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, the last bone in the chain is also considered part of the IK chain"
+    },
+    {
+      "id": "Character_Properties/fk_hinge_right_finger_ring1",
+      "label": "Right Finger_Ring1",
+      "prop_name": "fk_hinge_right_finger_ring1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, rotation is not inherited, except from the armature's root",
+      "ui_operator": "pose.cloudrig_snap_bake"
+    },
+    {
+      "id": "Character_Properties/ik_stretch_right_finger_ring1",
+      "label": "Right Finger_Ring1",
+      "prop_name": "ik_stretch_right_finger_ring1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Allow the limb to stretch beyond its normal maximum reach for a cartoony effect"
+    },
+    {
+      "id": "Character_Properties/ik_right_finger_ring1",
+      "label": "Right Finger_Ring1",
+      "prop_name": "ik_right_finger_ring1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Switch Finger_Ring1 to Inverse Kinematics posing mode",
+      "ui_operator": "pose.cloudrig_toggle_ikfk_bake"
+    },
+    {
+      "id": "Character_Properties/finger_ik_full_right_finger_ring1",
+      "label": "Right Finger_Ring1",
+      "prop_name": "finger_ik_full_right_finger_ring1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, the last bone in the chain is also considered part of the IK chain"
+    },
+    {
+      "id": "Character_Properties/fk_hinge_right_finger_pinky1",
+      "label": "Right Finger_Pinky1",
+      "prop_name": "fk_hinge_right_finger_pinky1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, rotation is not inherited, except from the armature's root",
+      "ui_operator": "pose.cloudrig_snap_bake"
+    },
+    {
+      "id": "Character_Properties/ik_stretch_right_finger_pinky1",
+      "label": "Right Finger_Pinky1",
+      "prop_name": "ik_stretch_right_finger_pinky1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Allow the limb to stretch beyond its normal maximum reach for a cartoony effect"
+    },
+    {
+      "id": "Character_Properties/ik_right_finger_pinky1",
+      "label": "Right Finger_Pinky1",
+      "prop_name": "ik_right_finger_pinky1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Switch Finger_Pinky1 to Inverse Kinematics posing mode",
+      "ui_operator": "pose.cloudrig_toggle_ikfk_bake"
+    },
+    {
+      "id": "Character_Properties/finger_ik_full_right_finger_pinky1",
+      "label": "Right Finger_Pinky1",
+      "prop_name": "finger_ik_full_right_finger_pinky1",
+      "owner_bone": "Character_Properties",
+      "group": "body_and_material_detail",
+      "panel": "Fingers",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, the last bone in the chain is also considered part of the IK chain"
+    },
+    {
+      "id": "Properties_IK_FK/ik_stretch_spine1",
+      "label": "Spine1",
+      "prop_name": "ik_stretch_spine1",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "IK",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Allow the spine to stretch beyond its normal length while in IK mode, for a cartoony effect"
+    },
+    {
+      "id": "Properties_IK_FK/ik_spine1",
+      "label": "Spine1",
+      "prop_name": "ik_spine1",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "FK/IK Switch",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Switch to an IK-like posing mode. Instead of posing the spine from bottom to top, this lets you control the two end points in an intuitive way"
+    },
+    {
+      "id": "Properties_IK_FK/fk_hinge_left_upperarm",
+      "label": "Left UpperArm",
+      "prop_name": "fk_hinge_left_upperarm",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "FK",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, rotation is not inherited, except from the armature's root",
+      "ui_operator": "pose.cloudrig_snap_bake"
+    },
+    {
+      "id": "Properties_IK_FK/ik_stretch_left_upperarm",
+      "label": "Left UpperArm",
+      "prop_name": "ik_stretch_left_upperarm",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "IK",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Allow the limb to stretch beyond its normal maximum reach for a cartoony effect"
+    },
+    {
+      "id": "Properties_IK_FK/ik_pole_follow_left_upperarm",
+      "label": "Left UpperArm",
+      "prop_name": "ik_pole_follow_left_upperarm",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "IK",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Make \"POLE-UpperArm.L\" follow \"IK-Wrist.L\"",
+      "ui_operator": "pose.cloudrig_snap_bake"
+    },
+    {
+      "id": "Properties_IK_FK/ik_left_upperarm",
+      "label": "Left UpperArm",
+      "prop_name": "ik_left_upperarm",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "FK/IK Switch",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Switch UpperArm to Inverse Kinematics posing mode",
+      "ui_operator": "pose.cloudrig_toggle_ikfk_bake"
+    },
+    {
+      "id": "Properties_IK_FK/fk_hinge_right_upperarm",
+      "label": "Right UpperArm",
+      "prop_name": "fk_hinge_right_upperarm",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "FK",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, rotation is not inherited, except from the armature's root",
+      "ui_operator": "pose.cloudrig_snap_bake"
+    },
+    {
+      "id": "Properties_IK_FK/ik_stretch_right_upperarm",
+      "label": "Right UpperArm",
+      "prop_name": "ik_stretch_right_upperarm",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "IK",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Allow the limb to stretch beyond its normal maximum reach for a cartoony effect"
+    },
+    {
+      "id": "Properties_IK_FK/ik_pole_follow_right_upperarm",
+      "label": "Right UpperArm",
+      "prop_name": "ik_pole_follow_right_upperarm",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "IK",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Make \"POLE-UpperArm.R\" follow \"IK-Wrist.R\"",
+      "ui_operator": "pose.cloudrig_snap_bake"
+    },
+    {
+      "id": "Properties_IK_FK/ik_right_upperarm",
+      "label": "Right UpperArm",
+      "prop_name": "ik_right_upperarm",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "FK/IK Switch",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Switch UpperArm to Inverse Kinematics posing mode",
+      "ui_operator": "pose.cloudrig_toggle_ikfk_bake"
+    },
+    {
+      "id": "Properties_IK_FK/fk_hinge_left_thigh",
+      "label": "Left Thigh",
+      "prop_name": "fk_hinge_left_thigh",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "FK",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, rotation is not inherited, except from the armature's root",
+      "ui_operator": "pose.cloudrig_snap_bake"
+    },
+    {
+      "id": "Properties_IK_FK/ik_stretch_left_thigh",
+      "label": "Left Thigh",
+      "prop_name": "ik_stretch_left_thigh",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "IK",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Allow the limb to stretch beyond its normal maximum reach for a cartoony effect"
+    },
+    {
+      "id": "Properties_IK_FK/ik_pole_follow_left_thigh",
+      "label": "Left Thigh",
+      "prop_name": "ik_pole_follow_left_thigh",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "IK",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Make \"POLE-Thigh.L\" follow \"IK-Foot.L\"",
+      "ui_operator": "pose.cloudrig_snap_bake"
+    },
+    {
+      "id": "Properties_IK_FK/ik_left_thigh",
+      "label": "Left Thigh",
+      "prop_name": "ik_left_thigh",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "FK/IK Switch",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Switch Thigh to Inverse Kinematics posing mode",
+      "ui_operator": "pose.cloudrig_toggle_ikfk_bake"
+    },
+    {
+      "id": "Properties_IK_FK/fk_hinge_right_thigh",
+      "label": "Right Thigh",
+      "prop_name": "fk_hinge_right_thigh",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "FK",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 0.0,
+      "current": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "When enabled, rotation is not inherited, except from the armature's root",
+      "ui_operator": "pose.cloudrig_snap_bake"
+    },
+    {
+      "id": "Properties_IK_FK/ik_stretch_right_thigh",
+      "label": "Right Thigh",
+      "prop_name": "ik_stretch_right_thigh",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "IK",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Allow the limb to stretch beyond its normal maximum reach for a cartoony effect"
+    },
+    {
+      "id": "Properties_IK_FK/ik_pole_follow_right_thigh",
+      "label": "Right Thigh",
+      "prop_name": "ik_pole_follow_right_thigh",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "IK",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Make \"POLE-Thigh.R\" follow \"IK-Foot.R\"",
+      "ui_operator": "pose.cloudrig_snap_bake"
+    },
+    {
+      "id": "Properties_IK_FK/ik_right_thigh",
+      "label": "Right Thigh",
+      "prop_name": "ik_right_thigh",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "FK/IK Switch",
+      "control": "float_slider",
+      "value_type": "float",
+      "default": 1.0,
+      "current": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "soft_min": 0.0,
+      "soft_max": 1.0,
+      "description": "Switch Thigh to Inverse Kinematics posing mode",
+      "ui_operator": "pose.cloudrig_toggle_ikfk_bake"
+    },
+    {
+      "id": "Properties_IK_FK/ik_parents_left_upperarm",
+      "label": "Left UpperArm",
+      "prop_name": "ik_parents_left_upperarm",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "IK",
+      "control": "enum",
+      "value_type": "int",
+      "default": 0,
+      "current": 0,
+      "enum_labels": [
+        "Root",
+        "Torso",
+        "Chest",
+        "Arm Root"
+      ],
+      "min": 0,
+      "max": 3,
+      "description": "Changes the parent bone of \"IK-Wrist.L\"",
+      "ui_operator": "pose.cloudrig_switch_parent_bake"
+    },
+    {
+      "id": "Properties_IK_FK/ik_parents_right_upperarm",
+      "label": "Right UpperArm",
+      "prop_name": "ik_parents_right_upperarm",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "IK",
+      "control": "enum",
+      "value_type": "int",
+      "default": 0,
+      "current": 0,
+      "enum_labels": [
+        "Root",
+        "Torso",
+        "Chest",
+        "Arm Root"
+      ],
+      "min": 0,
+      "max": 3,
+      "description": "Changes the parent bone of \"IK-Wrist.R\"",
+      "ui_operator": "pose.cloudrig_switch_parent_bake"
+    },
+    {
+      "id": "Properties_IK_FK/ik_parents_left_thigh",
+      "label": "Left Thigh",
+      "prop_name": "ik_parents_left_thigh",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "IK",
+      "control": "enum",
+      "value_type": "int",
+      "default": 0,
+      "current": 0,
+      "enum_labels": [
+        "Root",
+        "Torso",
+        "Hips",
+        "Leg Root"
+      ],
+      "min": 0,
+      "max": 3,
+      "description": "Changes the parent bone of \"IK-Foot.L\"",
+      "ui_operator": "pose.cloudrig_switch_parent_bake"
+    },
+    {
+      "id": "Properties_IK_FK/ik_parents_right_thigh",
+      "label": "Right Thigh",
+      "prop_name": "ik_parents_right_thigh",
+      "owner_bone": "Properties_IK_FK",
+      "group": "rig_pose_control",
+      "panel": "IK",
+      "control": "enum",
+      "value_type": "int",
+      "default": 0,
+      "current": 0,
+      "enum_labels": [
+        "Root",
+        "Torso",
+        "Hips",
+        "Leg Root"
+      ],
+      "min": 0,
+      "max": 3,
+      "description": "Changes the parent bone of \"IK-Foot.R\"",
+      "ui_operator": "pose.cloudrig_switch_parent_bake"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+# Godot 4
+.godot/
+/android/
+export_presets.cfg.local
+
+# Build output
+build/
+
+# Python bytecode from the asset tools
+tools/__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+_codex_archive/
+*.bak
+
+# debug screenshots
+.debug/
