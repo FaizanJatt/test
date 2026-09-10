@@ -1,77 +1,104 @@
 extends Node
-## Procedural locomotion for the Freja deform skeleton (the glb ships no clips).
-## A cosine-driven walk/run cycle plus idle and crouch, all layered on top of the
-## bone rest pose. Amplitudes are clamped so fast speeds can't tear the legs apart.
+## Procedural locomotion for the Freja deform skeleton.
+##
+## The glb was exported "deform bones only", which left the chain-start bones
+## (neck, head, shoulders, upper arms, thighs, finger/toe roots) parented to the
+## armature instead of their real parent. Godot's set_bone_parent needs the
+## parent to come *before* the child in the bone list, which these violate, so we
+## can't re-parent. Instead every frame we FORCE those bones' local pose to
+## "intended-parent global pose * rest offset * our animation" - since their real
+## parent is the skeleton root, local pose == the world pose we want.
 
 var is_bound := false
 var _sk: Skeleton3D
 var _model: Node3D
 
-var _b := {}
-var _rest := {}
-var _pose := {}
-
 var _phase := 0.0
-var _spd := 0.0          # 0 idle .. 1 run  (clamped)
+var _spd := 0.0
 var _crouch := 0.0
 var _idle_t := 0.0
 var _model_base_y := 0.0
 
-# local-space rotation axes (verified against the exported skeleton)
-const AX_PITCH := Vector3(1, 0, 0)   # fore/aft swing for legs & arms, bend for knees/elbows
-const AX_ROLL := Vector3(0, 0, 1)    # ad/abduction
+const AX_PITCH := Vector3(1, 0, 0)
 const FINGER_AXIS := Vector3(0, 0, 1)
 
-const BONES := {
-	"thigh_l": "DEF-Thigh_1.L", "thigh_r": "DEF-Thigh_1.R",
+@export var thigh_swing := 0.4
+@export var arm_tuck := 0.5
+@export var arm_swing_gain := 0.9
+@export var finger_curl := 0.28
+@export var crouch_amount := 1.0   # multiplier for the whole crouch pose
+
+# direct (chained) bones - normal local pose
+var _b := {}
+var _rest := {}
+
+# managed root bones: name -> {idx, parent_idx, offset:Transform3D}
+var _managed := []            # ordered list of dicts
+var _adduct := {}
+
+const CHAINED := {
 	"knee_l": "DEF-Knee_1.L", "knee_r": "DEF-Knee_1.R",
 	"foot_l": "DEF-Foot.L", "foot_r": "DEF-Foot.R",
-	"arm_l": "DEF-UpperArm_1.L", "arm_r": "DEF-UpperArm_1.R",
 	"elbow_l": "DEF-Forearm_1.L", "elbow_r": "DEF-Forearm_1.R",
 	"spine1": "DEF-Spine1", "spine2": "DEF-Spine2", "spine3": "DEF-Spine3",
-	"head": "DEF-Head",
+	"f2_l": "", "f3_l": "",   # placeholders; finger 2/3 handled by name scan
 }
-# the exported rest hand has splayed, slightly-clawed fingers; curl them into a
-# soft relaxed hand. Segments 1/2/3 of each finger (skip the carpals).
-const FINGER_SEGMENTS := ["DEF-Finger_Index1", "DEF-Finger_Index2", "DEF-Finger_Index3",
-	"DEF-Finger_Middle1", "DEF-Finger_Middle2", "DEF-Finger_Middle3",
-	"DEF-Finger_Ring1", "DEF-Finger_Ring2", "DEF-Finger_Ring3",
-	"DEF-Finger_Pinky1", "DEF-Finger_Pinky2", "DEF-Finger_Pinky3"]
-const THUMB_SEGMENTS := ["DEF-Finger_Thumb1", "DEF-Finger_Thumb2", "DEF-Finger_Thumb3"]
-var _fingers: Array[int] = []
-var _thumbs: Array[int] = []
-var _adduct := {}   # arm bone idx -> local axis that adducts toward the body
 
 func bind(skeleton: Skeleton3D, model: Node3D) -> void:
 	_sk = skeleton
 	_model = model
 	_model_base_y = model.position.y
-	for key in BONES:
-		var idx := _sk.find_bone(BONES[key])
-		if idx == -1:
+
+	for key in CHAINED:
+		if CHAINED[key] == "":
 			continue
-		_b[key] = idx
-		_rest[idx] = _sk.get_bone_pose_rotation(idx)
-		_pose[idx] = _rest[idx]
-	# per-arm axis that rotates the arm in the frontal plane (adduction)
-	for arm_key in ["arm_l", "arm_r"]:
-		var ai: int = _b.get(arm_key, -1)
-		if ai != -1:
-			var gb := _sk.get_bone_global_rest(ai).basis
-			_adduct[ai] = (gb.inverse() * Vector3(0, 0, 1)).normalized()
+		var idx := _sk.find_bone(CHAINED[key])
+		if idx != -1:
+			_b[key] = idx
+			_rest[idx] = _sk.get_bone_pose_rotation(idx)
+
+	# managed roots, in dependency order (parent must be resolved first)
+	var spec: Array = [
+		["DEF-Neck", "DEF-Spine3", "neck"],
+		["DEF-Head", "DEF-Neck", "head"],
+		["DEF-Shoulder.L", "DEF-Spine3", "static"], ["DEF-Shoulder.R", "DEF-Spine3", "static"],
+		["DEF-UpperArm_1.L", "DEF-Shoulder.L", "arm_l"], ["DEF-UpperArm_1.R", "DEF-Shoulder.R", "arm_r"],
+		["DEF-Thigh_1.L", "DEF-Spine1", "thigh_l"], ["DEF-Thigh_1.R", "DEF-Spine1", "thigh_r"],
+	]
+	for fin in ["Index", "Middle", "Ring", "Pinky", "Thumb"]:
+		for s in [".L", ".R"]:
+			spec.append(["DEF-Finger_%s1%s" % [fin, s], "DEF-Wrist" + s, "finger"])
+	for fin in ["Index", "Middle", "Ring", "Pinky"]:
+		for s in [".L", ".R"]:
+			spec.append(["DEF-Finger_%s_Carpal%s" % [fin, s], "DEF-Wrist" + s, "static"])
 	for i in _sk.get_bone_count():
 		var bn := _sk.get_bone_name(i)
-		for seg in FINGER_SEGMENTS:
-			if bn == seg + ".L" or bn == seg + ".R":
-				_fingers.append(i)
-				_rest[i] = _sk.get_bone_pose_rotation(i)
-		for seg in THUMB_SEGMENTS:
-			if bn == seg + ".L" or bn == seg + ".R":
-				_thumbs.append(i)
-				_rest[i] = _sk.get_bone_pose_rotation(i)
+		if bn.begins_with("DEF-Toe") and not bn.begins_with("DEF-Toes"):
+			spec.append([bn, "DEF-Foot.R" if bn.ends_with(".R") else "DEF-Foot.L", "static"])
+
+	for e in spec:
+		var ci := _sk.find_bone(e[0])
+		var pi := _sk.find_bone(e[1])
+		if ci == -1 or pi == -1:
+			continue
+		var off := _sk.get_bone_global_rest(pi).affine_inverse() * _sk.get_bone_global_rest(ci)
+		_managed.append({"idx": ci, "parent": pi, "offset": off, "role": e[2]})
+		if e[2] == "arm_l" or e[2] == "arm_r":
+			var gb := _sk.get_bone_global_rest(ci).basis
+			_adduct[ci] = (gb.inverse() * Vector3(0, 0, 1)).normalized()
+
+	# finger 2/3 segments (chained under finger 1) - curl them locally
+	for fin in ["Index", "Middle", "Ring", "Pinky", "Thumb"]:
+		for s in [".L", ".R"]:
+			for seg in ["2", "3"]:
+				var idx := _sk.find_bone("DEF-Finger_%s%s%s" % [fin, seg, s])
+				if idx != -1:
+					_b["fseg_%s%s%s" % [fin, seg, s]] = idx
+					_rest[idx] = _sk.get_bone_pose_rotation(idx)
+
 	is_bound = true
 
-func update_state(planar_speed: float, _target: float, crouching: bool, _grounded: bool, delta: float) -> void:
+func update_state(planar_speed: float, _t: float, crouching: bool, _g: bool, delta: float) -> void:
 	if not is_bound:
 		return
 	var moving := planar_speed > 0.2
@@ -80,101 +107,95 @@ func update_state(planar_speed: float, _target: float, crouching: bool, _grounde
 	_crouch = lerpf(_crouch, 1.0 if crouching else 0.0, clampf(10.0 * delta, 0, 1))
 	_idle_t += delta
 
-	# stride frequency ~ matches ground speed so the feet barely slide
 	var freq := lerpf(1.55, 2.45, _spd)
 	if _crouch > 0.5:
-		freq *= 0.8
+		freq *= 0.85
 	if moving:
 		_phase = fmod(_phase + delta * freq * TAU, TAU)
 	elif _spd < 0.05:
 		_phase = lerp_angle(_phase, 0.0, clampf(5.0 * delta, 0, 1))
 
-	_pose_legs()
-	_pose_arms()
-	_pose_spine()
-	_pose_fingers()
-	_commit(delta)
+	_pose_chained()
+	_pose_managed()
 	_move_body(delta)
 
-func _apply(key: String, q: Quaternion) -> void:
+# ---------------------------------------------------------------------------
+func _pose_chained() -> void:
+	var c := _crouch * crouch_amount
+	var walk := _spd * (1.0 - _crouch * 0.7)
+
+	# spine lean
+	var lean := 0.13 * _spd + 0.3 * c
+	_set_local("spine1", Quaternion(AX_PITCH, lean * 0.4))
+	_set_local("spine2", Quaternion(AX_PITCH, lean * 0.35))
+	_set_local("spine3", Quaternion(AX_PITCH, lean * 0.3))
+
+	# knees
+	var knee_amp := lerpf(0.8, 1.2, _spd)
+	var lk := 0.08 + knee_amp * walk * clampf(-sin(_phase - 0.6), 0.0, 1.0) + 1.15 * c
+	var rk := 0.08 + knee_amp * walk * clampf(-sin(_phase + PI - 0.6), 0.0, 1.0) + 1.15 * c
+	_set_local("knee_l", Quaternion(AX_PITCH, -lk))
+	_set_local("knee_r", Quaternion(AX_PITCH, -rk))
+
+	# ankles
+	var ankle := 0.22 * walk
+	_set_local("foot_l", Quaternion(AX_PITCH, -sin(_phase - 0.3) * ankle - 0.3 * c))
+	_set_local("foot_r", Quaternion(AX_PITCH, -sin(_phase + PI - 0.3) * ankle - 0.3 * c))
+
+	# elbows
+	var elbow := 0.16 + 0.22 * _spd + 0.3 * c
+	_set_local("elbow_l", Quaternion(AX_PITCH, -elbow))
+	_set_local("elbow_r", Quaternion(AX_PITCH, -elbow))
+
+	# finger 2/3 curl
+	for k in _b:
+		if k.begins_with("fseg_"):
+			_sk.set_bone_pose_rotation(_b[k], _rest[_b[k]] * Quaternion(FINGER_AXIS, finger_curl * 0.9))
+
+func _set_local(key: String, q: Quaternion) -> void:
 	var idx: int = _b.get(key, -1)
 	if idx != -1:
-		_pose[idx] = _rest[idx] * q
+		_sk.set_bone_pose_rotation(idx, _rest[idx] * q)
 
 # ---------------------------------------------------------------------------
-@export var thigh_swing := 0.42   # walk stride amplitude (radians, each way)
-
-func _pose_legs() -> void:
+func _pose_managed() -> void:
+	var c := _crouch * crouch_amount
 	var walk := _spd * (1.0 - _crouch * 0.7)
 	var amp := lerpf(0.7, 1.0, _spd) * thigh_swing * clampf(walk * 1.4, 0.0, 1.0)
-	var lt := cos(_phase)
-	var rt := cos(_phase + PI)
-	# a modest shooter-style crouch, not a deep squat
-	var crouch_thigh := 0.75 * _crouch
-	var crouch_knee := 1.25 * _crouch
-	var crouch_ankle := 0.35 * _crouch
-
-	_apply("thigh_l", Quaternion(AX_PITCH, lt * amp + crouch_thigh))
-	_apply("thigh_r", Quaternion(AX_PITCH, rt * amp + crouch_thigh))
-
-	# knee bends through the back half of the swing (leg passing under / lifting)
-	var knee_amp := lerpf(0.8, 1.2, _spd)
-	var lk := 0.1 + knee_amp * walk * clampf(-sin(_phase - 0.6), 0.0, 1.0) + crouch_knee
-	var rk := 0.1 + knee_amp * walk * clampf(-sin(_phase + PI - 0.6), 0.0, 1.0) + crouch_knee
-	_apply("knee_l", Quaternion(AX_PITCH, -lk))
-	_apply("knee_r", Quaternion(AX_PITCH, -rk))
-
-	var ankle := 0.25 * walk
-	_apply("foot_l", Quaternion(AX_PITCH, -sin(_phase - 0.3) * ankle - crouch_ankle))
-	_apply("foot_r", Quaternion(AX_PITCH, -sin(_phase + PI - 0.3) * ankle - crouch_ankle))
-
-@export var arm_tuck := 0.45   # bring the arms in from the rest A-pose to the sides
-@export var arm_swing_gain := 0.9
-
-func _pose_arms() -> void:
+	var arm_swing := lerpf(0.12, 0.4, _spd) * _spd * arm_swing_gain
 	var breathe := sin(_idle_t * 1.6) * 0.02 * (1.0 - _spd)
-	var swing := lerpf(0.12, 0.42, _spd) * _spd * arm_swing_gain
-	var tuck := arm_tuck + 0.12 * _crouch
-	var il: int = _b.get("arm_l", -1)
-	var ir: int = _b.get("arm_r", -1)
-	if il != -1:
-		_pose[il] = _rest[il] * Quaternion(_adduct[il], -tuck) * Quaternion(AX_PITCH, -cos(_phase) * swing + breathe)
-	if ir != -1:
-		_pose[ir] = _rest[ir] * Quaternion(_adduct[ir], tuck) * Quaternion(AX_PITCH, -cos(_phase + PI) * swing + breathe)
-	var elbow := 0.15 + 0.25 * _spd + 0.35 * _crouch
-	_apply("elbow_l", Quaternion(AX_PITCH, -elbow))
-	_apply("elbow_r", Quaternion(AX_PITCH, -elbow))
+	var lean := 0.13 * _spd + 0.3 * c
 
-func _pose_spine() -> void:
-	var lean := 0.14 * _spd + 0.32 * _crouch
-	var twist := sin(_phase) * 0.05 * _spd
-	var bob := sin(_phase * 2.0) * 0.03 * _spd
-	_apply("spine1", Quaternion(AX_PITCH, lean * 0.4 + bob) * Quaternion(Vector3(0, 1, 0), twist))
-	_apply("spine2", Quaternion(AX_PITCH, lean * 0.35))
-	_apply("spine3", Quaternion(AX_PITCH, lean * 0.25))
-	_apply("head", Quaternion(AX_PITCH, -lean * 0.55))
-
-@export var finger_curl := 0.26   # soft relaxed curl per finger segment
-@export var thumb_curl := 0.18
-
-func _pose_fingers() -> void:
-	var extra := 0.5 * _crouch + 0.25 * _spd
-	for i in _fingers:
-		_pose[i] = _rest[i] * Quaternion(FINGER_AXIS, finger_curl + extra)
-	for i in _thumbs:
-		_pose[i] = _rest[i] * Quaternion(FINGER_AXIS, thumb_curl)
-
-# ---------------------------------------------------------------------------
-func _commit(delta: float) -> void:
-	var t := clampf(16.0 * delta, 0, 1)
-	for idx in _pose:
-		var cur := _sk.get_bone_pose_rotation(idx)
-		_sk.set_bone_pose_rotation(idx, cur.slerp(_pose[idx], t))
+	for m in _managed:
+		var q := Quaternion.IDENTITY
+		match m["role"]:
+			"head":
+				q = Quaternion(AX_PITCH, -lean * 0.5)
+			"neck":
+				q = Quaternion(AX_PITCH, lean * 0.15)
+			"arm_l":
+				q = Quaternion(_adduct[m["idx"]], -arm_tuck - 0.12 * c) * Quaternion(AX_PITCH, -cos(_phase) * arm_swing + breathe)
+			"arm_r":
+				q = Quaternion(_adduct[m["idx"]], arm_tuck + 0.12 * c) * Quaternion(AX_PITCH, -cos(_phase + PI) * arm_swing + breathe)
+			"thigh_l":
+				q = Quaternion(AX_PITCH, cos(_phase) * amp + 0.7 * c)
+			"thigh_r":
+				q = Quaternion(AX_PITCH, cos(_phase + PI) * amp + 0.7 * c)
+			"finger":
+				q = Quaternion(FINGER_AXIS, finger_curl + 0.35 * c)
+			_:
+				pass
+		var parent_global: Transform3D = _sk.get_bone_global_pose(m["parent"])
+		var target: Transform3D = parent_global * m["offset"] * Transform3D(Basis(q), Vector3.ZERO)
+		# the managed bone's real parent is the skeleton root, so local == world
+		_sk.set_bone_pose_position(m["idx"], target.origin)
+		_sk.set_bone_pose_rotation(m["idx"], target.basis.get_rotation_quaternion())
+		_sk.set_bone_pose_scale(m["idx"], target.basis.get_scale())
 
 func _move_body(delta: float) -> void:
 	var bob := (0.5 - 0.5 * cos(_phase * 2.0)) * 0.03 * _spd
-	var drop := 0.22 * _crouch
+	var drop := 0.16 * _crouch * crouch_amount
 	var y := _model_base_y + bob - drop
 	_model.position.y = lerpf(_model.position.y, y, clampf(12.0 * delta, 0, 1))
-	var roll := sin(_phase) * 0.04 * _spd
+	var roll := sin(_phase) * 0.035 * _spd
 	_model.rotation.z = lerpf(_model.rotation.z, roll, clampf(10.0 * delta, 0, 1))
