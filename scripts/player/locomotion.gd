@@ -24,38 +24,41 @@ extends Node
 # ------------------------------------------------------------------ tuning ----
 const RUN_SPEED := 6.2                       # matches player.run_speed
 
-# walk/run cycle
-const CADENCE_WALK := 0.92                   # strides/sec at a slow walk
-const CADENCE_RUN := 1.45
-const THIGH_SWING_WALK := deg_to_rad(17.0)
-const THIGH_SWING_RUN := deg_to_rad(26.0)
-const KNEE_BEND_WALK := deg_to_rad(34.0)
-const KNEE_BEND_RUN := deg_to_rad(50.0)
-const KNEE_TUCK := deg_to_rad(6.0)           # constant soft bend, never locked
-const ANKLE_RANGE := deg_to_rad(14.0)
-const ARM_SWING_WALK := deg_to_rad(16.0)
-const ARM_SWING_RUN := deg_to_rad(24.0)
-const ELBOW_BASE_WALK := deg_to_rad(14.0)
-const ELBOW_BASE_RUN := deg_to_rad(28.0)
-const ARM_ADDUCT := deg_to_rad(26.0)         # settle arms in from the exported A-pose
+# gait: SWEEP = ground distance a planted foot covers; cadence follows speed so
+# the planted foot stays put in the world (no skating). SWEEP is capped by leg reach.
+const SWEEP_WALK := 0.52
+const SWEEP_RUN := 0.92
+const STANCE_FRAC := 0.62                    # fraction of the cycle a foot is planted
+const SWING_LIFT_WALK := 0.10               # how high the swing foot clears
+const SWING_LIFT_RUN := 0.22
+const TOE_OFF := deg_to_rad(24.0)           # ankle roll onto the toe at push-off
+const ANKLE_TRIM := deg_to_rad(4.0)         # keep the planted sole flat
+const THIGH_LEN := 0.485                     # measured from the rest skeleton
+const SHIN_LEN := 0.497
+
+const ARM_SWING_WALK := deg_to_rad(21.0)
+const ARM_SWING_RUN := deg_to_rad(34.0)
+const ELBOW_BASE_WALK := deg_to_rad(7.0)     # nearly straight at a walk
+const ELBOW_BASE_RUN := deg_to_rad(20.0)
+const ARM_ADDUCT := deg_to_rad(13.0)         # settle arms in from the exported A-pose
+const ARM_BACK_BIAS := deg_to_rad(9.0)       # rest the hand by the hip, not in front
+const FOREARM_TRIM := deg_to_rad(10.0)       # counter the exported forearm's forward cant
 const CR_ARM_IN := deg_to_rad(6.0)
-const HIP_BOB := 0.028
-const HIP_SWAY := 0.022
+const FINGER_CURL := deg_to_rad(22.0)        # relax the exported claw hand
+const HIP_BOB := 0.022
+const HIP_SWAY := 0.020
 const HIP_ROLL := deg_to_rad(4.0)
 const HIP_YAW := deg_to_rad(6.5)
-const LEAN_WALK := deg_to_rad(3.0)
-const LEAN_RUN := deg_to_rad(9.0)
+const LEAN_WALK := deg_to_rad(4.0)
+const LEAN_RUN := deg_to_rad(11.0)
 const SPINE_COUNTER := 0.6                   # torso counter-rotates vs hips
 
 # crouch (full = 1.0) - low hips, fairly upright back, head up (game stealth crouch)
-const CR_PELVIS_DROP := 0.30
-const CR_PELVIS_BACK := 0.05
-const CR_PELVIS_PITCH := deg_to_rad(5.0)
-const CR_THIGH := deg_to_rad(55.0)
-const CR_KNEE := deg_to_rad(88.0)
-const CR_ANKLE := deg_to_rad(10.0)
-const CR_SPINE := deg_to_rad(10.0)
-const CR_EXTRA_LOOK := deg_to_rad(5.0)       # a bit of extra chin-up when crouched
+const CR_PELVIS_DROP := 0.26
+const CR_PELVIS_BACK := 0.07
+const CR_PELVIS_PITCH := deg_to_rad(4.0)
+const CR_SPINE := deg_to_rad(7.0)
+const CR_EXTRA_LOOK := deg_to_rad(6.0)       # a bit of extra chin-up when crouched
 const CR_ARM_FWD := deg_to_rad(14.0)
 const CR_ELBOW := deg_to_rad(30.0)
 
@@ -63,8 +66,9 @@ const CR_ELBOW := deg_to_rad(30.0)
 const BREATH_RATE := 1.5
 const IDLE_SWAY_RATE := 0.55
 
-const PELVIS_Y := 1.02
+const PELVIS_Y := 1.02       # synthetic pelvis rest height (bookkeeping only)
 const PELVIS_Z := -0.02
+const STAND_SETTLE := 0.04   # drop the hips below rest so the knees carry a little bend
 
 # ---------------------------------------------------------------- internals ----
 var is_bound := false
@@ -89,6 +93,8 @@ var _crouch := 0.0
 var _phase := 0.0
 var _idle_t := 0.0
 var _ground_drop := 0.0
+var _speed := 0.0
+var _stride := SWEEP_WALK
 
 # ------------------------------------------------------------------- setup ----
 func bind(skeleton: Skeleton3D, model: Node3D) -> void:
@@ -189,10 +195,15 @@ func _build_followers(g_rest: Dictionary) -> void:
 		if best == "":
 			continue
 		var anchor_g: Transform3D = g_rest.get(best, Transform3D.IDENTITY)
+		var bn := _sk.get_bone_name(i)
+		var curl := 0.0
+		if bn.begins_with("DEF-Finger_") and ("1." in bn) and not ("Carpal" in bn):
+			curl = FINGER_CURL * (0.5 if "Thumb" in bn else 1.0)
 		_followers.append({
 			"idx": i,
 			"anchor": best,
 			"offset": anchor_g.affine_inverse() * _sk.get_bone_global_rest(i),
+			"curl": curl,
 		})
 
 func _silence_animation_players(n: Node) -> void:
@@ -216,13 +227,16 @@ func update_state(planar_speed: float, _target_speed: float, crouching: bool, _g
 	_run01 = lerpf(_run01, run_t, clampf(6.0 * dt, 0, 1))
 	_moving = lerpf(_moving, 1.0 if moving else 0.0, clampf(9.0 * dt, 0, 1))
 	_crouch = lerpf(_crouch, 1.0 if crouching else 0.0, clampf(9.0 * dt, 0, 1))
+	_speed = lerpf(_speed, planar_speed, clampf(10.0 * dt, 0, 1))
 	_idle_t += dt
 
-	var cadence: float = lerpf(CADENCE_WALK, CADENCE_RUN, _run01) * lerpf(1.0, 0.8, _crouch)
+	# foot ground-sweep picked per gait; cadence then follows speed so the planted
+	# foot stays put in the world (no skating)
+	_stride = lerpf(SWEEP_WALK, SWEEP_RUN, _run01) * lerpf(1.0, 0.6, _crouch)
 	if moving:
-		_phase = fmod(_phase + dt * cadence * TAU, TAU)
+		var cadence_hz: float = clampf(_speed * STANCE_FRAC / _stride, 0.4, 3.2)
+		_phase = fposmod(_phase + dt * cadence_hz * TAU, TAU)
 	else:
-		# ease the cycle to a rest so we don't stop mid-stride
 		var tgt: float = round(_phase / PI) * PI
 		_phase = lerp_angle(_phase, tgt, clampf(8.0 * dt, 0, 1))
 
@@ -236,7 +250,7 @@ func update_state(planar_speed: float, _target_speed: float, crouching: bool, _g
 const AX_X := Vector3(1, 0, 0)
 const AX_Y := Vector3(0, 1, 0)
 const AX_Z := Vector3(0, 0, 1)
-const FOOT_CONTACT_Y := 0.05     # keep the lower foot near the rest ground plane
+const FOOT_CONTACT_Y := 0.11     # foot-bone height when the sole is on the ground
 
 func _pose() -> void:
 	var p := _phase
@@ -246,8 +260,6 @@ func _pose() -> void:
 	var idle: float = 1.0 - w
 	var breath := sin(_idle_t * BREATH_RATE)
 
-	var thigh_amp: float = lerpf(THIGH_SWING_WALK, THIGH_SWING_RUN, _run01) * w * cr_walk
-	var knee_amp: float = lerpf(KNEE_BEND_WALK, KNEE_BEND_RUN, _run01) * w * cr_walk
 	var arm_amp: float = lerpf(ARM_SWING_WALK, ARM_SWING_RUN, _run01) * w * cr_walk
 	var elbow_base: float = lerpf(ELBOW_BASE_WALK, ELBOW_BASE_RUN, _run01)
 	var lean: float = lerpf(LEAN_WALK, LEAN_RUN, _run01) * w
@@ -257,7 +269,7 @@ func _pose() -> void:
 	var sway := sin(p) * HIP_SWAY * w * cr_walk
 	var pel_pos := Vector3(
 		sway + sin(_idle_t * IDLE_SWAY_RATE) * 0.006 * idle,
-		PELVIS_Y + bob - CR_PELVIS_DROP * cr,
+		PELVIS_Y - STAND_SETTLE + bob - CR_PELVIS_DROP * cr,
 		PELVIS_Z - CR_PELVIS_BACK * cr)
 	var hip_yaw := sin(p) * HIP_YAW * w * cr_walk \
 		+ sin(_idle_t * IDLE_SWAY_RATE * 0.7) * deg_to_rad(1.2) * idle
@@ -290,30 +302,23 @@ func _pose() -> void:
 		var idle_arm := sin(_idle_t * BREATH_RATE + side) * deg_to_rad(0.7) * idle
 		_apply("shoulder." + s, AX_X, swing * 0.10 + breath * deg_to_rad(0.4) * idle,
 			AX_Z, -side * breath * deg_to_rad(0.3) * idle, AX_X, 0.0)
-		_apply("uarm1." + s, AX_X, swing - fwd + idle_arm, AX_Z, adduct, AX_X, 0.0)
+		_apply("uarm1." + s, AX_X, swing - fwd + ARM_BACK_BIAS * (1.0 - cr) + idle_arm, AX_Z, adduct, AX_X, 0.0)
 		_carry_chain(["uarm2." + s, "uarm3." + s])
-		# elbow: soft constant bend + coupled swing, flexes forward (-X)
-		var elbow: float = -(elbow_base + CR_ELBOW * cr + maxf(0.0, sin(aph + 0.5)) * arm_amp * 0.6)
+		# elbow: soft constant bend + coupled swing, flexes forward (-X);
+		# FOREARM_TRIM (+X) first straightens out the exported forward cant
+		var elbow: float = FOREARM_TRIM - elbow_base - CR_ELBOW * cr \
+			- maxf(0.0, sin(aph + 0.5)) * arm_amp * 0.6
 		_apply("farm1." + s, AX_X, elbow * 0.5, AX_X, 0.0, AX_X, 0.0)
 		_apply("farm2." + s, AX_X, elbow * 0.3, AX_X, 0.0, AX_X, 0.0)
 		_apply("farm3." + s, AX_X, elbow * 0.2, AX_X, 0.0, AX_X, 0.0)
 		_apply("wrist." + s, AX_X, 0.0, AX_X, 0.0, AX_X, 0.0)
 
-	# ---- legs : contralateral stride, knees flex through swing ----------
+	# ---- legs : 2-bone IK to a world-locked foot target (no skating) ----
+	var swing_lift: float = lerpf(SWING_LIFT_WALK, SWING_LIFT_RUN, _run01) * w
 	for s in ["L", "R"]:
 		var lp := p if s == "L" else p + PI
-		var t_swing := -sin(lp) * thigh_amp - CR_THIGH * cr           # -X = thigh forward
-		var swing_bend: float = knee_amp * pow(maxf(0.0, cos(lp)), 1.3)
-		var knee: float = KNEE_TUCK + swing_bend + CR_KNEE * cr       # +X = knee flex
-		var ankle: float = -(t_swing + knee) * 0.45 \
-			+ maxf(0.0, sin(lp)) * ANKLE_RANGE * w - CR_ANKLE * cr
-		_apply("thigh1." + s, AX_X, t_swing, AX_X, 0.0, AX_X, 0.0)
-		_carry_chain(["thigh2." + s, "thigh3." + s])
-		_apply("knee1." + s, AX_X, knee * 0.7, AX_X, 0.0, AX_X, 0.0)
-		_apply("knee2." + s, AX_X, knee * 0.18, AX_X, 0.0, AX_X, 0.0)
-		_apply("knee3." + s, AX_X, knee * 0.12, AX_X, 0.0, AX_X, 0.0)
-		_apply("foot." + s, AX_X, ankle, AX_X, 0.0, AX_X, 0.0)
-		_apply("toes." + s, AX_X, maxf(0.0, sin(lp)) * ANKLE_RANGE * 0.5 * w, AX_X, 0.0, AX_X, 0.0)
+		var plan := _foot_plan(lp, _stride * w, swing_lift)   # (fwd, lift)
+		_solve_leg(s, plan.x, plan.y, cr, lp)
 
 	_compute_fk()
 	_ground()
@@ -340,6 +345,73 @@ func _apply(nm: String, ax0: Vector3, a0: float, ax1: Vector3, a1: float, ax2: V
 	var l_new := Transform3D(l.basis * local_delta, l.origin)
 	d["_lnew"] = l_new
 
+## foot trajectory for one leg: linear world-locked slide back through stance,
+## smooth arc forward with a lift through swing. returns Vector2(fwd, lift).
+func _foot_plan(lp: float, stride: float, lift_h: float) -> Vector2:
+	var u := fposmod(lp, TAU) / TAU
+	if u < STANCE_FRAC:
+		var f := u / STANCE_FRAC
+		return Vector2(lerpf(stride * 0.5, -stride * 0.5, f), 0.0)
+	var g := (u - STANCE_FRAC) / (1.0 - STANCE_FRAC)
+	var e := g * g * (3.0 - 2.0 * g)
+	return Vector2(lerpf(-stride * 0.5, stride * 0.5, e), sin(g * PI) * lift_h)
+
+## 2-bone IK from the hip socket to a foot target: solve the knee position,
+## then AIM the thigh and shin bones (exact, accounts for rest cant/roll).
+func _solve_leg(s: String, fwd: float, lift: float, cr: float, lp: float) -> void:
+	var pelvis: Transform3D = _cur["pelvis"]
+	var t1: Dictionary = _drv["thigh1." + s]
+	var hip: Vector3 = (pelvis * t1["l_rest"]).origin
+	var a := THIGH_LEN
+	var b := SHIN_LEN
+
+	var target := Vector3(hip.x, FOOT_CONTACT_Y + lift, pelvis.origin.z + fwd)
+	var to_t := target - hip
+	var d := to_t.length()
+	if d > a + b - 0.02:
+		to_t *= (a + b - 0.02) / d
+		d = a + b - 0.02
+	d = maxf(d, absf(a - b) + 0.04)
+	var dir := to_t / d
+	var pole := pelvis.basis.z                             # knee points "forward"
+	var n := (pole - dir * pole.dot(dir))
+	n = n.normalized() if n.length() > 0.001 else Vector3(0, 0, 1)
+	var cos_h: float = clampf((a * a + d * d - b * b) / (2.0 * a * d), -1.0, 1.0)
+	var knee_pos := hip + dir * (a * cos_h) + n * (a * sqrt(maxf(0.0, 1.0 - cos_h * cos_h)))
+	var thigh_dir := (knee_pos - hip).normalized()
+	var shin_dir := (hip + to_t - knee_pos).normalized()
+
+	# thigh1 (skeleton root): aim its rest bone-axis along thigh_dir
+	var thigh1_g := _aim_global("thigh1." + s, thigh_dir)
+	_set_root_lnew("thigh1." + s, pelvis, thigh1_g)
+	_carry_chain(["thigh2." + s, "thigh3." + s])
+	var thigh3_g: Transform3D = thigh1_g * _drv["thigh2." + s]["l_rest"] * _drv["thigh3." + s]["l_rest"]
+
+	# knee1 (chained under thigh3): aim along shin_dir
+	var knee1_g := _aim_global("knee1." + s, shin_dir)
+	_drv["knee1." + s]["_lnew"] = Transform3D(
+		thigh3_g.basis.inverse() * knee1_g.basis, _drv["knee1." + s]["l_rest"].origin)
+	_carry_chain(["knee2." + s, "knee3." + s])
+
+	# ankle: bring the sole back toward level, roll onto the toe at push-off
+	var shin_pitch := clampf(shin_dir.angle_to(Vector3.DOWN) * signf(shin_dir.z + 0.0001), -1.2, 1.2)
+	var toe_off := maxf(0.0, sin(lp)) * TOE_OFF * (1.0 - cr * 0.4)
+	_apply("foot." + s, AX_X, -shin_pitch * 0.72 + ANKLE_TRIM - toe_off, AX_X, 0.0, AX_X, 0.0)
+	_apply("toes." + s, AX_X, toe_off * 0.55, AX_X, 0.0, AX_X, 0.0)
+
+## rotation that points a driver's rest bone-axis (local +Y) along `world_dir`,
+## returned as the bone's new GLOBAL transform (rotation only; origin unused here)
+func _aim_global(nm: String, world_dir: Vector3) -> Transform3D:
+	var grb: Basis = _drv[nm]["g_rest_basis"]
+	var rest_axis := grb.y
+	var q := Quaternion(rest_axis, world_dir.normalized())
+	return Transform3D(Basis(q) * grb, Vector3.ZERO)
+
+func _set_root_lnew(nm: String, parent_g: Transform3D, bone_g: Transform3D) -> void:
+	var d: Dictionary = _drv[nm]
+	var l_basis := parent_g.basis.inverse() * bone_g.basis
+	d["_lnew"] = Transform3D(l_basis, d["l_rest"].origin)
+
 ## chain segments that just follow their parent rigidly (no local rotation)
 func _carry_chain(names: Array) -> void:
 	for nm in names:
@@ -361,11 +433,11 @@ func _compute_fk() -> void:
 ## drop the whole rig so the lower foot rests on the ground (cheap pelvis IK).
 ## smoothed so a crouch/stand transition can't pop.
 func _ground() -> void:
-	var lo: float = min(
-		min(_cur["foot.L"].origin.y, _cur["foot.R"].origin.y),
-		min(_cur["toes.L"].origin.y, _cur["toes.R"].origin.y))
-	_ground_drop = lerpf(_ground_drop, lo - FOOT_CONTACT_Y, 0.5)
-	if is_zero_approx(_ground_drop):
+	# only ever lowers the rig (e.g. run flight phase) so a planted foot reaches;
+	# never lifts, so it can't fight the per-leg IK
+	var lo: float = min(_cur["foot.L"].origin.y, _cur["foot.R"].origin.y)
+	_ground_drop = lerpf(_ground_drop, maxf(0.0, lo - FOOT_CONTACT_Y), 0.35)
+	if _ground_drop < 0.002:
 		return
 	var shift := Vector3(0.0, -_ground_drop, 0.0)
 	for nm in _cur:
@@ -386,5 +458,9 @@ func _flush() -> void:
 			_sk.set_bone_pose_rotation(d["idx"], (d["_lnew"] as Transform3D).basis.get_rotation_quaternion())
 	for f in _followers:
 		var gf: Transform3D = _cur[f["anchor"]] * f["offset"]
+		var rot := gf.basis
+		if f["curl"] > 0.0:
+			var axis: Vector3 = (_cur[f["anchor"]].basis * Vector3.RIGHT).normalized()
+			rot = Basis(axis, f["curl"]) * rot
 		_sk.set_bone_pose_position(f["idx"], gf.origin)
-		_sk.set_bone_pose_rotation(f["idx"], gf.basis.get_rotation_quaternion())
+		_sk.set_bone_pose_rotation(f["idx"], rot.get_rotation_quaternion())
