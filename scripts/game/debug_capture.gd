@@ -50,7 +50,6 @@ func _run() -> void:
 
 	# appearance tab + a colour change
 	_main.customizer_screen._on_outfit_selected(2)
-	_main.customizer_screen._tabs.current_tab = 1
 	_main.customizer_screen._cfg.hair_color = Color(0.15, 0.5, 0.9)
 	_main.customizer_screen._cfg.body["Voluptuous"] = 0.45
 	_main.freja.apply_config(_main.customizer_screen._cfg)
@@ -59,7 +58,6 @@ func _run() -> void:
 
 	# every piece off -> should be bare skin + eyes + hair
 	_main.customizer_screen._on_outfit_selected(3)
-	_main.customizer_screen._tabs.current_tab = 0
 	for p in _main.customizer_screen._cfg.pieces.keys():
 		_main.customizer_screen._cfg.pieces[p] = false
 	_main.customizer_screen._cfg.pieces["hair"] = true    # keep hair so she's not bald

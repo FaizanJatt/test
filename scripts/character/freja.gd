@@ -24,6 +24,7 @@ func load_model() -> void:
 
 	skeleton = _find_skeleton(model_root)
 	assert(skeleton != null, "Freja glb has no Skeleton3D")
+	_reconnect_skeleton()
 
 	for mi in _all_mesh_instances(model_root):
 		var clean := _clean_name(mi.name)
@@ -37,6 +38,37 @@ func load_model() -> void:
 			meshes[hidden_name].visible = false
 
 	model_ready.emit()
+
+## The glb was exported "deform bones only", which flattened the skeleton -
+## chain-start bones (neck, shoulders, upper arms, finger roots) ended up
+## parented to the armature instead of their real parent, so the head and hands
+## don't follow the body when it's posed. Re-link them and rebuild their rests.
+func _reconnect_skeleton() -> void:
+	var links: Array = [
+		["DEF-Neck", "DEF-Spine3"], ["DEF-Head", "DEF-Neck"],
+		["DEF-Shoulder.L", "DEF-Spine3"], ["DEF-Shoulder.R", "DEF-Spine3"],
+		["DEF-UpperArm_1.L", "DEF-Shoulder.L"], ["DEF-UpperArm_1.R", "DEF-Shoulder.R"],
+	]
+	for fin in ["Index", "Middle", "Ring", "Pinky", "Thumb"]:
+		for side in [".L", ".R"]:
+			links.append(["DEF-Finger_%s1%s" % [fin, side], "DEF-Wrist" + side])
+	for fin in ["Index", "Middle", "Ring", "Pinky"]:
+		for side in [".L", ".R"]:
+			links.append(["DEF-Finger_%s_Carpal%s" % [fin, side], "DEF-Wrist" + side])
+
+	var world_rest := {}
+	for pair in links:
+		var ci := skeleton.find_bone(pair[0])
+		if ci != -1:
+			world_rest[pair[0]] = skeleton.get_bone_global_rest(ci)
+	for pair in links:
+		var ci := skeleton.find_bone(pair[0])
+		var pi := skeleton.find_bone(pair[1])
+		if ci == -1 or pi == -1 or skeleton.get_bone_parent(ci) == pi:
+			continue
+		skeleton.set_bone_parent(ci, pi)
+		skeleton.set_bone_rest(ci, skeleton.get_bone_global_rest(pi).affine_inverse() * world_rest[pair[0]])
+	skeleton.reset_bone_poses()
 
 func _find_skeleton(n: Node) -> Skeleton3D:
 	if n is Skeleton3D:
@@ -97,6 +129,8 @@ func apply_config(cfg: FrejaConfig) -> void:
 
 	_set_visible(Wardrobe.BODY_MESH, true)
 	for mesh_name in Wardrobe.SHARED_ALWAYS:
+		_set_visible(mesh_name, true)
+	for mesh_name in Wardrobe.get_outfit(cfg.outfit_id)["always"]:
 		_set_visible(mesh_name, true)
 
 	# 2. active outfit's pieces + shared underwear pieces

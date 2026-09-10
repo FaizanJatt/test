@@ -40,6 +40,7 @@ const FINGER_SEGMENTS := ["DEF-Finger_Index1", "DEF-Finger_Index2", "DEF-Finger_
 const THUMB_SEGMENTS := ["DEF-Finger_Thumb1", "DEF-Finger_Thumb2", "DEF-Finger_Thumb3"]
 var _fingers: Array[int] = []
 var _thumbs: Array[int] = []
+var _adduct := {}   # arm bone idx -> local axis that adducts toward the body
 
 func bind(skeleton: Skeleton3D, model: Node3D) -> void:
 	_sk = skeleton
@@ -52,6 +53,12 @@ func bind(skeleton: Skeleton3D, model: Node3D) -> void:
 		_b[key] = idx
 		_rest[idx] = _sk.get_bone_pose_rotation(idx)
 		_pose[idx] = _rest[idx]
+	# per-arm axis that rotates the arm in the frontal plane (adduction)
+	for arm_key in ["arm_l", "arm_r"]:
+		var ai: int = _b.get(arm_key, -1)
+		if ai != -1:
+			var gb := _sk.get_bone_global_rest(ai).basis
+			_adduct[ai] = (gb.inverse() * Vector3(0, 0, 1)).normalized()
 	for i in _sk.get_bone_count():
 		var bn := _sk.get_bone_name(i)
 		for seg in FINGER_SEGMENTS:
@@ -123,16 +130,20 @@ func _pose_legs() -> void:
 	_apply("foot_l", Quaternion(AX_PITCH, -sin(_phase - 0.3) * ankle - crouch_ankle))
 	_apply("foot_r", Quaternion(AX_PITCH, -sin(_phase + PI - 0.3) * ankle - crouch_ankle))
 
+@export var arm_tuck := 0.45   # bring the arms in from the rest A-pose to the sides
+@export var arm_swing_gain := 0.9
+
 func _pose_arms() -> void:
-	# opposite phase to the legs, tucked to the body, subtle breathing when idle
-	var breathe := sin(_idle_t * 1.6) * 0.03 * (1.0 - _spd)
-	var swing := lerpf(0.18, 0.5, _spd) * _spd
-	var tuck := 0.42 + 0.12 * _crouch
-	var la := -cos(_phase) * swing + 0.08 + breathe
-	var ra := -cos(_phase + PI) * swing + 0.08 + breathe
-	_apply("arm_l", Quaternion(AX_PITCH, la) * Quaternion(AX_ROLL, -tuck))
-	_apply("arm_r", Quaternion(AX_PITCH, ra) * Quaternion(AX_ROLL, tuck))
-	var elbow := 0.35 + 0.35 * _spd + 0.3 * _crouch
+	var breathe := sin(_idle_t * 1.6) * 0.02 * (1.0 - _spd)
+	var swing := lerpf(0.12, 0.42, _spd) * _spd * arm_swing_gain
+	var tuck := arm_tuck + 0.12 * _crouch
+	var il: int = _b.get("arm_l", -1)
+	var ir: int = _b.get("arm_r", -1)
+	if il != -1:
+		_pose[il] = _rest[il] * Quaternion(_adduct[il], -tuck) * Quaternion(AX_PITCH, -cos(_phase) * swing + breathe)
+	if ir != -1:
+		_pose[ir] = _rest[ir] * Quaternion(_adduct[ir], tuck) * Quaternion(AX_PITCH, -cos(_phase + PI) * swing + breathe)
+	var elbow := 0.15 + 0.25 * _spd + 0.35 * _crouch
 	_apply("elbow_l", Quaternion(AX_PITCH, -elbow))
 	_apply("elbow_r", Quaternion(AX_PITCH, -elbow))
 

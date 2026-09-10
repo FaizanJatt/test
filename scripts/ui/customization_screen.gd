@@ -16,7 +16,6 @@ var _orbit := 0.0
 var _dim: ColorRect
 
 var _panel: PanelContainer
-var _tabs: TabContainer
 var _pieces_box: VBoxContainer
 var _color_box: VBoxContainer
 var _outfit_row: GridContainer
@@ -98,30 +97,20 @@ func _build_panel() -> void:
 		b.pressed.connect(_on_outfit_selected.bind(oid))
 		_outfit_row.add_child(b)
 
-	# --- tabs: pieces / colours ---
-	_tabs = TabContainer.new()
-	_tabs.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	_tabs.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	vb.add_child(_tabs)
-
+	# --- pieces list ---
+	# (the "Appearance" tab is intentionally hidden for now; hair/eye colour and
+	#  body sliders still work through FrejaConfig if re-enabled later.)
+	vb.add_child(_section_label("Pieces"))
 	var pieces_scroll := ScrollContainer.new()
-	pieces_scroll.name = "Pieces"
 	pieces_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	pieces_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	pieces_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_pieces_box = VBoxContainer.new()
 	_pieces_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_pieces_box.add_theme_constant_override("separation", 4)
-	_pieces_box.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	pieces_scroll.add_child(_pieces_box)
-	_tabs.add_child(pieces_scroll)
-
-	var color_scroll := ScrollContainer.new()
-	color_scroll.name = "Appearance"
-	color_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	_color_box = VBoxContainer.new()
-	_color_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_color_box.add_theme_constant_override("separation", 8)
-	color_scroll.add_child(_color_box)
-	_tabs.add_child(color_scroll)
+	vb.add_child(pieces_scroll)
+	_color_box = VBoxContainer.new()   # kept for _refresh_colors(); never shown
 
 	# --- footer ---
 	var footer := HBoxContainer.new()
@@ -203,16 +192,15 @@ func _refresh_all() -> void:
 	for i in _outfit_row.get_child_count():
 		(_outfit_row.get_child(i) as Button).button_pressed = (i == _cfg.outfit_id)
 	_refresh_pieces()
-	_refresh_colors()
 
 func _refresh_pieces() -> void:
 	for c in _pieces_box.get_children():
 		c.queue_free()
-	var n_outfit: int = Wardrobe.get_outfit(_cfg.outfit_id)["pieces"].size()
+	var n_outfit: int = Wardrobe.outfit_piece_count(_cfg.outfit_id)
 	var idx := 0
 	for p in Wardrobe.pieces_for(_cfg.outfit_id):
 		if idx == n_outfit:
-			_pieces_box.add_child(_section_label("Underwear (may clip)"))
+			_pieces_box.add_child(_section_label("Underwear"))
 		idx += 1
 		var cb := CheckButton.new()
 		cb.text = p["label"]
