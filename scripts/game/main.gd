@@ -129,12 +129,9 @@ func _open_customizer() -> void:
 	customizer_screen.open()
 	hud.visible = false
 	player.set_input_enabled(false)
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _close_customizer() -> void:
 	customizer_screen.visible = false
 	if is_instance_valid(hud):
 		hud.visible = true
 	player.set_input_enabled(true)
-	if not OS.has_feature("mobile") and not "--capture" in OS.get_cmdline_args():
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

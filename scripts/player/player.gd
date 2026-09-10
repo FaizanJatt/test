@@ -54,14 +54,20 @@ func setup(freja: Node3D) -> void:
 	else:
 		_freja.model_ready.connect(func(): _loco.bind(_freja.skeleton, _freja))
 
-	if not OS.has_feature("mobile"):
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	# No mouse capture on start. Drag with left OR right mouse button to look;
+	# the cursor is hidden only while dragging, so the window never traps the mouse.
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+var _dragging := false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not _input_enabled:
 		return
-	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		_cam_rig.add_look(-event.relative * 0.15)
+	if event is InputEventMouseButton and event.button_index in [MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT]:
+		_dragging = event.pressed
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if _dragging else Input.MOUSE_MODE_VISIBLE
+	elif event is InputEventMouseMotion and _dragging:
+		_cam_rig.add_look(-event.relative * 0.22)
 	elif event.is_action_pressed("cam_zoom_in"):
 		_cam_rig.zoom(-0.4)
 	elif event.is_action_pressed("cam_zoom_out"):
@@ -70,6 +76,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		_cam_rig.toggle_shoulder()
 	elif event.is_action_pressed("jump"):
 		_want_jump = true
+	elif event.is_action_pressed("ui_cancel_menu"):
+		_dragging = false
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func add_mobile_look(delta: Vector2) -> void:
 	if _input_enabled:
@@ -91,6 +100,8 @@ func set_input_enabled(v: bool) -> void:
 	_input_enabled = v
 	if not v:
 		_mobile_move = Vector2.ZERO
+		_dragging = false
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _physics_process(delta: float) -> void:
 	var on_floor := is_on_floor()
@@ -132,8 +143,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	# ---- face movement direction ----
+	# The Freja glb faces +Z, so add PI to aim its front down the travel vector.
 	if has_move:
-		var target_yaw := atan2(-dir.x, -dir.z)
+		var target_yaw := atan2(dir.x, dir.z)
 		_yaw_model = lerp_angle(_yaw_model, target_yaw, clampf(turn_speed * delta, 0, 1))
 		_freja.rotation.y = _yaw_model
 

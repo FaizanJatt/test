@@ -24,12 +24,12 @@ godot --path .
 | Desktop | Action |
 |---|---|
 | `W A S D` / arrows | Move (camera-relative) |
-| Mouse | Look |
+| **Hold left/right mouse + drag** | Look around (the cursor is only hidden while you drag — the window never traps it) |
+| Mouse wheel | Zoom |
 | `Shift` | Sprint |
 | `C` / `Ctrl` | Crouch (toggle-hold) |
 | `Space` | Jump |
 | `Q` | Toggle over-the-shoulder camera |
-| Mouse wheel | Zoom |
 | `I` / `Tab` | Open / close the wardrobe |
 | `Esc` | Close the wardrobe |
 
@@ -40,10 +40,12 @@ appear automatically. Force them on desktop with `godot --path . -- --touch`.
 
 ## What's in the scene
 
-- **World** (`scripts/world/world_builder.gd`) — procedural ground, ~55k wind-animated
-  grass blades (`grass.gdshader`, MultiMesh), scattered trees + rocks with collision, a
-  soft play boundary. Sky, sun + cascaded shadows, SSAO, fog and tonemapping are set up
-  in `scripts/game/main.gd`.
+- **World** (`scripts/world/world_builder.gd`) — a textured grass ground (PolyHaven CC0),
+  ~40k wind-animated grass tufts (Kenney tuft mesh in a MultiMesh + `grass.gdshader`), and
+  scattered **Kenney Nature Kit** trees / rocks / bushes / flowers / logs. Trees get trunk
+  collision; a ring wall bounds the play area. Kenney's GLTF pack ships broken placeholder
+  material colours, so `scripts/world/prop_kit.gd` remaps them to a natural palette. Sky,
+  sun + cascaded shadows, SSAO, fog and tonemapping are in `scripts/game/main.gd`.
 - **Player** (`scripts/player/player.gd`) — `CharacterBody3D`, PUBG-style camera-relative
   movement, sprint, crouch (with head-room check), jump, gravity. Owns a `SpringArm3D`
   camera rig (`camera_rig.gd`) and a procedural locomotion driver (`locomotion.gd`) that
@@ -75,6 +77,14 @@ approximate materials from the loose maps in `assets/textures/` keyed by materia
 
 Reference data (not loaded at runtime, kept for provenance):
 `assets/cloudrig_freja_customization_schema.json`, `_cheatsheet.json`, `_truth_table.json`.
+
+## Third-party assets (all CC0)
+
+- **Kenney Nature Kit** — trees, rocks, plants, flowers, grass tuft (`assets/props/`).
+  https://kenney.nl/assets/nature-kit
+- **Poly Haven — `aerial_grass_rock`** — ground texture (`assets/textures/ground/`).
+  https://polyhaven.com/a/aerial_grass_rock
+- **Freja / CloudRig** — the character, from Blender Studio's CloudRig demo file.
 
 ---
 

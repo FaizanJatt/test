@@ -167,10 +167,10 @@ func _close() -> void:
 	closed.emit()
 
 func _process(delta: float) -> void:
-	if not is_instance_valid(_player):
+	if not visible or not is_instance_valid(_player):
 		return
-	_orbit += delta * 0.6
-	var yaw := sin(_orbit) * 2.1              # sweep front-left to front-right, never fully behind
+	_orbit += delta * 0.5
+	var yaw := sin(_orbit) * 1.35             # gentle front 3/4 sweep, never behind
 	var focus: Vector3 = _player.global_position + Vector3.UP * 1.12
 	var dist := 3.15
 	var off := Vector3(sin(yaw) * dist, 0.55, cos(yaw) * dist)
