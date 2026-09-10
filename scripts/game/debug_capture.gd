@@ -24,6 +24,14 @@ func _run() -> void:
 	await _snap("run")
 	_main.player.set_sprint_held(false)
 
+	# strafe left, then right
+	_main.player.set_mobile_move_vector(Vector2(-1, 0))
+	await get_tree().create_timer(0.6).timeout
+	await _snap("strafe_left")
+	_main.player.set_mobile_move_vector(Vector2(1, 0))
+	await get_tree().create_timer(0.6).timeout
+	await _snap("strafe_right")
+
 	_main.player.set_crouch_held(true)
 	await get_tree().create_timer(0.5).timeout
 	await _snap("crouch")
