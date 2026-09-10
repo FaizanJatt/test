@@ -1,114 +1,103 @@
 extends Node
-## Screenshot harness. Enabled when the game is launched with `--capture`.
-## Drives the player through a scripted sequence and saves PNGs to res://.debug/.
+## Locomotion QA harness (launch with `--capture`).
+##
+## For each of idle / walk / run / crouch / crouch-walk it lets the real player
+## reach that state, FREEZES the sim, poses the cycle at a chosen phase, then
+## orbits a dedicated camera 360 degrees around Freja so we can judge the pose
+## from every side. PNGs -> res://.debug/.
 
 var _main: Node
+var _player: Node
+var _loco: Node
+var _freja: Node3D
+var _cam: Camera3D
 var _shot := 0
-var _dir := "res://.debug/"
+const DIR := "res://.debug/"
 
 func _ready() -> void:
 	_main = get_parent()
-	DirAccess.make_dir_recursive_absolute(_dir)
+	DirAccess.make_dir_recursive_absolute(DIR)
 	_run.call_deferred()
 
 func _run() -> void:
-	await get_tree().create_timer(0.5).timeout
-	await _snap("idle")
+	_player = _main.player
+	_freja = _main.freja
+	_loco = _player._loco
 
-	_main.player.set_mobile_move_vector(Vector2(0, -1))
-	await get_tree().create_timer(0.5).timeout
-	await _snap("walk")
+	_cam = Camera3D.new()
+	_cam.fov = 45.0
+	add_child(_cam)
+	await get_tree().create_timer(0.4).timeout
 
-	_main.player.set_sprint_held(true)
-	await get_tree().create_timer(0.5).timeout
-	await _snap("run")
-	_main.player.set_sprint_held(false)
+	await _state("idle", Vector2.ZERO, false, false, 0.0)
+	await _state("walk", Vector2(0, -1), false, false, 1.6)
+	await _state("run", Vector2(0, -1), true, false, 1.6)
+	await _state("crouch", Vector2.ZERO, false, true, 0.0)
+	await _state("crouchwalk", Vector2(0, -1), false, true, 1.6)
 
-	# strafe left, then right
-	_main.player.set_mobile_move_vector(Vector2(-1, 0))
+	await _wardrobe_check()
+	_done()
+
+func _state(label: String, move: Vector2, sprint: bool, crouch: bool, phase: float) -> void:
+	_player.set_process(true)
+	_player.set_physics_process(true)
+	_player._cam_rig.set_process(true)
+	_player.set_sprint_held(sprint)
+	_player.set_crouch_held(crouch)
+	_player.set_mobile_move_vector(move)
+	await get_tree().create_timer(1.2).timeout
+
+	# freeze everything and pose a clean frame of the cycle
+	_player.set_physics_process(false)
+	_player._cam_rig.set_process(false)
+	_cam.current = true
+	if _loco.is_bound and (move != Vector2.ZERO):
+		_loco._phase = phase
+		_loco._pose()
+
+	var centre: Vector3 = _freja.global_position + Vector3.UP * (0.85 if crouch else 1.0)
+	var radius := 3.1
+	var height := 0.35 if crouch else 0.55
+	for i in 4:
+		var ang := TAU * float(i) / 4.0
+		_cam.global_position = centre + Vector3(sin(ang) * radius, height, cos(ang) * radius)
+		_cam.look_at(centre, Vector3.UP)
+		await get_tree().process_frame
+		await get_tree().process_frame
+		await _snap("%s_%d" % [label, int(round(rad_to_deg(ang)))])
+
+func _wardrobe_check() -> void:
+	_player.set_physics_process(true)
+	_player.set_crouch_held(false)
+	_player.set_sprint_held(false)
+	_player.set_mobile_move_vector(Vector2.ZERO)
 	await get_tree().create_timer(0.6).timeout
-	await _snap("strafe_left")
-	_main.player.set_mobile_move_vector(Vector2(1, 0))
-	await get_tree().create_timer(0.6).timeout
-	await _snap("strafe_right")
-
-	_main.player.set_crouch_held(true)
-	await get_tree().create_timer(0.5).timeout
-	await _snap("crouch")
-	_main.player.set_crouch_held(false)
-	_main.player.set_mobile_move_vector(Vector2.ZERO)
-	await get_tree().create_timer(0.6).timeout
-
-	_main.player._cam_rig.add_look(Vector2(150, 6))
-	await get_tree().create_timer(0.5).timeout
-	await _snap("char_front")
-
 	_main._open_customizer()
 	_main.customizer_screen.set_process(false)
-	_main.freja.rotation.y = PI
-	_frame_char(Vector3(1.6, 1.1, 3.0))
-	await get_tree().create_timer(0.5).timeout
-	await _snap("customizer")
-
+	await get_tree().create_timer(0.3).timeout
 	for oid in [0, 1, 2, 3, 4]:
 		_main.customizer_screen._on_outfit_selected(oid)
-		_frame_char(Vector3(1.6, 1.1, 3.0))
-		await get_tree().create_timer(0.5).timeout
+		var f: Vector3 = _freja.global_position + Vector3.UP
+		_cam.current = true
+		_cam.global_position = f + Vector3(1.7, 0.15, 3.1)
+		_cam.look_at(f, Vector3.UP)
+		await get_tree().create_timer(0.35).timeout
 		await _snap("outfit_%d" % oid)
 
-	# appearance tab + a colour change
-	_main.customizer_screen._on_outfit_selected(2)
-	_main.customizer_screen._cfg.hair_color = Color(0.15, 0.5, 0.9)
-	_main.customizer_screen._cfg.body["Voluptuous"] = 0.45
-	_main.freja.apply_config(_main.customizer_screen._cfg)
-	await get_tree().create_timer(0.5).timeout
-	await _snap("appearance")
-
-	# every piece off -> should be bare skin + eyes + hair
-	_main.customizer_screen._on_outfit_selected(3)
-	for p in _main.customizer_screen._cfg.pieces.keys():
-		_main.customizer_screen._cfg.pieces[p] = false
-	_main.customizer_screen._cfg.pieces["hair"] = true    # keep hair so she's not bald
-	_main.freja.apply_config(_main.customizer_screen._cfg)
-	_frame_char(Vector3(1.6, 1.1, 3.0))
-	await get_tree().create_timer(0.5).timeout
-	await _snap("all_pieces_off")
-
-	# head close-up from four sides so we can see the face regardless of facing
-	_main.customizer_screen._cfg.pieces["hair"] = false
-	_main.customizer_screen._cfg.pieces["sports_bra"] = true
-	_main.customizer_screen._cfg.pieces["panties"] = true
-	_main.freja.apply_config(_main.customizer_screen._cfg)
-	var head: Vector3 = _main.freja.global_position + Vector3.UP * 1.62
-	var cam: Camera3D = _main.customizer_screen._preview_cam
-	for i in 2:
-		var a := PI * i
-		cam.global_position = head + Vector3(sin(a), 0.05, cos(a)) * 0.55
-		cam.look_at(head, Vector3.UP)
-		await get_tree().create_timer(0.3).timeout
-		await _snap("head_%d" % i)
-
-	# hand close-up (arm hangs ~ x 0.28, y 0.95 relative to feet)
-	var hand: Vector3 = _main.freja.global_position + Vector3(-0.32, 0.92, 0.0)
-	for i in 2:
-		cam.global_position = hand + Vector3(-0.35 + 0.7 * i, 0.05, 0.4)
-		cam.look_at(hand, Vector3.UP)
-		await get_tree().create_timer(0.3).timeout
-		await _snap("hand_%d" % i)
-
-	print("[capture] done, %d shots in %s" % [_shot, _dir])
-	get_tree().quit()
-
-func _frame_char(offset: Vector3) -> void:
-	var f: Vector3 = _main.freja.global_position + Vector3.UP * 1.0
-	var cam: Camera3D = _main.customizer_screen._preview_cam
-	cam.global_position = f + offset
-	cam.look_at(f + Vector3(0.25, 0, 0), Vector3.UP)
-
 func _snap(label: String) -> void:
+	await get_tree().process_frame
+	await get_tree().process_frame
 	await RenderingServer.frame_post_draw
-	var img := get_viewport().get_texture().get_image()
+	await RenderingServer.frame_post_draw
+	var img: Image = get_viewport().get_texture().get_image()
 	_shot += 1
-	var path := "%s%02d_%s.png" % [_dir, _shot, label]
-	img.save_png(path)
-	print("[capture] ", path)
+	if img == null:
+		push_error("[capture] null image " + label)
+		return
+	img.save_png("%s%02d_%s.png" % [DIR, _shot, label])
+
+func _done() -> void:
+	var f := FileAccess.open("res://.debug/_capture_done.txt", FileAccess.WRITE)
+	f.store_string("shots=%d\n" % _shot)
+	f.close()
+	get_tree().quit()

@@ -54,7 +54,7 @@ func _ready() -> void:
 	customizer_screen.setup(freja, config)
 	customizer_screen.visible = false
 
-	if "--capture" in OS.get_cmdline_args():
+	if "--capture" in OS.get_cmdline_args() or "--capture" in OS.get_cmdline_user_args():
 		var cap := preload("res://scripts/game/debug_capture.gd").new()
 		cap.name = "DebugCapture"
 		add_child(cap)

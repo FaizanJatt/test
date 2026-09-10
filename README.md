@@ -48,9 +48,13 @@ appear automatically. Force them on desktop with `godot --path . -- --touch`.
   sun + cascaded shadows, SSAO, fog and tonemapping are in `scripts/game/main.gd`.
 - **Player** (`scripts/player/player.gd`) — `CharacterBody3D`, PUBG-style camera-relative
   movement, sprint, crouch (with head-room check), jump, gravity. Owns a `SpringArm3D`
-  camera rig (`camera_rig.gd`) and a procedural locomotion driver (`locomotion.gd`) that
-  poses the skeleton's leg / arm / spine chains by a walk phase (the glb ships no
-  animation clips).
+  camera rig (`camera_rig.gd`) and a procedural locomotion driver (`locomotion.gd`).
+  The glb ships no animation clips **and** its "deform bones only" export flattened
+  ~375 bones onto the armature root, so `locomotion.gd` rebuilds a virtual FK
+  hierarchy in code, drives every segment of each bendy limb by a gait phase
+  (idle / walk / run / crouch / crouch-walk, blended by speed + crouch), grounds
+  the lower foot, and rigidly re-attaches every detached bone (hands, toes, hair,
+  breasts, belt…) to its nearest driver each frame.
 - **Freja** (`scripts/character/freja.gd`) — loads `assets/characters/freja/freja.glb`
   (all 5 outfits + shape keys, 423 deform bones), indexes every garment mesh, rebuilds
   materials (`material_factory.gd`) from `assets/textures/`, and applies a `FrejaConfig`.
